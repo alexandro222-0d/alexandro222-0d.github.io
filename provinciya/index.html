@@ -57,23 +57,38 @@ button,input,select{font:inherit;color:inherit}
 .mmenu a.l{font-family:var(--serif);font-size:34px;padding:10px 0;border-bottom:1px solid var(--line-d)}
 .mmenu .btn{margin-top:auto}
 
-/* первый экран */
-.hero{position:relative;min-height:min(100svh,940px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px var(--gut) 190px}
-.hero .bg{position:absolute;inset:0;z-index:0;overflow:hidden}
-.hero .bg img{width:100%;height:100%;object-fit:cover;object-position:50% 35%;filter:brightness(.62) saturate(.9);transform:scale(1.08);animation:zoom 16s ease-out forwards}
+/* первый экран: заголовок слева, зал в арке справа, тарелка выходит из арки */
+.hero{position:relative;min-height:min(100svh,980px);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center;gap:clamp(30px,5vw,80px);padding:120px max(var(--gut),calc((100vw - 1240px)/2)) 70px;background:radial-gradient(60% 70% at 78% 45%,rgba(201,166,114,.16),transparent 70%),var(--dark);overflow:hidden}
+.hero::before{content:"Провинция";position:absolute;left:-2vw;bottom:-6vw;font-family:var(--serif);font-style:italic;font-size:26vw;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(201,166,114,.09);white-space:nowrap;pointer-events:none}
+.hero .txt{position:relative;z-index:2}
+.hero .eyebrow{color:var(--gold);display:flex;align-items:center;gap:14px}
+.hero .eyebrow::before{content:"";width:44px;height:1px;background:var(--gold)}
+.hero h1{font-size:clamp(50px,6.6vw,108px);line-height:.98;margin:26px 0 24px}
+.hero h1 i{display:block;padding-left:.9em}
+.hero p.sub{font-size:16px;color:rgba(239,233,222,.72);max-width:28em}
+.hero .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.hero .meta{display:flex;flex-wrap:wrap;gap:12px 34px;margin-top:48px;padding-top:24px;border-top:1px solid var(--line-d);font-size:13px;color:rgba(239,233,222,.75)}
+.hero .meta b{display:block;font-family:var(--serif);font-weight:500;font-size:26px;line-height:1;color:var(--cream);margin-bottom:6px}
+.hero .meta b em{font-style:normal;color:var(--gold)}
+.live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#7FBF6A;margin-right:8px;box-shadow:0 0 0 0 rgba(127,191,106,.6);animation:pulse 2s infinite;vertical-align:middle}
+.live-dot.off{background:#B35B4B;animation:none}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(127,191,106,0)}100%{box-shadow:0 0 0 0 rgba(127,191,106,0)}}
+.hero .art{position:relative;justify-self:center;width:min(100%,500px);z-index:1}
+.arch{position:relative;aspect-ratio:.74;border-radius:999px 999px 0 0;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.5)}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:50% 55%;transform:scale(1.12);animation:zoom 18s ease-out forwards}
 @keyframes zoom{to{transform:scale(1)}}
-.hero .bg::after{content:"";position:absolute;inset:0;background:radial-gradient(80% 60% at 50% 40%,transparent 30%,rgba(24,23,19,.75) 100%),linear-gradient(180deg,rgba(24,23,19,.55) 0%,transparent 25%,transparent 55%,var(--dark) 100%)}
-.hero>*:not(.bg){position:relative;z-index:1}
-.hero .eyebrow{color:var(--gold)}
-.hero h1{font-size:clamp(46px,7.4vw,112px);margin:22px 0 18px;text-shadow:0 2px 30px rgba(0,0,0,.35)}
-.hero p.sub{font-family:var(--serif);font-style:italic;font-size:clamp(19px,1.8vw,24px);color:rgba(239,233,222,.9)}
-.hero .btn{margin-top:34px}
-.hero .dots{position:absolute;left:var(--gut);bottom:72px;display:flex;gap:8px;z-index:1}
-.hero .dots i{width:46px;height:1px;background:rgba(239,233,222,.35)}
-.hero .dots i:first-child{background:var(--cream)}
-.hero .plate{position:absolute;right:max(var(--gut),calc((100vw - 1240px)/2 - 60px));bottom:-120px;z-index:3;width:min(46vw,640px);pointer-events:none;filter:drop-shadow(0 40px 50px rgba(0,0,0,.55))}
+.arch::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(24,23,19,.55))}
+.art .frame{position:absolute;inset:-16px -16px 16px 16px;border:1px solid rgba(201,166,114,.5);border-radius:999px 999px 0 0;pointer-events:none}
+.seal{position:absolute;right:-34px;top:16%;width:128px;height:128px;z-index:3;display:grid;place-items:center}
+.seal svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 22s linear infinite}
+.seal text{font-family:var(--sans);font-size:9.6px;font-weight:600;letter-spacing:.1em;fill:var(--cream)}
+.seal b{width:58px;height:58px;border-radius:50%;background:var(--gold);color:var(--dark);display:grid;place-items:center;font-family:var(--serif);font-weight:600;font-size:22px;line-height:1}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero .plate{position:absolute;left:-30%;bottom:-6%;width:92%;z-index:4;pointer-events:none;filter:drop-shadow(0 34px 40px rgba(0,0,0,.6))}
 .plate img{width:100%;animation:float 7s ease-in-out infinite}
 @keyframes float{50%{transform:translateY(-10px)}}
+.hero .scroll{position:absolute;left:50%;bottom:22px;width:1px;height:44px;background:linear-gradient(transparent,var(--gold));animation:sc 2.4s ease-in-out infinite;transform-origin:top}
+@keyframes sc{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
 
 /* кремовые панели */
 .cream{background:var(--cream);color:var(--ink)}
@@ -182,18 +197,27 @@ footer .credit{margin-top:22px;font-size:11px;opacity:.6}
   .top nav,.top .right .tel,.top .right .btn{display:none}
   .burger{display:block;grid-column:3;grid-row:1}
   .logo{grid-column:1;grid-row:1;text-align:left}
-  .hero .plate{width:56vw;bottom:-90px}
+  .hero{grid-template-columns:1fr 1fr}
+  .seal{right:-16px}
 }
 @media (max-width:760px){
   body{font-size:15px}
   .top .bar{height:70px}
   .logo b{font-size:20px}
   .logo small{font-size:8px}
-  .hero{min-height:88svh;padding:100px var(--gut) 150px}
-  .hero .bg img{object-position:50% 30%}
-  .hero .dots{display:none}
-  .hero .plate{width:92vw;right:-8vw;bottom:-70px}
-  .duo{grid-template-columns:1fr;padding-top:110px}
+  .hero{grid-template-columns:1fr;min-height:0;padding:110px var(--gut) 56px;gap:34px}
+  .hero::before{font-size:44vw;bottom:auto;top:46%}
+  .hero .art{order:-1;width:82%;justify-self:end;margin-right:4%}
+  .hero .plate{left:-26%;bottom:-10%;width:96%}
+  .seal{width:96px;height:96px;right:-18px;top:10%}
+  .seal b{width:44px;height:44px;font-size:18px}
+  .hero h1{font-size:clamp(44px,12.5vw,60px)}
+  .hero .row{display:grid;grid-template-columns:1fr 1fr}
+  .hero .row .btn{padding:0 10px;font-size:10.5px}
+  .hero .meta{gap:16px 22px;margin-top:34px}
+  .hero .meta b{font-size:22px}
+  .hero .scroll{display:none}
+  .duo{grid-template-columns:1fr;padding-top:80px}
   .duo .r{padding-top:0}
   .collage{aspect-ratio:1/1.05}
   .muse{grid-template-columns:.8fr 1.2fr;gap:18px}
@@ -232,13 +256,24 @@ footer .credit{margin-top:22px;font-size:11px;opacity:.6}
 
 <main>
   <section class="hero" id="hero">
-    <div class="bg"><img src="img/hall.webp" alt="Зал ресторана «Новая Провинция»"></div>
-    <span class="eyebrow rv">Авторская европейская кухня</span>
-    <h1 class="h rv">Вечер, который<br>хочется запомнить</h1>
-    <p class="sub rv">Где кухня шефа встречает тихую роскошь</p>
-    <a class="btn rv" href="#reserve">Забронировать стол</a>
-    <div class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-    <div class="plate" aria-hidden="true"><img src="img/plate.webp" alt=""></div>
+    <div class="txt">
+      <span class="eyebrow rv">Авторская европейская кухня</span>
+      <h1 class="h rv">Вечер, который<br>хочется <i>запомнить</i></h1>
+      <p class="sub rv">Паста, которую шеф делает сам, тёплый свет зала и живой вокал по выходным. Барановичи, Советская, 57А.</p>
+      <div class="row rv"><a class="btn" href="#reserve">Забронировать стол</a><a class="btn line" href="#menu">Смотреть блюда</a></div>
+      <div class="meta rv">
+        <div><b><em>5,0</em></b>на Яндекс Картах</div>
+        <div><b>12:00</b>открываемся каждый день</div>
+        <div><b><span class="live-dot" id="dot"></span><span id="openNow">Открыто</span></b><span id="openTill">до 23:00</span></div>
+      </div>
+    </div>
+    <div class="art rv">
+      <div class="frame" aria-hidden="true"></div>
+      <div class="arch"><img src="img/hall.webp" alt="Зал ресторана «Новая Провинция» со скульптурой"></div>
+      <div class="seal" aria-hidden="true"><svg viewBox="0 0 128 128"><defs><path id="circ" d="M64,64 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/></defs><text><textPath href="#circ" textLength="306" lengthAdjust="spacing">АВТОРСКАЯ КУХНЯ · БАРАНОВИЧИ ·</textPath></text></svg><b>П</b></div>
+      <div class="plate"><img src="img/plate.webp" alt=""></div>
+    </div>
+    <span class="scroll" aria-hidden="true"></span>
   </section>
 
   <section class="cream" id="about">
@@ -355,6 +390,10 @@ $$(".rv").forEach(el => io.observe(el));
 const now = new Date(new Date().toLocaleString("en-US", {timeZone: "Europe/Minsk"}));
 const close = d => (d === 5 || d === 6) ? 24 : 23;
 $("#live").textContent = `Сегодня открыты до ${close(now.getDay()) === 24 ? "00:00" : "23:00"}`;
+{ const h = now.getHours() + now.getMinutes() / 60, open = h >= 12 && h < close(now.getDay());
+  $("#openNow").textContent = open ? "Открыто" : "Закрыто";
+  $("#openTill").textContent = open ? `до ${close(now.getDay()) === 24 ? "00:00" : "23:00"}` : "откроемся в 12:00";
+  $("#dot").classList.toggle("off", !open); }
 const dIn = $("#d"), tIn = $("#t");
 const pad = n => String(n).padStart(2, "0");
 dIn.value = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`; dIn.min = dIn.value;
