@@ -1,0 +1,549 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>КЛИНОК — барбершоп · демо-сайт</title>
+<meta name="description" content="Демо-сайт вымышленного барбершопа: стрижки, бритьё опасной бритвой, уход за бородой, онлайн-запись.">
+<meta name="theme-color" content="#0b0b0c">
+<meta property="og:title" content="КЛИНОК — барбершоп · демо-сайт">
+<meta property="og:description" content="Форма, которая держит характер. Стрижка, борода, опасная бритва.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" as="image" href="assets/img/hero-master.jpg">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ============ ПРЕЛОАДЕР ============ -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader__inner">
+    <div class="preloader__mark">
+      <svg viewBox="0 0 64 64" class="mark" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+          <path class="mark__p" d="M14 8 L50 56"/>
+          <path class="mark__p" d="M50 8 L14 56"/>
+          <circle class="mark__c" cx="16" cy="52" r="6"/>
+          <circle class="mark__c" cx="48" cy="52" r="6"/>
+        </g>
+      </svg>
+    </div>
+    <div class="preloader__word"><span>К</span><span>Л</span><span>И</span><span>Н</span><span>О</span><span>К</span></div>
+    <div class="preloader__bar"><i id="preBar"></i></div>
+    <div class="preloader__num"><span id="preNum">0</span><small>%</small></div>
+  </div>
+  <div class="preloader__curtain"></div>
+</div>
+
+<!-- ============ ЭФФЕКТЫ ============ -->
+<div class="grain" aria-hidden="true"></div>
+<div class="lamp" id="lamp" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__ring"></span><span class="cursor__label"></span></div>
+<div class="scrollbar" aria-hidden="true"><i id="scrollProgress"></i></div>
+
+<!-- ============ ШАПКА ============ -->
+<header class="header" id="header">
+  <a class="logo" href="#top" aria-label="КЛИНОК — на главную">
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+        <path d="M14 8 L50 56"/><path d="M50 8 L14 56"/>
+        <circle cx="16" cy="52" r="6"/><circle cx="48" cy="52" r="6"/>
+      </g>
+    </svg>
+    <span class="logo__txt">КЛИНОК<small>barbershop</small></span>
+  </a>
+
+  <nav class="nav" id="nav" aria-label="Основная навигация">
+    <a href="#manifest" data-link>Манифест</a>
+    <a href="#services" data-link>Услуги</a>
+    <a href="#works" data-link>Работы</a>
+    <a href="#forms" data-link>Формы</a>
+    <a href="#team" data-link>Мастера</a>
+    <a href="#reviews" data-link>Отзывы</a>
+  </nav>
+
+  <div class="header__side">
+    <a class="header__phone" href="#booking">+375 (00) 000-00-00</a>
+    <a class="btn btn--accent btn--sm" href="#booking" data-magnetic><span>Записаться</span></a>
+    <button class="burger" id="burger" aria-label="Меню" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+
+<!-- ============ МОБИЛЬНОЕ МЕНЮ ============ -->
+<div class="menu" id="menu" aria-hidden="true">
+  <div class="menu__bg"></div>
+  <nav class="menu__list">
+    <a href="#manifest" data-link><em>01</em> Манифест</a>
+    <a href="#services" data-link><em>02</em> Услуги</a>
+    <a href="#works" data-link><em>03</em> Работы</a>
+    <a href="#forms" data-link><em>04</em> Формы</a>
+    <a href="#team" data-link><em>05</em> Мастера</a>
+    <a href="#reviews" data-link><em>06</em> Отзывы</a>
+    <a href="#booking" data-link><em>07</em> Запись</a>
+  </nav>
+  <div class="menu__foot">
+    <a href="#booking">+375 (00) 000-00-00</a>
+    <span>ул. Примерная, 1</span>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- ============ ГЛАВНЫЙ ЭКРАН ============ -->
+<section class="hero" id="hero">
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow" data-reveal>Барбершоп · стрижка · борода · бритьё</p>
+      <h1 class="hero__title" data-split>Форма, которая держит характер</h1>
+      <p class="hero__lead" data-reveal data-reveal-delay="120">
+        Барбершоп КЛИНОК. Классическая стрижка, бритьё опасной бритвой и уход за бородой.
+        Шесть мастеров, час тишины и результат, который держится до следующего визита.
+      </p>
+      <div class="hero__cta" data-reveal data-reveal-delay="220">
+        <a class="btn btn--accent" href="#booking" data-magnetic><span>Записаться</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn--ghost" href="#works" data-magnetic><span>Смотреть работы</span></a>
+      </div>
+      <dl class="hero__stats" data-reveal data-reveal-delay="320">
+        <div><dt data-count="60">0</dt><dd>минут на одно кресло</dd></div>
+        <div><dt data-count="6">0</dt><dd>мастеров в зале</dd></div>
+        <div><dt data-count="14">0</dt><dd>дней бесплатной коррекции</dd></div>
+      </dl>
+    </div>
+
+    <div class="hero__visual">
+      <figure class="hero__shot" data-tilt data-cursor="смотреть">
+        <img src="assets/img/hero-master.jpg" alt="Мастер бреет клиента опасной бритвой в кресле барбершопа" width="1800" height="1150">
+        <figcaption><span class="dot"></span>Зал 1 · горячее полотенце</figcaption>
+      </figure>
+      <figure class="hero__shot hero__shot--sm" data-parallax="0.08">
+        <img src="assets/img/hero-shave.jpg" alt="Чёрно-белый кадр: бритьё опасной бритвой" loading="lazy" width="1000" height="1300">
+      </figure>
+      <div class="hero__badge" data-parallax="-0.06">
+        <strong>1:1</strong>
+        <span>одно кресло —<br>один клиент</span>
+      </div>
+      <div class="pole" aria-hidden="true"><i></i></div>
+    </div>
+  </div>
+
+  <a class="hero__scroll" href="#manifest" aria-label="Листать вниз"><i></i><span>листай</span></a>
+</section>
+
+<!-- ============ БЕГУЩАЯ СТРОКА ============ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__row" id="ticker">
+    <span>стрижка<i>✕</i>борода<i>✕</i>опасная бритва<i>✕</i>камуфляж седины<i>✕</i>детский зал<i>✕</i>уход<i>✕</i></span>
+    <span>стрижка<i>✕</i>борода<i>✕</i>опасная бритва<i>✕</i>камуфляж седины<i>✕</i>детский зал<i>✕</i>уход<i>✕</i></span>
+    <span>стрижка<i>✕</i>борода<i>✕</i>опасная бритва<i>✕</i>камуфляж седины<i>✕</i>детский зал<i>✕</i>уход<i>✕</i></span>
+  </div>
+</div>
+
+<!-- ============ МАНИФЕСТ ============ -->
+<section class="section manifest" id="manifest">
+  <div class="wrap manifest__grid">
+    <div class="manifest__media">
+      <figure class="frame frame--tall" data-parallax="0.1" data-cursor="зал">
+        <img src="assets/img/interior-main.jpg" alt="Интерьер барбершопа: кирпич, кресла, тёплые лампы" loading="lazy" width="1600" height="1100">
+      </figure>
+      <figure class="frame frame--sm" data-parallax="-0.12">
+        <img src="assets/img/interior-row.jpg" alt="Ряд рабочих мест мастеров, чёрно-белый кадр" loading="lazy" width="1200" height="900">
+      </figure>
+      <div class="manifest__stamp" aria-hidden="true">
+        <svg viewBox="0 0 200 200"><defs><path id="circlePath" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"/></defs>
+        <text><textPath href="#circlePath">КЛИНОК · BARBERSHOP · СТРИЖКА · БОРОДА · </textPath></text></svg>
+        <b>✂</b>
+      </div>
+    </div>
+
+    <div class="manifest__copy">
+      <p class="eyebrow" data-reveal><i></i>Манифест</p>
+      <h2 class="h2" data-split>Мы не делаем модно. Мы делаем по форме головы</h2>
+      <p data-reveal data-reveal-delay="120">
+        Стрижка живёт не в день визита, а на третьей неделе. Поэтому мы начинаем с разговора и рук:
+        смотрим, как ложится волос, где растёт вихор, куда уходит линия роста. И только потом берём машинку.
+      </p>
+      <ul class="principles">
+        <li data-reveal data-reveal-delay="180"><b>01</b><span><strong>Час на кресло.</strong> Не по конвейеру: одна запись — одно кресло, без параллельных клиентов.</span></li>
+        <li data-reveal data-reveal-delay="240"><b>02</b><span><strong>Свои инструменты.</strong> Японская сталь, ручная заточка раз в две недели, одноразовые лезвия.</span></li>
+        <li data-reveal data-reveal-delay="300"><b>03</b><span><strong>Честный прайс.</strong> Цена на сайте — цена в кассе. Коррекция в течение 14 дней бесплатна.</span></li>
+        <li data-reveal data-reveal-delay="360"><b>04</b><span><strong>Тишина по запросу.</strong> Скажите «без разговоров» — и вам просто нальют кофе.</span></li>
+      </ul>
+      <div class="manifest__sign" data-reveal data-reveal-delay="420">
+        <img src="assets/img/master-4.jpg" alt="Артём Волков, основатель барбершопа" loading="lazy" width="900" height="1200">
+        <div><strong>Артём Волков</strong><span>основатель, старший мастер</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ УСЛУГИ ============ -->
+<section class="section services" id="services">
+  <div class="wrap">
+    <header class="sechead">
+      <p class="eyebrow" data-reveal><i></i>Услуги</p>
+      <h2 class="h2" data-split>Шесть вещей, которые мы умеем делать до конца</h2>
+      <p class="sechead__note" data-reveal data-reveal-delay="120">Время указано с запасом: мы не выгоняем из кресла по таймеру.</p>
+    </header>
+
+    <div class="cards">
+      <article class="card" data-reveal data-spot>
+        <div class="card__ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="37" r="6"/><circle cx="37" cy="37" r="6"/><path d="M15 33 38 8M33 33 10 8"/></svg></div>
+        <h3>Мужская стрижка</h3>
+        <p>Разбор формы, машинка и ножницы, укладка под ежедневное повторение дома.</p>
+        <footer><span class="price">65 р.</span><span class="dur">60 мин</span></footer>
+      </article>
+
+      <article class="card" data-reveal data-reveal-delay="80" data-spot>
+        <div class="card__ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 14h24l8 8-8 8H8z"/><path d="M14 22h14"/><path d="M8 38h20"/></svg></div>
+        <h3>Опасная бритва</h3>
+        <p>Два горячих полотенца, предбритвенное масло, ход по росту и против. Финиш — холодный компресс.</p>
+        <footer><span class="price">55 р.</span><span class="dur">50 мин</span></footer>
+      </article>
+
+      <article class="card" data-reveal data-reveal-delay="160" data-spot>
+        <div class="card__ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 10v10a12 12 0 0 0 24 0V10"/><path d="M18 30c2 6 10 6 12 0"/><path d="M12 14h24"/></svg></div>
+        <h3>Моделирование бороды</h3>
+        <p>Линия скулы, шея, растушёвка перехода. Подбираем длину под овал лица, а не под картинку.</p>
+        <footer><span class="price">45 р.</span><span class="dur">45 мин</span></footer>
+      </article>
+
+      <article class="card" data-reveal data-spot>
+        <div class="card__ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="10" y="8" width="28" height="12" rx="3"/><path d="M14 20v14a4 4 0 0 0 4 4h12a4 4 0 0 0 4-4V20"/><path d="M14 12h20"/></svg></div>
+        <h3>Отец и сын</h3>
+        <p>Две стрижки подряд в соседних креслах. Детям до 12 — мультик, какао и терпеливый мастер.</p>
+        <footer><span class="price">95 р.</span><span class="dur">90 мин</span></footer>
+      </article>
+
+      <article class="card" data-reveal data-reveal-delay="80" data-spot>
+        <div class="card__ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M24 6c8 8 12 13 12 20a12 12 0 0 1-24 0c0-7 4-12 12-20z"/><path d="M24 34a8 8 0 0 1-8-8"/></svg></div>
+        <h3>Камуфляж седины</h3>
+        <p>Тонирование без резкой границы: седина уходит на 60–70%, цвет вымывается за 4 недели.</p>
+        <footer><span class="price">40 р.</span><span class="dur">30 мин</span></footer>
+      </article>
+
+      <article class="card" data-reveal data-reveal-delay="160" data-spot>
+        <div class="card__ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 34c6-4 22-4 28 0"/><path d="M14 34V18a10 10 0 0 1 20 0v16"/><path d="M20 24h8"/></svg></div>
+        <h3>Ритуал «Полный круг»</h3>
+        <p>Стрижка, борода, бритьё головы или шеи, маска для лица и стакан чего-нибудь крепкого.</p>
+        <footer><span class="price">130 р.</span><span class="dur">120 мин</span></footer>
+      </article>
+    </div>
+
+    <!-- прайс -->
+    <div class="pricelist" id="price">
+      <h3 class="pricelist__title" data-reveal>Полный прайс</h3>
+      <p class="sechead__note" data-reveal>Цены в белорусских рублях. Оплата картой, наличными или ЕРИП.</p>
+      <ul class="pricelist__rows">
+        <li data-preview="assets/img/work-neck.jpg"><span>Стрижка машинкой в один размер</span><i></i><b>35 р.</b></li>
+        <li data-preview="assets/img/work-fade.jpg"><span>Фейд / скин-фейд</span><i></i><b>70 р.</b></li>
+        <li data-preview="assets/img/work-scissors.jpg"><span>Стрижка ножницами</span><i></i><b>65 р.</b></li>
+        <li data-preview="assets/img/work-razor.jpg"><span>Бритьё головы опасной бритвой</span><i></i><b>60 р.</b></li>
+        <li data-preview="assets/img/tools-comb.jpg"><span>Коррекция контура бороды</span><i></i><b>28 р.</b></li>
+        <li data-preview="assets/img/tools-wood.jpg"><span>Уход: маска, скраб, паровое полотенце</span><i></i><b>22 р.</b></li>
+      </ul>
+      <div class="pricelist__preview" id="pricePreview" aria-hidden="true"><img src="assets/img/work-fade.jpg" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ РАБОТЫ ============ -->
+<section class="section works" id="works">
+  <div class="wrap">
+    <header class="sechead sechead--row">
+      <div>
+        <p class="eyebrow" data-reveal><i></i>Работы</p>
+        <h2 class="h2" data-split>Снято в зале, без ретуши</h2>
+      </div>
+      <div class="filters" data-reveal data-reveal-delay="120">
+        <button class="chip is-active" data-filter="all">Все</button>
+        <button class="chip" data-filter="cut">Стрижки</button>
+        <button class="chip" data-filter="beard">Борода</button>
+        <button class="chip" data-filter="shave">Бритьё</button>
+        <button class="chip" data-filter="shop">Атмосфера</button>
+      </div>
+    </header>
+
+    <div class="gallery" id="gallery">
+      <figure class="tile tile--tall" data-cat="cut" data-cursor="+" data-reveal>
+        <img src="assets/img/work-fade.jpg" alt="Скин-фейд с чёткой линией виска" loading="lazy" width="1100" height="1400">
+        <figcaption><span>Скин-фейд</span><em>Марк</em></figcaption>
+      </figure>
+      <figure class="tile" data-cat="shave" data-cursor="+" data-reveal data-reveal-delay="60">
+        <img src="assets/img/work-razor.jpg" alt="Бритьё опасной бритвой в тёмном зале" loading="lazy" width="1400" height="1000">
+        <figcaption><span>Классическое бритьё</span><em>Артём</em></figcaption>
+      </figure>
+      <figure class="tile" data-cat="beard" data-cursor="+" data-reveal data-reveal-delay="120">
+        <img src="assets/img/work-barber.jpg" alt="Мастер моделирует бороду триммером" loading="lazy" width="1100" height="1400">
+        <figcaption><span>Контур бороды</span><em>Дэн</em></figcaption>
+      </figure>
+      <figure class="tile tile--wide" data-cat="shop" data-cursor="+" data-reveal>
+        <img src="assets/img/work-shop.jpg" alt="Рабочий вечер в зале барбершопа" loading="lazy" width="1400" height="1000">
+        <figcaption><span>Вечер вторника</span><em>Зал 2</em></figcaption>
+      </figure>
+      <figure class="tile" data-cat="cut" data-cursor="+" data-reveal data-reveal-delay="60">
+        <img src="assets/img/work-neck.jpg" alt="Проработка затылочной линии машинкой" loading="lazy" width="1100" height="1400">
+        <figcaption><span>Линия затылка</span><em>Марк</em></figcaption>
+      </figure>
+      <figure class="tile" data-cat="cut" data-cursor="+" data-reveal data-reveal-delay="120">
+        <img src="assets/img/work-scissors.jpg" alt="Стрижка ножницами на средней длине" loading="lazy" width="1100" height="1400">
+        <figcaption><span>Ножницы, средняя длина</span><em>Лев</em></figcaption>
+      </figure>
+      <figure class="tile tile--wide" data-cat="shop" data-cursor="+" data-reveal>
+        <img src="assets/img/work-tattoo.jpg" alt="Детский зал: стрижка ребёнка" loading="lazy" width="1400" height="1000">
+        <figcaption><span>Детский зал</span><em>Лев</em></figcaption>
+      </figure>
+      <figure class="tile" data-cat="cut" data-cursor="+" data-reveal data-reveal-delay="60">
+        <img src="assets/img/work-dryer.jpg" alt="Финальная укладка феном" loading="lazy" width="1400" height="1000">
+        <figcaption><span>Укладка</span><em>Дэн</em></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ФОРМЫ ============ -->
+<section class="section forms" id="forms">
+  <div class="wrap forms__grid">
+    <div class="forms__copy">
+      <p class="eyebrow" data-reveal><i></i>Каталог форм</p>
+      <h2 class="h2" data-split>Выберите силуэт — расскажем, кому он идёт</h2>
+      <ul class="forms__list" id="formsList">
+        <li><button class="is-active" data-form="0"><em>01</em><span>Кроп</span></button></li>
+        <li><button data-form="1"><em>02</em><span>Андеркат</span></button></li>
+        <li><button data-form="2"><em>03</em><span>Помпадур</span></button></li>
+        <li><button data-form="3"><em>04</em><span>Бокс</span></button></li>
+      </ul>
+      <div class="forms__desc">
+        <h3 id="formTitle" data-scramble>Кроп</h3>
+        <p id="formText">Короткая рваная чёлка и плотная текстура сверху. Прощает жёсткий волос и высокий лоб, отрастает ровно, укладывается матовой пастой за минуту.</p>
+        <div class="forms__meta">
+          <span>Длина сверху <b id="formLen">3–5 см</b></span>
+          <span>Уход <b id="formCare">раз в 3 недели</b></span>
+        </div>
+      </div>
+    </div>
+    <div class="forms__stage" data-tilt>
+      <img id="formImg" src="assets/img/work-fade.jpg" alt="Пример формы стрижки" width="1100" height="1400">
+      <span class="forms__idx" id="formIdx">01</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ МАСТЕРА ============ -->
+<section class="section team" id="team">
+  <div class="wrap">
+    <header class="sechead">
+      <p class="eyebrow" data-reveal><i></i>Мастера</p>
+      <h2 class="h2" data-split>Руки, которым доверяют голову</h2>
+    </header>
+    <div class="team__grid">
+      <article class="barber" data-reveal data-cursor="профиль">
+        <div class="barber__ph"><img src="assets/img/master-1.jpg" alt="Мастер Марк Ковалёв" loading="lazy" width="900" height="1200"></div>
+        <div class="barber__body">
+          <h3>Марк Ковалёв</h3><p class="barber__role">фейды, короткие формы</p>
+          <p class="barber__bio">11 лет в кресле, из них 6 — в КЛИНКЕ. Считает, что идеальный фейд слышно машинкой, а не видно глазом.</p>
+          <span class="barber__tag">запись за 4 дня</span>
+        </div>
+      </article>
+      <article class="barber" data-reveal data-reveal-delay="80" data-cursor="профиль">
+        <div class="barber__ph"><img src="assets/img/master-2.jpg" alt="Мастер Дэн Ли" loading="lazy" width="900" height="1200"></div>
+        <div class="barber__body">
+          <h3>Дэн Ли</h3><p class="barber__role">борода, текстурные стрижки</p>
+          <p class="barber__bio">Приехал из Бреста с одним чемоданом и набором ножниц. Собирает бороды так, что их перестают трогать руками.</p>
+          <span class="barber__tag">есть окна на неделе</span>
+        </div>
+      </article>
+      <article class="barber" data-reveal data-reveal-delay="160" data-cursor="профиль">
+        <div class="barber__ph"><img src="assets/img/master-3.jpg" alt="Мастер Лев Гринберг" loading="lazy" width="900" height="1200"></div>
+        <div class="barber__body">
+          <h3>Лев Гринберг</h3><p class="barber__role">классика, опасная бритва</p>
+          <p class="barber__bio">Работает с 1998 года. Учит молодых держать бритву под 30 градусов и молчать, когда клиент думает.</p>
+          <span class="barber__tag">запись за 2 недели</span>
+        </div>
+      </article>
+      <article class="barber" data-reveal data-reveal-delay="240" data-cursor="профиль">
+        <div class="barber__ph"><img src="assets/img/master-4.jpg" alt="Основатель Артём Волков" loading="lazy" width="900" height="1200"></div>
+        <div class="barber__body">
+          <h3>Артём Волков</h3><p class="barber__role">основатель, ритуалы</p>
+          <p class="barber__bio">Открыл КЛИНОК, чтобы стричь без конвейера. Берёт четыре записи в день и лично точит сталь.</p>
+          <span class="barber__tag">только по субботам</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ОТЗЫВЫ ============ -->
+<section class="section reviews" id="reviews">
+  <div class="wrap">
+    <header class="sechead sechead--row">
+      <div>
+        <p class="eyebrow" data-reveal><i></i>Отзывы</p>
+        <h2 class="h2" data-split>Что говорят клиенты</h2>
+      </div>
+      <div class="reviews__nav" data-reveal data-reveal-delay="120">
+        <button id="revPrev" aria-label="Предыдущий отзыв"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button id="revNext" aria-label="Следующий отзыв"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </header>
+
+    <div class="slider" id="slider">
+      <div class="slider__track" id="track">
+        <blockquote class="quote">
+          <div class="stars" aria-label="5 из 5">★★★★★</div>
+          <p>Пришёл с отросшей головой и просьбой «что-нибудь придумайте». Марк 10 минут крутил меня у зеркала, потом сделал фейд, который я до сих пор повторяю дома двумя движениями.</p>
+          <footer><img src="assets/img/client-1.jpg" alt="" loading="lazy"><span><strong>Игорь Д.</strong>клиент с 2019</span></footer>
+        </blockquote>
+        <blockquote class="quote">
+          <div class="stars" aria-label="5 из 5">★★★★★</div>
+          <p>Бритьё у Льва — это отдельный жанр. Горячее полотенце, запах сандала, ноль разговоров. Вышел так, будто неделю был в отпуске.</p>
+          <footer><img src="assets/img/client-2.jpg" alt="" loading="lazy"><span><strong>Павел М.</strong>клиент с 2021</span></footer>
+        </blockquote>
+        <blockquote class="quote">
+          <div class="stars" aria-label="5 из 5">★★★★★</div>
+          <p>Привёл сына, семь лет, боится машинки. Ему включили мультик, дали посмотреть на насадки, объяснили, что будет громко. Вышли оба стриженые и довольные.</p>
+          <footer><img src="assets/img/client-3.jpg" alt="" loading="lazy"><span><strong>Кирилл Т.</strong>клиент с 2022</span></footer>
+        </blockquote>
+        <blockquote class="quote">
+          <div class="stars" aria-label="5 из 5">★★★★★</div>
+          <p>Единственное место, где борода после коррекции выглядит не «подстриженной», а как будто так и растёт. Записываюсь к Дэну на месяц вперёд.</p>
+          <footer><img src="assets/img/client-4.jpg" alt="" loading="lazy"><span><strong>Тимур А.</strong>клиент с 2018</span></footer>
+        </blockquote>
+      </div>
+      <div class="slider__dots" id="dots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ЗАПИСЬ ============ -->
+<section class="section booking" id="booking">
+  <div class="wrap booking__grid">
+    <div class="booking__side">
+      <p class="eyebrow" data-reveal><i></i>Запись</p>
+      <h2 class="h2" data-split>Четыре шага и кресло ваше</h2>
+      <p data-reveal data-reveal-delay="120">Отвечаем в течение 15 минут в рабочие часы. Если мастер занят — предложим соседнее время и не забудем про вас.</p>
+      <ul class="booking__facts" data-reveal data-reveal-delay="200">
+        <li><b>Пн–Пт</b><span>10:00 — 22:00</span></li>
+        <li><b>Сб–Вс</b><span>11:00 — 21:00</span></li>
+        <li><b>Адрес</b><span>ул. Примерная, 1</span></li>
+        <li><b>Телефон</b><span>+375 (00) 000-00-00</span></li>
+      </ul>
+      <figure class="booking__ph" data-parallax="0.08">
+        <img src="assets/img/tools-wood.jpg" alt="Инструменты мастера на деревянном столе" loading="lazy" width="1400" height="1000">
+      </figure>
+    </div>
+
+    <form class="form" id="bookForm" novalidate>
+      <div class="form__steps">
+        <span class="is-active">01</span><i></i><span>02</span><i></i><span>03</span><i></i><span>04</span>
+      </div>
+
+      <fieldset class="step is-active" data-step="1">
+        <legend>Шаг 01 · Услуга</legend>
+        <div class="opts">
+          <label><input type="radio" name="service" value="Стрижка" checked><span>Стрижка<b>65 р.</b></span></label>
+          <label><input type="radio" name="service" value="Борода"><span>Борода<b>45 р.</b></span></label>
+          <label><input type="radio" name="service" value="Опасная бритва"><span>Опасная бритва<b>55 р.</b></span></label>
+          <label><input type="radio" name="service" value="Полный круг"><span>Полный круг<b>130 р.</b></span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="step" data-step="2">
+        <legend>Шаг 02 · Мастер</legend>
+        <div class="opts opts--barbers">
+          <label><input type="radio" name="barber" value="Любой свободный" checked><span>Любой свободный<b>раньше всех</b></span></label>
+          <label><input type="radio" name="barber" value="Марк Ковалёв"><span>Марк Ковалёв<b>фейды</b></span></label>
+          <label><input type="radio" name="barber" value="Дэн Ли"><span>Дэн Ли<b>борода</b></span></label>
+          <label><input type="radio" name="barber" value="Лев Гринберг"><span>Лев Гринберг<b>классика</b></span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="step" data-step="3">
+        <legend>Шаг 03 · Дата и время</legend>
+        <label class="field"><span>Дата</span><input type="date" name="date" id="dateInput" required></label>
+        <div class="slots" id="slots">
+          <button type="button" data-slot>11:00</button><button type="button" data-slot>12:30</button>
+          <button type="button" data-slot>14:00</button><button type="button" data-slot class="is-active">16:30</button>
+          <button type="button" data-slot>18:00</button><button type="button" data-slot>19:30</button>
+          <button type="button" data-slot>21:00</button>
+        </div>
+      </fieldset>
+
+      <fieldset class="step" data-step="4">
+        <legend>Шаг 04 · Контакты</legend>
+        <label class="field"><span>Имя</span><input type="text" name="name" placeholder="Как к вам обращаться" required minlength="2"></label>
+        <label class="field"><span>Телефон</span><input type="tel" name="phone" id="phone" placeholder="+375 (__) ___-__-__" required></label>
+        <label class="field"><span>Комментарий</span><textarea name="note" rows="2" placeholder="Например: без разговоров, кофе без сахара"></textarea></label>
+        <div class="summary" id="summary"></div>
+      </fieldset>
+
+      <div class="form__nav">
+        <button type="button" class="btn btn--ghost" id="prevStep" disabled><span>Назад</span></button>
+        <button type="button" class="btn btn--accent" id="nextStep" data-magnetic><span>Дальше</span></button>
+        <button type="submit" class="btn btn--accent" id="submitBtn" hidden data-magnetic><span>Записаться</span></button>
+      </div>
+      <p class="form__note">Нажимая кнопку, вы соглашаетесь на обработку данных. Это демо вымышленного бренда — заявка никуда не уходит.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ ПОДВАЛ ============ -->
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div class="footer__brand">
+      <a class="logo logo--lg" href="#top">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M14 8 L50 56"/><path d="M50 8 L14 56"/><circle cx="16" cy="52" r="6"/><circle cx="48" cy="52" r="6"/></g></svg>
+        <span class="logo__txt">КЛИНОК<small>barbershop</small></span>
+      </a>
+      <p>Форма, которая держит характер.<br>Демо-сайт вымышленного барбершопа.</p>
+      <div class="socials">
+        <a href="#" aria-label="Телеграм">TG</a><a href="#" aria-label="Инстаграм">IG</a><a href="#" aria-label="Ютуб">YT</a>
+      </div>
+    </div>
+    <nav class="footer__nav" aria-label="Навигация в подвале">
+      <a href="#services" data-link>Услуги</a><a href="#price" data-link>Прайс</a><a href="#works" data-link>Работы</a>
+      <a href="#team" data-link>Мастера</a><a href="#reviews" data-link>Отзывы</a><a href="#booking" data-link>Запись</a>
+    </nav>
+    <div class="footer__meta">
+      <p><strong>Часы</strong><br>Пн–Пт 10:00–22:00<br>Сб–Вс 11:00–21:00</p>
+      <p><strong>Связь</strong><br>+375 (00) 000-00-00<br>hello@klinok.example</p>
+    </div>
+  </div>
+  <div class="footer__bottom wrap">
+    <span>© 2026 КЛИНОК. Вымышленный бренд, демо-сайт. Имена, отзывы и цены — пример.</span>
+    <span>Фото: Unsplash · вёрстка без фреймворков</span>
+  </div>
+  <div class="footer__word" aria-hidden="true">КЛИНОК</div>
+</footer>
+
+<!-- ============ ЛАЙТБОКС ============ -->
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Просмотр работы">
+  <button class="lightbox__close" id="lbClose" aria-label="Закрыть">✕</button>
+  <button class="lightbox__arrow lightbox__arrow--prev" id="lbPrev" aria-label="Предыдущая">‹</button>
+  <button class="lightbox__arrow lightbox__arrow--next" id="lbNext" aria-label="Следующая">›</button>
+  <figure><img id="lbImg" src="" alt=""><figcaption id="lbCap"></figcaption></figure>
+</div>
+
+<!-- ============ МОДАЛКА УСПЕХА ============ -->
+<div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal__box">
+    <div class="modal__ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 25l9 9 16-18"/></svg></div>
+    <h3>Кресло забронировано</h3>
+    <p id="modalText"></p>
+    <button class="btn btn--accent" id="modalClose" data-magnetic><span>Спасибо</span></button>
+  </div>
+</div>
+
+<button class="totop" id="totop" aria-label="Наверх">↑</button>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
+
+</body></html>

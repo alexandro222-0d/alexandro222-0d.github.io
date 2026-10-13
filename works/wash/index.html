@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Блеск — автомойка 24/7 · демо</title>
+<meta name="description" content="Демо-сайт автомойки: машина отмывается при прокрутке, цены по классу авто, запись на время. Бренд вымышленный.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Golos+Text:wght@400;500;600;700&display=swap">
+<style>
+/* Автомойка: мокрый асфальт, белая пена, сигнальный синий. Герой — машина, которую моют прокруткой */
+:root{
+  --asph:#0E1114; --asph2:#161B20; --asph3:#1F262D; --foam:#F4F7FA; --blue:#2F7BFF; --blue2:#1E5FD6; --aqua:#7FD8FF; --muted:#8C98A4; --line:rgba(244,247,250,.1);
+  --head:"Russo One","Arial Black",sans-serif; --body:"Golos Text","Segoe UI",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--asph);color:var(--foam);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--aqua);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+h1,h2,h3{font-family:var(--head);font-weight:400;line-height:1;text-transform:uppercase;letter-spacing:.01em}
+.kick{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--aqua)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 24px;border-radius:14px;background:var(--blue);color:#fff;font-weight:700;transition:background .2s,transform .2s;box-shadow:0 12px 30px rgba(47,123,255,.3)}
+.btn:hover{background:var(--blue2);transform:translateY(-2px)}
+.btn.ghost{background:transparent;box-shadow:inset 0 0 0 1.5px var(--line)}
+
+header{position:fixed;inset:0 0 auto;z-index:20;background:rgba(14,17,20,.75);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.logo{font-family:var(--head);font-size:24px;display:flex;align-items:center;gap:10px}
+.logo i{width:12px;height:12px;border-radius:50%;background:var(--aqua);box-shadow:0 0 14px var(--aqua)}
+.status{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--muted)}
+.status b{color:var(--foam)}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:#3BD67A;box-shadow:0 0 10px #3BD67A}
+@media (max-width:760px){ .status{display:none} header .btn{padding:10px 14px;font-size:14px} }
+
+/* мойка прокруткой */
+.washsec{height:260vh;position:relative}
+.wash-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;padding-top:88px;background:radial-gradient(ellipse at 50% 120%,#1B2A3A,var(--asph) 60%)}
+.wash-head{text-align:center;padding-inline:16px;display:flex;flex-direction:column;gap:14px;align-items:center}
+.wash-head h1{font-size:clamp(40px,7.6vw,104px)}
+.wash-head h1 span{color:var(--aqua)}
+.wash-head p{color:var(--muted);max-width:32em}
+.car-zone{position:relative;display:grid;place-items:center;min-height:0}
+.car{position:relative;width:min(900px,94vw);aspect-ratio:900/380;touch-action:pan-y}
+.car svg,.car canvas{position:absolute;inset:0;width:100%;height:100%}
+.car canvas{cursor:grab}
+.brush{position:absolute;top:-6%;bottom:2%;width:7%;left:0;border-radius:40px;background:repeating-linear-gradient(0deg,rgba(127,216,255,.85) 0 6px,rgba(47,123,255,.55) 6px 12px);box-shadow:0 0 40px rgba(127,216,255,.5);opacity:0;pointer-events:none}
+.bubble{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff,rgba(255,255,255,.25) 60%,transparent 70%);pointer-events:none}
+.ground{position:absolute;left:5%;right:5%;bottom:4%;height:10px;border-radius:50%;background:radial-gradient(ellipse,rgba(0,0,0,.6),transparent 70%)}
+.meter{display:flex;justify-content:center;align-items:center;gap:14px;padding:18px 16px 26px;flex-wrap:wrap}
+.bar{width:min(360px,60vw);height:8px;border-radius:9px;background:var(--asph3);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--aqua));border-radius:9px}
+.meter b{font-family:var(--head);font-size:22px;min-width:3.5em;text-align:right;font-weight:400}
+.meter small{color:var(--muted);font-size:13px;flex-basis:100%;text-align:center}
+
+/* цены */
+.prices{padding-block:clamp(70px,11vh,120px);background:var(--asph2)}
+.sec-h{text-align:center;max-width:760px;margin:0 auto 40px;display:flex;flex-direction:column;gap:14px;align-items:center}
+.sec-h h2{font-size:clamp(34px,5vw,66px)}
+.sec-h p{color:var(--muted)}
+.cls{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.cls button{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 18px;border-radius:16px;box-shadow:inset 0 0 0 1.5px var(--line);font-weight:700;min-width:110px;transition:all .2s}
+.cls button svg{width:64px;height:28px}
+.cls button[aria-pressed="true"]{background:var(--foam);color:var(--asph);box-shadow:none}
+.svcs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1100px;margin:0 auto}
+.svc{position:relative;text-align:left;padding:22px;border-radius:22px;background:var(--asph3);box-shadow:inset 0 0 0 1.5px var(--line);display:flex;flex-direction:column;gap:8px;transition:all .25s}
+.svc h3{font-size:22px}
+.svc p{color:var(--muted);font-size:14px}
+.svc .pr{font-family:var(--head);font-size:30px;margin-top:auto}
+.svc .pr small{font-family:var(--body);font-size:13px;color:var(--muted)}
+.svc .tm{position:absolute;right:18px;top:18px;font-size:12px;color:var(--muted)}
+.svc[aria-pressed="true"]{background:linear-gradient(160deg,#1E3A66,var(--asph3));box-shadow:inset 0 0 0 2px var(--blue)}
+.svc[aria-pressed="true"]::after{content:"✓";position:absolute;right:16px;bottom:18px;width:30px;height:30px;border-radius:50%;background:var(--blue);display:grid;place-items:center;font-weight:800}
+.total{max-width:1100px;margin:22px auto 0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;border-radius:22px;background:var(--foam);color:var(--asph)}
+.total b{font-family:var(--head);font-size:40px;font-weight:400}
+.total small{display:block;color:#56626E}
+@media (max-width:900px){ .svcs{grid-template-columns:1fr 1fr} }
+@media (max-width:560px){ .svcs{grid-template-columns:1fr} .cls button{min-width:0;flex:1;padding:10px 6px;font-size:13px} .cls button svg{width:52px} }
+
+/* запись */
+.book{padding-block:clamp(70px,11vh,120px)}
+.days{display:flex;justify-content:center;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.days button{padding:10px 18px;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--line);font-weight:700}
+.days button[aria-pressed="true"]{background:var(--blue);box-shadow:none}
+.slots{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;max-width:1000px;margin:0 auto}
+.slots button{padding:14px 0;border-radius:12px;background:var(--asph3);font-weight:700;font-variant-numeric:tabular-nums;transition:all .2s}
+.slots button:disabled{opacity:.25;text-decoration:line-through;cursor:not-allowed}
+.slots button[aria-pressed="true"]{background:var(--foam);color:var(--asph)}
+.posts{display:flex;justify-content:center;gap:10px;margin-top:26px;flex-wrap:wrap}
+.post{width:110px;padding:12px;border-radius:14px;box-shadow:inset 0 0 0 1.5px var(--line);text-align:center;font-size:13px;color:var(--muted)}
+.post b{display:block;font-family:var(--head);font-size:20px;color:var(--foam);font-weight:400}
+.post.busy b{color:#FF8A6B}
+.post.free b{color:#3BD67A}
+.confirm{max-width:1000px;margin:24px auto 0;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;padding:18px 22px;border-radius:18px;box-shadow:inset 0 0 0 1.5px var(--blue)}
+.confirm p{color:var(--muted)}.confirm p b{color:var(--foam)}
+.done{max-width:1000px;margin:12px auto 0;display:none;padding:16px;border-radius:14px;background:var(--asph3);white-space:pre-wrap;font-size:14.5px}
+.done.show{display:block}
+@media (max-width:760px){ .slots{grid-template-columns:repeat(4,1fr)} }
+
+footer{padding-block:46px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px}
+footer b{font-family:var(--head);font-size:22px;color:var(--foam);font-weight:400;display:block}
+.demo{position:fixed;left:12px;bottom:12px;z-index:30;padding:7px 12px;border-radius:999px;background:var(--blue);font-size:11.5px;font-weight:700;letter-spacing:.06em}
+@media (prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important} }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top"><i></i>Блеск</a>
+    <span class="status">Сейчас свободно <b id="freeNow">2 поста из 4</b></span>
+    <a class="btn" href="#book">Записаться</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="washsec" id="washsec">
+    <div class="wash-stick">
+      <div class="wash-head">
+        <p class="kick">Автомойка 24/7 · без очереди по записи</p>
+        <h1>Листайте — <span>мы моем</span></h1>
+        <p>Прокрутите страницу или проведите пальцем по машине. Так же быстро будет и вживую: комплекс за 40 минут.</p>
+      </div>
+      <div class="car-zone">
+        <div class="car" id="car">
+          <svg id="carSvg" viewBox="0 0 900 380" aria-hidden="true"></svg>
+          <canvas id="dirt" aria-label="Грязь на машине — проведите пальцем, чтобы отмыть"></canvas>
+          <div class="brush" id="brush"></div>
+          <div class="ground"></div>
+        </div>
+      </div>
+      <div class="meter"><span>Чистота</span><div class="bar"><i id="bar"></i></div><b id="pct">0%</b><small id="hint">Листайте вниз или трите машину пальцем</small></div>
+    </div>
+  </section>
+
+  <section class="prices" id="prices">
+    <div class="wrap">
+      <div class="sec-h"><p class="kick">Прайс</p><h2>Цена под вашу машину</h2><p>Выберите класс и услуги — итог и время посчитаются сразу.</p></div>
+      <div class="cls" id="cls">
+        <button aria-pressed="true" data-k="1"><svg viewBox="0 0 64 28"><path d="M4 20h56v-4l-8-2-8-7H22l-8 7-8 2z" fill="currentColor"/><circle cx="16" cy="21" r="5" fill="currentColor"/><circle cx="48" cy="21" r="5" fill="currentColor"/></svg>Седан</button>
+        <button aria-pressed="false" data-k="1.25"><svg viewBox="0 0 64 28"><path d="M4 21h56v-7l-6-2-6-8H18l-8 8-6 2z" fill="currentColor"/><circle cx="16" cy="22" r="5" fill="currentColor"/><circle cx="48" cy="22" r="5" fill="currentColor"/></svg>Кроссовер</button>
+        <button aria-pressed="false" data-k="1.5"><svg viewBox="0 0 64 28"><path d="M3 21h58v-10l-4-2-3-7H14l-6 7-5 2z" fill="currentColor"/><circle cx="15" cy="22" r="5.5" fill="currentColor"/><circle cx="49" cy="22" r="5.5" fill="currentColor"/></svg>Внедорожник</button>
+      </div>
+      <div class="svcs" id="svcs"></div>
+      <div class="total"><div><b><span id="tot">0</span> р.</b><small id="totT">≈ 0 минут</small></div><a class="btn" href="#book">Записаться на это</a></div>
+    </div>
+  </section>
+
+  <section class="book" id="book">
+    <div class="wrap">
+      <div class="sec-h"><p class="kick">Онлайн-запись</p><h2>Приезжайте ко времени</h2><p>Выберите свободное окно — пост будет ждать вас, без очереди.</p></div>
+      <div class="days" id="days"></div>
+      <div class="slots" id="slots"></div>
+      <div class="posts" id="posts"></div>
+      <div class="confirm"><p id="cText">Выберите время</p><button class="btn" id="cBtn">Записаться</button></div>
+      <div class="done" id="done" role="status"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b>Блеск</b>Автомойка 24/7 · ул. Примерная, 1</div>
+    <div>+375 (00) 000-00-00<br>Круглосуточно</div>
+    <div>© 2026 · демо-сайт, бренд вымышленный<br>Сделано на saity.by</div>
+  </div>
+</footer>
+<span class="demo">Демо-сайт · saity.by</span>
+
+<script>
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* машина */
+const BODY = "M60 270 C60 240 80 228 120 222 L230 210 C270 160 330 120 420 112 L560 110 C620 112 680 150 720 196 L800 210 C840 218 856 236 858 262 L860 292 C860 304 850 310 838 310 L60 310 C50 310 46 300 48 290 Z";
+$("#carSvg").innerHTML = `<defs><linearGradient id="paint" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9EEF3"/><stop offset=".55" stop-color="#B9C3CD"/><stop offset="1" stop-color="#7E8A96"/></linearGradient><linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2B3B4C"/><stop offset="1" stop-color="#0F1820"/></linearGradient><linearGradient id="shine" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".7"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><clipPath id="bodyClip"><path d="${BODY}"/></clipPath></defs>
+  <path d="${BODY}" fill="url(#paint)" stroke="#5F6B77" stroke-width="2"/>
+  <path d="M250 212 C285 170 335 140 420 132 L470 132 L470 212 Z" fill="url(#glass)"/><path d="M485 132 L555 130 C610 132 650 160 690 204 L485 212 Z" fill="url(#glass)"/>
+  <path d="M100 250 L830 250" stroke="#8C98A4" stroke-width="2" opacity=".6"/><rect x="430" y="232" width="34" height="6" rx="3" fill="#5F6B77"/><rect x="660" y="232" width="34" height="6" rx="3" fill="#5F6B77"/>
+  <path d="M820 236 l30 6 v14 l-32 -4z" fill="#FFE59A"/><path d="M62 244 l24 -4 v16 l-26 4z" fill="#FF5A4E"/>
+  <g clip-path="url(#bodyClip)"><rect id="shineBar" x="-300" y="100" width="160" height="240" fill="url(#shine)" transform="skewX(-20)" opacity="0"/></g>
+  ${[200, 700].map(x => `<g><circle cx="${x}" cy="300" r="58" fill="#14181C"/><circle cx="${x}" cy="300" r="40" fill="#9AA5B0"/><g class="rim" style="transform-origin:${x}px 300px">${[0,1,2,3,4].map(i => `<rect x="${x - 4}" y="${262}" width="8" height="38" rx="3" fill="#5F6B77" transform="rotate(${i * 72} ${x} 300)"/>`).join("")}</g><circle cx="${x}" cy="300" r="9" fill="#2A3138"/></g>`).join("")}`;
+
+/* грязь на холсте */
+const cv = $("#dirt"), cx = cv.getContext("2d"); let dirtArea = 1, cleaned = 0, W = 0, H = 0, scale = 1, autoX = 0;
+function paintDirt(){
+  const r = cv.getBoundingClientRect(), dpr = Math.min(devicePixelRatio, 2); W = cv.width = Math.round(r.width * dpr); H = cv.height = Math.round(r.height * dpr); scale = W / 900;
+  cx.setTransform(scale, 0, 0, scale, 0, 0); cx.globalCompositeOperation = "source-over";
+  const body = new Path2D(BODY); cx.save(); cx.clip(body);
+  let seed = 3; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  cx.fillStyle = "rgba(92,70,48,.78)"; cx.fillRect(0, 0, 900, 380);
+  for (let i = 0; i < 260; i++) { const x = rnd() * 900, y = 150 + rnd() * 170, rr = 8 + rnd() * 30; cx.fillStyle = `rgba(${70 + rnd() * 50},${52 + rnd() * 30},${34 + rnd() * 20},${.35 + rnd() * .5})`; cx.beginPath(); cx.ellipse(x, y, rr, rr * (.5 + rnd() * .6), rnd() * 3, 0, 7); cx.fill(); }
+  for (let i = 0; i < 90; i++) { const x = rnd() * 900, y = 250 + rnd() * 70; cx.strokeStyle = `rgba(60,44,30,${.4 + rnd() * .4})`; cx.lineWidth = 2 + rnd() * 4; cx.beginPath(); cx.moveTo(x, y); cx.lineTo(x + (rnd() - .5) * 40, y - 20 - rnd() * 40); cx.stroke(); }
+  cx.restore(); cx.globalCompositeOperation = "destination-out"; dirtArea = countDirt();
+}
+function countDirt(){ const d = cx.getImageData(0, 0, W, H).data; let n = 0; for (let i = 3; i < d.length; i += 64) if (d[i] > 30) n++; return n || 1; }
+function erase(x, y, rad){ cx.beginPath(); cx.arc(x, y, rad, 0, 7); cx.fill(); }
+let lastCount = 0;
+function updateMeter(){ const now = performance.now(); if (now - lastCount < 120) return; lastCount = now; const left = countDirt(); const p = Math.max(0, Math.min(100, Math.round((1 - left / dirtArea) * 100))); $("#bar").style.width = p + "%"; $("#pct").textContent = p + "%"; if (p > 96) shine(); }
+let shone = false; function shine(){ if (shone || reduce) return; shone = true; $("#hint").textContent = "Блестит! Так будет и с вашей машиной"; $("#shineBar").animate([{transform: "translateX(0) skewX(-20deg)", opacity: 1}, {transform: "translateX(1400px) skewX(-20deg)", opacity: 1}], {duration: 1400, easing: "ease-in-out"}); }
+paintDirt(); addEventListener("resize", () => { const was = cleaned; paintDirt(); });
+// палец / мышь
+let rub = false; const pos = e => { const r = cv.getBoundingClientRect(); return [(e.clientX - r.left) / r.width * 900, (e.clientY - r.top) / r.height * 380]; };
+cv.addEventListener("pointerdown", e => { rub = true; cv.setPointerCapture(e.pointerId); const [x, y] = pos(e); erase(x, y, 38); bubbles(e.clientX, e.clientY); updateMeter(); });
+cv.addEventListener("pointermove", e => { if (!rub) return; const [x, y] = pos(e); erase(x, y, 38); if (Math.random() < .3) bubbles(e.clientX, e.clientY); updateMeter(); });
+cv.addEventListener("pointerup", () => rub = false); cv.addEventListener("pointercancel", () => rub = false);
+function bubbles(px, py){ if (reduce) return; const car = $("#car").getBoundingClientRect(); for (let i = 0; i < 3; i++) { const b = document.createElement("i"); b.className = "bubble"; const s = 8 + Math.random() * 22; Object.assign(b.style, {width: s + "px", height: s + "px", left: (px - car.left + (Math.random() - .5) * 40) + "px", top: (py - car.top + (Math.random() - .5) * 30) + "px"}); $("#car").appendChild(b); b.animate([{transform: "scale(.4)", opacity: 1}, {transform: `translate(${(Math.random() - .5) * 60}px,${-40 - Math.random() * 60}px) scale(1)`, opacity: 0}], {duration: 1100 + Math.random() * 600, easing: "ease-out"}).onfinish = () => b.remove(); } }
+// прокрутка = щётка едет слева направо по полосам
+const brush = $("#brush"); let lastP = 0;
+function onScroll(){ const sec = $("#washsec"), r = sec.getBoundingClientRect(), total = sec.offsetHeight - innerHeight; const p = Math.max(0, Math.min(1, -r.top / total));
+  const car = $("#car").getBoundingClientRect(); brush.style.opacity = p > .02 && p < .98 ? 1 : 0; brush.style.left = (p * 93) + "%";
+  $$(".rim").forEach(g => g.style.transform = `rotate(${p * 720}deg)`);
+  if (p > lastP) { const from = lastP * 900, to = p * 900; for (let x = from; x <= to; x += 10) for (let y = 90; y <= 330; y += 26) erase(x + 20, y, 30); if (Math.random() < .5) bubbles(car.left + p * car.width, car.top + car.height * (.3 + Math.random() * .4)); updateMeter(); }
+  lastP = Math.max(lastP, p); }
+addEventListener("scroll", onScroll, {passive: true});
+
+/* прайс */
+const SV = [["Экспресс","Кузов, коврики, сушка","20","15"],["Комплекс","Кузов, салон пылесосом, стёкла, чернение шин","40","40"],["Химчистка салона","Сиденья, потолок, ковролин","180","180"],["Полировка фар","Возвращаем прозрачность","45","30"],["Воск-защита","Блеск и защита на 4 недели","25","10"],["Керамика","Защита кузова на 1 год","450","300"]];
+const pick = new Set([1]); let K = 1;
+$("#svcs").innerHTML = SV.map((s, i) => `<button class="svc" aria-pressed="${pick.has(i)}" data-i="${i}"><span class="tm">${s[3]} мин</span><h3>${s[0]}</h3><p>${s[1]}</p><span class="pr" data-base="${s[2]}">${s[2]} <small>р.</small></span></button>`).join("");
+function price(){ let t = 0, m = 0; pick.forEach(i => { t += Math.round(SV[i][2] * K); m += +SV[i][3]; }); $$(".svc .pr").forEach(el => el.innerHTML = `${Math.round(el.dataset.base * K)} <small>р.</small>`); countTo($("#tot"), t); $("#totT").textContent = pick.size ? `≈ ${m >= 60 ? Math.floor(m / 60) + " ч " : ""}${m % 60 ? m % 60 + " мин" : ""} · ${pick.size} ${pick.size === 1 ? "услуга" : "услуги"}` : "Выберите услуги"; }
+function countTo(el, to){ const from = +el.textContent || 0; if (reduce) { el.textContent = to; return; } const t0 = performance.now(); (function f(t){ const k = Math.min((t - t0) / 450, 1); el.textContent = Math.round(from + (to - from) * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(f); })(t0); }
+$$(".svc").forEach(b => b.addEventListener("click", () => { const i = +b.dataset.i; pick.has(i) ? pick.delete(i) : pick.add(i); b.setAttribute("aria-pressed", String(pick.has(i))); price(); }));
+$$("#cls button").forEach(b => b.addEventListener("click", () => { $$("#cls button").forEach(x => x.setAttribute("aria-pressed", String(x === b))); K = +b.dataset.k; price(); }));
+price();
+
+/* запись */
+(function(){ const now = new Date(); let day = 0, slot = null; const names = ["Сегодня", "Завтра", now.getDay() === 4 ? "Суббота" : "Послезавтра"];
+  $("#days").innerHTML = names.map((n, i) => `<button aria-pressed="${i === 0}" data-d="${i}">${n}</button>`).join("");
+  const rnd = (a, b) => { const x = Math.sin(a * 91 + b * 7.3) * 1e4; return x - Math.floor(x); };
+  function slots(){ const h0 = 8; let html = ""; for (let i = 0; i < 16; i++) { const h = h0 + i, past = day === 0 && h <= now.getHours(), busy = past || rnd(day, i) < .35; html += `<button ${busy ? "disabled" : ""} aria-pressed="false" data-h="${h}">${String(h).padStart(2, "0")}:00</button>`; } $("#slots").innerHTML = html;
+    $$("#slots button").forEach(b => b.addEventListener("click", () => { $$("#slots button").forEach(x => x.setAttribute("aria-pressed", String(x === b))); slot = b.dataset.h; $("#cText").innerHTML = `<b>${names[day]}, ${slot}:00</b> · ${[...pick].map(i => SV[i][0].toLowerCase()).join(", ") || "услуга не выбрана"} · ${$("#tot").textContent} р.`; })); }
+  $$("#days button").forEach(b => b.addEventListener("click", () => { $$("#days button").forEach(x => x.setAttribute("aria-pressed", String(x === b))); day = +b.dataset.d; slot = null; $("#cText").textContent = "Выберите время"; slots(); }));
+  slots();
+  const posts = [1, 2, 3, 4].map(n => ({n, busy: n % 2 === 0, left: 8 + n * 5})); const renderPosts = () => $("#posts").innerHTML = posts.map(p => `<div class="post ${p.busy ? "busy" : "free"}">Пост ${p.n}<b>${p.busy ? p.left + " мин" : "свободен"}</b></div>`).join("");
+  renderPosts(); setInterval(() => { posts.forEach(p => { if (p.busy) { p.left--; if (p.left <= 0) { p.busy = false; } } else if (Math.random() < .08) { p.busy = true; p.left = 15 + Math.round(Math.random() * 25); } }); renderPosts(); const f = posts.filter(p => !p.busy).length; $("#freeNow").textContent = `${f} ${f === 1 ? "пост" : "поста"} из 4`; }, 4000);
+  $("#cBtn").addEventListener("click", () => { $("#done").textContent = slot ? `Записали: ${names[day].toLowerCase()} в ${slot}:00.\nПост будет свободен к вашему приезду. Напомним за час.\n\nЭто демо: на настоящем сайте запись сразу придёт администратору в Telegram.` : "Сначала выберите свободное время."; $("#done").classList.add("show"); });
+})();
+</script>
+</body>
+</html>

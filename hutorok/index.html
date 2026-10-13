@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Дедушкин хуторок — агроусадьба под Пинском: коттедж, баня, банкетный зал</title>
+<meta name="description" content="Агроусадьба «Дедушкин хуторок» в Любель-Поле под Пинском: коттедж на 12 человек, гостевые домики, русская баня на дровах, беседка на 40 и банкетный зал на 50 гостей. Цены, свободные даты и расчёт отдыха онлайн.">
+<meta name="theme-color" content="#111111">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Дедушкин хуторок — весь хутор для вашей компании">
+<meta property="og:description" content="Коттедж, баня, беседка и банкетный зал под Пинском. Посчитайте отдых и выберите свободную дату прямо на сайте.">
+<meta property="og:image" content="img/og.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23111'/%3E%3Cpath d='M32 8 22 22h6l-9 12h9l-10 13h28L36 34h9l-9-12h6z' fill='none' stroke='%23fff' stroke-width='3' stroke-linejoin='round'/%3E%3Cpath d='M14 56 32 44l18 12' fill='none' stroke='%23fff' stroke-width='3.5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LodgingBusiness","name":"Дедушкин хуторок","description":"Агроусадьба: аренда коттеджа, гостевых домиков, бани, беседки и банкетного зала","telephone":["+375293697779","+375296045583"],"address":{"@type":"PostalAddress","streetAddress":"ул. Центральная, 6","addressLocality":"д. Любель-Поль, Пинский район","addressRegion":"Брестская область","addressCountry":"BY"},"geo":{"@type":"GeoCoordinates","latitude":52.222726,"longitude":26.172326},"checkinTime":"14:00","checkoutTime":"12:00","petsAllowed":false,"sameAs":["https://www.instagram.com/dedushkin_hutorok/"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","ratingCount":"36","reviewCount":"29"}}</script>
+<style>
+/* стиль взят у самого хутора: светлые фото, чёрные плашки с белым жирным текстом (как в их сторис с прайсом), крестовые перила террас */
+:root{
+  --ink:#111; --paper:#fff; --mist:#F2F0EB; --wood:#94572B; --green:#2F6B3F; --red:#C9362B; --muted:#5F5F5F; --line:#E4E1DA;
+  --f:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --wrap:min(1200px,100% - 32px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--f);font-weight:500;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+main,footer{overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+button,input,select{font:inherit;color:inherit}
+.wrap{width:var(--wrap);margin-inline:auto}
+:focus-visible{outline:3px solid var(--wood);outline-offset:3px}
+
+/* плашка как в сторис: чёрный фон под каждой строкой */
+.tag{display:inline;background:var(--ink);color:#fff;font-weight:800;padding:.12em .42em;line-height:1.62;border-radius:.18em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.tag.w{background:#fff;color:var(--ink)}
+h2{font-weight:900;font-size:clamp(30px,4.2vw,54px);line-height:1.05;letter-spacing:-.01em;text-transform:uppercase}
+
+/* перила */
+.rail{height:24px;background:
+  linear-gradient(var(--wood),var(--wood)) top/100% 4px no-repeat,
+  linear-gradient(var(--wood),var(--wood)) bottom/100% 4px no-repeat,
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='24'%3E%3Cpath d='M0 0 48 24M48 0 0 24' stroke='%2394572B' stroke-width='4'/%3E%3Cpath d='M0 0v24' stroke='%2394572B' stroke-width='5'/%3E%3C/svg%3E") repeat-x center/48px 24px}
+
+/* шапка */
+.top{position:sticky;top:0;z-index:40;background:var(--paper);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:20px;height:66px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.logo svg{width:40px;height:40px;flex:none}
+.logo b{font-weight:900;text-transform:uppercase;font-size:15px;line-height:1;letter-spacing:.02em}
+.top nav{display:flex;gap:22px;margin-left:auto;font-size:14px;font-weight:700}
+.top nav a{text-decoration:none}
+.top nav a:hover{color:var(--wood)}
+.call{display:flex;flex-direction:column;align-items:flex-end;text-decoration:none;font-weight:800;font-size:15px;line-height:1.2;margin-left:8px}
+.call small{font-weight:500;font-size:11.5px;color:var(--muted)}
+
+/* первый экран: слева название как их вывеска, справа фото без текста поверх */
+.hero{padding:clamp(28px,4vw,60px) 0 clamp(36px,5vw,64px)}
+.hero>.wrap{display:grid;grid-template-columns:5fr 7fr;gap:clamp(24px,4.5vw,72px);align-items:center}
+.hero .place{font-weight:700;color:var(--muted);font-size:15px}
+.hero h1{font-weight:900;text-transform:uppercase;font-size:clamp(46px,6.4vw,94px);line-height:.92;letter-spacing:-.02em;margin-top:8px}
+.hero .lead{margin-top:20px;font-size:clamp(16px,1.35vw,18.5px);color:#333;max-width:30em}
+.facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;margin-top:34px;border-top:3px solid var(--ink);padding-top:14px}
+.facts div{padding-right:22px;margin-right:22px;border-right:1px solid var(--line)}
+.facts div:last-child{border:0;margin:0;padding:0}
+.facts b{display:block;font-weight:900;font-size:clamp(24px,2.4vw,32px);line-height:1.1}
+.facts span{font-size:13px;color:var(--muted)}
+.pics{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pics figure{position:relative;overflow:hidden;border-radius:8px;background:var(--mist)}
+.pics figure:first-child{grid-column:1/-1;aspect-ratio:16/10}
+.pics figure:not(:first-child){aspect-ratio:4/3}
+.pics img{width:100%;height:100%;object-fit:cover}
+.pics .tag{position:absolute;left:12px;top:12px;font-size:clamp(13px,1.2vw,15px)}
+.pics figure:first-child .tag{font-size:clamp(15px,1.5vw,19px)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;text-decoration:none;background:var(--ink);color:#fff;font-weight:800;font-size:15px;padding:15px 22px;border-radius:6px;transition:transform .15s,background .2s,color .2s}
+.btn:hover{background:var(--wood)}
+.btn:active{transform:scale(.97)}
+.btn.w{background:#fff;color:var(--ink)}
+.btn.w:hover{background:var(--ink);color:#fff}
+.btn.o{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn.o:hover{background:var(--ink);color:#fff}
+
+/* что снять — как прайс из сторис, только кликабельный */
+.sec{padding:clamp(56px,8vw,104px) 0}
+.intro{display:grid;grid-template-columns:1.1fr 1fr;gap:16px 48px;align-items:end;margin-bottom:34px}
+.intro p{color:var(--muted);font-size:17px;max-width:32em}
+.rent{display:grid;grid-template-columns:5fr 7fr;gap:clamp(20px,3vw,40px);align-items:start}
+.list{list-style:none;border-top:3px solid var(--ink)}
+.list button{width:100%;display:grid;grid-template-columns:1fr auto;gap:2px 16px;align-items:baseline;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:16px 4px;cursor:pointer;transition:background .2s,padding .2s}
+.list b{font-weight:800;font-size:clamp(16px,1.6vw,20px);text-transform:uppercase}
+.list em{font-style:normal;font-weight:800;white-space:nowrap;font-size:16px}
+.list small{grid-column:1/-1;color:var(--muted);font-size:13.5px}
+.list button:hover{background:var(--mist)}
+.list button[aria-selected="true"]{background:var(--ink);color:#fff;padding-left:16px}
+.list button[aria-selected="true"] small{color:rgba(255,255,255,.7)}
+.list li:first-child button em{color:var(--wood)}
+.list li:first-child button[aria-selected="true"] em{color:#fff}
+.stage{position:sticky;top:86px}
+.shot{position:relative;aspect-ratio:4/3.3;overflow:hidden;border-radius:8px;background:var(--mist)}
+.shot img{width:100%;height:100%;object-fit:cover;transition:opacity .25s}
+.shot .labels{position:absolute;left:clamp(12px,2vw,22px);right:clamp(12px,2vw,22px);bottom:clamp(12px,2vw,22px);display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.shot .labels .tag{font-size:clamp(13px,1.4vw,17px)}
+.shot .labels .tag:first-child{font-size:clamp(19px,2.2vw,28px)}
+.stage .go{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap}
+
+/* расчёт */
+.calc{background:var(--mist)}
+.cgrid{display:grid;grid-template-columns:7fr 5fr;gap:clamp(20px,3.5vw,48px);align-items:start}
+.steps{background:#fff;border-radius:8px;padding:clamp(18px,2.6vw,30px)}
+.blk{padding:18px 0;border-top:1px solid var(--line)}
+.blk:first-child{border-top:0;padding-top:0}
+.lbl{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-weight:800;text-transform:uppercase;font-size:14px;letter-spacing:.02em;margin-bottom:12px}
+.lbl span{text-transform:none;letter-spacing:0;font-weight:600;color:var(--muted);font-size:13px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+input[type=date],input[type=tel],input[type=number]{border:2px solid var(--ink);border-radius:6px;padding:11px 12px;font-size:16px;font-weight:700;background:#fff;min-width:0}
+input[type=tel]{width:100%}
+.state{font-weight:800;font-size:14px;padding:6px 10px;border-radius:4px;background:var(--mist)}
+.state.ok{background:var(--green);color:#fff}
+.state.bad{background:var(--red);color:#fff}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid var(--ink);border-radius:6px;overflow:hidden}
+.seg label{position:relative;cursor:pointer;border-left:2px solid var(--ink)}
+.seg label:first-child{border-left:0}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg span{display:flex;flex-direction:column;justify-content:center;height:100%;padding:10px 12px;font-weight:800;font-size:14.5px;line-height:1.25;transition:background .15s}
+.seg span small{font-weight:600;font-size:12px;color:var(--muted)}
+.seg input:checked+span{background:var(--ink);color:#fff}
+.seg input:checked+span small{color:rgba(255,255,255,.7)}
+.seg input:focus-visible+span{outline:3px solid var(--wood);outline-offset:-3px}
+.range{display:flex;align-items:center;gap:14px;margin-top:14px}
+.range input{flex:1;accent-color:var(--ink);height:28px}
+.range output{min-width:64px;text-align:right;font-weight:900;font-size:24px}
+.check{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:14.5px;cursor:pointer}
+.check input[type=checkbox]{width:20px;height:20px;accent-color:var(--ink)}
+.hint{font-size:13.5px;color:var(--muted);margin-top:8px}
+.bill{position:sticky;top:86px;background:var(--ink);color:#fff;border-radius:8px;padding:clamp(20px,2.6vw,28px)}
+.bill .when{font-weight:800;font-size:18px}
+.bill .avail{margin:8px 0 16px}
+.bill ul{list-style:none;display:flex;flex-direction:column;gap:10px;border-top:1px solid rgba(255,255,255,.18);padding-top:14px}
+.bill li{display:grid;grid-template-columns:1fr auto;gap:0 12px;font-size:14.5px}
+.bill li b{font-weight:800;white-space:nowrap}
+.bill li small{grid-column:1/-1;color:rgba(255,255,255,.55);font-size:12.5px}
+.sum{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;padding-top:14px;border-top:2px solid #fff}
+.sum b{font-weight:900;font-size:44px;line-height:1}
+.dep{font-size:13.5px;color:rgba(255,255,255,.7);margin:8px 0 16px}
+.bill .btn{width:100%}
+.bill .alt{text-align:center;font-size:13.5px;color:rgba(255,255,255,.7);margin-top:10px}
+.bill .alt a{color:#fff;font-weight:700}
+.done{display:none;margin-top:14px;background:#fff;color:var(--ink);border-radius:6px;padding:12px 14px;font-size:13.5px;white-space:pre-line}
+.done.show{display:block}
+
+/* календарь — как в их сторис «свободные даты» */
+.tabs{display:inline-flex;border:2px solid var(--ink);border-radius:6px;overflow:hidden;margin-bottom:24px;max-width:100%}
+.tabs button{border:0;border-left:2px solid var(--ink);background:#fff;padding:10px 18px;cursor:pointer;font-weight:800;font-size:14px}
+.tabs button:first-child{border-left:0}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.months{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.month{border:1px solid var(--line);border-radius:8px;padding:16px}
+.month h3{font-weight:900;font-size:20px;text-transform:uppercase;display:flex;justify-content:space-between;margin-bottom:10px}
+.month h3 span{font-weight:700;color:var(--muted)}
+.dgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center}
+.dgrid .wd{font-size:10.5px;font-weight:700;text-transform:uppercase;color:var(--muted);padding-bottom:4px}
+.dgrid .wd:nth-child(6),.dgrid .wd:nth-child(7){color:var(--red)}
+.day{aspect-ratio:1;display:grid;place-items:center;border:0;border-radius:4px;background:none;font-weight:700;font-size:15px;cursor:pointer;position:relative}
+.day.we{color:var(--red)}
+.day.free:hover{background:var(--ink);color:#fff}
+.day.busy{cursor:not-allowed;color:#B9B5AC}
+.day.busy::after{content:"✕";position:absolute;inset:0;display:grid;place-items:center;font-size:24px;font-weight:900;color:var(--red);opacity:.85}
+.day.past{color:#D4D0C7;cursor:default}
+.day.sel{background:var(--green);color:#fff}
+.legend{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:16px;font-size:14px;color:var(--muted)}
+.legend b{color:var(--red);font-weight:900;margin-right:6px}
+
+/* праздники и кухня */
+.fest{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,24px)}
+.poster{position:relative;border-radius:8px;overflow:hidden;min-height:clamp(400px,40vw,520px);background:#222}
+.poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.poster .labels{position:absolute;left:18px;right:18px;top:18px;bottom:18px;display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.poster .labels .tag{font-size:15px}
+.poster .labels .tag.big{font-size:clamp(21px,2.4vw,32px);text-transform:uppercase;line-height:1.35}
+.poster .labels .tag.price{margin-top:auto;font-size:clamp(22px,2.6vw,34px)}
+.food{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.6vw,18px);margin-top:clamp(14px,2vw,24px)}
+.dish{position:relative;aspect-ratio:1;border-radius:8px;overflow:hidden;background:var(--mist)}
+.dish img{width:100%;height:100%;object-fit:cover}
+.dish .tag{position:absolute;left:12px;bottom:12px;font-size:15px}
+.menu{margin-top:clamp(14px,2vw,24px);border:2px solid var(--ink);border-radius:8px;padding:16px 20px}
+.menu summary{cursor:pointer;font-weight:800;text-transform:uppercase;font-size:15px}
+.menu dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin-top:14px;font-size:15px}
+.menu dt{font-weight:800;white-space:nowrap}
+.menu dd{color:var(--muted)}
+
+/* отзывы */
+.reviews{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,5vw,72px);align-items:start}
+.score{min-width:220px}
+.score b{display:block;font-weight:900;font-size:clamp(84px,10vw,128px);line-height:.85;letter-spacing:-.03em}
+.score p{color:var(--muted);margin-top:12px;font-size:15px}
+.score p strong{color:var(--ink)}
+.quotes{display:flex;flex-direction:column;gap:22px}
+.quotes figure{border-left:5px solid var(--ink);padding-left:18px}
+.quotes blockquote{font-weight:700;font-size:clamp(18px,1.9vw,24px);line-height:1.35}
+.quotes figcaption{margin-top:6px;font-size:14px;color:var(--muted)}
+
+/* правила — как сторис «Наши правила!» */
+.rules{background:var(--ink);color:#fff;border-radius:8px;padding:clamp(24px,4vw,48px);display:grid;grid-template-columns:auto 1fr;gap:20px clamp(24px,5vw,64px)}
+.rules ul{list-style:none;columns:2;column-gap:40px}
+.rules li{break-inside:avoid;padding:0 0 14px 30px;position:relative;font-size:15.5px;color:rgba(255,255,255,.85)}
+.rules li b{color:#fff;font-weight:800}
+.rules li::before{content:"✓";position:absolute;left:0;top:-1px;font-weight:900;font-size:18px;color:#fff}
+
+/* контакты */
+.contact{display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(20px,4vw,56px);align-items:stretch}
+.people{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+.person{display:flex;justify-content:space-between;align-items:center;gap:14px;border:2px solid var(--ink);border-radius:8px;padding:14px 18px;text-decoration:none;transition:background .2s,color .2s}
+.person:hover{background:var(--ink);color:#fff}
+.person b{font-weight:900;text-transform:uppercase;font-size:18px}
+.person span{display:block;font-size:13px;color:var(--muted)}
+.person:hover span{color:rgba(255,255,255,.7)}
+.person em{font-style:normal;font-weight:800;white-space:nowrap}
+.addr{margin-top:20px;color:var(--muted);font-size:15px}
+.map{width:100%;height:100%;min-height:400px;border:0;border-radius:8px;background:var(--mist)}
+
+footer{background:var(--ink);color:rgba(255,255,255,.7);padding:40px 0 calc(34px + env(safe-area-inset-bottom,0px));font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:18px}
+footer .logo{color:#fff}
+footer a{color:#fff}
+.mark{width:100%;border-top:1px solid rgba(255,255,255,.14);padding-top:16px;font-size:12.5px;color:rgba(255,255,255,.5)}
+
+.fab{position:fixed;left:0;right:0;bottom:0;z-index:45;display:none;grid-template-columns:1fr 1.25fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:#fff;border-top:1px solid var(--line);transform:translateY(110%);transition:transform .3s}
+.fab.show{transform:none}
+.fab .btn{padding:13px 10px}
+.mbar{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:44;display:none;align-items:center;gap:12px;background:var(--ink);color:#fff;border-radius:8px;padding:8px 8px 8px 16px;box-shadow:0 10px 30px rgba(0,0,0,.3);transform:translateY(160%);transition:transform .3s}
+.mbar.show{transform:none}
+.mbar div{flex:1;min-width:0;line-height:1.2}
+.mbar b{font-weight:900;font-size:22px;display:block}
+.mbar span{font-size:12.5px;color:rgba(255,255,255,.7);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.mbar .btn{background:#fff;color:var(--ink);padding:12px 14px}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+
+@media (max-width:1000px){
+  .top nav{display:none}
+  .call{margin-left:auto}
+  .intro{grid-template-columns:1fr}
+  .hero>.wrap{grid-template-columns:1fr}
+  .pics{order:-1}
+  .rent{grid-template-columns:1fr}
+  .stage{position:static;order:-1}
+  .cgrid{grid-template-columns:1fr}
+  .bill{position:static}
+  .mbar{display:flex}
+  .months{grid-template-columns:1fr 1fr}
+  .reviews{grid-template-columns:1fr}
+  .rules{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .top .wrap{height:60px}
+  .logo svg{width:34px;height:34px}
+  .logo b{font-size:13px}
+  .call{font-size:14px}
+  .hero{padding-top:12px}
+  .pics figure:not(:first-child){display:none}
+  .pics figure:first-child{aspect-ratio:4/3.1}
+  .hero .place{font-size:13.5px;margin-top:4px}
+  .cta{flex-wrap:nowrap}
+  .cta .btn{padding:14px 10px;font-size:14px;white-space:nowrap}
+  .hero h1{font-size:clamp(44px,13vw,60px)}
+  .facts div{padding-right:14px;margin-right:14px}
+  .facts b{font-size:22px}
+  .facts span{font-size:12px;display:block;line-height:1.3}
+  .cta .btn{flex:1 1 auto}
+  .shot{aspect-ratio:1/1.08}
+  .seg span{padding:9px 8px;font-size:13px}
+  .seg span small{font-size:11px}
+  .tabs button{padding:10px 12px;font-size:13px}
+  .months{grid-template-columns:1fr}
+  .fest{grid-template-columns:1fr}
+  .food{grid-template-columns:1fr 1fr}
+  .food .dish:first-child{grid-column:1/-1;aspect-ratio:16/10}
+  .rules ul{columns:1}
+  .contact{grid-template-columns:1fr}
+  .map{min-height:300px}
+  .fab{display:grid}
+  footer{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+}
+</style>
+</head>
+<body>
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="Дедушкин хуторок — наверх">
+      <svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2.4">
+        <path d="M24 3 17 13h4l-6 8h5l-7 9h22l-7-9h5l-6-8h4z"/><path d="M12 12 7 19h3l-5 7h4l-5 6h11"/><path d="M36 12l5 7h-3l5 7h-4l5 6H33"/>
+        <path d="M6 45 24 33l18 12"/><path d="M33 39v-5h4v8"/><rect x="21.5" y="39" width="5" height="5"/>
+      </svg>
+      <b>Дедушкин<br>хуторок</b>
+    </a>
+    <nav aria-label="Разделы"><a href="#rent">Что снять</a><a href="#calc">Расчёт</a><a href="#dates">Свободные даты</a><a href="#fest">Праздники</a><a href="#contact">Контакты</a></nav>
+    <a class="call" href="tel:+375293697779">+375 29 369-77-79<small>Ольга, бронирование</small></a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="copy">
+        <p class="place">Агроусадьба · д. Любель-Поль, Пинский район</p>
+        <h1>Дедушкин<br>хуторок</h1>
+        <p class="lead">Коттедж на 12 человек, два гостевых домика, русская баня на дровах, беседка и банкетный зал. Снимите хутор целиком — и на территории будете только вы.</p>
+        <div class="cta"><a class="btn" href="#calc">Посчитать отдых</a><a class="btn o" href="#dates">Свободные даты</a></div>
+        <div class="facts"><div><b>2000 р.</b><span>весь хутор в сутки</span></div><div><b>20</b><span>спальных мест</span></div><div><b>4,8</b><span>на Яндекс Картах</span></div></div>
+      </div>
+      <div class="pics">
+        <figure><img src="img/dom-sad.jpg" alt="Главный дом хутора с садом и фонарями-шарами" fetchpriority="high"><span class="tag">весь хутор — 2000 р. в сутки</span></figure>
+        <figure><img src="img/vecher.jpg" alt="Двор хутора вечером в огнях"><span class="tag">вечером — в огнях</span></figure>
+        <figure><img src="img/besedka.jpg" alt="Беседка с длинными деревянными столами"><span class="tag">беседка до 40 человек</span></figure>
+      </div>
+    </div>
+  </section>
+  <div class="rail" aria-hidden="true"></div>
+
+  <section class="sec" id="rent">
+    <div class="wrap">
+      <div class="intro">
+        <h2>Что можно<br>снять</h2>
+        <p>Целиком — и на территории будете только вы. Или по частям: коттедж с баней на выходные, беседку на день рождения, зал на свадьбу. Нажмите — покажем фото и цены.</p>
+      </div>
+      <div class="rent">
+        <ul class="list" id="list" role="tablist" aria-label="Что снять"></ul>
+        <div class="stage" id="stage" role="tabpanel">
+          <div class="shot"><img id="shotImg" src="img/dom.jpg" alt=""><div class="labels" id="shotTags"></div></div>
+          <div class="go"><a class="btn" href="#calc" id="shotCalc">Посчитать с этим</a><a class="btn o" href="tel:+375293697779">Позвонить</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec calc" id="calc">
+    <div class="wrap">
+      <div class="intro">
+        <h2>Сколько<br>выйдет</h2>
+        <p>Считаем по вашему прайсу. Сразу видно, свободна ли дата и сколько вносить задатком — заявка уходит хозяевам готовой.</p>
+      </div>
+      <div class="cgrid">
+        <form class="steps" id="form" novalidate>
+          <div class="blk">
+            <div class="lbl"><label for="date">Дата заезда</label><span id="dayType"></span></div>
+            <div class="row"><input type="date" id="date"><span class="state" id="avail"></span></div>
+          </div>
+          <div class="blk">
+            <div class="lbl">Что бронируем</div>
+            <div class="seg" id="plan">
+              <label><input type="radio" name="plan" value="whole" checked><span>Весь хутор<small>2000 р.</small></span></label>
+              <label><input type="radio" name="plan" value="parts"><span>По частям<small>зал, коттедж…</small></span></label>
+              <label><input type="radio" name="plan" value="night"><span>Ночёвка<small>коттедж, домики</small></span></label>
+            </div>
+          </div>
+          <div class="blk" id="partyBlk">
+            <div class="lbl">Праздник <span>гостей за столом</span></div>
+            <div class="seg" id="venue">
+              <label><input type="radio" name="venue" value="zal" checked><span>Зал<small>до 50, с меню</small></span></label>
+              <label><input type="radio" name="venue" value="besedka"><span>Беседка<small>до 40</small></span></label>
+              <label><input type="radio" name="venue" value="none"><span>Без стола<small>просто отдых</small></span></label>
+            </div>
+            <div class="range"><input type="range" id="guests" min="2" max="50" value="24" aria-label="Гостей на празднике"><output id="gOut">24</output></div>
+            <label class="check" id="menuTog"><input type="checkbox" id="menu">Меню от усадьбы — 50 р. с гостя, аренда беседки тогда 10 р.</label>
+            <p class="hint" id="pHint"></p>
+          </div>
+          <div class="blk" id="sleepBlk">
+            <div class="lbl">Ночуют <span>коттедж до 12 + домики по 4</span></div>
+            <div class="range"><input type="range" id="sleep" min="0" max="20" value="12" aria-label="Сколько человек ночуют"><output id="sOut">12</output></div>
+            <p class="hint" id="sHint"></p>
+          </div>
+          <div class="blk">
+            <div class="lbl">Баня на дровах <span>3 часа — 150 р.</span></div>
+            <div class="range"><input type="range" id="banya" min="0" max="8" value="3" aria-label="Часов в бане"><output id="bOut">3 ч</output></div>
+            <label class="check"><input type="number" id="veniki" min="0" max="10" value="2" style="width:70px;padding:7px 8px" aria-label="Сколько веников">веников запарить, по 10 р.</label>
+          </div>
+          <div class="blk">
+            <div class="lbl"><label for="phone">Ваш телефон</label><span>Ольга перезвонит</span></div>
+            <input type="tel" id="phone" inputmode="tel" autocomplete="tel" placeholder="+375 (__) ___-__-__">
+          </div>
+        </form>
+
+        <aside class="bill" id="bill" aria-live="polite">
+          <div class="when" id="when"></div>
+          <div class="avail"><span class="state" id="avail2"></span></div>
+          <ul id="lines"></ul>
+          <div class="sum"><span>Итого</span><b id="sum">—</b></div>
+          <p class="dep" id="dep"></p>
+          <button class="btn w" type="submit" form="form">Забронировать дату</button>
+          <p class="alt">или позвоните: <a href="tel:+375293697779">+375 29 369-77-79</a></p>
+          <div class="done" id="done" role="status"></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="dates">
+    <div class="wrap">
+      <div class="intro">
+        <h2>Свободные<br>даты</h2>
+        <p>Как ваш календарь в сторис, только всегда под рукой. Крестик — занято. Нажмите на свободный день, и он подставится в расчёт.</p>
+      </div>
+      <div class="tabs" role="group" aria-label="Что смотрим" id="calTabs">
+        <button type="button" data-k="zal" aria-pressed="true">Банкетный зал</button>
+        <button type="button" data-k="kott" aria-pressed="false">Коттедж</button>
+        <button type="button" data-k="banya" aria-pressed="false">Баня</button>
+      </div>
+      <div class="months" id="months"></div>
+      <div class="legend"><span><b>✕</b>занято</span><span>Праздничные и предпраздничные дни — по цене выходных</span></div>
+    </div>
+  </section>
+
+  <section class="sec" id="fest" style="padding-top:0">
+    <div class="wrap">
+      <div class="intro">
+        <h2>Праздники<br>и кухня</h2>
+        <p>Свадьбы, юбилеи, дни рождения и корпоративы. Готовим сами, хозяйка поможет составить меню и подскажет, сколько чего взять.</p>
+      </div>
+      <div class="fest">
+        <article class="poster">
+          <img src="img/noch.jpg" alt="Двор хутора ночью в огнях" loading="lazy">
+          <div class="labels">
+            <span class="tag w big">Новогодняя ночь 2027</span>
+            <span class="tag">31 декабря, с 22:00 до 5:00</span>
+            <span class="tag">саксофон и фуршет с шампанским</span>
+            <span class="tag">поющая ведущая · розыгрыши · фейерверк</span>
+            <span class="tag">новогоднее меню и фотозона</span>
+            <span class="tag w price">250 рублей с гостя</span>
+            <span class="tag">дети до 15 лет — 150 рублей</span>
+          </div>
+        </article>
+        <article class="poster">
+          <img src="img/zal.jpg" alt="Банкетный зал, украшенный к празднику" loading="lazy">
+          <div class="labels">
+            <span class="tag w big">Новогодние корпоративы</span>
+            <span class="tag">бронь уже открыта</span>
+            <span class="tag">с 18:00 до 24:00</span>
+            <span class="tag">ведущая · ансамбль · призы</span>
+            <span class="tag">праздничное меню и фотозона</span>
+            <span class="tag w price">120 рублей с гостя</span>
+          </div>
+        </article>
+      </div>
+      <div class="food">
+        <div class="dish"><img src="img/eda-1.jpg" alt="Закуска по-деревенски" loading="lazy"><span class="tag">Закуска по-деревенски</span></div>
+        <div class="dish"><img src="img/eda-2.jpg" alt="Рулька в пиве с овощами" loading="lazy"><span class="tag">Рулька в пиве</span></div>
+        <div class="dish"><img src="img/eda-3.jpg" alt="Сырная тарелка с мёдом и орехами" loading="lazy"><span class="tag">Сырная тарелка</span></div>
+      </div>
+      <details class="menu">
+        <summary>Меню корпоратива на одного гостя</summary>
+        <dl>
+          <dt>Холодные закуски, 450 г</dt><dd>разносолы «Дедушкин хуторок», овощная, фруктовая и мясная нарезки, канапе с лисичками, салями и креветками</dd>
+          <dt>Салаты, 550 г</dt><dd>крабовый с овощами, оливье, шуба</dd>
+          <dt>Горячее, 900 г</dt><dd>стейк из свинины с соусом из лисичек, картофельное пюре, утка в апельсиновой глазури, блинные мешочки с ветчиной</dd>
+          <dt>И ещё</dt><dd>ягодный компот, хлебная корзина</dd>
+        </dl>
+      </details>
+    </div>
+  </section>
+
+  <section class="sec" style="background:var(--mist)">
+    <div class="wrap reviews">
+      <div class="score">
+        <b>4,8</b>
+        <p><strong>36 оценок</strong> на Яндекс Картах.<br>Кухню хвалят во всех отзывах.</p>
+      </div>
+      <div class="quotes">
+        <figure><blockquote>Атмосфера — как в гостях у добрых друзей: уютно, красиво, без пафоса.</blockquote><figcaption>Арина М., юбилей</figcaption></figure>
+        <figure><blockquote>Снимали весь комплекс, это было лучшее решение.</blockquote><figcaption>Ксения П., свадьба</figcaption></figure>
+        <figure><blockquote>Кухня прекрасная, отдельно хочется отметить драники.</blockquote><figcaption>Александр В., юбилей</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="rules">
+        <h2>Наши<br>правила!</h2>
+        <ul>
+          <li><b>Задаток 50%.</b> При отмене брони он не возвращается.</li>
+          <li><b>Праздничные дни</b> — по цене выходных.</li>
+          <li><b>Тишина на улице</b> с 23:00 до 9:00.</li>
+          <li><b>Без животных</b> на территории.</li>
+          <li><b>Не курим в доме</b>, в том числе электронные сигареты и кальяны.</li>
+          <li><b>В доме</b> не ходим в уличной обуви.</li>
+          <li><b>При частичной аренде</b> на территории могут быть другие гости.</li>
+          <li><b>При выезде</b> оставляем за собой порядок.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="contact" style="padding-top:0">
+    <div class="wrap contact">
+      <div>
+        <h2>Бронь<br>и вопросы</h2>
+        <div class="people">
+          <a class="person" href="tel:+375293697779"><div><b>Ольга</b><span>бронь, меню, праздники</span></div><em>+375 29 369-77-79</em></a>
+          <a class="person" href="tel:+375296045583"><div><b>Олег</b><span>второй номер для брони</span></div><em>+375 29 604-55-83</em></a>
+          <a class="person" href="https://www.instagram.com/dedushkin_hutorok/" target="_blank" rel="noopener"><div><b>Instagram</b><span>фото, акции, новости</span></div><em>@dedushkin_hutorok</em></a>
+        </div>
+        <p class="addr">Брестская обл., Пинский район, д. Любель-Поль, ул. Центральная, 6.<br>Заезд с 14:00, выезд до 12:00.</p>
+      </div>
+      <iframe class="map" title="«Дедушкин хуторок» на карте" loading="lazy" src="https://yandex.by/map-widget/v1/?ll=26.172326%2C52.222726&amp;z=11&amp;pt=26.172326%2C52.222726%2Cpm2blkl"></iframe>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#"><svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2.4"><path d="M24 3 17 13h4l-6 8h5l-7 9h22l-7-9h5l-6-8h4z"/><path d="M12 12 7 19h3l-5 7h4l-5 6h11"/><path d="M36 12l5 7h-3l5 7h-4l5 6H33"/><path d="M6 45 24 33l18 12"/><path d="M33 39v-5h4v8"/><rect x="21.5" y="39" width="5" height="5"/></svg><b>Дедушкин<br>хуторок</b></a>
+    <p>Любель-Поль, ул. Центральная, 6 · <a href="tel:+375293697779">+375 29 369-77-79</a> · <a href="tel:+375296045583">+375 29 604-55-83</a></p>
+    <p class="mark">Макет сайта: saity.by. Фото и цены — из вашего Instagram и с Яндекс Карт, занятые даты — пример по сторис.</p>
+  </div>
+</footer>
+
+<div class="mbar" id="mbar" aria-hidden="true"><div><b id="mSum">—</b><span id="mWhat"></span></div><a class="btn" href="#bill" tabindex="-1">К брони</a></div>
+<nav class="fab" id="fab" aria-label="Быстрые действия"><a class="btn o" href="tel:+375293697779">Позвонить</a><a class="btn" href="#calc">Посчитать отдых</a></nav>
+
+<script>
+const $ = id => document.getElementById(id);
+
+// что снять: строки прайса и плашки на фото — по их сторис «прайс»
+const UNITS = [
+  {plan: "whole", n: "Весь хутор", c: "зал или беседка, коттедж и 2 домика · 20 мест", p: "2000 р.", img: "dom.jpg",
+   tags: ["Аренда всего комплекса — 2000 рублей", "банкетный зал или беседка для праздника", "коттедж на 12 человек и два домика по 4", "на территории только ваша компания"]},
+  {plan: "night", n: "Коттедж", c: "до 12 человек · заезд 14:00, выезд 12:00", p: "от 400 р.", img: "kottedzh.jpg",
+   tags: ["Аренда коттеджа", "до 6 человек: пн–чт 400 р, пт–вс 500 р", "до 12 человек: пн–чт 500 р, пт–вс 600 р", "заселение 14:00, выселение 12:00"]},
+  {plan: "night", n: "Гостевой домик", c: "до 4 человек · кухня, 2 спальни, терраса", p: "от 250 р.", img: "terrasa.jpg",
+   tags: ["Гостевой домик на 4 человека", "кухня, две спальни, терраса и барбекю", "пн–чт 250 р, пт–вс 300 р"]},
+  {plan: "parts", venue: "none", n: "Русская баня на дровах", c: "до 8 человек · комната отдыха с камином", p: "от 150 р.", img: "banya-2.jpg",
+   tags: ["Русская баня на дровах", "3 часа — 150 р, дальше 30 р в час", "после 24:00 — 60 р в час", "запарим веники — 10 р за штуку"]},
+  {plan: "parts", venue: "besedka", n: "Беседка", c: "до 40 человек · с 14:00 до 24:00", p: "15 р. с гостя", img: "besedka.jpg",
+   tags: ["Аренда беседки до 40 человек", "15 р с человека, минимум 200 р", "с нашим меню — аренда 10 р с человека", "отдых с 14:00 до 24:00"]},
+  {plan: "parts", venue: "zal", n: "Банкетный зал", c: "до 50 гостей · от 20 человек", p: "110 р. с гостя", img: "zal-2.jpg",
+   tags: ["Банкетный зал до 50 человек", "110 р с человека, аренда и меню", "минимальный заказ — 2000 р", "продление после 24:00 — 100 р в час"]},
+  {plan: "parts", venue: "none", n: "Комната бани с террасой", c: "до 10 человек · без топки бани", p: "200 р.", img: "banya.jpg",
+   tags: ["Помещение бани с выходом на террасу", "без топки бани, до 10 человек", "200 р, с 14:00 до 24:00"]},
+];
+$("list").innerHTML = UNITS.map((u, i) => `<li><button type="button" role="tab" data-i="${i}" aria-selected="${i === 0}"><b>${u.n}</b><em>${u.p}</em><small>${u.c}</small></button></li>`).join("");
+UNITS.forEach(u => { const im = new Image(); im.src = "img/" + u.img; });
+let curUnit = 0;
+function showUnit(i) {
+  curUnit = i; const u = UNITS[i];
+  document.querySelectorAll("#list button").forEach(b => b.setAttribute("aria-selected", +b.dataset.i === i));
+  const img = $("shotImg"); img.style.opacity = 0;
+  setTimeout(() => { img.src = "img/" + u.img; img.alt = u.n; img.style.opacity = 1; }, 140);
+  $("shotTags").innerHTML = u.tags.map(t => `<span class="tag">${t}</span>`).join("");
+}
+$("list").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  showUnit(+b.dataset.i);
+  if (matchMedia("(max-width:1000px)").matches) $("stage").scrollIntoView({behavior: "smooth", block: "start"});
+});
+$("shotCalc").addEventListener("click", () => {
+  const u = UNITS[curUnit];
+  document.querySelector(`#plan input[value="${u.plan}"]`).checked = true;
+  if (u.venue) document.querySelector(`#venue input[value="${u.venue}"]`).checked = true;
+  calc();
+});
+showUnit(0);
+
+// занятые даты — для примера переписаны из сторис «свободные даты»; на готовом сайте хозяева отмечают их сами
+const BUSY = {
+  zal:   ["2026-10-03","2026-10-10","2026-10-17","2026-10-24","2026-10-30","2026-11-21","2026-11-28","2026-12-05","2026-12-24","2026-12-31"],
+  kott:  ["2026-10-03","2026-10-04","2026-10-10","2026-10-11","2026-10-17","2026-10-24","2026-11-07","2026-11-08","2026-11-21","2026-12-26","2026-12-30","2026-12-31"],
+  banya: ["2026-10-03","2026-10-10","2026-11-21","2026-12-31"]
+};
+const HOLI = ["2026-11-07","2026-12-25","2027-01-01","2027-01-02","2027-01-07"];
+const pad = n => String(n).padStart(2, "0");
+const key = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+const parse = s => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d); };
+const today = new Date(); today.setHours(0, 0, 0, 0);
+const plural = (n, a, b, c) => { const m = n % 10, h = n % 100; return m === 1 && h !== 11 ? a : m >= 2 && m <= 4 && (h < 10 || h >= 20) ? b : c; };
+function firstFreeSat() {
+  const d = new Date(today); d.setDate(d.getDate() + 1);
+  for (let i = 0; i < 120; i++, d.setDate(d.getDate() + 1)) if (d.getDay() === 6 && !BUSY.zal.includes(key(d)) && !BUSY.kott.includes(key(d))) return key(d);
+  return key(d);
+}
+$("date").min = key(today); $("date").value = firstFreeSat();
+
+let order = "";
+function calc() {
+  const ds = $("date").value, d = ds ? parse(ds) : null;
+  const wknd = d ? ([0, 5, 6].includes(d.getDay()) || HOLI.includes(ds)) : true;
+  const plan = document.querySelector("#plan input:checked").value;
+  const venue = document.querySelector("#venue input:checked").value;
+  $("guests").max = venue === "besedka" ? 40 : 50;
+  const g = Math.min(+$("guests").value, +$("guests").max), s = +$("sleep").value, bh = +$("banya").value;
+  const ven = Math.max(0, Math.min(10, +$("veniki").value || 0)), menu = $("menu").checked;
+  const lines = []; let sum = 0;
+  const add = (t, p, n) => { lines.push([t, p, n]); sum += p; };
+  const gg = `${g} ${plural(g, "гость", "гостя", "гостей")}`;
+
+  $("partyBlk").style.display = plan === "night" ? "none" : "";
+  $("sleepBlk").style.display = plan === "whole" ? "none" : "";
+  $("menuTog").style.display = venue === "besedka" ? "" : "none";
+  $("gOut").textContent = g; $("sOut").textContent = s; $("bOut").textContent = bh ? `${bh} ч` : "нет";
+
+  if (plan === "whole") {
+    add("Весь хутор", 2000, "зал или беседка, коттедж на 12 и два домика по 4");
+    if (venue === "zal") add(`Меню в зале, ${gg}`, Math.max(g * 110, 2000), "110 р. с гостя, минимум 2000 р.");
+    if (venue === "besedka" && menu) add(`Меню в беседке, ${gg}`, g * 50, "50 р. с гостя");
+  } else {
+    if (plan === "parts" && venue === "zal") add(`Банкетный зал, ${gg}`, Math.max(g * 110, 2000), "110 р. с гостя, минимум 2000 р.");
+    if (plan === "parts" && venue === "besedka") menu ? add(`Беседка с меню, ${gg}`, g * 60, "10 р. аренда + 50 р. меню с гостя") : add(`Беседка, ${gg}`, Math.max(g * 15, 200), "15 р. с гостя, минимум 200 р.");
+    if (s > 0) {
+      const k = Math.min(s, 12);
+      add(`Коттедж, до ${k <= 6 ? 6 : 12} человек`, k <= 6 ? (wknd ? 500 : 400) : (wknd ? 600 : 500), wknd ? "цена выходного дня" : "цена буднего дня");
+      const dom = Math.min(2, Math.ceil(Math.max(0, s - 12) / 4));
+      if (dom) add(`Гостевой ${plural(dom, "домик", "домика", "домиков")} × ${dom}`, dom * (wknd ? 300 : 250), "по 4 человека");
+    }
+  }
+  if (bh) add(`Баня на дровах, ${bh} ч`, bh <= 3 ? 150 : 150 + (bh - 3) * 30, "3 часа 150 р., дальше 30 р. в час");
+  if (bh && ven) add(`Веники × ${ven}`, ven * 10, "");
+
+  const need = plan === "night" ? ["kott"] : plan === "whole" ? ["zal", "kott"] : [venue === "zal" ? "zal" : null, s > 0 ? "kott" : null].filter(Boolean);
+  if (bh) need.push("banya");
+  const busy = d ? need.filter(k => BUSY[k].includes(ds)) : [];
+  const names = {zal: "зал", kott: "коттедж", banya: "баня"};
+  const st = !d ? "Выберите дату" : busy.length ? `Занято: ${busy.map(b => names[b]).join(", ")}` : "Дата свободна";
+  [$("avail"), $("avail2")].forEach(a => { a.className = "state " + (!d ? "" : busy.length ? "bad" : "ok"); a.textContent = st; });
+  $("dayType").textContent = d ? (wknd ? "выходной или праздник" : "будний день") : "";
+  $("sHint").textContent = s > 12 ? "Коттедж на 12 + гостевые домики по 4 человека." : s > 0 ? "Всем хватит места в коттедже." : "Без ночёвки — только праздник и баня.";
+  $("pHint").textContent = venue === "zal" && g * 110 < 2000 ? "В зале минимальный заказ — 2000 р." : "";
+
+  $("lines").innerHTML = lines.map(([t, p, n]) => `<li><span>${t}</span><b>${p} р.</b>${n ? `<small>${n}</small>` : ""}</li>`).join("") || "<li><span>Выберите, что бронируем</span></li>";
+  $("sum").textContent = $("mSum").textContent = `${sum} р.`;
+  $("dep").textContent = sum ? `Задаток 50% — ${Math.round(sum / 2)} р., остальное на месте.` : "";
+  const dt = d ? d.toLocaleDateString("ru-RU", {day: "numeric", month: "long", weekday: "long"}) : "дата не выбрана";
+  $("when").textContent = dt[0].toUpperCase() + dt.slice(1);
+  $("mWhat").textContent = `${dt} · ${busy.length ? "занято" : "свободно"}`;
+  order = `Заявка с сайта\nДата: ${dt}\n${lines.map(([t, p]) => `${t} — ${p} р.`).join("\n")}\nИтого: ${sum} р. (задаток ${Math.round(sum / 2)} р.)\nТелефон: ${$("phone").value.trim() || "—"}`;
+}
+$("form").addEventListener("input", calc);
+$("form").addEventListener("change", () => { calc(); renderCal(); });
+$("form").addEventListener("submit", e => {
+  e.preventDefault();
+  const ph = $("phone");
+  if (ph.value.replace(/\D/g, "").length < 9) { ph.focus(); ph.setCustomValidity("Оставьте телефон — Ольга перезвонит"); ph.reportValidity(); ph.setCustomValidity(""); return; }
+  calc();
+  $("done").textContent = order + "\n\nВ макете заявка никуда не уходит. На готовом сайте она сразу придёт вам в Viber или Telegram.";
+  $("done").classList.add("show");
+});
+
+// календарь
+const MONTHS = ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
+let calKey = "zal";
+function renderCal() {
+  let html = "";
+  for (let i = 0; i < 3; i++) {
+    const m = new Date(today.getFullYear(), today.getMonth() + i, 1);
+    const first = (m.getDay() + 6) % 7, days = new Date(m.getFullYear(), m.getMonth() + 1, 0).getDate();
+    html += `<div class="month"><h3>${MONTHS[m.getMonth()]}<span>${m.getFullYear()}</span></h3><div class="dgrid">${["пн","вт","ср","чт","пт","сб","вс"].map(w => `<span class="wd">${w}</span>`).join("")}${"<span></span>".repeat(first)}`;
+    for (let dd = 1; dd <= days; dd++) {
+      const d = new Date(m.getFullYear(), m.getMonth(), dd), k = key(d);
+      const cls = d < today ? "past" : BUSY[calKey].includes(k) ? "busy" : "free";
+      const we = [0, 6].includes(d.getDay()) ? " we" : "";
+      html += `<button type="button" class="day ${cls}${we}${k === $("date").value ? " sel" : ""}" data-d="${k}"${cls !== "free" ? " disabled" : ""} aria-label="${dd} ${MONTHS[m.getMonth()].toLowerCase()}: ${cls === "busy" ? "занято" : cls === "past" ? "прошло" : "свободно"}">${dd}</button>`;
+    }
+    html += "</div></div>";
+  }
+  $("months").innerHTML = html;
+}
+$("calTabs").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; calKey = b.dataset.k; document.querySelectorAll("#calTabs button").forEach(x => x.setAttribute("aria-pressed", x === b)); renderCal(); });
+$("months").addEventListener("click", e => {
+  const b = e.target.closest(".day.free"); if (!b) return;
+  $("date").value = b.dataset.d; calc(); renderCal();
+  $("calc").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
+});
+calc(); renderCal();
+
+// нижние панели на телефоне
+const fab = $("fab"), mbar = $("mbar");
+let calcVis = false, billVis = false;
+new IntersectionObserver(([en]) => { calcVis = en.isIntersecting; onScroll(); }).observe($("calc"));
+new IntersectionObserver(([en]) => { billVis = en.isIntersecting; onScroll(); }).observe($("bill"));
+function onScroll() { fab.classList.toggle("show", scrollY > 500 && !calcVis); mbar.classList.toggle("show", calcVis && !billVis); }
+addEventListener("scroll", onScroll, {passive: true}); onScroll();
+</script>
+</body>
+</html>

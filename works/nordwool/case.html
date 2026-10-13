@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>О проекте — сайт магазина меха</title>
+<meta name="description" content="Демонстрационный проект: интернет-каталог для магазина меха. Что внутри, сколько занимает и сколько стоит.">
+<meta name="theme-color" content="#05100C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/case.css">
+<link rel="stylesheet" href="css/shop.css">
+<link rel="stylesheet" href="css/home.css">
+</head>
+<body class="shop" data-page="case">
+
+<div class="topbar">
+  <span class="topbar__tel">Демонстрационный проект</span>
+  <nav class="topbar__nav">
+    <a href="index.html">Главная сайта</a>
+    <a href="catalog.html">Каталог</a>
+    <a href="product.html?id=5">Карточка товара</a>
+    <a href="cart.html">Заявка</a>
+  </nav>
+</div>
+
+<main class="swrap case">
+  <p class="case__eyebrow">Что это</p>
+  <h1 class="case__title">Интернет-каталог<br>для магазина одежды и меха</h1>
+  <p class="case__lead">
+    Рабочий сайт, а не картинка: шесть разделов, карточки товаров с размерами
+    и артикулами, фильтр, заявка одной кнопкой. Ниже — что внутри и сколько это занимает.
+  </p>
+
+  <a class="pbtn pbtn--big case__cta" href="index.html">Открыть сайт →</a>
+
+  <section class="case__block">
+    <h2>Задача</h2>
+    <p>
+      Магазин продаёт через Instagram: сторис живут сутки, ассортимент нигде не лежит
+      постоянно, а на вопрос «что есть в 46 размере» приходится отвечать десятком фото.
+      Нужен каталог, который можно скинуть одной ссылкой.
+    </p>
+  </section>
+
+  <section class="case__block">
+    <h2>Что сделано</h2>
+    <div class="case__grid">
+      <div><b>Главная</b><span>Слайдер, разделы, преимущества, новинки, блок контактов</span></div>
+      <div><b>Каталог</b><span>24 позиции, фильтр по разделам и размеру, счётчик найденного</span></div>
+      <div><b>Карточка товара</b><span>Два фото, цена, артикул, выбор размера, кнопка заказа</span></div>
+      <div><b>Заявка</b><span>Список выбранного уходит в мессенджер готовым текстом</span></div>
+      <div><b>Покупателям</b><span>Как купить, оплата, доставка, возврат, адрес магазина</span></div>
+      <div><b>Лукбук</b><span>Отдельная страница-витрина для тех, кто продаёт настроением</span></div>
+    </div>
+  </section>
+
+  <section class="case__block">
+    <h2>Как это устроено внутри</h2>
+    <ul class="case__list">
+      <li><b>Товары — в одном файле.</b> Добавить модель значит скопировать строку и поменять название, цену, размеры и фото. Владелец магазина справляется сам.</li>
+      <li><b>Заявка без корзины и оплаты.</b> Человек набирает вещи, нажимает «отправить» — открывается Viber или WhatsApp с готовым списком: название, артикул, размер, цена.</li>
+      <li><b>Работает на телефоне.</b> Меню прокручивается, слайдер листается пальцем, сетка перестраивается под экран.</li>
+      <li><b>Без движков и абонплаты.</b> Обычные файлы, хостинг бесплатный, платить нужно только за домен.</li>
+      <li><b>Быстро грузится.</b> Все фотографии сжаты, страница открывается за секунду даже на мобильном интернете.</li>
+    </ul>
+  </section>
+
+  <section class="case__block case__facts">
+    <div><b id="caseTerm">5–7 дней</b><span>срок с момента получения материалов</span></div>
+    <div><b id="casePrice">1000 руб.</b><span>за сайт целиком, домен отдельно</span></div>
+    <div><b>6</b><span>страниц в проекте</span></div>
+  </section>
+
+  <section class="case__block">
+    <h2>Что нужно от заказчика</h2>
+    <p>Фотографии товара, список позиций с ценами и размерами, контакты и часы работы. Всё остальное — моя часть. Если фотографий мало, приезжаю и снимаю на телефон: для каталога этого достаточно.</p>
+    <p class="snote">Фотографии и цены на демо — из фотостока и условные. На рабочем сайте будут ваши.</p>
+  </section>
+
+  <section class="case__cta-box" id="contact">
+    <h2>Нужен такой же сайт?</h2>
+    <p>Напишите — покажу, как это будет выглядеть с вашими товарами.</p>
+    <div class="case__btns" id="authorBtns">
+      <a class="pbtn pbtn--big" href="index.html">Сначала посмотреть сайт</a>
+    </div>
+  </section>
+</main>
+
+<footer class="sfoot">
+  <div class="sfoot__base" style="margin-top:0">
+    <span>Демонстрационный проект</span>
+    <span>Фотографии из фотостока · названия и цены условные</span>
+  </div>
+</footer>
+
+<script src="js/author.js"></script>
+<script>
+/* подставляем контакты автора, если они заполнены в js/author.js */
+(function () {
+  var A = window.AUTHOR || {}, box = document.getElementById('authorBtns');
+  if (A.price) document.getElementById('casePrice').textContent = A.price;
+  if (A.term)  document.getElementById('caseTerm').textContent  = A.term;
+  var html = '';
+  if (A.tg)    html += '<a class="pbtn pbtn--big" href="https://t.me/' + A.tg + '">Написать в Telegram</a>';
+  if (A.viber) html += '<a class="pbtn pbtn--big" href="viber://chat?number=%2B' + A.viber + '">Написать в Viber</a>';
+  html += '<a class="pbtn pbtn--ghost" href="index.html">Посмотреть сайт</a>';
+  box.innerHTML = html;
+})();
+</script>
+</body>
+</html>

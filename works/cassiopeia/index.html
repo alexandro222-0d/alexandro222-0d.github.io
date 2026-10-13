@@ -1,0 +1,271 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Cassiopeia Coffee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+<!-- ============ КАСТОМНЫЙ КУРСОР (кофейное зерно) ============ -->
+<div class="cursor" aria-hidden="true">
+  <svg class="cursor__bean" viewBox="0 0 40 40" width="34" height="34">
+    <ellipse cx="20" cy="20" rx="11" ry="15.5" transform="rotate(-28 20 20)" fill="#B99150"/>
+    <path d="M20 5.5 C 13.5 12, 26.5 28, 20 34.5" stroke="#2A0A12" stroke-width="2.1" fill="none" stroke-linecap="round"/>
+  </svg>
+  <span class="cursor__dot"></span>
+</div>
+
+<!-- ============ ШАПКА ============ -->
+<header class="header" id="header">
+  <a href="#hero" class="header__logo">
+    <span class="header__star">&#10022;</span>
+    <span class="header__name">Cassiopeia</span>
+  </a>
+
+  <nav class="nav" id="nav">
+    <a href="#about" class="nav__link">О нас</a>
+    <a href="#menu" class="nav__link">Меню</a>
+    <a href="#gallery" class="nav__link">Интерьер</a>
+    <a href="#reviews" class="nav__link">Отзывы</a>
+    <a href="#contacts" class="nav__link">Контакты</a>
+  </nav>
+
+  <button class="burger" id="burger" aria-label="Меню" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ============ 1. HERO ============ -->
+<section class="hero" id="hero">
+  <div class="hero__media">
+    <video class="hero__video" id="heroVideo"
+           autoplay muted loop playsinline preload="auto"
+           poster="assets/img/cheesecake.jpg"></video>
+    <div class="hero__overlay"></div>
+  </div>
+
+  <div class="hero__content">
+    <p class="hero__kicker">Кофейня · десерты</p>
+    <h1 class="hero__title">Cassiopeia<span class="hero__title-sub">Coffee</span></h1>
+    <p class="hero__tagline">Кофе, который звучит тише города</p>
+    <a href="#menu" class="btn btn--gold" data-cursor="hover">Посмотреть меню</a>
+  </div>
+
+  <a href="#about" class="hero__scroll" aria-label="Листать вниз">
+    <span class="hero__scroll-line"></span>
+  </a>
+</section>
+
+<div class="divider"><span></span><i>&#10022;</i><span></span></div>
+
+<!-- ============ 2. О НАС ============ -->
+<section class="about section" id="about">
+  <div class="about__inner">
+    <div class="about__text reveal">
+      <p class="eyebrow">О нас</p>
+      <h2 class="h2">Место, где время<br>идёт медленнее</h2>
+      <p>Мы варим кофе так, как рассказывают истории — не спеша и до последней капли. Каждое зерно обжарено локально, каждый десерт испечён утром этого дня.</p>
+      <p>Тёплый свет, мягкие кресла и тихая музыка. Приходите одни — с книгой, или вдвоём — с разговором, который некуда торопить.</p>
+      <p class="about__signature">— команда Cassiopeia</p>
+    </div>
+
+    <div class="about__media reveal" data-parallax="0.10">
+      <img src="assets/img/tiramisu.jpg" alt="Тирамису и капучино в Cassiopeia Coffee" class="about__img">
+      <span class="about__frame"></span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><span></span><i>&#10022;</i><span></span></div>
+
+<!-- ============ 3. МЕНЮ ============ -->
+<section class="menu section" id="menu">
+  <div class="section__head reveal">
+    <p class="eyebrow">Меню</p>
+    <h2 class="h2">Кофе и десерты</h2>
+    <p class="section__lead">Небольшая карта — чтобы каждая позиция была любимой.</p>
+  </div>
+
+  <div class="menu__grid">
+    <article class="card reveal" data-cursor="hover">
+      <div class="card__media"><img src="assets/img/menu-1.jpg" alt="Раф Кассиопея"></div>
+      <div class="card__body">
+        <div class="card__row"><h3 class="card__title">Раф «Кассиопея»</h3><span class="card__dots"></span><span class="card__price">8 руб.</span></div>
+        <p class="card__desc">Сливки, ваниль и щепотка морской соли</p>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cursor="hover">
+      <div class="card__media"><img src="assets/img/menu-2.jpg" alt="Капучино"></div>
+      <div class="card__body">
+        <div class="card__row"><h3 class="card__title">Капучино</h3><span class="card__dots"></span><span class="card__price">6,50 руб.</span></div>
+        <p class="card__desc">Плотная пена, обжарка нашего ростера</p>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cursor="hover">
+      <div class="card__media"><img src="assets/img/menu-3.jpg" alt="Латте на фисташке"></div>
+      <div class="card__body">
+        <div class="card__row"><h3 class="card__title">Латте на фисташке</h3><span class="card__dots"></span><span class="card__price">8,50 руб.</span></div>
+        <p class="card__desc">Ореховое молоко и мягкая сладость</p>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cursor="hover">
+      <div class="card__media"><img src="assets/img/menu-4.jpg" alt="Фильтр V60"></div>
+      <div class="card__body">
+        <div class="card__row"><h3 class="card__title">Фильтр V60</h3><span class="card__dots"></span><span class="card__price">7 руб.</span></div>
+        <p class="card__desc">Сорт месяца — спросите у бариста</p>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cursor="hover">
+      <div class="card__media"><img src="assets/img/tiramisu.jpg" alt="Тирамису"></div>
+      <div class="card__body">
+        <div class="card__row"><h3 class="card__title">Тирамису</h3><span class="card__dots"></span><span class="card__price">8 руб.</span></div>
+        <p class="card__desc">Савоярди, маскарпоне, тёмное какао</p>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cursor="hover">
+      <div class="card__media"><img src="assets/img/cheesecake.jpg" alt="Чизкейк с ягодами"></div>
+      <div class="card__body">
+        <div class="card__row"><h3 class="card__title">Чизкейк</h3><span class="card__dots"></span><span class="card__price">7 руб.</span></div>
+        <p class="card__desc">Кремовая текстура и ягодный соус</p>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cursor="hover">
+      <div class="card__media"><img src="assets/img/menu-7.jpg" alt="Шоколадный торт"></div>
+      <div class="card__body">
+        <div class="card__row"><h3 class="card__title">Шоколадный торт</h3><span class="card__dots"></span><span class="card__price">8 руб.</span></div>
+        <p class="card__desc">Тёмный шоколад, влажный бисквит</p>
+      </div>
+    </article>
+
+    <article class="card reveal" data-cursor="hover">
+      <div class="card__media"><img src="assets/img/menu-8.jpg" alt="Круассан"></div>
+      <div class="card__body">
+        <div class="card__row"><h3 class="card__title">Круассан</h3><span class="card__dots"></span><span class="card__price">6 руб.</span></div>
+        <p class="card__desc">Слоёное тесто, выпекаем каждое утро</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="divider"><span></span><i>&#10022;</i><span></span></div>
+
+<!-- ============ 4. ГАЛЕРЕЯ ============ -->
+<section class="gallery section" id="gallery">
+  <div class="section__head reveal">
+    <p class="eyebrow">Интерьер</p>
+    <h2 class="h2">Наши залы</h2>
+    <p class="section__lead">Нажмите на фото, чтобы открыть на весь экран.</p>
+  </div>
+
+  <div class="masonry" id="masonry">
+    <figure class="masonry__item reveal" data-cursor="zoom"><img src="assets/img/gal-1.jpg" alt="Зал кофейни, вечерний свет"></figure>
+    <figure class="masonry__item reveal" data-cursor="zoom"><img src="assets/img/gal-2.jpg" alt="Барная стойка"></figure>
+    <figure class="masonry__item reveal" data-cursor="zoom"><img src="assets/img/gal-3.jpg" alt="Столик у окна"></figure>
+    <figure class="masonry__item reveal" data-cursor="zoom"><img src="assets/img/gal-4.jpg" alt="Витрина с десертами"></figure>
+    <figure class="masonry__item reveal" data-cursor="zoom"><img src="assets/img/gal-5.jpg" alt="Уголок с книгами"></figure>
+    <figure class="masonry__item reveal" data-cursor="zoom"><img src="assets/img/gal-6.jpg" alt="Кофемашина и бариста"></figure>
+    <figure class="masonry__item reveal" data-cursor="zoom"><img src="assets/img/gal-7.jpg" alt="Детали интерьера"></figure>
+    <figure class="masonry__item reveal" data-cursor="zoom"><img src="assets/img/gal-8.jpg" alt="Вечерний зал"></figure>
+  </div>
+</section>
+
+<div class="divider"><span></span><i>&#10022;</i><span></span></div>
+
+<!-- ============ 5. ОТЗЫВЫ ============ -->
+<section class="reviews section" id="reviews">
+  <div class="section__head reveal">
+    <p class="eyebrow">Отзывы</p>
+    <h2 class="h2">Что говорят гости</h2>
+  </div>
+
+  <div class="reviews__grid">
+    <blockquote class="quote reveal">
+      <span class="quote__mark">&ldquo;</span>
+      <p class="quote__text">Пришла на полчаса — осталась на три. Здесь правда тихо и правда вкусно. Раф на соли теперь мой личный ритуал.</p>
+      <footer class="quote__author">Анна К.<span>гостья с 2023 года</span></footer>
+    </blockquote>
+
+    <blockquote class="quote reveal">
+      <span class="quote__mark">&ldquo;</span>
+      <p class="quote__text">Лучшее тирамису в городе, и я знаю, о чём говорю. Бариста помнит мой заказ — мелочь, а держит.</p>
+      <footer class="quote__author">Дмитрий Л.<span>постоянный гость</span></footer>
+    </blockquote>
+
+    <blockquote class="quote reveal">
+      <span class="quote__mark">&ldquo;</span>
+      <p class="quote__text">Работаю здесь по утрам: свет мягкий, розетки есть, никто не торопит. Идеальное место, чтобы начать день.</p>
+      <footer class="quote__author">Марина В.<span>дизайнер</span></footer>
+    </blockquote>
+  </div>
+</section>
+
+<div class="divider"><span></span><i>&#10022;</i><span></span></div>
+
+<!-- ============ 6. ФУТЕР / КОНТАКТЫ ============ -->
+<footer class="footer section" id="contacts">
+  <div class="footer__grid">
+
+    <div class="footer__col reveal">
+      <p class="eyebrow">Адрес</p>
+      <p class="footer__big">г. Минск,<br>ул. Примерная, 12</p>
+      <p class="footer__muted">1 этаж, вход со двора</p>
+    </div>
+
+    <div class="footer__col reveal">
+      <p class="eyebrow">Часы работы</p>
+      <ul class="hours">
+        <li><span>Пн — Чт</span><i></i><b>09:00 — 22:00</b></li>
+        <li><span>Пт — Сб</span><i></i><b>09:00 — 00:00</b></li>
+        <li><span>Воскресенье</span><i></i><b>10:00 — 22:00</b></li>
+      </ul>
+      <a href="tel:+375000000000" class="footer__phone" data-cursor="hover">+375 (00) 000-00-00</a>
+    </div>
+
+    <div class="footer__col reveal">
+      <p class="eyebrow">Мы на связи</p>
+      <div class="socials">
+        <a href="#" target="_blank" rel="noopener" class="social" data-cursor="hover">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/></svg>
+          Instagram
+        </a>
+        <a href="viber://chat?number=%2B375000000000" class="social" data-cursor="hover">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 10.5c0 4.7-3.6 7.6-8 7.6-.9 0-1.8-.1-2.6-.35L5 20l1.2-3.3C4.8 15.3 4 13 4 10.5 4 5.8 7.6 3 12 3s8 2.8 8 7.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.3 8.6c.5 2.1 2 3.6 4.1 4.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          Viber
+        </a>
+      </div>
+      <p class="footer__muted footer__muted--mt">Бронь столика — в директ или по телефону</p>
+    </div>
+
+    <div class="footer__map reveal">
+      <div class="map" id="map">
+        <img src="assets/img/map-preview.svg" alt="Карта проезда" class="map__preview">
+        <button class="map__btn btn btn--ghost" id="mapBtn" data-cursor="hover">Показать карту</button>
+      </div>
+      <a class="map__link" id="mapLink" href="https://yandex.by/maps/?text=Минск%2C%20улица%20Примерная%2C%2012"
+         target="_blank" rel="noopener" data-cursor="hover">Открыть в Яндекс.Картах &#8599;</a>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <span class="header__star">&#10022;</span>
+    <p>&copy; <span id="year">2026</span> Cassiopeia Coffee &middot; концепт-сайт, бренд вымышленный</p>
+  </div>
+</footer>
+
+<!-- ============ ЛАЙТБОКС ============ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фото">
+  <button class="lightbox__close" id="lbClose" aria-label="Закрыть">&times;</button>
+  <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" aria-label="Предыдущее">&#8249;</button>
+  <img class="lightbox__img" id="lbImg" alt="">
+  <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Следующее">&#8250;</button>
+  <div class="lightbox__counter" id="lbCounter"></div>
+</div>
+
+<script src="js/main.js"></script>
+
+</body></html>

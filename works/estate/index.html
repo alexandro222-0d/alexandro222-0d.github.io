@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Тихий берег — агроусадьба у озера · демо</title>
+<meta name="description" content="Демо-сайт агроусадьбы: смена дня и ночи при прокрутке, дома, выбор дат с расчётом. Бренд вымышленный.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+/* Агроусадьба: сцена у озера, которая проживает сутки при прокрутке. Песок, хвоя, вода */
+:root{
+  --deep:#0F1E24; --deep2:#16292F; --sand:#EFE6D4; --sand2:#E2D3B6; --pine:#2E4A3A; --ember:#E8894A; --ink:#1B2A2E; --muted:#6C7B78; --line:rgba(27,42,46,.12);
+  --serif:"Lora",Georgia,serif; --sans:"Manrope","Segoe UI",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--sand);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--ember);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.05;text-wrap:balance}
+.kick{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--ember)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 24px;border-radius:999px;background:var(--ember);color:#fff;font-weight:800;transition:transform .2s,background .2s}
+.btn:hover{background:#D6763A;transform:translateY(-2px)}
+.btn.light{background:rgba(255,255,255,.16);backdrop-filter:blur(8px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+
+header{position:fixed;inset:0 0 auto;z-index:20;color:#fff;transition:background .4s,color .4s}
+header.solid{background:rgba(239,230,212,.92);backdrop-filter:blur(12px);color:var(--ink)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.logo{font-family:var(--serif);font-size:24px;font-style:italic}
+nav{display:flex;gap:26px;font-weight:700;font-size:14.5px}
+@media (max-width:760px){ nav{display:none} header .btn{padding:11px 16px;font-size:14px} }
+
+/* сутки у озера */
+.day{height:320vh;position:relative}
+.scene{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.scene svg{position:absolute;inset:0;width:100%;height:100%}
+.caption{position:absolute;left:0;right:0;top:20vh;text-align:center;color:#fff;padding-inline:16px;text-shadow:0 2px 30px rgba(0,0,0,.35);pointer-events:none}
+.caption .kick{color:#FFE2C2}
+.caption h1{font-size:clamp(44px,8vw,110px);margin-top:12px}
+.caption p{max-width:30em;margin:16px auto 0;font-size:clamp(16px,1.5vw,19px);opacity:.92}
+.caption .cap{position:absolute;left:0;right:0;transition:opacity .6s,transform .6s}
+.caption .cap:not(.on){opacity:0;transform:translateY(20px)}
+.clock{position:absolute;right:clamp(16px,4vw,40px);bottom:28px;color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;background:rgba(0,0,0,.25);backdrop-filter:blur(8px);font-variant-numeric:tabular-nums}
+.scroll-hint{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);color:#fff;font-size:13px;font-weight:700;opacity:.8}
+@media (max-width:760px){ .caption{top:16vh} .clock{right:16px;bottom:18px} .scroll-hint{display:none} }
+
+/* дома */
+.houses{padding-block:clamp(70px,11vh,120px)}
+.sec-h{max-width:760px;margin:0 auto 44px;text-align:center;display:flex;flex-direction:column;gap:14px;align-items:center}
+.sec-h h2{font-size:clamp(36px,5vw,64px)}
+.sec-h p{color:var(--muted)}
+.h-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.house{background:#FBF7EE;border-radius:28px;overflow:hidden;box-shadow:0 1px 0 var(--line);display:flex;flex-direction:column;transition:transform .35s}
+.house:hover{transform:translateY(-6px)}
+.house .art{aspect-ratio:4/3}
+.house .art svg{width:100%;height:100%;display:block}
+.house .body{padding:22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.house h3{font-size:28px}
+.house p{color:var(--muted);font-size:14.5px}
+.house .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.house .tags span{font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;background:var(--sand)}
+.house .foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:12px}
+.house .foot b{font-family:var(--serif);font-size:26px}
+.house .foot small{color:var(--muted)}
+.house .pick{padding:10px 16px;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--ink);font-weight:800;font-size:14px}
+.house .pick[aria-pressed="true"]{background:var(--ink);color:#fff}
+@media (max-width:900px){ .h-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-16px;padding:0 16px 12px;scrollbar-width:none} .house{flex:0 0 80vw;scroll-snap-align:center} }
+
+/* бронь */
+.book{padding-block:clamp(70px,11vh,120px);background:var(--deep);color:var(--sand)}
+.book .sec-h p{color:#9FB0AE}
+.b-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:start}
+.cal{background:var(--deep2);border-radius:28px;padding:22px}
+.cal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.cal-top h3{font-size:26px;text-transform:capitalize}
+.cal-top button{width:40px;height:40px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(239,230,212,.25);font-size:18px}
+.grid7{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.grid7 span{text-align:center;font-size:11px;color:#9FB0AE;padding-bottom:6px}
+.grid7 button{aspect-ratio:1;border-radius:12px;font-weight:700;font-size:14px;position:relative;transition:background .15s}
+.grid7 button:hover:not(:disabled){background:rgba(239,230,212,.1)}
+.grid7 button:disabled{color:rgba(239,230,212,.22);text-decoration:line-through;cursor:not-allowed}
+.grid7 button.in{background:rgba(232,137,74,.28);border-radius:0}
+.grid7 button.edge{background:var(--ember);color:#fff}
+.grid7 button small{position:absolute;left:0;right:0;bottom:3px;font-size:9px;font-weight:600;color:#9FB0AE}
+.grid7 button.edge small{color:#FFE2C2}
+.side{background:var(--sand);color:var(--ink);border-radius:28px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.side .row{display:flex;justify-content:space-between;gap:10px;font-size:14.5px;padding-bottom:10px;border-bottom:1px solid var(--line);color:var(--muted)}
+.side .row b{color:var(--ink)}
+.guests{display:flex;align-items:center;gap:12px}
+.guests button{width:38px;height:38px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--ink);font-size:18px;font-weight:800}
+.guests b{min-width:2ch;text-align:center;font-size:18px}
+.side .tot{display:flex;justify-content:space-between;align-items:baseline}
+.side .tot b{font-family:var(--serif);font-size:46px;line-height:1}
+.done{display:none;padding:14px;border-radius:14px;background:#fff;white-space:pre-wrap;font-size:14px}
+.done.show{display:block}
+@media (max-width:900px){ .b-grid{grid-template-columns:1fr} }
+
+footer{background:var(--deep);color:#9FB0AE;padding-block:46px;font-size:14px;border-top:1px solid rgba(239,230,212,.1)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px}
+footer b{font-family:var(--serif);font-style:italic;font-size:24px;color:var(--sand);font-weight:500;display:block}
+.demo{position:fixed;left:12px;bottom:12px;z-index:30;padding:7px 12px;border-radius:999px;background:var(--ink);color:var(--sand);font-size:11.5px;font-weight:800;letter-spacing:.06em}
+@media (prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important} }
+</style>
+</head>
+<body>
+<header id="hdr">
+  <div class="wrap">
+    <a class="logo" href="#top">Тихий берег</a>
+    <nav><a href="#houses">Дома</a><a href="#book">Даты и цены</a></nav>
+    <a class="btn" href="#book">Забронировать</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="day" id="day">
+    <div class="scene">
+      <svg id="sceneSvg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+      <div class="caption">
+        <div class="cap on" data-c="0"><p class="kick">Агроусадьба у озера</p><h1>Сутки, которые хочется повторить</h1><p>Листайте — и проживите день на Тихом берегу.</p></div>
+        <div class="cap" data-c="1"><p class="kick">Полдень</p><h1>Озеро, лодка и тишина</h1><p>Песчаный берег в 40 шагах от домов. Лодки и сапы бесплатно.</p></div>
+        <div class="cap" data-c="2"><p class="kick">Вечер</p><h1>Баня и костёр на закате</h1><p>Баня на дровах с выходом к воде, беседка с мангалом у каждого дома.</p></div>
+        <div class="cap" data-c="3"><p class="kick">Ночь</p><h1>Звёзды, которых не видно в городе</h1><p>Ни одного фонаря на километр. Только вы, сосны и Млечный Путь.</p></div>
+      </div>
+      <div class="clock" id="clock">☀ 07:00</div>
+      <div class="scroll-hint">Листайте ↓</div>
+    </div>
+  </section>
+
+  <section class="houses" id="houses">
+    <div class="wrap">
+      <div class="sec-h"><p class="kick">Три дома</p><h2>Выберите свой</h2><p>Каждый дом сдаётся целиком: никаких соседей за стенкой.</p></div>
+      <div class="h-grid" id="hGrid"></div>
+    </div>
+  </section>
+
+  <section class="book" id="book">
+    <div class="wrap">
+      <div class="sec-h"><p class="kick">Бронь</p><h2>Выберите даты</h2><p>Нажмите на день заезда и день выезда — посчитаем ночи и цену. Выходные дороже, будни дешевле.</p></div>
+      <div class="b-grid">
+        <div class="cal"><div class="cal-top"><button id="prev" aria-label="Предыдущий месяц">‹</button><h3 id="mName">—</h3><button id="next" aria-label="Следующий месяц">›</button></div><div class="grid7" id="grid"></div></div>
+        <div class="side">
+          <div class="row"><span>Дом</span><b id="sHouse">—</b></div>
+          <div class="row"><span>Даты</span><b id="sDates">выберите в календаре</b></div>
+          <div class="row"><span>Ночей</span><b id="sNights">0</b></div>
+          <div class="row"><span>Гостей</span><span class="guests"><button id="gMinus" aria-label="Меньше гостей">−</button><b id="gN">4</b><button id="gPlus" aria-label="Больше гостей">+</button></span></div>
+          <div class="row"><span>Баня</span><label><input type="checkbox" id="sauna"> +90 р. за вечер</label></div>
+          <div class="tot"><span>Итого</span><b><span id="sTotal">0</span> р.</b></div>
+          <button class="btn" id="bookBtn">Забронировать</button>
+          <div class="done" id="done" role="status"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b>Тихий берег</b>Агроусадьба у озера · Беларусь</div>
+    <div>+375 (00) 000-00-00<br>Заезд с 14:00, выезд до 12:00</div>
+    <div>© 2026 · демо-сайт, бренд вымышленный<br>Сделано на saity.by</div>
+  </div>
+</footer>
+<span class="demo">Демо-сайт · saity.by</span>
+
+<script>
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- сцена ---------- */
+let seed = 11; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+const pine = (x, y, h, c) => `<path d="M${x} ${y - h} L${x - h * .22} ${y - h * .55} L${x - h * .12} ${y - h * .55} L${x - h * .3} ${y - h * .2} L${x - h * .14} ${y - h * .2} L${x - h * .36} ${y} L${x + h * .36} ${y} L${x + h * .14} ${y - h * .2} L${x + h * .3} ${y - h * .2} L${x + h * .12} ${y - h * .55} L${x + h * .22} ${y - h * .55} Z" fill="${c}"/>`;
+let stars = ""; for (let i = 0; i < 180; i++) stars += `<circle cx="${rnd() * 1600}" cy="${rnd() * 480}" r="${rnd() * 1.6 + .3}" fill="#fff" opacity="${.4 + rnd() * .6}"/>`;
+let far = "", near = "", refl = ""; for (let x = -40; x < 1660; x += 34 + rnd() * 30) far += pine(x, 606, 110 + rnd() * 90, "url(#farG)");
+for (let x = -60; x < 1660; x += 60 + rnd() * 70) { const h = 200 + rnd() * 160; if (x > 560 && x < 1100) continue; near += pine(x, 640, h, "url(#nearG)"); }
+const houses = [[640, 600, 1], [820, 590, .8], [980, 605, .7]].map(([x, y, k]) => `<g><path d="M${x - 70 * k} ${y} v${-60 * k} l${70 * k} ${-50 * k} l${70 * k} ${50 * k} v${60 * k} z" fill="url(#houseG)"/><path d="M${x - 82 * k} ${y - 58 * k} L${x} ${y - 118 * k} L${x + 82 * k} ${y - 58 * k}" stroke="#2B1D15" stroke-width="${10 * k}" fill="none"/><rect class="win" x="${x - 40 * k}" y="${y - 44 * k}" width="${22 * k}" height="${22 * k}" fill="#FFC97A"/><rect class="win" x="${x + 18 * k}" y="${y - 44 * k}" width="${22 * k}" height="${22 * k}" fill="#FFC97A"/></g>`).join("");
+$("#sceneSvg").innerHTML = `<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop id="s1" offset="0"/><stop id="s2" offset=".6"/><stop id="s3" offset="1"/></linearGradient>
+  <linearGradient id="farG" x1="0" y1="0" x2="0" y2="1"><stop id="f1" offset="0"/><stop id="f2" offset="1"/></linearGradient>
+  <linearGradient id="nearG" x1="0" y1="0" x2="0" y2="1"><stop id="n1" offset="0"/><stop id="n2" offset="1"/></linearGradient>
+  <linearGradient id="lake" x1="0" y1="0" x2="0" y2="1"><stop id="l1" offset="0"/><stop id="l2" offset="1"/></linearGradient>
+  <linearGradient id="houseG" x1="0" y1="0" x2="0" y2="1"><stop id="h1" offset="0"/><stop id="h2" offset="1"/></linearGradient>
+  <radialGradient id="sunG"><stop offset="0" stop-color="#FFF6D6"/><stop offset=".35" stop-color="#FFD98A"/><stop offset="1" stop-color="#FFB45A" stop-opacity="0"/></radialGradient>
+  <radialGradient id="fireG"><stop offset="0" stop-color="#FFD27A" stop-opacity=".9"/><stop offset="1" stop-color="#FF7A2E" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1600" height="900" fill="url(#sky)"/>
+<g id="stars" opacity="0">${stars}<path id="milky" d="M100 60 Q800 380 1560 120" stroke="#fff" stroke-width="90" opacity=".06" fill="none"/></g>
+<g id="sun"><circle r="160" fill="url(#sunG)"/><circle r="46" fill="#FFF3C8"/></g>
+<g id="moon" opacity="0"><circle r="34" fill="#F4F1E6"/><circle cx="14" cy="-8" r="30" fill="url(#sky)" opacity=".0"/></g>
+<g>${far}</g>
+<rect y="600" width="1600" height="300" fill="url(#lake)"/>
+<g id="sparkle">${Array.from({length: 40}, () => `<rect x="${rnd() * 1600}" y="${620 + rnd() * 260}" width="${10 + rnd() * 40}" height="2" fill="#fff" opacity="${.15 + rnd() * .3}"/>`).join("")}</g>
+<g>${near}</g>
+${houses}
+<g id="fire" opacity="0"><circle cx="760" cy="650" r="90" fill="url(#fireG)"/><path d="M748 652 q12 -40 24 0 z" fill="#FFB347"/><path d="M754 652 q6 -22 12 0 z" fill="#FFE59A"/></g>
+<path d="M0 640 Q400 625 800 640 T1600 640 V660 H0 Z" fill="#2B3B2C" opacity=".6"/>
+<g id="boat"><path d="M0 0 h90 l-14 16 h-62 z" fill="#5A3A26"/><line x1="45" y1="0" x2="45" y2="-70" stroke="#3A2416" stroke-width="3"/><path d="M47 -66 L47 -6 L88 -6 Z" fill="#F4EFE2"/></g>`;
+const KEYS = [ // t: 0 утро, .33 день, .66 закат, 1 ночь
+  {t:0, s:["#9CC9E8","#F6D4B0","#FCE3C4"], f:["#5E7F72","#3E5A50"], n:["#2C4537","#1C2E24"], l:["#8FB7C8","#3D6A7C"], h:["#A06A46","#6A4430"], win:0, star:0, sun:[220, 420], moon:0, clock:"07:00", ic:"☀"},
+  {t:.33, s:["#4F9BD9","#A9D6F2","#E0F1FA"], f:["#4F7A62","#36584A"], n:["#2A4A36","#1A3024"], l:["#5FA5C8","#24607E"], h:["#B07650","#73492F"], win:0, star:0, sun:[800, 150], moon:0, clock:"13:00", ic:"☀"},
+  {t:.66, s:["#2E2A5C","#C2547A","#F7A35C"], f:["#3B3A4C","#262536"], n:["#1F2230","#121520"], l:["#B4607A","#2B2F55"], h:["#5A3A3A","#3A2526"], win:.7, star:.15, sun:[1380, 600], moon:0, clock:"20:30", ic:"◐"},
+  {t:1, s:["#05080F","#0E1A30","#1B2C46"], f:["#0F1A22","#0A1218"], n:["#071016","#04090D"], l:["#13243A","#03070C"], h:["#1E2026","#121318"], win:1, star:1, sun:[1500, 900], moon:1, clock:"23:40", ic:"☾"}];
+const lerp = (a, b, k) => a + (b - a) * k;
+const hex = (a, b, k) => { const p = s => [1, 3, 5].map(i => parseInt(s.substr(i, 2), 16)); const A = p(a), B = p(b); return "#" + A.map((v, i) => Math.round(lerp(v, B[i], k)).toString(16).padStart(2, "0")).join(""); };
+const WINS = $$(".win"), CAPS = $$(".cap");
+function setT(t){
+  let i = 0; while (i < KEYS.length - 2 && t > KEYS[i + 1].t) i++; const A = KEYS[i], B = KEYS[i + 1], k = Math.min(1, Math.max(0, (t - A.t) / (B.t - A.t)));
+  ["s1","s2","s3"].forEach((id, j) => $("#" + id).setAttribute("stop-color", hex(A.s[j], B.s[j], k)));
+  [["f1","f2","f"],["n1","n2","n"],["l1","l2","l"],["h1","h2","h"]].forEach(([a, b, key]) => { $("#" + a).setAttribute("stop-color", hex(A[key][0], B[key][0], k)); $("#" + b).setAttribute("stop-color", hex(A[key][1], B[key][1], k)); });
+  const sx = lerp(A.sun[0], B.sun[0], k), sy = lerp(A.sun[1], B.sun[1], k); $("#sun").setAttribute("transform", `translate(${sx} ${sy})`); $("#sun").setAttribute("opacity", Math.max(0, 1 - t * 1.25));
+  $("#moon").setAttribute("transform", `translate(${1180 - t * 120} ${260 - t * 120})`); $("#moon").setAttribute("opacity", Math.max(0, (t - .7) / .3));
+  $("#stars").setAttribute("opacity", lerp(A.star, B.star, k));
+  WINS.forEach(w => w.setAttribute("opacity", lerp(A.win, B.win, k)));
+  $("#fire").setAttribute("opacity", Math.max(0, Math.min(1, (t - .55) / .15)) * (t > .95 ? .6 : 1));
+  $("#sparkle").setAttribute("opacity", Math.max(0, 1 - t * 1.6));
+  $("#boat").setAttribute("transform", `translate(${300 + t * 700} ${700 + Math.sin(t * 20) * 3})`);
+  const hrs = 7 + t * 16.67, hh = Math.floor(hrs), mm = Math.floor((hrs - hh) * 60 / 10) * 10; $("#clock").textContent = `${t < .55 ? "☀" : t < .85 ? "◐" : "☾"} ${String(hh).padStart(2, "0")}:${String(mm).padStart(2, "0")}`;
+  const ci = t < .18 ? 0 : t < .5 ? 1 : t < .8 ? 2 : 3; CAPS.forEach(c => c.classList.toggle("on", +c.dataset.c === ci));
+}
+let target = 0, cur = 0;
+function onScroll(){ const r = $("#day").getBoundingClientRect(), total = $("#day").offsetHeight - innerHeight; target = Math.max(0, Math.min(1, -r.top / total)); $("#hdr").classList.toggle("solid", r.bottom < 80); }
+addEventListener("scroll", onScroll, {passive: true}); onScroll();
+// перерисовываем сцену, только пока она догоняет прокрутку
+setT(cur); (function loop(){ const d = target - cur; if (Math.abs(d) > .0004) { cur += d * (reduce ? 1 : .08); setT(cur); } requestAnimationFrame(loop); })();
+
+/* ---------- дома ---------- */
+const H = [{n:"Дом у воды", d:"Самый близкий к озеру: веранда над берегом, камин, две спальни.", g:6, wd:180, we:230, tags:["6 гостей","камин","веранда"], c:"#B07650"},
+           {n:"Сосновый", d:"В глубине леса, большая кухня-гостиная и терраса с мангалом.", g:10, wd:240, we:300, tags:["10 гостей","3 спальни","мангал"], c:"#6A7A4A"},
+           {n:"Домик на двоих", d:"Маленький и тёплый: огромное окно на озеро и кровать у камина.", g:2, wd:110, we:140, tags:["2 гостя","вид на озеро","для пар"], c:"#7A5A7A"}];
+const hArt = (h, i) => `<svg viewBox="0 0 400 300"><rect width="400" height="300" fill="${["#CFE3EA","#D7E2C8","#E8D9E2"][i]}"/><circle cx="${[300, 90, 320][i]}" cy="70" r="34" fill="#FFE6A8"/>${pine(40, 250, 170, "#4E6E5A")}${pine(370, 250, 150, "#3E5A4A")}${pine(330, 250, 110, "#5E7E6A")}<rect y="230" width="400" height="70" fill="${["#7FB0C4", "#9CB884", "#8FB0C4"][i]}"/><path d="M${120} 236 v-70 l80 -56 l80 56 v70 z" fill="${h.c}"/><path d="M106 168 L200 98 L294 168" stroke="#2B1D15" stroke-width="12" fill="none"/><rect x="150" y="186" width="34" height="30" fill="#FFE2A8"/><rect x="216" y="186" width="34" height="30" fill="#FFE2A8"/></svg>`;
+let house = 0;
+$("#hGrid").innerHTML = H.map((h, i) => `<article class="house"><div class="art">${hArt(h, i)}</div><div class="body"><h3>${h.n}</h3><p>${h.d}</p><div class="tags">${h.tags.map(t => `<span>${t}</span>`).join("")}</div><div class="foot"><div><b>${h.wd} р.</b> <small>/ ночь, будни</small></div><button class="pick" aria-pressed="${i === 0}" data-i="${i}">Выбрать</button></div></div></article>`).join("");
+$$(".pick").forEach(b => b.addEventListener("click", () => { house = +b.dataset.i; $$(".pick").forEach(x => x.setAttribute("aria-pressed", String(x === b))); if (G > H[house].g) G = H[house].g; render(); $("#book").scrollIntoView({behavior: reduce ? "auto" : "smooth"}); }));
+
+/* ---------- календарь ---------- */
+const today = new Date(); today.setHours(0, 0, 0, 0); let view = new Date(today.getFullYear(), today.getMonth(), 1); let A = null, Bd = null, G = 4;
+const busy = d => { const x = Math.sin(d.getFullYear() * 3 + d.getMonth() * 31 + d.getDate() * 17 + house * 5) * 1e4; return (x - Math.floor(x)) < .2; };
+const isWe = d => d.getDay() === 5 || d.getDay() === 6;
+const price = d => isWe(d) ? H[house].we : H[house].wd;
+function render(){
+  $("#mName").textContent = view.toLocaleString("ru", {month: "long", year: "numeric"}).replace(" г.", "");
+  const first = (view.getDay() + 6) % 7, dim = new Date(view.getFullYear(), view.getMonth() + 1, 0).getDate();
+  let h = ["пн","вт","ср","чт","пт","сб","вс"].map(x => `<span>${x}</span>`).join("") + "<i></i>".repeat(first);
+  for (let d = 1; d <= dim; d++) { const dt = new Date(view.getFullYear(), view.getMonth(), d); const dis = dt < today || busy(dt);
+    const inR = A && Bd && dt > A && dt < Bd, edge = (A && +dt === +A) || (Bd && +dt === +Bd);
+    h += `<button ${dis ? "disabled" : ""} class="${inR ? "in" : ""}${edge ? " edge" : ""}" data-t="${+dt}">${d}${dis ? "" : `<small>${price(dt)}</small>`}</button>`; }
+  $("#grid").innerHTML = h;
+  $$("#grid button").forEach(b => b.addEventListener("click", () => { const dt = new Date(+b.dataset.t); if (!A || Bd || dt <= A) { A = dt; Bd = null; } else { let ok = true; for (let x = new Date(A); x < dt; x.setDate(x.getDate() + 1)) if (busy(x)) ok = false; if (ok) Bd = dt; else A = dt; } render(); }));
+  $("#sHouse").textContent = H[house].n + ` (до ${H[house].g})`; $("#gN").textContent = G;
+  let n = 0, sum = 0; if (A && Bd) for (let x = new Date(A); x < Bd; x.setDate(x.getDate() + 1)) { n++; sum += price(x); }
+  if ($("#sauna").checked) sum += 90 * Math.max(1, n);
+  $("#sNights").textContent = n; $("#sDates").textContent = A ? `${A.toLocaleString("ru", {day: "numeric", month: "short"})}${Bd ? " — " + Bd.toLocaleString("ru", {day: "numeric", month: "short"}) : " — выберите выезд"}` : "выберите в календаре";
+  $("#sTotal").textContent = sum;
+}
+$("#prev").addEventListener("click", () => { const p = new Date(view.getFullYear(), view.getMonth() - 1, 1); if (p >= new Date(today.getFullYear(), today.getMonth(), 1)) { view = p; render(); } });
+$("#next").addEventListener("click", () => { view = new Date(view.getFullYear(), view.getMonth() + 1, 1); render(); });
+$("#gMinus").addEventListener("click", () => { G = Math.max(1, G - 1); render(); });
+$("#gPlus").addEventListener("click", () => { G = Math.min(H[house].g, G + 1); render(); });
+$("#sauna").addEventListener("change", render);
+$("#bookBtn").addEventListener("click", () => { $("#done").textContent = A && Bd ? `Бронь: «${H[house].n}», ${$("#sDates").textContent}, ${$("#sNights").textContent} ноч., ${G} гостей. Итого ${$("#sTotal").textContent} р.\n\nЭто демо: на настоящем сайте заявка сразу придёт хозяевам в Telegram.` : "Выберите дату заезда и дату выезда в календаре."; $("#done").classList.add("show"); });
+render();
+</script>
+</body>
+</html>

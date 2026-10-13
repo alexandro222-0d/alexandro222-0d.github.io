@@ -1,0 +1,72 @@
+/* ============================================================
+   Плашка автора и страница «О проекте»
+   ============================================================ */
+
+/* ---------- плашка на страницах сайта ---------- */
+.authorbar{
+  position:fixed; left:16px; bottom:16px; z-index:90;
+  display:flex; flex-direction:column; gap:2px;
+  padding:10px 16px; background:var(--ink); color:var(--paper);
+  border-left:2px solid var(--accent-lift);
+  box-shadow:0 12px 40px -18px rgba(5,16,12,.7);
+  transition:transform .4s var(--ease), background .4s var(--ease);
+}
+.authorbar:hover{ transform:translateY(-2px); background:var(--accent); }
+.authorbar b{
+  font-family:var(--font-display); font-weight:300;
+  font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:var(--accent-lift);
+}
+.authorbar:hover b{ color:var(--paper); }
+.authorbar span{ font-size:12px; letter-spacing:.04em; }
+@media (max-width:620px){
+  .authorbar{ left:10px; bottom:10px; padding:8px 12px; }
+  .authorbar span{ font-size:11px; }
+}
+
+/* ---------- страница проекта ---------- */
+.case{ max-width:900px; }
+.case__eyebrow{ font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:var(--accent); margin-bottom:14px; }
+.case__title{
+  font-family:var(--font-display); font-weight:200;
+  font-size:clamp(28px,5vw,58px); line-height:1.08; letter-spacing:.04em; text-transform:uppercase;
+  margin-bottom:18px;
+}
+.case__lead{ font-size:clamp(15px,1.6vw,18px); color:#3A3A38; max-width:56ch; }
+.case__cta{ margin:26px 0 10px; }
+
+.case__block{ margin-top:clamp(34px,6vh,62px); }
+.case__block h2{
+  font-family:var(--font-display); font-weight:300;
+  font-size:clamp(18px,2vw,24px); letter-spacing:.14em; text-transform:uppercase;
+  margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--line);
+}
+.case__block p{ color:#3A3A38; margin-bottom:10px; max-width:58ch; }
+
+.case__grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:18px 28px; }
+.case__grid div{ display:flex; flex-direction:column; gap:4px; }
+.case__grid b{ font-family:var(--font-display); font-weight:300; font-size:14px; letter-spacing:.12em; text-transform:uppercase; }
+.case__grid span{ font-size:13px; color:var(--muted); }
+
+.case__list{ margin:0; padding-left:20px; display:flex; flex-direction:column; gap:12px; color:#3A3A38; }
+.case__list b{ font-weight:500; color:var(--ink); }
+
+.case__facts{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; padding:clamp(22px,4vw,34px); background:var(--accent); color:var(--paper); }
+.case__facts div{ display:flex; flex-direction:column; gap:6px; }
+.case__facts b{ font-family:var(--font-display); font-weight:200; font-size:clamp(26px,4vw,42px); line-height:1; }
+.case__facts span{ font-size:12px; letter-spacing:.08em; color:rgba(244,242,238,.7); max-width:22ch; }
+
+.case__cta-box{
+  margin-top:clamp(40px,7vh,80px); padding:clamp(26px,5vw,48px);
+  background:var(--ink); color:var(--paper); text-align:center;
+}
+.case__cta-box h2{
+  font-family:var(--font-display); font-weight:200;
+  font-size:clamp(22px,3vw,34px); letter-spacing:.08em; text-transform:uppercase; margin-bottom:10px;
+}
+.case__cta-box p{ color:rgba(244,242,238,.66); margin-bottom:22px; }
+.case__btns{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+
+@media (max-width:700px){
+  .case__grid{ grid-template-columns:1fr; }
+  .case__facts{ grid-template-columns:1fr; }
+}

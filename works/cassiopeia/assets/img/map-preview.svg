@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="1200" height="500">
+  <defs>
+    <linearGradient id="ground" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#2E0C16"/>
+      <stop offset="1" stop-color="#1A050A"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#D8B57A" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#D8B57A" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="vig" cx="0.5" cy="0.5" r="0.75">
+      <stop offset="0.5" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0.45"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="500" fill="url(#ground)"/>
+
+  <!-- кварталы -->
+  <g fill="#F3E9DA" fill-opacity="0.035">
+    <rect x="60" y="40" width="180" height="120" rx="3"/>
+    <rect x="60" y="200" width="180" height="90" rx="3"/>
+    <rect x="60" y="330" width="180" height="130" rx="3"/>
+    <rect x="300" y="40" width="220" height="150" rx="3"/>
+    <rect x="300" y="230" width="220" height="230" rx="3"/>
+    <rect x="700" y="40" width="200" height="110" rx="3"/>
+    <rect x="700" y="190" width="200" height="120" rx="3"/>
+    <rect x="700" y="350" width="200" height="110" rx="3"/>
+    <rect x="960" y="40" width="180" height="180" rx="3"/>
+    <rect x="960" y="260" width="180" height="200" rx="3"/>
+  </g>
+
+  <!-- второстепенные улицы -->
+  <g stroke="#F3E9DA" stroke-opacity="0.10" stroke-width="6" stroke-linecap="round">
+    <path d="M40 180 H1160"/>
+    <path d="M40 320 H1160"/>
+    <path d="M270 20 V480"/>
+    <path d="M670 20 V480"/>
+    <path d="M930 20 V480"/>
+  </g>
+
+  <!-- главный проспект -->
+  <g stroke="#B99150" stroke-opacity="0.30" stroke-width="12" stroke-linecap="round">
+    <path d="M40 250 H1160"/>
+  </g>
+  <g stroke="#B99150" stroke-opacity="0.18" stroke-width="9" stroke-linecap="round">
+    <path d="M540 20 L600 250 L540 480"/>
+  </g>
+
+  <!-- сквер -->
+  <circle cx="380" cy="250" r="46" fill="#B99150" fill-opacity="0.07"/>
+  <circle cx="380" cy="250" r="46" fill="none" stroke="#B99150" stroke-opacity="0.20" stroke-width="1"/>
+
+  <!-- метка заведения -->
+  <circle cx="600" cy="250" r="150" fill="url(#halo)"/>
+  <circle cx="600" cy="250" r="54" fill="none" stroke="#B99150" stroke-opacity="0.35" stroke-width="1"/>
+  <circle cx="600" cy="250" r="78" fill="none" stroke="#B99150" stroke-opacity="0.18" stroke-width="1"/>
+  <g transform="translate(600 250)">
+    <path d="M0 -34 C -19 -34, -30 -20, -30 -5 C -30 14, -12 28, 0 44 C 12 28, 30 14, 30 -5 C 30 -20, 19 -34, 0 -34 Z"
+          fill="#B99150"/>
+    <circle cx="0" cy="-5" r="11" fill="#2A0A12"/>
+  </g>
+
+  <rect width="1200" height="500" fill="url(#vig)"/>
+</svg>

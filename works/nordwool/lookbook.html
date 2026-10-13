@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Лукбук — Nordwool</title>
+<meta name="description" content="Nordwool — шубы, дублёнки и жилеты. Индивидуальный подбор, примерка, адрес магазина.">
+<meta name="theme-color" content="#05100C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/case.css">
+<link rel="stylesheet" href="css/shop.css">
+<noscript><style>.loader,.cursor,.grain{display:none!important}.reveal,[data-split] .w>i{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+
+<!-- ЗАГРУЗЧИК -->
+<div class="loader" id="loader">
+  <div class="loader__inner">
+    <svg class="loader__mark" viewBox="0 0 64 64" aria-hidden="true">
+      <path d="M14 50 V14 L50 50 V14" fill="none" stroke="currentColor" stroke-width="1.2"
+            stroke-linecap="square" pathLength="100"/>
+    </svg>
+    <span class="loader__name">NORDWOOL</span>
+    <div class="loader__bar"><i id="loaderFill"></i></div>
+    <span class="loader__num" id="loaderNum">00</span>
+  </div>
+  <div class="loader__curtain"></div>
+</div>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="head" id="head">
+  <a class="head__logo magnetic" href="index.html">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 V5 L19 19 V5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="square"/></svg>
+    <span>NORDWOOL</span>
+  </a>
+  <nav class="head__nav" id="nav">
+    <a href="catalog.html"><span>Каталог</span></a>
+    <a href="#collection"><span>Разделы</span></a>
+    <a href="#lookbook"><span>Лукбук</span></a>
+    <a href="info.html"><span>Доставка</span></a>
+  </nav>
+  <a class="head__cta magnetic" href="#booking"><span>Записаться</span></a>
+  <button class="burger" id="burger" aria-label="Меню"><span></span><span></span></button>
+</header>
+
+<nav class="rail" id="rail" aria-hidden="true">
+  <a href="#top"     data-sec="top"><i></i><em>Начало</em></a>
+  <a href="#categories" data-sec="categories"><i></i><em>Категории</em></a>
+  <a href="#collection" data-sec="collection"><i></i><em>Коллекция</em></a>
+  <a href="#lookbook"   data-sec="lookbook"><i></i><em>Лукбук</em></a>
+  <a href="#about"      data-sec="about"><i></i><em>О нас</em></a>
+  <a href="#booking"    data-sec="booking"><i></i><em>Примерка</em></a>
+</nav>
+
+<div class="menu" id="menu">
+  <a href="catalog.html">Каталог</a>
+  <a href="#collection">Разделы</a>
+  <a href="#lookbook">Лукбук</a>
+  <a href="info.html">Доставка и оплата</a>
+  <a href="info.html#shops">Магазины</a>
+  <a href="#booking">Записаться на примерку</a>
+</div>
+
+<!-- 1. HERO -->
+<section class="hero" id="top" data-dark>
+  <figure class="hero__media media" data-zoom>
+    <img src="img/hero.jpg" alt="Шубы Nordwool">
+  </figure>
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="hero__veil"></div>
+  <div class="hero__mark">
+    <span class="hero__name" data-chars>NORDWOOL</span>
+    <span class="hero__rule"></span>
+    <span class="hero__sub">Шубы · Дублёнки · Жилеты</span>
+  </div>
+  <a class="hero__scroll" href="#categories" aria-label="Листать вниз"><span></span></a>
+</section>
+
+<div class="strip" aria-hidden="true">
+  <div class="strip__row" id="strip">
+    <span>NORDWOOL</span><i></i><span>ШУБЫ</span><i></i><span>ДУБЛЁНКИ</span><i></i><span>ЖИЛЕТЫ</span><i></i><span>МЕХ И КОЖА</span><i></i><span>NORDWOOL</span><i></i><span>ШУБЫ</span><i></i><span>ДУБЛЁНКИ</span><i></i><span>ЖИЛЕТЫ</span><i></i><span>МЕХ И КОЖА</span><i></i><span>NORDWOOL</span><i></i><span>ШУБЫ</span><i></i><span>ДУБЛЁНКИ</span><i></i><span>ЖИЛЕТЫ</span><i></i><span>МЕХ И КОЖА</span><i></i><span>NORDWOOL</span><i></i><span>ШУБЫ</span><i></i><span>ДУБЛЁНКИ</span><i></i><span>ЖИЛЕТЫ</span><i></i><span>МЕХ И КОЖА</span><i></i>
+  </div>
+</div>
+
+<!-- 2. КАТЕГОРИИ -->
+<section class="section" id="categories">
+  <div class="section__head">
+    <span class="eyebrow reveal">01 — Категории</span>
+    <h2 class="display" data-split>Выберите форму</h2>
+  </div>
+  <div class="tiles tiles--6">
+    <button class="tile reveal is-on" data-cat="shuby" type="button" style="--d:0ms">
+      <figure class="media r-3x4 par" style="--op:50% 30%"><img src="img/cat-1.jpg" alt="Шубы"></figure>
+      <span class="tile__glow"></span>
+      <span class="tile__body">
+        <span class="tile__label">Шубы</span>
+        <span class="tile__line"></span>
+        <span class="tile__meta">4 модели</span>
+      </span>
+      <span class="tile__idx">01</span>
+    </button>
+    <button class="tile reveal" data-cat="dublenki" type="button" style="--d:70ms">
+      <figure class="media r-3x4 par" style="--op:50% 30%"><img src="img/d-4.jpg" alt="Дублёнки"></figure>
+      <span class="tile__glow"></span>
+      <span class="tile__body">
+        <span class="tile__label">Дублёнки</span>
+        <span class="tile__line"></span>
+        <span class="tile__meta">4 модели</span>
+      </span>
+      <span class="tile__idx">02</span>
+    </button>
+    <button class="tile reveal" data-cat="zhilety" type="button" style="--d:140ms">
+      <figure class="media r-3x4 par" style="--op:50% 30%"><img src="img/cat-3.jpg" alt="Жилеты"></figure>
+      <span class="tile__glow"></span>
+      <span class="tile__body">
+        <span class="tile__label">Жилеты</span>
+        <span class="tile__line"></span>
+        <span class="tile__meta">4 модели</span>
+      </span>
+      <span class="tile__idx">03</span>
+    </button>
+    <button class="tile reveal" data-cat="polushubki" type="button" style="--d:210ms">
+      <figure class="media r-3x4 par" style="--op:50% 30%"><img src="img/ps-4.jpg" alt="Полушубки"></figure>
+      <span class="tile__glow"></span>
+      <span class="tile__body">
+        <span class="tile__label">Полушубки</span>
+        <span class="tile__line"></span>
+        <span class="tile__meta">4 модели</span>
+      </span>
+      <span class="tile__idx">04</span>
+    </button>
+    <button class="tile reveal" data-cat="palto" type="button" style="--d:280ms">
+      <figure class="media r-3x4 par" style="--op:50% 30%"><img src="img/cat-2.jpg" alt="Пальто"></figure>
+      <span class="tile__glow"></span>
+      <span class="tile__body">
+        <span class="tile__label">Пальто</span>
+        <span class="tile__line"></span>
+        <span class="tile__meta">4 модели</span>
+      </span>
+      <span class="tile__idx">05</span>
+    </button>
+    <button class="tile reveal" data-cat="novinki" type="button" style="--d:350ms">
+      <figure class="media r-3x4 par" style="--op:50% 30%"><img src="img/nv-4.jpg" alt="Новинки"></figure>
+      <span class="tile__glow"></span>
+      <span class="tile__body">
+        <span class="tile__label">Новинки</span>
+        <span class="tile__line"></span>
+        <span class="tile__meta">4 модели</span>
+      </span>
+      <span class="tile__idx">06</span>
+    </button>
+  </div>
+</section>
+
+<!-- МАНИФЕСТ -->
+<section class="manifest" data-dark>
+  <div class="aurora aurora--soft" aria-hidden="true"><i></i><i></i></div>
+  <div class="manifest__in">
+    <span class="eyebrow reveal">Философия</span>
+    <p class="manifest__line" data-split>Вещь, которую носят двадцать лет, не выбирают за пятнадцать минут</p>
+    <div class="manifest__foot reveal" style="--d:200ms">
+      <span>Демонстрационный проект</span>
+      <a class="link-arrow" href="#booking">Записаться на примерку</a>
+    </div>
+  </div>
+</section>
+
+<!-- 3. РАЗДЕЛЫ И ТОВАРЫ -->
+<section class="section" id="collection">
+  <div class="section__head section__head--row">
+    <div>
+      <span class="eyebrow reveal">02 — Раздел</span>
+      <h2 class="display" id="catTitle">Шубы</h2>
+    </div>
+    <nav class="cat-nav reveal" id="catNav" style="--d:150ms"><button type="button" data-cat="shuby" class="is-on">Шубы</button><button type="button" data-cat="dublenki">Дублёнки</button><button type="button" data-cat="zhilety">Жилеты</button><button type="button" data-cat="polushubki">Полушубки</button><button type="button" data-cat="palto">Пальто</button><button type="button" data-cat="novinki">Новинки</button></nav>
+  </div>
+  <div class="grid" id="grid">
+      <article class="card reveal" data-cat="shuby" style="--d:0ms">
+        <figure class="media r-4x5 par" style="--op:50% 50%" data-zoom><img src="img/p-1.jpg" alt="Шуба из норки" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Шуба из норки</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+      <article class="card reveal" data-cat="shuby" style="--d:90ms">
+        <figure class="media r-4x5 par" style="--op:50% 28%" data-zoom><img src="img/p-4.jpg" alt="Шуба длинная" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Шуба длинная</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+      <article class="card reveal" data-cat="shuby" style="--d:180ms">
+        <figure class="media r-4x5 par" style="--op:50% 62%" data-zoom><img src="img/cat-1.jpg" alt="Шуба с капюшоном" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Шуба с капюшоном</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+      <article class="card reveal" data-cat="shuby" style="--d:270ms">
+        <figure class="media r-4x5 par" style="--op:44% 40%" data-zoom><img src="img/look-3.jpg" alt="Шуба поперечка" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Шуба поперечка</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+      <article class="card reveal is-off" data-cat="dublenki" style="--d:0ms">
+        <figure class="media r-4x5 par" style="--op:50% 50%" data-zoom><img src="img/d-1.jpg" alt="Дублёнка с капюшоном" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Дублёнка с капюшоном</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+      <article class="card reveal is-off" data-cat="dublenki" style="--d:90ms">
+        <figure class="media r-4x5 par" style="--op:50% 28%" data-zoom><img src="img/d-2.jpg" alt="Дублёнка укороченная" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Дублёнка укороченная</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+      <article class="card reveal is-off" data-cat="dublenki" style="--d:180ms">
+        <figure class="media r-4x5 par" style="--op:50% 62%" data-zoom><img src="img/d-3.jpg" alt="Дублёнка классическая" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Дублёнка классическая</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+      <article class="card reveal is-off" data-cat="dublenki" style="--d:270ms">
+        <figure class="media r-4x5 par" style="--op:44% 40%" data-zoom><img src="img/d-4.jpg" alt="Дублёнка с поясом" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Дублёнка с поясом</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+      <article class="card reveal is-off" data-cat="zhilety" style="--d:0ms">
+        <figure class="media r-4x5 par" style="--op:50% 50%" data-zoom><img src="img/p-3.jpg" alt="Жилет из лисы" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Жилет из лисы</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+      <article class="card reveal is-off" data-cat="zhilety" style="--d:90ms">
+        <figure class="media r-4x5 par" style="--op:50% 28%" data-zoom><img src="img/p-6.jpg" alt="Жилет короткий" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Жилет короткий</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+      <article class="card reveal is-off" data-cat="zhilety" style="--d:180ms">
+        <figure class="media r-4x5 par" style="--op:50% 62%" data-zoom><img src="img/cat-3.jpg" alt="Жилет удлинённый" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Жилет удлинённый</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+      <article class="card reveal is-off" data-cat="zhilety" style="--d:270ms">
+        <figure class="media r-4x5 par" style="--op:44% 40%" data-zoom><img src="img/look-1.jpg" alt="Жилет с капюшоном" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Жилет с капюшоном</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+      <article class="card reveal is-off" data-cat="polushubki" style="--d:0ms">
+        <figure class="media r-4x5 par" style="--op:50% 50%" data-zoom><img src="img/ps-1.jpg" alt="Полушубок из норки" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Полушубок из норки</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+      <article class="card reveal is-off" data-cat="polushubki" style="--d:90ms">
+        <figure class="media r-4x5 par" style="--op:50% 28%" data-zoom><img src="img/ps-2.jpg" alt="Полушубок из мутона" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Полушубок из мутона</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+      <article class="card reveal is-off" data-cat="polushubki" style="--d:180ms">
+        <figure class="media r-4x5 par" style="--op:50% 62%" data-zoom><img src="img/ps-3.jpg" alt="Полушубок с воротником" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Полушубок с воротником</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+      <article class="card reveal is-off" data-cat="polushubki" style="--d:270ms">
+        <figure class="media r-4x5 par" style="--op:44% 40%" data-zoom><img src="img/ps-4.jpg" alt="Полушубок свободный" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Полушубок свободный</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+      <article class="card reveal is-off" data-cat="palto" style="--d:0ms">
+        <figure class="media r-4x5 par" style="--op:50% 50%" data-zoom><img src="img/p-2.jpg" alt="Пальто с мехом" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Пальто с мехом</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+      <article class="card reveal is-off" data-cat="palto" style="--d:90ms">
+        <figure class="media r-4x5 par" style="--op:50% 28%" data-zoom><img src="img/p-5.jpg" alt="Пальто прямое" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Пальто прямое</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+      <article class="card reveal is-off" data-cat="palto" style="--d:180ms">
+        <figure class="media r-4x5 par" style="--op:50% 62%" data-zoom><img src="img/cat-2.jpg" alt="Пальто с поясом" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Пальто с поясом</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+      <article class="card reveal is-off" data-cat="palto" style="--d:270ms">
+        <figure class="media r-4x5 par" style="--op:44% 40%" data-zoom><img src="img/look-4.jpg" alt="Пальто длинное" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Пальто длинное</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+      <article class="card reveal is-off" data-cat="novinki" style="--d:0ms">
+        <figure class="media r-4x5 par" style="--op:50% 50%" data-zoom><img src="img/nv-1.jpg" alt="Новинка сезона" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Новинка сезона</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+      <article class="card reveal is-off" data-cat="novinki" style="--d:90ms">
+        <figure class="media r-4x5 par" style="--op:50% 28%" data-zoom><img src="img/nv-2.jpg" alt="Новинка сезона" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Новинка сезона</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+      <article class="card reveal is-off" data-cat="novinki" style="--d:180ms">
+        <figure class="media r-4x5 par" style="--op:50% 62%" data-zoom><img src="img/nv-3.jpg" alt="Новинка сезона" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Новинка сезона</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+      <article class="card reveal is-off" data-cat="novinki" style="--d:270ms">
+        <figure class="media r-4x5 par" style="--op:44% 40%" data-zoom><img src="img/nv-4.jpg" alt="Новинка сезона" loading="lazy"></figure>
+        <div class="card__foot">
+          <h3>Новинка сезона</h3>
+          <p class="price"><span class="price__v">По запросу</span><span class="price__a">Смотреть</span></p>
+        </div>
+      </article>
+  </div>
+  <div class="tocatalog reveal">
+    <a class="btn-cat" href="catalog.html">Весь каталог · 24 модели</a>
+    <span>Фильтр по размеру, карточки с ценами и заявка в один клик</span>
+  </div>
+</section>
+
+<!-- 4. ЛУКБУК -->
+<section class="lookbook" id="lookbook" data-dark>
+  <div class="lookbook__head">
+    <div>
+      <span class="eyebrow reveal">03 — Лукбук</span>
+      <h2 class="display display--xl" data-split>Зима как жанр</h2>
+    </div>
+    <p class="lookbook__hint reveal" style="--d:200ms">
+      <span class="drag-dot"></span>Тяните вбок или листайте свайпом
+    </p>
+  </div>
+
+  <div class="rail-h reveal-group" id="railH">
+    <figure class="hframe hframe--tall media par" data-zoom><img src="img/look-1.jpg" alt="Лукбук 01" loading="lazy"></figure>
+    <div class="hnote">
+      <p>Каждое изделие отшивается в единственном экземпляре: посадка, длина и рукав подбираются под фигуру.</p>
+      <span class="eyebrow">Зима 2026</span>
+    </div>
+    <figure class="hframe hframe--wide media par" data-zoom><img src="img/look-2.jpg" alt="Лукбук 02" loading="lazy"></figure>
+    <figure class="hframe hframe--mid media par" data-zoom><img src="img/look-3.jpg" alt="Лукбук 03" loading="lazy"></figure>
+    <figure class="hframe hframe--tall media par" data-zoom><img src="img/look-4.jpg" alt="Лукбук 04" loading="lazy"></figure>
+    <figure class="hframe hframe--wide media par" data-zoom><img src="img/look-5.jpg" alt="Лукбук 05" loading="lazy"></figure>
+  </div>
+</section>
+
+<!-- 5. ДОВЕРИЕ -->
+<section class="section trust" id="about">
+  <div class="section__head">
+    <span class="eyebrow reveal">04 — Почему выбирают нас</span>
+    <h2 class="display" data-split>Три причины</h2>
+  </div>
+  <div class="trust__grid">
+    <div class="trust__item reveal" style="--d:0ms">
+      <span class="trust__num">01</span>
+      <span class="trust__rule"></span>
+      <h3>Индивидуальный подбор</h3>
+      <p>Стилист подбирает модель под фигуру, рост и образ жизни — от повседневной дублёнки до вечерней шубы.</p>
+    </div>
+    <div class="trust__item reveal" style="--d:140ms">
+      <span class="trust__num">02</span>
+      <span class="trust__rule"></span>
+      <h3>Примерка без спешки</h3>
+      <p>Приезжайте в магазин и меряйте столько, сколько нужно. Подскажем, что село, а что нет.</p>
+    </div>
+    <div class="trust__item reveal" style="--d:280ms">
+      <span class="trust__num">03</span>
+      <span class="trust__rule"></span>
+      <h3>Гарантия на изделие</h3>
+      <p>Чек и гарантийные обязательства на каждое изделие. Подскажем, как хранить мех летом.</p>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stats__i reveal"><b>3</b><span>категории: шубы, дублёнки, жилеты</span></div>
+    <div class="stats__i reveal" style="--d:120ms"><b>10—19</b><span>часы работы, сб и вс до 17:00</span></div>
+    <div class="stats__i reveal" style="--d:240ms"><b>18А</b><span>ул. Царюка, Беларусь</span></div>
+  </div>
+</section>
+
+<!-- 6. ЗАПИСЬ -->
+<section class="booking" id="booking" data-dark>
+  <figure class="booking__bg media"><img src="img/booking.jpg" alt="" loading="lazy"></figure>
+  <div class="aurora aurora--soft" aria-hidden="true"><i></i><i></i></div>
+  <div class="booking__inner">
+    <div class="booking__text">
+      <span class="eyebrow reveal">05 — Примерка</span>
+      <h2 class="display" data-split>Записаться на примерку</h2>
+      <p class="booking__lead reveal" style="--d:200ms">Напишите, когда вам удобно приехать. Ответим в рабочее время и подтвердим визит.</p>
+      <ul class="booking__list reveal" style="--d:300ms">
+        <li>Работаем 10:00 — 19:00, сб и вс до 17:00</li>
+        <li>г. Беларусь</li>
+        <li>Примерка ни к чему не обязывает</li>
+      </ul>
+    </div>
+    <form class="form reveal" id="form" novalidate style="--d:160ms">
+      <label class="field">
+        <span>Имя</span>
+        <input type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" required>
+        <i class="field__line"></i>
+      </label>
+      <label class="field">
+        <span>Телефон</span>
+        <input type="tel" name="phone" autocomplete="tel" placeholder="+375 (__) ___-__-__" required>
+        <i class="field__line"></i>
+      </label>
+      <label class="field">
+        <span>Удобное время</span>
+        <input type="text" name="time" placeholder="Например: суббота, после 15:00" required>
+        <i class="field__line"></i>
+      </label>
+      <button class="btn magnetic" type="submit"><span>Отправить заявку</span></button>
+      <p class="form__note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</p>
+      <div class="form__done" id="formDone">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 16.5 L13.5 23 L25 10" fill="none" stroke="currentColor" stroke-width="1.4" pathLength="100"/></svg>
+        <p>Спасибо. Мы свяжемся с вами и подтвердим время примерки.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot__col">
+    <span class="foot__logo">NORDWOOL</span>
+    <p>г. Беларусь<br>10:00 — 19:00, сб/вс до 17:00</p>
+  </div>
+  <div class="foot__col">
+    <a href="tel:+375290000000">+375 29 000-00-00</a>
+    <a href="viber://chat?number=%2B375290000000">Написать в Viber</a>
+  </div>
+  <div class="foot__col">
+    <a href="#" rel="noopener">Instagram</a>
+    <a href="#" rel="noopener">Telegram</a>
+    <a href="#" rel="noopener">WhatsApp</a>
+  </div>
+  <div class="foot__col foot__col--end"><span>© 2026 Nordwool</span><span class="draft-note">Демонстрационный проект · фотографии из фотостока, контакты условные</span></div>
+</footer>
+
+<!-- Лайтбокс -->
+<div class="lb" id="lb" aria-hidden="true">
+  <div class="lb__bg"></div>
+  <span class="lb__ring" id="lbRing"></span>
+  <button class="lb__close magnetic" id="lbClose" aria-label="Закрыть"></button>
+  <button class="lb__nav lb__nav--prev" id="lbPrev" aria-label="Предыдущее фото"></button>
+  <button class="lb__nav lb__nav--next" id="lbNext" aria-label="Следующее фото"></button>
+  <figure class="lb__stage"><img id="lbImg" src="" alt=""></figure>
+  <div class="lb__cap"><span id="lbCap"></span><em id="lbCount"></em></div>
+</div>
+
+<div class="cursor" id="cursor" aria-hidden="true">
+  <span class="cursor__ring"><b>Смотреть</b></span>
+  <span class="cursor__dot"></span>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/author.js"></script>
+</body>
+</html>

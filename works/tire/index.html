@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Протектор — шиномонтаж · демо</title>
+<meta name="description" content="Демо-сайт шиномонтажа: колесо крутится при прокрутке, цена по радиусу, живая очередь и запись. Бренд вымышленный.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Шиномонтаж: графит, резина и сигнальный жёлтый */
+:root{
+  --bg:#141517; --bg2:#1C1E21; --card:#222529; --ink:#F2F2EE; --muted:#9A9DA3; --yel:#FFC629; --line:rgba(255,255,255,.09); --ok:#4BD37B; --red:#FF5A4E;
+  --head:"Oswald","Arial Narrow",sans-serif; --sans:"Inter","Segoe UI",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--yel);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+h1,h2,h3{font-family:var(--head);font-weight:600;line-height:1;text-transform:uppercase;letter-spacing:.01em}
+.kick{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--yel)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 26px;background:var(--yel);color:#111;font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:14px;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.dark{background:var(--card);color:var(--ink)}
+.stripe{height:10px;background:repeating-linear-gradient(-45deg,var(--yel) 0 16px,#111 16px 32px)}
+
+header{position:sticky;top:0;z-index:20;background:rgba(20,21,23,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+.logo{font-family:var(--head);font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.logo span{color:var(--yel)}
+nav{display:flex;gap:28px;font-weight:600;font-size:14px;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.live{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700}
+.live i{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(75,211,123,.6);animation:pulse 1.6s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(75,211,123,0)}}
+@media (max-width:820px){ nav{display:none} .live span{display:none} header .btn{padding:12px 16px;font-size:12px} }
+
+/* герой: колесо, которое крутится от прокрутки */
+.hero{min-height:calc(100svh - 66px);display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:30px;padding-block:40px;position:relative}
+.hero h1{font-size:clamp(54px,9vw,132px)}
+.hero h1 span{color:var(--yel);display:block}
+.hero p{margin-top:18px;max-width:28em;color:var(--muted);font-size:clamp(16px,1.4vw,18px)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.wheel-box{position:relative;aspect-ratio:1;width:min(100%,560px);justify-self:center}
+.wheel-box svg{width:100%;height:100%;display:block;overflow:visible}
+
+.speed{position:absolute;right:0;bottom:6%;font-family:var(--head);font-size:14px;color:var(--muted);text-align:right;text-transform:uppercase;letter-spacing:.1em}
+.speed b{display:block;font-size:46px;color:var(--ink);line-height:1;font-variant-numeric:tabular-nums}
+@media (max-width:860px){ .hero{grid-template-columns:1fr;min-height:0;padding-top:30px} .wheel-box{width:min(88%,420px);order:-1} .speed b{font-size:34px} }
+
+/* очередь */
+.queue{padding-block:clamp(60px,10vh,110px)}
+.sec-h{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+.sec-h h2{font-size:clamp(40px,6vw,80px)}
+.sec-h p{color:var(--muted);max-width:40em}
+.posts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.post{background:var(--card);padding:20px;display:flex;flex-direction:column;gap:12px;min-height:200px;position:relative;overflow:hidden}
+.post h3{font-size:22px}
+.post .st{font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px}
+.post .st i{width:8px;height:8px;border-radius:50%}
+.post .car{font-size:14px;color:var(--muted)}
+.post .bar{height:6px;background:var(--line);margin-top:auto;overflow:hidden}
+.post .bar i{display:block;height:100%;background:var(--yel);transition:width 1s linear}
+.post .left{font-family:var(--head);font-size:30px;font-variant-numeric:tabular-nums}
+.wait{margin-top:14px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:18px 22px;background:var(--bg2);border-left:4px solid var(--yel)}
+.wait b{font-family:var(--head);font-size:28px;color:var(--yel)}
+@media (max-width:900px){ .posts{grid-template-columns:1fr 1fr} .post{min-height:170px} }
+
+/* калькулятор */
+.price{padding-block:clamp(60px,10vh,110px);background:var(--bg2)}
+.pc{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start}
+.panel{background:var(--card);padding:clamp(18px,3vw,30px);display:flex;flex-direction:column;gap:22px}
+.panel h3{font-size:18px;color:var(--muted);letter-spacing:.08em}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{padding:12px 16px;font-weight:700;font-size:14px;background:var(--bg2);box-shadow:inset 0 0 0 1px var(--line)}
+.seg button[aria-pressed="true"]{background:var(--yel);color:#111;box-shadow:none}
+.radius{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.radius button{flex:0 0 auto;width:58px;height:58px;border-radius:50%;font-family:var(--head);font-size:18px;background:var(--bg2);box-shadow:inset 0 0 0 5px #0d0e10,inset 0 0 0 7px var(--line);transition:transform .2s}
+.radius button[aria-pressed="true"]{background:var(--yel);color:#111;transform:scale(1.08)}
+.svc{display:flex;flex-direction:column;gap:8px}
+.svc label{display:flex;align-items:center;gap:12px;padding:14px;background:var(--bg2);cursor:pointer;font-weight:600;font-size:15px}
+.svc label span{margin-left:auto;color:var(--muted);font-variant-numeric:tabular-nums}
+.svc input{width:20px;height:20px;accent-color:var(--yel)}
+.receipt{background:#F4F1E8;color:#151515;padding:26px 24px 30px;position:sticky;top:86px;font-family:"Courier New",monospace;font-size:14px;--z:radial-gradient(circle at 8px 0,transparent 8px,#F4F1E8 8.5px);mask:linear-gradient(#000,#000) top/100% calc(100% - 10px) no-repeat,radial-gradient(circle at 8px 10px,transparent 7px,#000 7.5px) bottom/16px 10px repeat-x;-webkit-mask:linear-gradient(#000,#000) top/100% calc(100% - 10px) no-repeat,radial-gradient(circle at 8px 10px,transparent 7px,#000 7.5px) bottom/16px 10px repeat-x}
+.receipt h3{font-family:var(--head);font-size:24px;text-align:center}
+.receipt .sub{text-align:center;color:#666;font-size:12px;margin:4px 0 14px}
+.receipt .ln{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px dashed #bbb}
+.receipt .sum{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;font-weight:700}
+.receipt .sum b{font-family:var(--head);font-size:42px}
+.receipt .btn{width:100%;margin-top:16px}
+@media (max-width:900px){ .pc{grid-template-columns:1fr} .receipt{position:static} }
+
+/* запись */
+.book{padding-block:clamp(60px,10vh,110px)}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px}
+.slots button{padding:14px 6px;background:var(--card);font-weight:700;font-variant-numeric:tabular-nums;display:flex;flex-direction:column;align-items:center;gap:2px}
+.slots button small{font-size:11px;color:var(--muted);font-weight:500}
+.slots button:disabled{opacity:.3;cursor:not-allowed}
+.slots button[aria-pressed="true"]{background:var(--yel);color:#111}
+.slots button[aria-pressed="true"] small{color:#333}
+.confirm{margin-top:18px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;padding:20px;background:var(--card)}
+.confirm p{color:var(--muted)}
+.confirm p b{color:var(--ink)}
+.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,200%);visibility:hidden;background:var(--ok);color:#06210F;font-weight:700;padding:14px 20px;z-index:40;transition:transform .4s,visibility .4s;max-width:calc(100% - 32px)}
+.toast.show{transform:translate(-50%,0);visibility:visible}
+
+footer{border-top:1px solid var(--line);padding-block:40px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+.demo{position:fixed;left:12px;bottom:12px;z-index:30;padding:7px 12px;background:var(--yel);color:#111;font-size:11.5px;font-weight:800;letter-spacing:.04em}
+@media (prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important} }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">Протек<span>тор</span></a>
+    <nav><a href="#queue">Очередь</a><a href="#price">Цены</a><a href="#book">Запись</a></nav>
+    <div class="live"><i></i><span id="liveTxt">Свободно постов: 1</span></div>
+    <a class="btn" href="#book">Записаться</a>
+  </div>
+</header>
+<div class="stripe"></div>
+
+<main id="top">
+  <section class="wrap hero">
+    <div>
+      <p class="kick">Шиномонтаж · 4 поста · без выходных</p>
+      <h1>Переобуем<span>за 25 минут</span></h1>
+      <p>Смотрите очередь онлайн, считайте цену по своему радиусу и записывайтесь на время — без ожидания в машине.</p>
+      <div class="cta"><a class="btn" href="#price">Узнать цену</a><a class="btn dark" href="#queue">Очередь сейчас</a></div>
+    </div>
+    <div class="wheel-box" aria-hidden="true">
+      <svg viewBox="0 0 600 600" id="wheelSvg"></svg>
+      <div class="speed"><b id="spd">0</b>км/ч прокрутки</div>
+    </div>
+  </section>
+
+  <section class="queue" id="queue">
+    <div class="wrap">
+      <div class="sec-h"><p class="kick">Онлайн-очередь</p><h2>Что на постах прямо сейчас</h2><p>Данные обновляются каждые несколько секунд. Видно, сколько осталось до свободного поста.</p></div>
+      <div class="posts" id="posts"></div>
+      <div class="wait"><span>Ожидание без записи сейчас</span><b id="waitT">15 мин</b><a class="btn" href="#book">Записаться без очереди</a></div>
+    </div>
+  </section>
+
+  <section class="price" id="price">
+    <div class="wrap">
+      <div class="sec-h"><p class="kick">Калькулятор</p><h2>Цена за ваши колёса</h2><p>Выберите машину, радиус и услуги — чек соберётся сам.</p></div>
+      <div class="pc">
+        <div class="panel">
+          <h3>Тип авто</h3><div class="seg" id="type"></div>
+          <h3>Радиус</h3><div class="radius" id="radius"></div>
+          <h3>Диски</h3><div class="seg" id="disk"></div>
+          <h3>Услуги</h3><div class="svc" id="svc"></div>
+        </div>
+        <div class="receipt" aria-live="polite">
+          <h3>Протектор</h3><p class="sub">предварительный чек · 4 колеса</p>
+          <div id="lines"></div>
+          <div class="sum"><span>ИТОГО</span><b><span id="sum">0</span> р.</b></div>
+          <a class="btn" href="#book">Записаться с этим чеком</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="book" id="book">
+    <div class="wrap">
+      <div class="sec-h"><p class="kick">Запись</p><h2>Выберите время</h2><p>Сегодня и завтра. Приезжайте ко времени — пост будет ждать вас.</p></div>
+      <div class="seg" id="bday" style="margin-bottom:14px"><button aria-pressed="true" data-d="0">Сегодня</button><button aria-pressed="false" data-d="1">Завтра</button></div>
+      <div class="slots" id="slots"></div>
+      <div class="confirm"><p id="cText">Выберите свободное время</p><button class="btn" id="cBtn">Подтвердить</button></div>
+    </div>
+  </section>
+</main>
+<div class="stripe"></div>
+<footer><div class="wrap"><div><b style="color:var(--ink)">ПРОТЕКТОР</b> · шиномонтаж · ул. Примерная, 1</div><div>+375 (00) 000-00-00 · ежедневно 8:00–22:00</div><div>© 2026 · демо-сайт, бренд вымышленный · saity.by</div></div></footer>
+<span class="demo">Демо-сайт · saity.by</span>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- колесо ---------- */
+let tread = ""; for (let i = 0; i < 48; i++) { const a = i / 48 * 360; tread += `<path d="M300 22 l-14 -2 l-6 34 l14 2 z" transform="rotate(${a} 300 300)" fill="#26282B"/><path d="M300 22 l14 -2 l6 34 l-14 2 z" transform="rotate(${a + 3.75} 300 300)" fill="#1E2023"/>`; }
+let spokes = ""; for (let i = 0; i < 5; i++) spokes += `<path d="M300 300 L284 150 Q300 128 316 150 Z" transform="rotate(${i * 72} 300 300)" fill="url(#rim)" stroke="#8A8F96" stroke-width="2"/><path d="M300 300 L262 158 Q300 128 338 158 Z" transform="rotate(${i * 72 + 36} 300 300)" fill="#0B0C0D" opacity=".85"/>`;
+let bolts = ""; for (let i = 0; i < 5; i++) bolts += `<circle cx="300" cy="266" r="7" fill="#D7DADF" stroke="#666" transform="rotate(${i * 72 + 36} 300 300)"/>`;
+$("#wheelSvg").innerHTML = `<defs>
+  <radialGradient id="tire" cx=".5" cy=".5" r=".5"><stop offset=".62" stop-color="#0D0E10"/><stop offset=".9" stop-color="#26292D"/><stop offset="1" stop-color="#111214"/></radialGradient>
+  <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F2F4F7"/><stop offset=".5" stop-color="#9AA0A8"/><stop offset="1" stop-color="#D9DCE1"/></linearGradient>
+  <radialGradient id="glow"><stop offset="0" stop-color="#FFC629" stop-opacity=".22"/><stop offset="1" stop-color="#FFC629" stop-opacity="0"/></radialGradient>
+</defs>
+<circle cx="300" cy="300" r="300" fill="url(#glow)"/>
+<ellipse cx="300" cy="585" rx="230" ry="16" fill="#000" opacity=".5"/>
+<g id="wheel">
+  <circle cx="300" cy="300" r="278" fill="url(#tire)"/>${tread}
+  <circle cx="300" cy="300" r="182" fill="#0B0C0D"/>
+  <circle cx="300" cy="300" r="176" fill="none" stroke="url(#rim)" stroke-width="12"/>
+  <circle cx="300" cy="300" r="160" fill="#16181B"/>
+  ${spokes}
+  <circle cx="300" cy="300" r="52" fill="url(#rim)" stroke="#777" stroke-width="2"/>${bolts}
+  <circle cx="300" cy="300" r="20" fill="#16181B"/><text x="300" y="306" text-anchor="middle" font-family="Oswald" font-size="16" fill="#FFC629">П</text>
+  <text font-family="Oswald" font-size="17" letter-spacing="6" fill="#5A5E64"><textPath href="#tp">ПРОТЕКТОР · 205/55 R16 · ВСЕСЕЗОН · ПРОТЕКТОР · 205/55 R16 ·</textPath></text>
+  <path id="tp" d="M300 300 m-232 0 a232 232 0 1 1 464 0 a232 232 0 1 1 -464 0" fill="none"/>
+  <circle cx="420" cy="420" r="5" fill="#FFC629"/>
+</g>
+<g id="motion" opacity="0" stroke="#FFC629" stroke-width="3" stroke-linecap="round"><line x1="-20" y1="200" x2="40" y2="200"/><line x1="-50" y1="300" x2="30" y2="300"/><line x1="-20" y1="400" x2="40" y2="400"/></g>`;
+let ang = 0, vel = 0, lastY = scrollY, lastT = performance.now();
+addEventListener("scroll", () => { const now = performance.now(), dy = scrollY - lastY, dt = Math.max(16, now - lastT); vel += dy / dt * 9; lastY = scrollY; lastT = now; }, {passive: true});
+let wheelOn = true; try { new IntersectionObserver(e => { wheelOn = e[0].isIntersecting; }).observe($(".wheel-box")); } catch (e) {}
+(function spin(){ if (!wheelOn) { vel = 0; requestAnimationFrame(spin); return; } vel *= .94; ang += vel + (reduce ? 0 : .25); $("#wheel").setAttribute("transform", `rotate(${ang % 360} 300 300)`); const kmh = Math.min(240, Math.round(Math.abs(vel) * 9)); $("#spd").textContent = kmh; $("#motion").setAttribute("opacity", Math.min(1, Math.abs(vel) / 12)); requestAnimationFrame(spin); })();
+
+/* ---------- очередь ---------- */
+const CARS = ["Volkswagen Passat", "Renault Logan", "Skoda Octavia", "Geely Coolray", "Lada Vesta", "Toyota RAV4", "Kia Rio", "Hyundai Tucson", "BMW X3", "Volvo XC60"];
+const P = [{busy: true, left: 14, total: 25, car: 0}, {busy: true, left: 6, total: 20, car: 1}, {busy: false, left: 0, total: 1, car: -1}, {busy: true, left: 21, total: 30, car: 5}];
+let ci = 6;
+function drawPosts(){
+  $("#posts").innerHTML = P.map((p, i) => `<article class="post"><h3>Пост ${i + 1}</h3><span class="st"><i style="background:${p.busy ? "var(--red)" : "var(--ok)"}"></i>${p.busy ? "Занят" : "Свободен — заезжайте"}</span><span class="car">${p.busy ? CARS[p.car] : "Можно приехать без записи"}</span>${p.busy ? `<span class="left">${p.left} мин</span>` : `<span class="left" style="color:var(--ok)">0 мин</span>`}<div class="bar"><i style="width:${p.busy ? (1 - p.left / p.total) * 100 : 100}%"></i></div></article>`).join("");
+  const free = P.filter(p => !p.busy).length; $("#liveTxt").textContent = `Свободно постов: ${free}`;
+  $("#waitT").textContent = free ? "0 мин" : `${Math.min(...P.map(p => p.left))} мин`;
+}
+function tick(){ P.forEach(p => { if (p.busy) { p.left--; if (p.left <= 0) { p.busy = false; p.car = -1; } } else if (Math.random() < .35) { p.busy = true; p.total = 20 + Math.floor(Math.random() * 15); p.left = p.total; p.car = ci++ % CARS.length; } }); drawPosts(); }
+drawPosts(); setInterval(tick, 3000);
+
+/* ---------- калькулятор ---------- */
+const TYPES = [["Легковой", 1], ["Кроссовер", 1.25], ["Внедорожник", 1.5], ["Микроавтобус", 1.6]];
+const RADII = [13, 14, 15, 16, 17, 18, 19, 20, 21];
+const DISKS = [["Штампованные", 0], ["Литые", 8]];
+const SVC = [["Снятие и установка", 6, true], ["Монтаж / демонтаж", 7, true], ["Балансировка", 7, true], ["Мойка колёс", 3, false], ["Хранение шин (сезон)", 15, false], ["Ремонт прокола", 12, false]];
+const S = {type: 0, r: 3, disk: 1, svc: SVC.map(s => s[2])};
+const seg = (box, arr, key) => { $(box).innerHTML = arr.map((a, i) => `<button aria-pressed="${S[key] === i}" data-i="${i}">${a[0]}</button>`).join(""); $$(box + " button").forEach(b => b.addEventListener("click", () => { S[key] = +b.dataset.i; $$(box + " button").forEach(x => x.setAttribute("aria-pressed", String(x === b))); calc(); })); };
+seg("#type", TYPES, "type"); seg("#disk", DISKS, "disk");
+$("#radius").innerHTML = RADII.map((r, i) => `<button aria-pressed="${S.r === i}" data-i="${i}" aria-label="Радиус ${r}">R${r}</button>`).join("");
+$$("#radius button").forEach(b => b.addEventListener("click", () => { S.r = +b.dataset.i; $$("#radius button").forEach(x => x.setAttribute("aria-pressed", String(x === b))); calc(); }));
+$("#svc").innerHTML = SVC.map((s, i) => `<label><input type="checkbox" data-i="${i}" ${s[2] ? "checked" : ""}>${s[0]}<span id="sp${i}"></span></label>`).join("");
+$$("#svc input").forEach(c => c.addEventListener("change", () => { S.svc[+c.dataset.i] = c.checked; calc(); }));
+let shown = 0;
+function calc(){
+  const k = TYPES[S.type][1] * (1 + S.r * .09);
+  const lines = SVC.map((s, i) => { const one = i === 4 ? s[1] * (1 + S.r * .08) : (s[1] + (i < 3 ? DISKS[S.disk][1] / 3 : 0)) * k; return {n: s[0], p: Math.round(one * 4), on: S.svc[i]}; });
+  lines.forEach((l, i) => $("#sp" + i).textContent = `${l.p} р.`);
+  const on = lines.filter(l => l.on), total = on.reduce((s, l) => s + l.p, 0);
+  $("#lines").innerHTML = `<div class="ln"><span>${TYPES[S.type][0]}, R${RADII[S.r]}, ${DISKS[S.disk][0].toLowerCase()}</span></div>` + (on.length ? on.map(l => `<div class="ln"><span>${l.n}</span><span>${l.p}.00</span></div>`).join("") : `<div class="ln"><span>Выберите услуги</span></div>`);
+  const from = shown, t0 = performance.now(); (function a(t){ const p = Math.min(1, (t - t0) / 500); shown = Math.round(from + (total - from) * (1 - Math.pow(1 - p, 3))); $("#sum").textContent = shown; if (p < 1) requestAnimationFrame(a); })(t0);
+}
+calc();
+
+/* ---------- запись ---------- */
+let day = 0, slot = null;
+function slots(){
+  const now = new Date(), out = [];
+  for (let h = 8; h < 22; h++) for (const m of [0, 30]) { const x = Math.sin((day + 3) * 71 + h * 7 + m) * 1e4, taken = (x - Math.floor(x)) < .45 || (day === 0 && (h < now.getHours() || (h === now.getHours() && m <= now.getMinutes()))); const free = taken ? 0 : 1 + Math.floor((x - Math.floor(x)) * 3);
+    out.push(`<button ${taken ? "disabled" : ""} aria-pressed="false" data-t="${h}:${m ? "30" : "00"}">${h}:${m ? "30" : "00"}<small>${taken ? "занято" : free + " пост" + (free > 1 ? "а" : "")}</small></button>`); }
+  $("#slots").innerHTML = out.join("");
+  $$("#slots button").forEach(b => b.addEventListener("click", () => { slot = b.dataset.t; $$("#slots button").forEach(x => x.setAttribute("aria-pressed", String(x === b))); $("#cText").innerHTML = `<b>${day ? "Завтра" : "Сегодня"}, ${slot}</b> · ${TYPES[S.type][0].toLowerCase()}, R${RADII[S.r]} · примерно <b>${$("#sum").textContent} р.</b>`; }));
+}
+$$("#bday button").forEach(b => b.addEventListener("click", () => { day = +b.dataset.d; slot = null; $$("#bday button").forEach(x => x.setAttribute("aria-pressed", String(x === b))); $("#cText").textContent = "Выберите свободное время"; slots(); }));
+slots();
+$("#cBtn").addEventListener("click", () => { const t = $("#toast"); t.textContent = slot ? `Готово! Ждём вас ${day ? "завтра" : "сегодня"} в ${slot}. Это демо — на настоящем сайте придёт SMS.` : "Сначала выберите время"; t.classList.add("show"); setTimeout(() => t.classList.remove("show"), 3200); });
+</script>
+</body>
+</html>
