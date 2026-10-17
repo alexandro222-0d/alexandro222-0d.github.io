@@ -178,6 +178,7 @@ body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;
 .work.big b{font-size:22px}
 .work.wide{grid-column:span 2}
 .work.wide figure{aspect-ratio:16/6.6}
+.work.wide img{object-position:50% 45%}
 .work.hide{display:none}
 
 /* этапы */
@@ -392,7 +393,7 @@ footer .meta a:hover{color:var(--cream)}
     <span class="scroll" aria-hidden="true"></span>
   </section>
   <div class="strip" aria-label="Коротко">
-    <div><b>7<em>РАБОТ</em></b><span>в портфолио,<br>2 живых сайта</span></div>
+    <div><b>9<em>РАБОТ</em></b><span>в портфолио,<br>2 живых сайта</span></div>
     <div><b>1<em>ДЕНЬ</em></b><span>и макет<br>у вас</span></div>
     <div><b>3<em>ДНЯ</em></b><span>до готового<br>сайта</span></div>
     <div><b>100<em>%</em></b><span>оплата после<br>запуска сайта</span></div>
@@ -536,11 +537,13 @@ const WORKS = [
   {slug: "cassiopeia", t: "Cassiopeia", s: "Кофейня и десерты", f: "food", tag: "Концепт"},
   {slug: "four", t: "Four Signatures", s: "Коктейльный бар", f: "food", tag: "Концепт"},
   {slug: "villa", t: "Villa Saint-Aure", s: "Загородный дом", f: "stay", tag: "Концепт"},
-  {slug: "nordwool", t: "NORDWOOL", s: "Магазин меха и кожи", f: "shop", tag: "Концепт"}
+  {slug: "nordwool", t: "NORDWOOL", s: "Магазин меха и кожи", f: "shop", tag: "Концепт"},
+  {slug: "leap", t: "Прыжок веры", s: "Фан-сайт Assassin's Creed · видео на прокрутке", f: "fun", tag: "Вау-эффект", wide: true, url: "https://alexandro222-0d.github.io/leap-of-faith/", live: "https://alexandro222-0d.github.io/leap-of-faith/"},
+  {slug: "pulse", t: "Pulse", s: "Лендинг сервиса для селлеров", f: "shop", tag: "Концепт", wide: true, pos: "50% 0%"}
 ];
-WORKS.forEach(w => { w.url = `works/${w.slug}/index.html`; });
+WORKS.forEach(w => { w.url = w.url || `works/${w.slug}/index.html`; });
 $("#grid").innerHTML = WORKS.map((w, i) => `<button type="button" class="panel work${w.big ? " big" : ""}${w.wide ? " wide" : ""}" data-i="${i}" data-f="${w.f}">
-  <figure><img src="img/${w.big ? "w" : "t"}/${w.slug}-d0.jpg" alt="Сайт «${w.t}»" loading="lazy"><span class="tag${w.tag === "Новое" ? " new" : ""}">${w.tag}</span></figure>
+  <figure><img src="img/${w.big ? "w" : "t"}/${w.slug}-d0.jpg" alt="Сайт «${w.t}»" loading="lazy"${w.pos ? ` style="object-position:${w.pos}"` : ""}><span class="tag${w.tag === "Новое" ? " new" : ""}">${w.tag}</span></figure>
   <div class="b"><div><b>${w.t}</b><span>${w.s}</span></div><span class="go" aria-hidden="true">→</span></div></button>`).join("");
 
 /* просмотр работы */

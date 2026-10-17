@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pulse — автопилот для селлеров</title>
+  <meta name="description" content="Pulse следит за остатками, ценами и отзывами на всех маркетплейсах и зовёт вас, только когда нужно решение.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@1,500;1,600&family=JetBrains+Mono:wght@400;500&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23C8F65A'/%3E%3Cpath d='M6 17h5l3-7 4 13 3-6h5' fill='none' stroke='%2307080A' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Перейти к содержанию</a>
+  <canvas class="ribbons" id="ribbons" aria-hidden="true"></canvas>
+  <canvas class="ribbons-glow" id="ribbons-glow" aria-hidden="true"></canvas>
+
+  <header class="nav" id="nav">
+    <a class="brand" href="#top" aria-label="Pulse">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32"><path d="M6 17h5l3-7 4 13 3-6h5"/></svg>
+      </span>
+      Pulse
+    </a>
+    <nav class="nav-links" aria-label="Основное">
+      <a href="#product" data-i18n="nav.product">Продукт</a>
+      <a href="#how" data-i18n="nav.how">Как это работает</a>
+      <a href="#week" data-i18n="nav.week">Неделя</a>
+      <a href="#pricing" data-i18n="nav.pricing">Цены</a>
+    </nav>
+    <div class="nav-right">
+      <span class="status mono"><i></i><span data-i18n="nav.status">все системы в норме</span></span>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="ru" aria-pressed="true">RU</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn-lime btn-sm" href="#pricing" data-i18n="cta.start">Начать бесплатно</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <span class="pill mono"><i></i><span data-i18n="hero.pill">открытая бета / 4 площадки подключены</span></span>
+          <h1 class="h1">
+            <span data-i18n="hero.h1a">Рутина больше</span><br>
+            <em data-i18n="hero.h1b">не ваша.</em>
+          </h1>
+          <p class="lead" data-i18n="hero.lead">Pulse следит за остатками, ценами и отзывами на всех маркетплейсах и зовёт вас, только когда нужно решение.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-lime" href="#pricing" data-i18n="cta.start">Начать бесплатно</a>
+            <a class="btn btn-ghost" href="#how"><span class="tri" aria-hidden="true"></span><span data-i18n="cta.watch">Смотреть сценарий, 2 минуты</span></a>
+          </div>
+          <p class="fine mono" data-i18n="hero.fine">14 дней бесплатно / без карты / без звонков менеджера</p>
+        </div>
+
+        <div class="flow glass" id="flow" aria-label="Пример сценария" data-i18n-aria="flow.aria">
+          <div class="flow-head mono">
+            <span class="flow-title"><span class="dim" data-i18n="flow.name">сценарий:</span> wb-stock</span>
+            <span class="dim" data-i18n="flow.meta">5 шагов · 2 ветки</span>
+            <span class="flow-run"><i></i><span data-i18n="flow.running">работает</span></span>
+          </div>
+          <div class="flow-canvas">
+            <svg class="flow-edges" id="flow-edges" viewBox="0 0 560 300" preserveAspectRatio="none" aria-hidden="true">
+              <path id="e1" d="M118 150 C 150 150, 150 82, 190 82"/>
+              <path id="e2" d="M118 150 C 150 150, 150 218, 190 218"/>
+              <path id="e3" d="M330 82 C 370 82, 370 150, 408 150"/>
+              <path id="e4" d="M330 218 C 370 218, 370 150, 408 150"/>
+            </svg>
+            <div class="node node-trigger" data-node="n0" style="left:2%;top:50%">
+              <b data-i18n="flow.n0">Новый заказ</b><small>Wildberries</small>
+            </div>
+            <div class="node" data-node="n1" style="left:34%;top:27%">
+              <b data-i18n="flow.n1">Остаток &lt; 10 шт</b><small data-i18n="flow.n1s">черновик заказа поставщику</small>
+            </div>
+            <div class="node" data-node="n2" style="left:34%;top:73%">
+              <b data-i18n="flow.n2">Спрос растёт</b><small data-i18n="flow.n2s">цена +4% в пределах коридора</small>
+            </div>
+            <div class="node node-ask" data-node="n3" style="left:73%;top:50%">
+              <b data-i18n="flow.n3">Спросить вас</b><small data-i18n="flow.n3s">Telegram · ждёт 2 ч</small>
+            </div>
+          </div>
+          <div class="flow-log mono" aria-live="off">
+            <div class="log-label dim" data-i18n="flow.recent">последние запуски</div>
+            <ul id="log"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTEGRATIONS + GLUE -->
+    <section class="glue" id="product">
+      <div class="tiles reveal" aria-label="Интеграции" data-i18n-aria="tiles.aria">
+        <div class="tile"><span>WB</span><small>wildberries</small></div>
+        <div class="tile"><span>OZ</span><small>ozon</small></div>
+        <div class="tile"><span>YM</span><small data-i18n="tiles.ym">я.маркет</small></div>
+        <div class="tile"><span>KS</span><small>kaspi</small></div>
+        <div class="tile"><span>MS</span><small data-i18n="tiles.ms">мойсклад</small></div>
+        <div class="tile"><span>1C</span><small>1с</small></div>
+        <div class="tile"><span>TG</span><small>telegram</small></div>
+        <div class="tile tile-more"><span>+</span><small data-i18n="tiles.more">ещё 38</small></div>
+      </div>
+
+      <div class="glue-head reveal">
+        <div>
+          <span class="pill mono"><i></i><span data-i18n="glue.pill">что забирает pulse</span></span>
+          <h2 class="h2"><span data-i18n="glue.h2a">Половина торговли —</span> <em data-i18n="glue.h2b">перекладывание.</em></h2>
+        </div>
+        <p class="muted" data-i18n="glue.p">Выгрузить заказы, сверить остатки, ответить на отзыв, поправить цену. Pulse берёт перекладывание на себя и оставляет вам решения.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card glass reveal">
+          <div class="card-ui stock">
+            <div class="row"><span data-i18n="stock.a">Худи oversize, графит</span><span class="bar"><i style="--w:12%" class="warn"></i></span><span class="mono days" data-i18n="stock.ad">3 дн</span></div>
+            <div class="row"><span data-i18n="stock.b">Кружка 350 мл</span><span class="bar"><i style="--w:42%"></i></span><span class="mono days" data-i18n="stock.bd">11 дн</span></div>
+            <div class="row"><span data-i18n="stock.c">Термос 0,5 л</span><span class="bar"><i style="--w:88%"></i></span><span class="mono days" data-i18n="stock.cd">26 дн</span></div>
+          </div>
+          <h3 data-i18n="card1.h">Знает, когда товар закончится</h3>
+          <p class="muted" data-i18n="card1.p">Считает скорость продаж на каждой площадке и готовит заказ поставщику до того, как карточка уйдёт в ноль.</p>
+        </article>
+
+        <article class="card glass reveal">
+          <div class="card-ui price">
+            <svg viewBox="0 0 260 110" aria-hidden="true">
+              <rect class="band" x="0" y="30" width="260" height="46" rx="6"/>
+              <path class="rival" d="M0 64 L30 58 L60 70 L90 44 L120 52 L150 36 L180 60 L210 40 L240 48 L260 42"/>
+              <path class="ours" d="M0 60 L30 56 L60 62 L90 50 L120 52 L150 44 L180 54 L210 46 L240 48 L260 46"/>
+              <circle class="ours-dot" cx="260" cy="46" r="4"/>
+            </svg>
+            <div class="legend mono"><span><i class="l-ours"></i><span data-i18n="price.ours">ваша цена</span></span><span><i class="l-rival"></i><span data-i18n="price.rival">конкурент</span></span><span><i class="l-band"></i><span data-i18n="price.band">коридор</span></span></div>
+          </div>
+          <h3 data-i18n="card2.h">Держит цену в коридоре</h3>
+          <p class="muted" data-i18n="card2.p">Следит за конкурентами и двигает цену только внутри границ, которые задали вы. Ни рублём ниже минимума.</p>
+        </article>
+
+        <article class="card glass reveal">
+          <div class="card-ui review">
+            <div class="bubble in"><span class="stars" aria-label="4/5">★★★★<s>★</s></span><span data-i18n="review.in">Пришло быстро, но коробка помята.</span></div>
+            <div class="bubble out"><span class="mono tag" data-i18n="review.tag">черновик pulse</span><span data-i18n="review.out">Спасибо, что написали! Мы уже передали складу — следующие заказы упакуем в двойной картон.</span></div>
+          </div>
+          <h3 data-i18n="card3.h">Отвечает на отзывы вашим тоном</h3>
+          <p class="muted" data-i18n="card3.p">Готовит ответ за минуту после отзыва. Позитив уходит сам, негатив ждёт вашего «отправить».</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- HOW -->
+    <section class="how" id="how">
+      <div class="section-head reveal">
+        <span class="pill mono"><i></i><span data-i18n="how.pill">запуск за вечер</span></span>
+        <h2 class="h2"><span data-i18n="how.h2a">Три шага до</span> <em data-i18n="how.h2b">первого запуска.</em></h2>
+      </div>
+      <ol class="steps">
+        <li class="step reveal">
+          <span class="step-n mono">1</span>
+          <h3 data-i18n="how.s1h">Подключите кабинеты</h3>
+          <p class="muted" data-i18n="how.s1p">Вставьте API-ключи площадок и склада. Pulse подтянет товары, остатки и историю продаж за 90 дней.</p>
+          <span class="mono step-t" data-i18n="how.s1t">~ 3 минуты</span>
+        </li>
+        <li class="step reveal">
+          <span class="step-n mono">2</span>
+          <h3 data-i18n="how.s2h">Выберите сценарии</h3>
+          <p class="muted" data-i18n="how.s2p">12 готовых сценариев: остатки, цены, отзывы, возвраты. Границы и исключения задаёте вы.</p>
+          <span class="mono step-t" data-i18n="how.s2t">~ 15 минут</span>
+        </li>
+        <li class="step reveal">
+          <span class="step-n mono">3</span>
+          <h3 data-i18n="how.s3h">Решайте только исключения</h3>
+          <p class="muted" data-i18n="how.s3p">Всё обычное Pulse делает сам. Необычное приходит в Telegram с кнопками «да» и «нет».</p>
+          <span class="mono step-t" data-i18n="how.s3t">дальше — без вас</span>
+        </li>
+      </ol>
+    </section>
+
+    <!-- WEEK -->
+    <section class="week" id="week">
+      <div class="glue-head reveal">
+        <div>
+          <span class="pill mono"><i></i><span data-i18n="week.pill">неделя одного магазина</span></span>
+          <h2 class="h2"><span data-i18n="week.h2a">Работает, пока вы</span> <em data-i18n="week.h2b">спите.</em></h2>
+        </div>
+        <p class="muted" data-i18n="week.p">Каждая точка — час. Чем ярче, тем больше действий Pulse сделал сам. Выберите день, чтобы увидеть, сколько раз он всё-таки позвал человека.</p>
+      </div>
+      <div class="heat glass reveal">
+        <div class="heat-days mono" id="heat-days" role="tablist" aria-label="Дни недели" data-i18n-aria="week.aria"></div>
+        <div class="heat-body" aria-hidden="true">
+          <div class="heat-hours mono"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span></div>
+          <div class="heat-grid" id="heat-grid"></div>
+        </div>
+        <div class="heat-summary" id="heat-summary" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- PRICING (lime card) -->
+    <section class="pricing" id="pricing">
+      <div class="lime-card reveal">
+        <div class="lime-top">
+          <span class="pill pill-dark mono"><i></i><span data-i18n="price.pill">один тариф</span></span>
+          <h2 class="h2"><span data-i18n="pricing.h2a">Без процентов</span> <em data-i18n="pricing.h2b">с ваших продаж.</em></h2>
+        </div>
+        <div class="lime-body">
+          <div class="amount">
+            <span class="num" data-i18n="pricing.num">119 BYN</span>
+            <span class="per mono" data-i18n="pricing.per">/ месяц за магазин</span>
+          </div>
+          <ul class="incl">
+            <li data-i18n="pricing.i1">Все площадки и склады</li>
+            <li data-i18n="pricing.i2">Без лимита на товары и сценарии</li>
+            <li data-i18n="pricing.i3">Уведомления в Telegram</li>
+            <li data-i18n="pricing.i4">Отмена в один клик</li>
+          </ul>
+          <div class="lime-cta">
+            <a class="btn btn-dark" href="#top" data-i18n="pricing.cta">Начать 14 дней бесплатно</a>
+            <span class="mono fine-dark" data-i18n="pricing.fine">карта не нужна</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot-row">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M6 17h5l3-7 4 13 3-6h5"/></svg></span>Pulse</a>
+      <nav class="foot-links" aria-label="Подвал" data-i18n-aria="foot.aria">
+        <a href="#product" data-i18n="nav.product">Продукт</a>
+        <a href="#how" data-i18n="nav.how">Как это работает</a>
+        <a href="#pricing" data-i18n="nav.pricing">Цены</a>
+      </nav>
+      <span class="mono dim" data-i18n="foot.note">© 2026 Pulse · концепт для портфолио</span>
+    </div>
+    <div class="wordmark" aria-hidden="true">pulse</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
