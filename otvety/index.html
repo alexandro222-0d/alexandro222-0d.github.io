@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Ответы клиентам</title>
+<style>
+:root{--bg:#0F0F11;--card:#17171A;--line:rgba(255,255,255,.09);--text:#E7E2D8;--muted:#8E8A84;--red:#D2232A;--ok:#3FA36B}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font:15.5px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;padding:0 16px calc(40px + env(safe-area-inset-bottom))}
+.wrap{max-width:720px;margin:0 auto}
+header{position:sticky;top:0;z-index:5;background:rgba(15,15,17,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:18px 0 12px;border-bottom:1px solid var(--line)}
+h1{font-size:22px;font-weight:700}
+h1 i{font-style:normal;color:var(--red)}
+.sub{font-size:13px;color:var(--muted);margin-top:4px}
+input{width:100%;margin-top:12px;height:44px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--text);padding:0 14px;font-size:16px}
+input:focus{outline:none;border-color:var(--red)}
+.tags{display:flex;gap:6px;overflow-x:auto;margin-top:10px;scrollbar-width:none}
+.tags::-webkit-scrollbar{display:none}
+.tags a{flex:none;font-size:12.5px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:5px 11px;text-decoration:none}
+h2{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin:26px 0 10px;scroll-margin-top:150px}
+.c{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 12px;margin-bottom:10px}
+.q{font-weight:600;font-size:15px}
+.q small{display:block;font-weight:400;font-size:12.5px;color:var(--muted);margin-top:2px}
+.a{white-space:pre-wrap;margin-top:10px;padding:12px;border-radius:10px;background:#101012;border:1px solid var(--line);font-size:15px}
+.n{font-size:12.5px;color:var(--muted);margin-top:8px}
+button{margin-top:10px;width:100%;height:44px;border:0;border-radius:10px;background:var(--red);color:#fff;font:600 14px system-ui,sans-serif;cursor:pointer}
+button.done{background:var(--ok)}
+.hide{display:none}
+.tip{background:rgba(210,35,42,.08);border:1px solid rgba(210,35,42,.35);border-radius:14px;padding:14px;margin-top:18px;font-size:14px}
+.tip b{color:#fff}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Ответы <i>клиентам</i></h1>
+  <p class="sub">Нашёл вопрос → «Скопировать» → вставил в чат. Цена: 500 р., оплата после запуска.</p>
+  <input id="s" type="search" placeholder="Поиск: цена, домен, пример, дорого…" autocomplete="off">
+  <nav class="tags"><a href="#start">Первый ответ</a><a href="#price">Цена</a><a href="#doubt">Сомнения</a><a href="#work">Как работаем</a><a href="#tech">Домен и оплата</a><a href="#later">Потом / отказ</a></nav>
+</header>
+
+<div class="tip"><b>Правило:</b> отвечай в течение часа, коротко и по-человечески. Если вопрос необычный или клиент готов — скинь скрин переписки в Claude.</div>
+
+<h2 id="start">Первый ответ</h2>
+<div class="c"><p class="q">«Да, присылайте» / «Сделайте макет»<small>Клиент заинтересовался</small></p>
+<p class="a">Отлично! Завтра пришлю ссылку на макет 🙂
+Если есть свои фото и цены — пришлите, поставлю их. Если нет — возьму из вашего Instagram.</p>
+<p class="n">Сразу скинь скрин в Claude — я соберу макет.</p></div>
+
+<div class="c"><p class="q">«Передадим руководству / начальству»</p>
+<p class="a">Спасибо! Чтобы руководству было на что посмотреть — сделаю бесплатный макет сайта и пришлю ссылку сюда. Сделать?</p></div>
+
+<div class="c"><p class="q">«Пришлите пример»</p>
+<p class="a">Вот сайты, которые уже работают:
+ykahanki.by — кафе в Несвиже
+slavkorchma.by — загородная усадьба
+
+Все мои работы: https://alexandro222-0d.github.io</p>
+<p class="n">Барбершопам добавь: https://alexandro222-0d.github.io/works/oldblade/</p></div>
+
+<div class="c"><p class="q">«Здравствуйте» (и больше ничего)</p>
+<p class="a">Здравствуйте! 🙂 Могу за день собрать бесплатный макет сайта на ваших фото — просто посмотрите, ни к чему не обязывает. Сделать?</p></div>
+
+<h2 id="price">Цена</h2>
+<div class="c"><p class="q">«Сколько стоит?»</p>
+<p class="a">Сайт под ключ — 500 р.
+Входит: дизайн под вас, тексты, фото, кнопки звонка и мессенджеров, карта, подключение к вашему адресу, Яндекс и Google.
+Платите только после запуска, когда сайт уже работает. Макет — бесплатно.</p></div>
+
+<div class="c"><p class="q">«Дорого» / «А дешевле можно?»</p>
+<p class="a">Понимаю. Могу сделать попроще — одну страницу без лишнего, за 400 р.
+И в любом случае платите только когда сайт уже работает, никакого риска.</p></div>
+
+<div class="c"><p class="q">«Почему так дёшево?» / «Смущает низкая цена»</p>
+<p class="a">Цена ниже не потому, что сайт хуже — я работаю один, без студии, и сейчас набираю портфолио.
+Вот сайты, которые уже работают: ykahanki.by и slavkorchma.by
+И риска нет: платите только когда сайт открывается на вашем адресе, а домен оформлен на вас.</p></div>
+
+<div class="c"><p class="q">«Есть ли абонплата / платить каждый месяц?»</p>
+<p class="a">Абонплаты нет. Платите один раз за сайт, и раз в год за домен (около 40–60 р., это напрямую регистратору).</p></div>
+
+<h2 id="doubt">Сомнения</h2>
+<div class="c"><p class="q">«У нас есть Instagram, зачем сайт?»</p>
+<p class="a">Instagram видят те, кто уже вас знает. А сайт находят через Яндекс и Google те, кто ищет, например, «баня Гомель» и про вас ещё не слышал.
+Плюс на сайте всё в одном месте — цены, фото, бронь, — без переписки в директе.</p></div>
+
+<div class="c"><p class="q">«Вы кто? Студия? Где находитесь?»</p>
+<p class="a">Я Саша, делаю сайты сам, без студии. Работаю удалённо по всей Беларуси — всё решаем в переписке, без встреч.</p></div>
+
+<div class="c"><p class="q">«А если не понравится?»</p>
+<p class="a">Тогда просто не берёте — макет бесплатный и ни к чему не обязывает. А правки делаю, пока не понравится.</p></div>
+
+<div class="c"><p class="q">«У нас уже был сайт / делали раньше»</p>
+<p class="a">Понял! Могу сделать бесплатный макет нового — сравните со старым и решите. Ничего не теряете 🙂</p></div>
+
+<h2 id="work">Как работаем</h2>
+<div class="c"><p class="q">«Как это всё происходит?»</p>
+<p class="a">1. Делаю бесплатный макет на ваших фото — завтра пришлю ссылку.
+2. Правим, пока не понравится.
+3. Покупаете домен (адрес сайта), я подключаю — сайт работает.
+4. Только после этого оплата.</p></div>
+
+<div class="c"><p class="q">«Сколько по времени?»</p>
+<p class="a">Макет — на следующий день. Весь сайт под ключ — за 3 дня.</p></div>
+
+<div class="c"><p class="q">«Что от нас нужно?»</p>
+<p class="a">5–10 фото, цены и контакты. Тексты напишу сам. Если хороших фото нет — возьму из вашего Instagram или подскажу, как снять на телефон.</p></div>
+
+<div class="c"><p class="q">«Куда приходят заявки / брони?»</p>
+<p class="a">Сразу вам в Telegram или Viber: имя, телефон, дата и что хотят. Можно дублировать на почту.</p></div>
+
+<div class="c"><p class="q">«Можно позвонить / созвониться?»</p>
+<p class="a">Конечно! Мой номер +375 29 524-03-22. Или напишите, когда удобно — позвоню сам.</p></div>
+
+<h2 id="tech">Домен и оплата</h2>
+<div class="c"><p class="q">«Что такое домен? Где взять?»</p>
+<p class="a">Домен — это адрес сайта, например vasha-usadba.by. Покупаете на hoster.by, около 40–60 р. в год, он оформляется на вас. Подскажу по шагам — минут 5.</p></div>
+
+<div class="c"><p class="q">«У нас уже есть домен / хостинг»</p>
+<p class="a">Отлично, тогда ещё проще 👍 Когда будем запускать — понадобится только доступ к хостингу (FTP), и сайт будет на вашем адресе.</p>
+<p class="n">Пароль от аккаунта не проси — только FTP-доступ.</p></div>
+
+<div class="c"><p class="q">«Это сложно, не разберусь»</p>
+<p class="a">Ничего сложного, помогу 🙂 Можем созвониться — я говорю, куда нажать, вы только оплачиваете домен. Минут 10.</p></div>
+
+<div class="c"><p class="q">«Как оплачивать?»</p>
+<p class="a">После запуска: когда сайт уже открывается на вашем адресе — переводом на карту. Реквизиты пришлю в конце.</p></div>
+
+<h2 id="later">Потом / отказ</h2>
+<div class="c"><p class="q">«Подумаем» / «Не сейчас»</p>
+<p class="a">Конечно! Могу пока бесплатно сделать макет — посмотрите без спешки, ни к чему не обязывает. Или когда вам удобнее, чтобы я написал?</p></div>
+
+<div class="c"><p class="q">«Давайте через пару месяцев / после праздников»</p>
+<p class="a">Договорились, напишу ближе к сроку 🙂 Если понадобится раньше — пишите.</p>
+<p class="n">Скинь скрин в Claude — запомню, когда напомнить.</p></div>
+
+<div class="c"><p class="q">«Не интересно» / «Не нужно»</p>
+<p class="a">Понял, спасибо, что ответили! Если когда-нибудь понадобится сайт — пишите 🙂</p></div>
+
+<div class="c"><p class="q">Молчат 3–4 дня после макета</p>
+<p class="a">Добрый день! Удалось посмотреть макет? Если что-то поменять — скажите, поправлю за день 🙂</p></div>
+
+<p class="sub" style="margin-top:24px;text-align:center">Нет нужного ответа — скинь скрин в Claude.</p>
+</div>
+<script>
+document.querySelectorAll(".c").forEach(c => {
+  const b = document.createElement("button"); b.textContent = "Скопировать ответ"; c.appendChild(b);
+  b.addEventListener("click", async () => {
+    const t = c.querySelector(".a").innerText;
+    try { await navigator.clipboard.writeText(t); }
+    catch { const r = document.createRange(); r.selectNodeContents(c.querySelector(".a")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); document.execCommand("copy"); s.removeAllRanges(); }
+    b.textContent = "Скопировано ✓"; b.classList.add("done"); setTimeout(() => { b.textContent = "Скопировать ответ"; b.classList.remove("done"); }, 1800);
+  });
+});
+const q = document.getElementById("s");
+q.addEventListener("input", () => {
+  const v = q.value.trim().toLowerCase();
+  document.querySelectorAll(".c").forEach(c => c.classList.toggle("hide", v && !c.innerText.toLowerCase().includes(v)));
+});
+</script>
+</body>
+</html>
