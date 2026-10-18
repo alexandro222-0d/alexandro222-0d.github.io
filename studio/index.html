@@ -270,6 +270,9 @@ footer .meta a:hover{color:var(--cream)}
 .viewer{position:fixed;inset:0;z-index:80;display:flex;flex-direction:column;background:#050506;opacity:0;pointer-events:none;transition:opacity .3s}
 .viewer.open{opacity:1;pointer-events:auto}
 .v-top{display:flex;align-items:center;gap:14px;padding:12px var(--gut);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.v-back{flex:none;display:inline-flex;align-items:center;height:42px;padding:0 18px;border-radius:999px;background:var(--red);color:#fff;font-family:var(--disp);font-weight:500;font-size:13px;letter-spacing:.12em;text-transform:uppercase;transition:background .2s}
+.v-back:hover{background:#e3323a}
+.v-top .t{min-width:0}
 .v-top .t b{display:block;font-family:var(--disp);font-weight:600;font-size:18px;letter-spacing:.04em;text-transform:uppercase;color:var(--cream);line-height:1.1}
 .v-top .t span{font-size:13px;color:var(--muted)}
 .v-dev{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px;margin-left:auto}
@@ -351,7 +354,14 @@ footer .meta a:hover{color:var(--cream)}
   footer .meta{justify-content:flex-start}
   .fab{display:grid}
   footer{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
-  .v-top{gap:10px;padding:10px 12px}
+  .v-top{gap:10px;padding:10px 12px;flex-wrap:nowrap}
+  .v-back{height:44px;padding:0 16px}
+  .v-back span{display:none}
+  .v-back::after{content:"\00a0Назад"}
+  .v-top .t{flex:1}
+  .v-top .t b{font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .v-top .t span{display:none}
+  .v-x{display:none}
   .v-dev,.v-open{display:none}
   .v-nav span{display:none}
   .v-stage{padding:0}
@@ -514,6 +524,7 @@ footer .meta a:hover{color:var(--cream)}
 
 <div class="viewer" id="viewer" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="vTitle">
   <div class="v-top">
+    <button class="v-back" type="button" id="vBack" aria-label="Закрыть и вернуться к работам">←<span>&nbsp;Назад к работам</span></button>
     <div class="t"><b id="vTitle">—</b><span id="vSub"></span></div>
     <div class="v-dev" role="group" aria-label="Как показать"><button type="button" data-d="desk" aria-pressed="true">Компьютер</button><button type="button" data-d="phone" aria-pressed="false">Телефон</button></div>
     <a class="v-open" id="vOpen" href="#" target="_blank" rel="noopener">Открыть отдельно ↗</a>
@@ -552,18 +563,27 @@ $("#grid").innerHTML = WORKS.map((w, i) => `<button type="button" class="panel w
 /* просмотр работы */
 let cur = 0;
 const vis = () => $$(".work:not(.hide)").map(c => +c.dataset.i);
+function freshFrame(src) {
+  const old = $("#vIframe"), f = old.cloneNode(false);
+  f.removeAttribute("src"); if (src) f.src = src;
+  f.addEventListener("load", () => { if (f.getAttribute("src")) $("#vLoad").classList.add("hide"); });
+  old.replaceWith(f);
+}
 function openW(i) {
+  const was = $("#viewer").classList.contains("open");
+  if (!was) history.pushState({viewer: 1}, "");
   cur = i; const w = WORKS[i], list = vis(), k = list.indexOf(i);
   $("#vTitle").textContent = w.t; $("#vSub").textContent = w.s;
   $("#vOpen").href = w.live || w.url; $("#vNum").textContent = `${k + 1} / ${list.length}`;
-  $("#vLoad").classList.remove("hide"); $("#vIframe").src = w.url;
+  $("#vLoad").classList.remove("hide"); freshFrame(w.url);
   $("#viewer").classList.add("open"); $("#viewer").setAttribute("aria-hidden", "false"); document.body.style.overflow = "hidden";
 }
-function closeW() { $("#viewer").classList.remove("open"); $("#viewer").setAttribute("aria-hidden", "true"); document.body.style.overflow = ""; setTimeout(() => { $("#vIframe").src = "about:blank"; }, 300); }
+function hideW() { $("#viewer").classList.remove("open"); $("#viewer").setAttribute("aria-hidden", "true"); document.body.style.overflow = ""; setTimeout(() => freshFrame(""), 300); }
+function closeW() { if (!$("#viewer").classList.contains("open")) return; if (history.state && history.state.viewer) history.back(); else hideW(); }
+addEventListener("popstate", () => { if ($("#viewer").classList.contains("open")) hideW(); });
 function step(d) { const list = vis(); const k = list.indexOf(cur); openW(list[(k + d + list.length) % list.length]); }
-$("#vIframe").addEventListener("load", () => { if ($("#vIframe").src !== "about:blank") $("#vLoad").classList.add("hide"); });
 $("#grid").addEventListener("click", e => { const c = e.target.closest(".work"); if (c) openW(+c.dataset.i); });
-$("#vClose").addEventListener("click", closeW); $("#vPrev").addEventListener("click", () => step(-1)); $("#vNext").addEventListener("click", () => step(1));
+$("#vClose").addEventListener("click", closeW); $("#vBack").addEventListener("click", closeW); $("#vPrev").addEventListener("click", () => step(-1)); $("#vNext").addEventListener("click", () => step(1));
 $$(".v-dev button").forEach(b => b.addEventListener("click", () => { $$(".v-dev button").forEach(x => x.setAttribute("aria-pressed", x === b)); $("#vFrame").classList.toggle("phone", b.dataset.d === "phone"); }));
 addEventListener("keydown", e => { if (!$("#viewer").classList.contains("open")) return; if (e.key === "Escape") closeW(); if (e.key === "ArrowRight") step(1); if (e.key === "ArrowLeft") step(-1); });
 
