@@ -576,6 +576,7 @@ $$("#mmenu a").forEach(a => a.addEventListener("click", () => { document.body.cl
 /* слово на первом экране — точно по ширине, две копии совпадают */
 function fitWord() {
   const W = document.documentElement.clientWidth, a = $("#wSolid"), b = $("#wStroke");
+  if (!a) return;
   a.style.fontSize = "100px";
   const r = document.createRange(); r.selectNodeContents(a); const w = r.getBoundingClientRect().width || 1;
   const H = $(".stage").getBoundingClientRect().height || innerHeight;
@@ -592,7 +593,7 @@ let mx = 0, my = 0;
 addEventListener("pointermove", e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; }, {passive: true});
 function frame() {
   const y = scrollY;
-  if (!RM && y < innerHeight * 1.2 && !document.body.classList.contains("load")) {
+  if (wA && !RM && y < innerHeight * 1.2 && !document.body.classList.contains("load")) {
     const tw = `translateY(calc(-50% + ${y * .28}px)) translateX(${mx * -14}px)`;
     wA.style.transform = wB.style.transform = tw;
     me.style.transform = `translate(calc(-50% + ${mx * 10}px), ${y * -.04}px)`;
