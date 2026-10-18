@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Helix — ДНК-тест</title>
+  <meta name="description" content="ДНК-тест, который понятно рассказывает о тебе: почему ты сова, можно ли тебе молоко и сколько в тебе неандертальца.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%238b5cff'/%3E%3Cpath d='M10 4c0 8 12 8 12 12s-12 4-12 12' fill='none' stroke='%23fff' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M22 4c0 8-12 8-12 12s12 4 12 12' fill='none' stroke='%233ee6c8' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Перейти к содержанию</a>
+  <canvas class="helix-canvas" id="helix" aria-hidden="true"></canvas>
+  <div class="tip" id="tip" aria-hidden="true" hidden></div>
+
+  <header class="nav" id="nav">
+    <a class="brand" href="#top" aria-label="Helix">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path class="s1" d="M10 4c0 8 12 8 12 12s-12 4-12 12"/><path class="s2" d="M22 4c0 8-12 8-12 12s12 4 12 12"/></svg>
+      helix
+    </a>
+    <nav class="nav-links" aria-label="Основное" data-i18n-aria="nav.aria">
+      <a href="#guess" data-i18n="nav.guess">Угадай себя</a>
+      <a href="#stories" data-i18n="nav.stories">Отчёт</a>
+      <a href="#how" data-i18n="nav.how">Как это работает</a>
+      <a href="#pricing" data-i18n="nav.pricing">Цены</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="ru" aria-pressed="true">RU</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn-teal btn-sm" href="#pricing" data-i18n="cta.short">Заказать тест</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <h1 class="h1">
+          <span class="sr-only" data-i18n="hero.sr">Узнай, почему ты такой, какой есть</span>
+          <span aria-hidden="true"><span data-i18n="hero.h1">Узнай, почему ты</span><br><span class="rot-line"><span class="rot" id="rot"><span class="rot-word" id="rot-word">сова</span></span></span></span>
+        </h1>
+        <div class="hero-band" id="hero-band" aria-hidden="true"></div>
+        <div class="hero-bottom">
+          <p class="lead" data-i18n="hero.lead">ДНК-тест, который понятно рассказывает о тебе. Сдай слюну дома — через 4 недели узнаешь, можно ли тебе молоко, когда тебе лучше спать и сколько в тебе неандертальца.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-teal btn-lg" href="#pricing"><span data-i18n="cta.order">Заказать тест</span><span class="btn-tag">289 BYN</span></a>
+            <a class="btn btn-ghost btn-lg" href="#guess" data-i18n="cta.peek">Что я узнаю?</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GUESS: flip cards -->
+    <section class="block block-lav" id="guess">
+      <div class="block-inner">
+        <div class="head reveal">
+          <h2 class="h2" data-i18n="gs.h2">Угадай себя.</h2>
+          <p data-i18n="gs.p">Ответ на каждый вопрос уже записан в твоей ДНК. Переверни карточку — посмотри, какой ген за это отвечает.</p>
+        </div>
+        <div class="cards" id="cards"></div>
+      </div>
+    </section>
+
+    <!-- STORIES -->
+    <section class="stories-sec" id="stories">
+      <div class="stories-copy reveal">
+        <h2 class="h2" data-i18n="st.h2">Отчёт, который хочется листать.</h2>
+        <p class="muted" data-i18n="st.p">Никаких таблиц на 40 страниц. Главное о тебе — короткими карточками, а подробности, если интересно, на одно касание глубже.</p>
+        <ul class="ticks">
+          <li data-i18n="st.l1">170+ фактов о тебе</li>
+          <li data-i18n="st.l2">Новые разделы приходят бесплатно</li>
+          <li data-i18n="st.l3">Разбор с генетиком, если найдём что-то важное</li>
+        </ul>
+      </div>
+      <div class="phone reveal" id="phone" tabindex="0" role="region" aria-roledescription="сторис" aria-label="Пример отчёта" data-i18n-aria="st.aria">
+        <div class="bars" id="bars"></div>
+        <div class="slides" id="slides" aria-live="polite"></div>
+        <button type="button" class="tap tap-prev" id="prev" aria-label="Назад" data-i18n-aria="st.prev"></button>
+        <button type="button" class="tap tap-next" id="next" aria-label="Дальше" data-i18n-aria="st.next"></button>
+        <span class="phone-tag" data-i18n="st.tag">пример</span>
+      </div>
+    </section>
+
+    <!-- HOW -->
+    <section class="block block-violet" id="how">
+      <div class="block-inner">
+        <ol class="spit">
+          <li class="reveal"><b data-i18n="how.s1">Собери.</b><span data-i18n="how.p1">2 мл слюны в пробирку дома. Больше ничего не нужно.</span></li>
+          <li class="reveal"><b data-i18n="how.s2">Отправь.</b><span data-i18n="how.p2">Курьер заберёт пробирку бесплатно в любом городе Беларуси.</span></li>
+          <li class="reveal"><b data-i18n="how.s3">Узнай.</b><span data-i18n="how.p3">Через 4 недели отчёт появится в приложении.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="pricing">
+      <div class="head reveal">
+        <h2 class="h2" data-i18n="pc.h2">Один тест на всю жизнь.</h2>
+        <p class="muted" data-i18n="pc.p">ДНК не меняется, поэтому платишь только раз. Тест можно подарить: мы пришлём подарочный набор.</p>
+      </div>
+      <div class="plans">
+        <article class="plan reveal">
+          <span class="plan-name" data-i18n="pc.n1">Базовый</span>
+          <div class="price"><b>289</b><span>BYN</span></div>
+          <ul class="ticks">
+            <li data-i18n="pc.a1">Еда, спорт, сон и привычки</li>
+            <li data-i18n="pc.a2">Откуда твои предки</li>
+            <li data-i18n="pc.a3">Сколько в тебе неандертальца</li>
+          </ul>
+          <a class="btn btn-ghost" href="#top" data-i18n="pc.c1">Выбрать «Базовый»</a>
+        </article>
+        <article class="plan plan-hot reveal">
+          <span class="plan-name" data-i18n="pc.n2">Полный</span>
+          <span class="plan-badge" data-i18n="pc.badge">популярный</span>
+          <div class="price"><b>449</b><span>BYN</span></div>
+          <ul class="ticks">
+            <li data-i18n="pc.b1">Всё из «Базового»</li>
+            <li data-i18n="pc.b2">Наследственные риски для здоровья</li>
+            <li data-i18n="pc.b3">Созвон с врачом-генетиком</li>
+          </ul>
+          <a class="btn btn-ink" href="#top" data-i18n="pc.c2">Выбрать «Полный»</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="block block-teal" id="final">
+      <div class="block-inner final-inner">
+        <h2 class="final-h reveal" data-i18n="fin.h2">Готов узнать о себе больше?</h2>
+        <p class="reveal" data-i18n="fin.p">Одна пробирка и четыре недели до первого отчёта.</p>
+        <div class="final-ctas reveal">
+          <a class="btn btn-ink btn-lg" href="#pricing"><span data-i18n="fin.cta">Заказать тест</span><span class="btn-tag btn-tag-light">289 BYN</span></a>
+          <a class="btn btn-line btn-lg" href="#pricing" data-i18n="fin.gift">Подарить другу</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot-big" aria-hidden="true">helix</div>
+    <div class="foot-row">
+      <span data-i18n="foot.line">© 2026 Helix · Минск</span>
+      <nav class="foot-links" aria-label="Подвал" data-i18n-aria="foot.aria">
+        <a href="#guess" data-i18n="nav.guess">Угадай себя</a>
+        <a href="#stories" data-i18n="nav.stories">Отчёт</a>
+        <a href="#pricing" data-i18n="nav.pricing">Цены</a>
+      </nav>
+      <span class="dim" data-i18n="foot.note">концепт для портфолио</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

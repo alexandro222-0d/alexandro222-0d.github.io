@@ -199,21 +199,140 @@
     revealIO.observe(el);
   });
 
-  /* ================= Ribbons ================= */
+  /* ================= Ribbons (WebGL) ================= */
   // One long ribbon snakes down the whole page in document coordinates.
   // The canvas sits *in* the document (not fixed) and is taller than the screen,
-  // so native scrolling moves it together with the content without a frame of lag.
-  // It is only re-anchored when the viewport nears its edge.
+  // so native scrolling moves it with the content; it is re-anchored only near its edge.
+  // All strand motion runs in the vertex shader on the GPU: the CPU uploads geometry
+  // once per anchor and then only sets a time uniform each frame.
   const hero = document.querySelector(".hero");
   const cv = document.getElementById("ribbons");
-  const gcv = document.getElementById("ribbons-glow");
-  const ctx = cv.getContext("2d");
-  const gctx = gcv.getContext("2d");
-  const GLOW = 4; // glow canvas is 1/GLOW resolution; upscaling makes it soft for free
   let W = 0, H = 0, PH = 0, CH = 0, dpr = 1, strands = 80, particles = [];
   let way = [], docH = 0, spread = 200, bufTop = -1;
   const mouse = { x: 0.5, y: 0.5, tx: 0.5, ty: 0.5 };
   let shownOpacity = -1;
+
+  const gl = cv.getContext("webgl", { antialias: true, alpha: true, premultipliedAlpha: true, powerPreference: "high-performance" });
+  if (!gl) cv.hidden = true;
+
+  const FS_RAMP = `
+    precision mediump float;
+    uniform vec2 uView;
+    varying vec2 vP;
+    vec3 ramp() {
+      float t = clamp((vP.x / uView.x + 1.0 - vP.y / uView.y) * 0.5, 0.0, 1.0);
+      vec3 teal = vec3(0.37, 0.83, 0.77), lime = vec3(0.78, 0.96, 0.35), hi = vec3(0.84, 0.98, 0.47);
+      vec3 c = mix(teal, lime, smoothstep(0.0, 0.35, t));
+      c = mix(c, hi, smoothstep(0.35, 0.7, t));
+      return mix(c, teal, smoothstep(0.75, 1.0, t));
+    }`;
+  const VS_HEAD = `
+    uniform float uTime; uniform float uSpread; uniform vec2 uRes; uniform vec2 uMouse;
+    varying vec2 vP;
+    vec4 clip(vec2 p) { return vec4(p.x / uRes.x * 2.0 - 1.0, 1.0 - p.y / uRes.y * 2.0, 0.0, 1.0); }
+    float envAt(float g) { return 0.68 + 0.32 * sin(g * 1.3 + 0.4); }
+    // signed bend limit: offsets toward the inside of a curve ease off before they cross its centre
+    float bend(float off, float lim) {
+      if (lim > 0.0 && off > 0.0) return lim * (1.0 - exp(-off / lim));
+      if (lim < 0.0 && off < 0.0) return lim * (1.0 - exp(off / lim));
+      return off;
+    }`;
+
+  const LINE_VS = VS_HEAD + `
+    attribute vec2 aPos; attribute vec2 aNor; attribute vec4 aMeta; // g, u, alpha, strand
+    attribute float aLim;
+    uniform float uNudge; // second pass shifted ~1px along the normal makes each strand thicker
+    varying float vA;
+    void main() {
+      float g = aMeta.x, u = aMeta.y;
+      float env = envAt(g);
+      float tw = sin(g * 2.2 - uTime * 0.42 + u * 1.2) * 0.85 + sin(g * 4.7 + uTime * 0.6 + aMeta.w * 0.07) * 0.15;
+      tw = tw * 0.8 + 0.3; // keeps the twist but never collapses the ribbon to a thread
+      float off = bend(env * (u * uSpread * tw + sin(g * 1.7 + u * 9.0 + uTime * 0.3) * 6.0), aLim) + uNudge;
+      vec2 p = aPos + aNor * off + uMouse;
+      vP = p; vA = aMeta.z;
+      gl_Position = clip(p);
+    }`;
+  const LINE_FS = FS_RAMP + `
+    varying float vA;
+    void main() { gl_FragColor = vec4(ramp() * vA, vA); }`;
+
+  // soft halo under the strands replaces the old blurred copy
+  const HALO_VS = VS_HEAD + `
+    attribute vec2 aPos; attribute vec2 aNor; attribute vec2 aGS; // g, side (-1..1)
+    attribute float aLim;
+    varying float vSide; varying float vEnv;
+    void main() {
+      float g = aGS.x;
+      float env = envAt(g);
+      float tw = sin(g * 2.2 - uTime * 0.42) * 0.8 + 0.3;
+      float w = uSpread * env * (abs(tw) * 0.6 + 0.14) + 46.0;
+      vec2 p = aPos + aNor * bend(aGS.y * w, aLim * 1.15) + uMouse;
+      vP = p; vSide = aGS.y; vEnv = env;
+      gl_Position = clip(p);
+    }`;
+  const HALO_FS = FS_RAMP + `
+    varying float vSide; varying float vEnv;
+    void main() {
+      float a = pow(1.0 - abs(vSide), 2.0) * 0.2 * vEnv;
+      gl_FragColor = vec4(ramp() * a, a);
+    }`;
+
+  const DOT_VS = `
+    uniform vec2 uRes; uniform float uDpr;
+    attribute vec4 aDot; // x, y, alpha, radius
+    varying float vA;
+    void main() {
+      vA = aDot.z;
+      gl_PointSize = aDot.w * 2.0 * uDpr + 1.0;
+      gl_Position = vec4(aDot.x / uRes.x * 2.0 - 1.0, 1.0 - aDot.y / uRes.y * 2.0, 0.0, 1.0);
+    }`;
+  const DOT_FS = `
+    precision mediump float;
+    varying float vA;
+    void main() {
+      float d = length(gl_PointCoord - 0.5);
+      float a = vA * smoothstep(0.5, 0.15, d);
+      gl_FragColor = vec4(vec3(0.87, 1.0, 0.59) * a, a);
+    }`;
+
+  function program(vs, fs) {
+    const mk = (type, src) => {
+      const s = gl.createShader(type);
+      gl.shaderSource(s, src); gl.compileShader(s);
+      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s));
+      return s;
+    };
+    const p = gl.createProgram();
+    gl.attachShader(p, mk(gl.VERTEX_SHADER, vs));
+    gl.attachShader(p, mk(gl.FRAGMENT_SHADER, fs));
+    gl.linkProgram(p);
+    if (!gl.getProgramParameter(p, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(p));
+    const loc = (n) => gl.getUniformLocation(p, n);
+    const att = (n) => gl.getAttribLocation(p, n);
+    return { p, loc, att };
+  }
+
+  let P = null; // programs + buffers
+  function initGL() {
+    if (!gl) return false;
+    try {
+      P = {
+        line: program(LINE_VS, LINE_FS),
+        halo: program(HALO_VS, HALO_FS),
+        dot: program(DOT_VS, DOT_FS),
+        lineBuf: gl.createBuffer(), haloBuf: gl.createBuffer(), dotBuf: gl.createBuffer(),
+        nPts: 0
+      };
+      gl.disable(gl.DEPTH_TEST);
+      gl.enable(gl.BLEND);
+      gl.blendFunc(gl.ONE, gl.ONE); // additive, like canvas "lighter"
+      return true;
+    } catch (e) {
+      cv.hidden = true; P = null;
+      return false;
+    }
+  }
 
   function buildPath() {
     docH = document.documentElement.scrollHeight;
@@ -222,7 +341,7 @@
     const r = () => (s = (s * 16807) % 2147483647) / 2147483647;
     // enters from the top right, coils through the hero, then swings side to side down the page
     way = mobile
-      ? [[1.2 * W, -0.1 * PH], [0.7 * W, 0.45 * PH], [0.2 * W, 0.85 * PH]]
+      ? [[1.3 * W, 0.42 * PH], [0.62 * W, 0.82 * PH], [0.16 * W, 1.18 * PH]] // below the headline on phones
       : [[1.15 * W, -0.06 * PH], [0.74 * W, 0.26 * PH], [0.42 * W, 0.72 * PH]];
     let y = way[way.length - 1][1];
     let right = true;
@@ -233,22 +352,22 @@
       way.push([x * W, y]);
       right = !right;
     }
-    spread = Math.min(W, PH) * (mobile ? 0.3 : 0.24);
+    spread = Math.min(W, PH) * (mobile ? 0.42 : 0.36);
     const nSeg = way.length - 1;
-    const want = Math.min(420, nSeg * (mobile ? 10 : 22));
+    const want = Math.min(260, nSeg * (mobile ? 10 : 20));
     while (particles.length < want) {
-      particles.push({ g: r() * nSeg, u: r() - 0.5, v: 0.0006 + r() * 0.0016, r: r() * 1.4 + 0.3, ph: r() * Math.PI * 2 });
+      particles.push({ g: r() * nSeg, u: r() - 0.5, v: 0.0007 + r() * 0.0018, r: r() * 1.6 + 0.8, ph: r() * Math.PI * 2 });
     }
     particles.length = want;
     particles.forEach((q) => { q.g %= nSeg; });
+    bufTop = -1; // force geometry rebuild
   }
 
-  function sizeCanvases() {
-    CH = Math.ceil(PH * 1.7);
+  function sizeCanvas() {
+    CH = Math.ceil(PH * 1.5);
     cv.width = Math.round(W * dpr); cv.height = Math.round(CH * dpr);
-    gcv.width = Math.round(W / GLOW); gcv.height = Math.round(CH / GLOW);
-    cv.style.height = gcv.style.height = CH + "px";
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    cv.style.height = CH + "px";
+    if (gl) gl.viewport(0, 0, cv.width, cv.height);
     bufTop = -1;
   }
 
@@ -260,9 +379,10 @@
     if (widthChanged || force || h > PH * 1.15) {
       W = w;
       PH = widthChanged ? h : Math.max(h, PH);
-      dpr = Math.min(window.devicePixelRatio || 1, W < 700 ? 1.25 : 1.5);
-      strands = W < 700 ? 44 : 80;
-      sizeCanvases();
+      const mobile = W < 700;
+      dpr = Math.min(window.devicePixelRatio || 1, mobile ? 2 : 1.5);
+      strands = mobile ? 64 : 110;
+      sizeCanvas();
       buildPath();
     }
   }
@@ -280,119 +400,189 @@
     return [x, y, -ty / l, tx / l];
   }
 
-  const envAt = (g) => 0.55 + 0.45 * Math.sin(g * 1.3 + 0.4);
-
-  function anchor(sy) {
-    const margin = H * 0.12;
-    const maxTop = Math.max(0, docH - CH);
-    const needs = bufTop < 0 ||
-      (sy < bufTop + margin && bufTop > 0) ||
-      (sy + H > bufTop + CH - margin && bufTop < maxTop);
-    if (!needs) return;
-    bufTop = Math.round(Math.min(maxTop, Math.max(0, sy - (CH - H) / 2)));
-    cv.style.transform = gcv.style.transform = `translate3d(0, ${bufTop}px, 0)`;
-  }
-
-  const pts = [];
-  function draw(time) {
-    if (Math.abs(document.documentElement.scrollHeight - docH) > 4) buildPath();
-    mouse.x += (mouse.tx - mouse.x) * 0.035;
-    mouse.y += (mouse.ty - mouse.y) * 0.035;
-    const sy = window.scrollY;
-    anchor(sy);
-    const mx = (mouse.x - 0.5) * 36, my = (mouse.y - 0.5) * 24;
-
-    // full strength over the hero, quieter behind reading content
-    const fade = Math.min(1, sy / Math.max(1, hero.offsetHeight * 0.8));
-    const op = +(1 - 0.4 * fade).toFixed(2);
-    if (op !== shownOpacity) {
-      shownOpacity = op;
-      cv.style.opacity = op;
-      gcv.style.opacity = (0.85 * op).toFixed(2);
-    }
-    ctx.clearRect(0, 0, W, CH);
-    ctx.globalCompositeOperation = "lighter";
-
-    // sample only the segments that cross the canvas
+  // sample the segments crossing the canvas once per anchor and upload them
+  function buildGeometry() {
+    if (!P) return;
     const top = bufTop - spread * 1.6, bottom = bufTop + CH + spread * 1.6;
-    pts.length = 0;
+    const pts = [];
     for (let i = 0; i < way.length - 1; i++) {
       const y0 = Math.min(way[i][1], way[i + 1][1]), y1 = Math.max(way[i][1], way[i + 1][1]);
       if (y1 < top || y0 > bottom) continue;
       const len = Math.hypot(way[i + 1][0] - way[i][0], way[i + 1][1] - way[i][1]);
-      const steps = Math.max(12, Math.ceil(len / 14));
-      for (let k = 0; k <= steps; k++) {
+      const steps = Math.max(16, Math.ceil(len / 8));
+      for (let k = (pts.length ? 1 : 0); k <= steps; k++) {
         const t = k / steps;
         const p = at(i, t);
-        p.push(i + t);
-        pts.push(p);
+        pts.push(p[0], p[1] - bufTop, p[2], p[3], i + t);
       }
     }
+    const n = pts.length / 5;
+    P.nPts = n;
+    if (!n) return;
 
-    if (pts.length) {
-      const grad = ctx.createLinearGradient(0, CH, W, 0);
-      grad.addColorStop(0, "rgba(95,212,196,1)");
-      grad.addColorStop(0.35, "rgba(200,246,90,1)");
-      grad.addColorStop(0.7, "rgba(214,250,120,1)");
-      grad.addColorStop(1, "rgba(95,212,196,1)");
-      ctx.strokeStyle = grad;
-      ctx.lineWidth = 1;
-
-      for (let i = 0; i < strands; i++) {
-        const u = i / (strands - 1) - 0.5;
-        const edge = Math.abs(u) * 2;
-        ctx.globalAlpha = 0.05 + 0.32 * Math.pow(1 - edge, 2) + 0.1 * Math.pow(edge, 6);
-        ctx.beginPath();
-        for (let k = 0; k < pts.length; k++) {
-          const p = pts[k], g = p[4];
-          const env = envAt(g);
-          const twist = Math.sin(g * 2.2 - time * 0.42 + u * 1.2) * 0.85 + Math.sin(g * 4.7 + time * 0.6 + i * 0.07) * 0.15;
-          const off = u * spread * env * twist + Math.sin(g * 1.7 + u * 9 + time * 0.3) * 6 * env;
-          const px = p[0] + p[2] * off + mx, py = p[1] + p[3] * off - bufTop + my;
-          k === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
-        }
-        ctx.stroke();
+    // radius of curvature per point → signed limit (+ when the inside of the bend is along +normal)
+    const lim = new Float32Array(n);
+    for (let k = 0; k < n; k++) {
+      const a = Math.max(0, k - 2) * 5, b = Math.min(n - 1, k + 2) * 5, c = k * 5;
+      const ta = [pts[a + 3], -pts[a + 2]], tb = [pts[b + 3], -pts[b + 2]];
+      const dTx = tb[0] - ta[0], dTy = tb[1] - ta[1];
+      const ds = Math.hypot(pts[b] - pts[a], pts[b + 1] - pts[a + 1]) || 1;
+      const kappa = Math.hypot(dTx, dTy) / ds;
+      const R = kappa > 1e-6 ? 1 / kappa : 1e5;
+      const inner = pts[c + 2] * dTx + pts[c + 3] * dTy >= 0 ? 1 : -1;
+      lim[k] = inner * Math.min(R * 0.85, 1e5);
+    }
+    // soften: each point takes the tightest limit nearby so the squeeze eases in
+    const soft = new Float32Array(n);
+    for (let k = 0; k < n; k++) {
+      let best = lim[k];
+      for (let j = Math.max(0, k - 6); j <= Math.min(n - 1, k + 6); j++) {
+        if (Math.sign(lim[j]) === Math.sign(lim[k]) && Math.abs(lim[j]) < Math.abs(best)) best = lim[j];
       }
+      soft[k] = best;
     }
 
-    // particles riding the ribbon
-    ctx.fillStyle = "rgb(222,255,150)";
+    // strands: x, y, nx, ny, g, u, alpha, index
+    const line = new Float32Array(strands * n * 9);
+    const lift = Math.min(2, 0.6 + 0.4 * dpr); // device-pixel lines are thinner on dense screens
+    let o = 0;
+    for (let i = 0; i < strands; i++) {
+      const u = i / (strands - 1) - 0.5;
+      const edge = Math.abs(u) * 2;
+      const alpha = (0.05 + 0.32 * Math.pow(1 - edge, 2) + 0.1 * Math.pow(edge, 6)) * lift * (84 / strands) ** 0.5;
+      const idx = i * (84 / strands);
+      for (let k = 0; k < n; k++) {
+        const q = k * 5;
+        line[o++] = pts[q]; line[o++] = pts[q + 1]; line[o++] = pts[q + 2]; line[o++] = pts[q + 3];
+        line[o++] = pts[q + 4]; line[o++] = u; line[o++] = alpha; line[o++] = idx; line[o++] = soft[k];
+      }
+    }
+    gl.bindBuffer(gl.ARRAY_BUFFER, P.lineBuf);
+    gl.bufferData(gl.ARRAY_BUFFER, line, gl.STATIC_DRAW);
+
+    // halo strip: x, y, nx, ny, g, side
+    const halo = new Float32Array(n * 2 * 7);
+    o = 0;
+    for (let k = 0; k < n; k++) {
+      const q = k * 5;
+      for (const side of [-1, 1]) {
+        halo[o++] = pts[q]; halo[o++] = pts[q + 1]; halo[o++] = pts[q + 2]; halo[o++] = pts[q + 3];
+        halo[o++] = pts[q + 4]; halo[o++] = side; halo[o++] = soft[k];
+      }
+    }
+    gl.bindBuffer(gl.ARRAY_BUFFER, P.haloBuf);
+    gl.bufferData(gl.ARRAY_BUFFER, halo, gl.STATIC_DRAW);
+  }
+
+  function needsAnchor(sy) {
+    const margin = H * 0.1;
+    const maxTop = Math.max(0, docH - CH);
+    return bufTop < 0 ||
+      (sy < bufTop + margin && bufTop > 0) ||
+      (sy + H > bufTop + CH - margin && bufTop < maxTop);
+  }
+
+  function anchor(sy) {
+    if (!needsAnchor(sy)) return;
+    const maxTop = Math.max(0, docH - CH);
+    bufTop = Math.round(Math.min(maxTop, Math.max(0, sy - (CH - H) / 2)));
+    cv.style.transform = `translate3d(0, ${bufTop}px, 0)`;
+    buildGeometry();
+  }
+
+  function updateOpacity(sy) {
+    // full strength over the hero, quieter behind reading content
+    const fade = Math.min(1, sy / Math.max(1, hero.offsetHeight * 0.8));
+    const op = +(1 - 0.4 * fade).toFixed(2);
+    if (op !== shownOpacity) { shownOpacity = op; cv.style.opacity = op; }
+  }
+
+  function setCommon(prog, time, mx, my) {
+    gl.useProgram(prog.p);
+    gl.uniform2f(prog.loc("uRes"), W, CH);
+    gl.uniform2f(prog.loc("uView"), W, CH);
+    const lt = prog.loc("uTime"); if (lt) gl.uniform1f(lt, time);
+    const ls = prog.loc("uSpread"); if (ls) gl.uniform1f(ls, spread);
+    const lm = prog.loc("uMouse"); if (lm) gl.uniform2f(lm, mx, my);
+  }
+  function attr(prog, name, size, stride, offset) {
+    const a = prog.att(name);
+    if (a < 0) return;
+    gl.enableVertexAttribArray(a);
+    gl.vertexAttribPointer(a, size, gl.FLOAT, false, stride * 4, offset * 4);
+  }
+  function disableAttrs() { for (let i = 0; i < 5; i++) gl.disableVertexAttribArray(i); }
+
+  let dotData = new Float32Array(0);
+  function draw(time) {
+    if (!P) return;
+    if (Math.abs(document.documentElement.scrollHeight - docH) > 4) buildPath();
+    mouse.x += (mouse.tx - mouse.x) * 0.05;
+    mouse.y += (mouse.ty - mouse.y) * 0.05;
+    anchor(window.scrollY);
+    const mx = (mouse.x - 0.5) * 36, my = (mouse.y - 0.5) * 24;
+
+    gl.clearColor(0, 0, 0, 0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    const n = P.nPts;
+    if (!n) return;
+
+    // halo
+    setCommon(P.halo, time, mx, my);
+    gl.bindBuffer(gl.ARRAY_BUFFER, P.haloBuf);
+    attr(P.halo, "aPos", 2, 7, 0); attr(P.halo, "aNor", 2, 7, 2); attr(P.halo, "aGS", 2, 7, 4); attr(P.halo, "aLim", 1, 7, 6);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, n * 2);
+    disableAttrs();
+
+    // strands
+    setCommon(P.line, time, mx, my);
+    gl.bindBuffer(gl.ARRAY_BUFFER, P.lineBuf);
+    attr(P.line, "aPos", 2, 9, 0); attr(P.line, "aNor", 2, 9, 2); attr(P.line, "aMeta", 4, 9, 4); attr(P.line, "aLim", 1, 9, 8);
+    const nudge = P.line.loc("uNudge");
+    for (const d of [0, 1.1]) {
+      gl.uniform1f(nudge, d);
+      for (let i = 0; i < strands; i++) gl.drawArrays(gl.LINE_STRIP, i * n, n);
+    }
+    disableAttrs();
+
+    // particles riding the ribbon (few, so the CPU places them)
     const nSeg = way.length - 1;
-    for (const q of particles) {
-      if (!reduceMotion) q.g = (q.g + q.v) % nSeg;
-      const i = Math.floor(q.g);
-      const y0 = Math.min(way[i][1], way[i + 1][1]), y1 = Math.max(way[i][1], way[i + 1][1]);
-      if (y1 < top || y0 > bottom) continue;
-      const [x, y, nx, ny] = at(i, q.g - i);
-      const env = envAt(q.g);
-      const twist = Math.sin(q.g * 2.2 - time * 0.42 + q.u * 1.2);
-      const off = q.u * spread * env * twist * 1.25;
+    const top = bufTop - spread, bottom = bufTop + CH + spread;
+    if (dotData.length < particles.length * 4) dotData = new Float32Array(particles.length * 4);
+    let c = 0;
+    for (const p of particles) {
+      if (!reduceMotion) p.g = (p.g + p.v) % nSeg;
+      const i = Math.floor(p.g);
+      if (Math.max(way[i][1], way[i + 1][1]) < top || Math.min(way[i][1], way[i + 1][1]) > bottom) continue;
+      const [x, y, nx, ny] = at(i, p.g - i);
+      const env = 0.68 + 0.32 * Math.sin(p.g * 1.3 + 0.4);
+      const off = p.u * spread * env * (Math.sin(p.g * 2.2 - time * 0.42 + p.u * 1.2) * 0.8 + 0.3) * 1.2;
       const py = y + ny * off - bufTop + my;
       if (py < -10 || py > CH + 10) continue;
-      ctx.globalAlpha = (0.35 + 0.65 * Math.abs(Math.sin(time * 1.4 + q.ph))) * env;
-      ctx.beginPath();
-      ctx.arc(x + nx * off + mx, py, q.r, 0, Math.PI * 2);
-      ctx.fill();
+      dotData[c++] = x + nx * off + mx; dotData[c++] = py;
+      dotData[c++] = (0.35 + 0.65 * Math.abs(Math.sin(time * 1.4 + p.ph))) * env;
+      dotData[c++] = p.r;
     }
-    ctx.globalAlpha = 1;
-    ctx.globalCompositeOperation = "source-over";
-
-    gctx.clearRect(0, 0, gcv.width, gcv.height);
-    gctx.filter = "blur(2px)";
-    gctx.drawImage(cv, 0, 0, gcv.width, gcv.height);
-    gctx.filter = "none";
+    if (c) {
+      gl.useProgram(P.dot.p);
+      gl.uniform2f(P.dot.loc("uRes"), W, CH);
+      gl.uniform1f(P.dot.loc("uDpr"), dpr);
+      gl.bindBuffer(gl.ARRAY_BUFFER, P.dotBuf);
+      gl.bufferData(gl.ARRAY_BUFFER, dotData.subarray(0, c), gl.DYNAMIC_DRAW);
+      attr(P.dot, "aDot", 4, 4, 0);
+      gl.drawArrays(gl.POINTS, 0, c / 4);
+      disableAttrs();
+    }
   }
+
+  cv.addEventListener("webglcontextlost", (e) => { e.preventDefault(); P = null; });
+  cv.addEventListener("webglcontextrestored", () => { if (initGL()) { gl.viewport(0, 0, cv.width, cv.height); bufTop = -1; } });
 
   /* ---- smooth wheel scrolling (Lenis); touch keeps native momentum ---- */
   let lenis = null;
   if (!reduceMotion && typeof window.Lenis === "function") {
     try {
-      lenis = new window.Lenis({
-        duration: 1.15,
-        easing: (x) => Math.min(1, 1.001 - Math.pow(2, -10 * x)),
-        smoothWheel: true,
-        wheelMultiplier: 0.9
-      });
+      lenis = new window.Lenis({ lerp: 0.12, smoothWheel: true, wheelMultiplier: 1 });
     } catch (e) { lenis = null; }
   }
   const navOffset = () => -(document.getElementById("nav").offsetHeight + 8);
@@ -403,22 +593,25 @@
     const el = id.length > 1 && document.getElementById(id.slice(1));
     if (!el) return;
     e.preventDefault();
-    lenis.scrollTo(id === "#top" ? 0 : el, { offset: navOffset() });
+    lenis.scrollTo(id === "#top" ? 0 : el, { offset: navOffset(), duration: 1.2 });
   });
 
-  let heroVisible = true, raf = 0, t0 = performance.now();
+  let heroVisible = true, raf = 0, startT = performance.now();
   function loop(now) {
     if (lenis) lenis.raf(now);
-    draw((now - t0) / 1000);
+    updateOpacity(window.scrollY);
+    draw((now - startT) / 1000);
     raf = !document.hidden ? requestAnimationFrame(loop) : 0;
   }
   function kick() { if (!raf && !document.hidden && !reduceMotion) raf = requestAnimationFrame(loop); }
 
+  initGL();
   resize(true);
   new IntersectionObserver(([e]) => { heroVisible = e.isIntersecting; }).observe(hero);
+  updateOpacity(window.scrollY);
   if (reduceMotion) {
     draw(4);
-    window.addEventListener("scroll", () => draw(4), { passive: true });
+    window.addEventListener("scroll", () => { updateOpacity(window.scrollY); draw(4); }, { passive: true });
   } else {
     draw(0); // first frame right away, even if the tab starts in the background
     document.addEventListener("visibilitychange", kick);
