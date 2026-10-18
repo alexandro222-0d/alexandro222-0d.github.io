@@ -543,7 +543,7 @@ const WORKS = [
 ];
 WORKS.forEach(w => { w.url = w.url || `works/${w.slug}/index.html`; });
 $("#grid").innerHTML = WORKS.map((w, i) => `<button type="button" class="panel work${w.big ? " big" : ""}${w.wide ? " wide" : ""}" data-i="${i}" data-f="${w.f}">
-  <figure><img src="img/${w.big ? "w" : "t"}/${w.slug}-d0.jpg" alt="Сайт «${w.t}»" loading="lazy"${w.pos ? ` style="object-position:${w.pos}"` : ""}><span class="tag${w.tag === "Новое" ? " new" : ""}">${w.tag}</span></figure>
+  <figure><img src="img/${w.big ? "w" : "t"}/${w.slug}-d0.jpg" alt="Сайт «${w.t}»" loading="lazy"${w.pos ? ` style="object-position:${w.pos}"` : ""}></figure>
   <div class="b"><div><b>${w.t}</b><span>${w.s}</span></div><span class="go" aria-hidden="true">→</span></div></button>`).join("");
 
 /* просмотр работы */
@@ -551,7 +551,7 @@ let cur = 0;
 const vis = () => $$(".work:not(.hide)").map(c => +c.dataset.i);
 function openW(i) {
   cur = i; const w = WORKS[i], list = vis(), k = list.indexOf(i);
-  $("#vTitle").textContent = w.t; $("#vSub").textContent = w.s + " · " + w.tag;
+  $("#vTitle").textContent = w.t; $("#vSub").textContent = w.s;
   $("#vOpen").href = w.live || w.url; $("#vNum").textContent = `${k + 1} / ${list.length}`;
   $("#vLoad").classList.remove("hide"); $("#vIframe").src = w.url;
   $("#viewer").classList.add("open"); $("#viewer").setAttribute("aria-hidden", "false"); document.body.style.overflow = "hidden";
