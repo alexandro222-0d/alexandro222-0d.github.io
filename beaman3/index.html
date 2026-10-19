@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Beaman — барбершоп в Барановичах. Мужские стрижки и бритьё</title>
+<meta name="description" content="Beaman — первые барбершопы в Барановичах: ул. Ленина, 11 и ул. Гагарина, 47. Мужские и детские стрижки, борода, королевское бритьё. Запись онлайн.">
+<meta name="theme-color" content="#0B0B0B">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Beaman — барбершоп в Барановичах">
+<meta property="og:description" content="Мужские стрижки и бритьё. Ленина, 11 и Гагарина, 47.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230B0B0B'/%3E%3Crect x='24' y='8' width='16' height='48' rx='8' fill='%23fff'/%3E%3Cpath d='M24 18l16-8v8l-16 8zM24 34l16-8v8l-16 8zM24 50l16-8v6l-12 6z' fill='%23C8102E'/%3E%3Cpath d='M24 26l16-8v8l-16 8zM24 42l16-8v8l-16 8z' fill='%231F3C88'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,800..900&family=Unbounded:wght@700..900&family=Golos+Text:wght@400..600&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero-shave.webp">
+<style>
+/* OLD BLADE — нуар: кость, графит, сталь. Цвет на всём сайте есть только у барбер-пола. */
+:root{
+  --bone:#E9E6E0; --bone-2:#DEDAD2; --ink:#0B0B0B; --ink-2:#141414; --ink-3:#1D1D1D; --ash:#8A8680; --line-d:rgba(11,11,11,.14); --line-l:rgba(233,230,224,.14);
+  --red:#C8102E; --blue:#1F3C88;
+  --sans:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif; --display:"Archivo","Unbounded",system-ui,sans-serif; --serif:"Cormorant Garamond",Georgia,serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --gut:clamp(16px,3.2vw,48px); --wrap:min(1320px,100% - var(--gut)*2);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bone);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+main,footer{overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.wrap{width:var(--wrap);margin-inline:auto}
+.mono{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase}
+.wide{font-family:var(--display);font-variation-settings:"wdth" 125;font-weight:900;text-transform:uppercase;letter-spacing:-.01em}
+:lang(ru) .wide{font-synthesis:none}
+section,footer{scroll-margin-top:64px}
+.cond{font-variation-settings:"wdth" 70;font-weight:800;text-transform:uppercase}
+/* плёночное зерно */
+body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 1.2s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:50px;padding:0 24px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;background:var(--ink);color:var(--bone);transition:background .25s,color .25s,transform .15s}
+.btn:hover{background:#2a2a2a}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--bone)}
+.btn.light{background:var(--bone);color:var(--ink)}
+.btn.light:hover{background:#fff}
+.btn.lghost{background:transparent;color:var(--bone);box-shadow:inset 0 0 0 1px rgba(233,230,224,.5)}
+.btn.lghost:hover{background:var(--bone);color:var(--ink)}
+.arrow{display:inline-flex;gap:8px;align-items:center;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase}
+.arrow::after{content:"→";transition:transform .2s}
+.arrow:hover::after{transform:translateX(4px)}
+
+/* верхняя строка и шапка */
+.ticker{background:var(--ink);color:var(--bone);height:30px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--gut)}
+.ticker .mono{font-size:10.5px}
+.ticker .r{display:flex;gap:22px}
+.top{position:sticky;top:0;z-index:50;background:rgba(233,230,224,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line-d)}
+.top .in{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:64px;padding:0 var(--gut)}
+.top nav{display:flex;gap:26px}
+.top nav a{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.top nav a:hover{opacity:1}
+.logo{display:flex;flex-direction:column;align-items:center;line-height:1}
+.logo b{font-size:22px;letter-spacing:.04em}
+.logo small{font-family:var(--mono);font-size:9px;letter-spacing:.32em;margin-top:4px;opacity:.6}
+.top .act{display:flex;justify-content:flex-end;align-items:center;gap:18px}
+.top .act .btn{height:42px;padding:0 18px}
+.burger{display:none;width:42px;height:42px;position:relative}
+.burger i{position:absolute;left:10px;right:10px;height:1.5px;background:var(--ink);transition:transform .3s,top .3s}
+.burger i:first-child{top:16px}.burger i:last-child{top:25px}
+.menu-open .burger i:first-child{top:20px;transform:rotate(45deg)}
+.menu-open .burger i:last-child{top:20px;transform:rotate(-45deg)}
+.mmenu{position:fixed;inset:94px 0 0;z-index:49;background:var(--ink);color:var(--bone);padding:28px var(--gut);display:flex;flex-direction:column;gap:6px;transform:translateY(-8px);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s}
+.menu-open .mmenu{opacity:1;transform:none;pointer-events:auto}
+.mmenu a.big{font-size:44px;line-height:1.05;padding:6px 0;border-bottom:1px solid var(--line-l)}
+.mmenu .btn{margin-top:auto;margin-bottom:max(20px,env(safe-area-inset-bottom))}
+
+/* ПЕРВЫЙ ЭКРАН: человек на фоне гигантских букв */
+.hero{position:relative;height:calc(100svh - 94px);min-height:620px;max-height:1000px;overflow:hidden;background:radial-gradient(120% 90% at 50% 70%,#F1EFEA 0%,var(--bone) 45%,#D7D3CB 100%)}
+.smoke{position:absolute;inset:0;pointer-events:none;z-index:3;mix-blend-mode:multiply}
+.smoke span{position:absolute;border-radius:50%;filter:blur(40px);background:radial-gradient(circle,rgba(120,116,110,.28),transparent 70%);animation:drift var(--t,22s) ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(var(--dx,60px),var(--dy,-40px)) scale(1.25)}}
+.hero-word{position:absolute;left:0;right:0;top:47%;transform:translateY(-50%);z-index:1;text-align:center;font-size:clamp(80px,17.6vw,300px);line-height:.8;white-space:nowrap;color:var(--ink);will-change:transform}
+.hero-word span{display:inline-block;clip-path:inset(0 0 0 0)}
+.hero-word span i{display:inline-block;font-style:normal;transform:translateY(105%);animation:rise 1.1s cubic-bezier(.2,.8,.2,1) forwards}
+.hero-word span:nth-child(2) i{animation-delay:.08s}
+@keyframes rise{to{transform:none}}
+.hero-man{position:absolute;left:50%;bottom:0;z-index:2;height:94%;width:auto;transform:translateX(-50%);filter:drop-shadow(0 30px 40px rgba(0,0,0,.18));opacity:0;animation:man 1.4s .35s cubic-bezier(.2,.8,.2,1) forwards;will-change:transform}
+@keyframes man{from{opacity:0;transform:translate(-50%,40px)}to{opacity:1;transform:translate(-50%,0)}}
+.hero-l{position:absolute;left:var(--gut);top:clamp(28px,6vh,64px);z-index:4;max-width:260px}
+.hero-l p{font-size:13px;line-height:1.5;margin-top:10px;color:#3a3936}
+.hero-l .mono{font-size:10.5px}
+.hero-r{position:absolute;right:var(--gut);top:clamp(28px,6vh,64px);z-index:4;text-align:right}
+.hero-r .num{font-size:44px;line-height:1}
+.hero-r .mono{font-size:10.5px;color:#55534f}
+.hero-b{position:absolute;left:var(--gut);right:var(--gut);bottom:clamp(24px,5vh,48px);z-index:4;display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
+.hero-b .cta{display:flex;gap:10px}
+.hero-b .tag{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(26px,2.4vw,36px);line-height:1.1;max-width:14em;text-align:right}
+
+/* ЧЁРНАЯ ПОЛОСА УСЛУГ */
+.band{background:var(--ink);color:var(--bone);display:grid;grid-template-columns:repeat(4,1fr)}
+.svc{position:relative;padding:34px var(--gut) 30px;border-left:1px solid var(--line-l);min-height:250px;display:flex;flex-direction:column;gap:10px;overflow:hidden;transition:background .3s}
+.svc:first-child{border-left:0}
+.svc:hover{background:var(--ink-3)}
+.svc svg{width:34px;height:34px;stroke:var(--bone);fill:none;stroke-width:1.4}
+.svc h3{font-size:19px;margin-top:8px}
+.svc p{font-size:14px;color:#A9A59E;flex:1}
+.svc .price{font-family:var(--mono);font-size:13px;letter-spacing:.06em}
+.svc .num{position:absolute;right:18px;top:16px;font-family:var(--mono);font-size:10.5px;color:#5c5a56}
+
+/* РИТУАЛ (как блок «история») */
+.ritual{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);background:var(--bone-2)}
+.ritual .txt{padding:clamp(48px,7vw,110px) var(--gut);display:flex;flex-direction:column;justify-content:center}
+.ritual h2{font-size:clamp(46px,6.2vw,104px);line-height:.88;margin:16px 0 26px}
+.ritual h2 span{display:block}
+.ritual p{max-width:30em;color:#3a3936}
+.steps{list-style:none;margin:30px 0 34px;border-top:1px solid var(--line-d)}
+.steps li{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line-d)}
+.steps li span{font-family:var(--mono);font-size:11px;color:var(--ash)}
+.steps li b{font-weight:600}
+.steps li em{font-family:var(--mono);font-style:normal;font-size:11.5px;color:var(--ash)}
+.ritual figure{position:relative;min-height:560px;overflow:hidden;background:#111}
+.ritual figure img{position:absolute;inset:0;width:100%;height:118%;object-fit:cover;will-change:transform}
+.ritual figure figcaption{position:absolute;left:24px;bottom:22px;color:var(--bone);font-family:var(--serif);font-style:italic;font-weight:500;font-size:26px}
+
+/* СКУЛЬПТУРА (как VISIONS) */
+.form{position:relative;background:#000;color:var(--bone);height:min(100svh,960px);min-height:620px;overflow:hidden}
+.form .glow{position:absolute;left:50%;top:44%;width:70vmin;height:70vmin;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,255,255,.08),transparent 65%);pointer-events:none}
+.form-word{position:absolute;left:0;right:0;top:46%;transform:translateY(-50%);text-align:center;font-size:clamp(90px,24vw,420px);line-height:.8;color:#F4F2EE;white-space:nowrap;z-index:1}
+.bust{position:absolute;left:50%;bottom:0;height:90%;width:auto;z-index:2;transform:translateX(-50%);transform-origin:50% 90%;filter:drop-shadow(0 40px 60px rgba(0,0,0,.9));will-change:transform}
+.form .l{position:absolute;left:var(--gut);bottom:clamp(28px,6vh,60px);z-index:3;max-width:250px}
+.form .l .mono{color:#8c8984}
+.form .l p{font-size:14px;color:#cfccc6;margin-top:10px}
+.form .r{position:absolute;right:var(--gut);bottom:clamp(28px,6vh,60px);z-index:3;display:flex;gap:10px}
+.form .t{position:absolute;left:var(--gut);top:clamp(24px,5vh,48px);z-index:3;color:#8c8984}
+.form .tr{position:absolute;right:var(--gut);top:clamp(24px,5vh,48px);z-index:3;color:#8c8984}
+
+/* ПРЕИМУЩЕСТВА — тонкая строка */
+.perks{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid var(--line-d)}
+.perk{display:flex;gap:14px;align-items:flex-start;padding:26px var(--gut) 26px 22px;border-left:1px solid var(--line-d)}
+.perk:first-child{border-left:0;padding-left:var(--gut)}
+.perk svg{flex:none;width:26px;height:26px;stroke:var(--ink);fill:none;stroke-width:1.4}
+.perk b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:500}
+.perk span{font-size:13.5px;color:#55534f}
+
+/* БАРБЕР-ПОЛ + ОТЗЫВЫ — единственный цвет на сайте */
+.pole-sec{position:relative;background:var(--ink);color:var(--bone);height:320vh}
+.pole-stick{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);align-items:center;overflow:hidden}
+.pole-stick::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 119px,rgba(255,255,255,.025) 119px 120px);pointer-events:none}
+.pole-wrap{position:relative;display:flex;justify-content:center;align-items:center;height:100%}
+.pole-wrap::after{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(200,16,46,.22),rgba(31,60,136,.14) 45%,transparent 70%);filter:blur(30px);pointer-events:none}
+.pole{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;height:min(76svh,640px)}
+.pole .ball{width:58px;height:58px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#e9e6e0 40%,#9a968f 75%,#5a5753);box-shadow:0 0 30px rgba(255,255,255,.35),0 0 80px rgba(255,255,255,.15)}
+.pole .cap{width:90px;height:22px;border-radius:4px;background:linear-gradient(90deg,#3a3936,#cfccc6 30%,#fff 42%,#8e8a84 70%,#3a3936);box-shadow:inset 0 -3px 0 rgba(0,0,0,.25)}
+.pole .cap.b{height:26px;width:96px;border-radius:4px 4px 10px 10px}
+.pole .neck{width:60px;height:10px;background:linear-gradient(90deg,#2a2927,#b8b4ad 35%,#e9e6e0 45%,#6d6a65 75%,#2a2927)}
+.tube{position:relative;flex:1;width:76px;overflow:hidden;border-radius:6px;
+  background:repeating-linear-gradient(-30deg,var(--red) 0 22px,#F7F5F1 22px 44px,var(--blue) 44px 66px,#F7F5F1 66px 88px);background-size:100% 101.6136px;background-position:0 var(--shift,0px)}
+.tube::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(0,0,0,.05) 30%,rgba(255,255,255,.45) 42%,rgba(255,255,255,0) 52%,rgba(0,0,0,.08) 70%,rgba(0,0,0,.6))}
+.tube::before{content:"";position:absolute;inset:0;z-index:1;box-shadow:inset 0 0 0 2px rgba(255,255,255,.18);border-radius:6px}
+.quotes{position:relative;padding:0 var(--gut) 0 clamp(16px,3vw,40px);height:100%;display:flex;flex-direction:column;justify-content:center}
+.quotes .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:clamp(24px,4vh,48px)}
+.quotes .head h2{font-size:clamp(26px,3vw,44px)}
+.quotes .stack{position:relative;min-height:clamp(260px,40vh,380px)}
+.q{position:absolute;inset:0;opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+.q.on{opacity:1;transform:none}
+.q blockquote{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(34px,4vw,64px);line-height:1.04;max-width:18em}
+.q blockquote::before{content:"“";display:block;font-size:2em;line-height:.5;margin-bottom:.15em;color:#5c5a56}
+.q cite{display:flex;gap:14px;align-items:center;margin-top:24px;font-style:normal}
+.q cite b{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:500}
+.q cite span{color:#8c8984;font-size:14px}
+.qnav{display:flex;gap:8px;align-items:center}
+.qnav i{width:28px;height:2px;background:#3a3936;transition:background .3s,width .3s}
+.qnav i.on{background:var(--bone);width:44px}
+
+/* ПРАЙС — «выберите ритуал» */
+.price-sec{padding:clamp(64px,9vw,128px) 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:34px}
+.sec-head h2{font-size:clamp(32px,4.2vw,64px);line-height:.92}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.4vw,20px)}
+.card{background:var(--ink);color:var(--bone);display:flex;flex-direction:column;position:relative;transition:transform .35s}
+.card:hover{transform:translateY(-6px)}
+.card figure{aspect-ratio:3/3.4;overflow:hidden;background:#111}
+.card img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05);transition:transform .8s}
+.card:hover img{transform:scale(1.05)}
+.card .badge{position:absolute;top:12px;left:12px;background:var(--bone);color:var(--ink);font-family:var(--mono);font-size:10px;letter-spacing:.14em;padding:5px 9px;text-transform:uppercase}
+.card .b{padding:18px 18px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{font-size:17px}
+.card ul{list-style:none;font-size:13.5px;color:#A9A59E;flex:1;margin:4px 0 10px}
+.card ul li::before{content:"— "}
+.card .row{display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px solid var(--line-l);padding-top:14px}
+.card .row b{font-family:var(--display);font-size:26px;font-variation-settings:"wdth" 100;font-weight:800}
+.card .row b small{font-size:13px;font-weight:500;margin-left:4px;color:#A9A59E}
+.card .row .btn{height:40px;padding:0 14px;font-size:11px}
+.card.pop{outline:1px solid var(--bone);outline-offset:-1px}
+.extra{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:22px;font-size:14px;color:#55534f}
+.extra b{color:var(--ink);font-weight:600}
+
+/* ЗАПИСЬ */
+.book{background:var(--ink);color:var(--bone);padding:clamp(64px,9vw,120px) 0}
+.book .grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,64px);align-items:start}
+.book h2{font-size:clamp(36px,5vw,80px);line-height:.9}
+.book .sub{color:#A9A59E;margin-top:14px;max-width:32em}
+.step{margin-top:34px}
+.step .mono{color:#8c8984;display:block;margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{height:44px;padding:0 16px;box-shadow:inset 0 0 0 1px var(--line-l);font-size:14.5px;transition:background .2s,color .2s,box-shadow .2s;display:inline-flex;align-items:center;gap:8px}
+.chip:hover{box-shadow:inset 0 0 0 1px rgba(233,230,224,.5)}
+.chip[aria-pressed="true"]{background:var(--bone);color:var(--ink);box-shadow:none}
+.chip small{font-family:var(--mono);font-size:11px;opacity:.6}
+.chip:disabled{opacity:.28;cursor:not-allowed;text-decoration:line-through}
+.masters{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.master{padding:16px;box-shadow:inset 0 0 0 1px var(--line-l);text-align:left;display:flex;gap:14px;align-items:center;transition:background .2s,box-shadow .2s}
+.master .mono-ini{width:44px;height:44px;flex:none;display:grid;place-items:center;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(233,230,224,.4);font-family:var(--serif);font-style:italic;font-weight:600;font-size:24px}
+.master b{display:block;font-size:15px;font-weight:600}
+.master span{font-size:12.5px;color:#8c8984}
+.master[aria-pressed="true"]{background:var(--bone);color:var(--ink)}
+.master[aria-pressed="true"] span{color:#55534f}
+.master[aria-pressed="true"] .mono-ini{box-shadow:inset 0 0 0 1px rgba(11,11,11,.4)}
+.days{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.days::-webkit-scrollbar{display:none}
+.day{flex:0 0 68px;height:74px;box-shadow:inset 0 0 0 1px var(--line-l);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;transition:background .2s}
+.day span{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.6}
+.day b{font-family:var(--display);font-size:22px;font-weight:800}
+.day[aria-pressed="true"]{background:var(--bone);color:var(--ink)}
+.times{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.times .chip{justify-content:center;padding:0}
+/* чек — как старый талон барбершопа */
+.ticket{position:sticky;top:96px;background:var(--bone);color:var(--ink);padding:28px 26px 24px;--notch:14px;
+  -webkit-mask:radial-gradient(circle var(--notch) at 0 62%,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle var(--notch) at 100% 62%,transparent 98%,#000) right/51% 100% no-repeat;
+  mask:radial-gradient(circle var(--notch) at 0 62%,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle var(--notch) at 100% 62%,transparent 98%,#000) right/51% 100% no-repeat}
+.ticket .tt{display:flex;justify-content:space-between;align-items:flex-start}
+.ticket .tt b{font-size:24px;line-height:1}
+.ticket .tt .mono{font-size:10px;color:#55534f}
+.ticket .pl{height:6px;margin:16px 0;background:repeating-linear-gradient(-30deg,var(--red) 0 8px,#fff 8px 16px,var(--blue) 16px 24px,#fff 24px 32px)}
+.ticket dl{display:grid;grid-template-columns:auto 1fr;gap:9px 16px;font-size:14.5px}
+.ticket dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#55534f;align-self:center}
+.ticket dd{text-align:right;font-weight:600}
+.ticket .cut{border-top:1.5px dashed rgba(11,11,11,.35);margin:20px 0 16px}
+.ticket .tot{display:flex;justify-content:space-between;align-items:baseline}
+.ticket .tot b{font-family:var(--display);font-size:40px;line-height:1;font-variation-settings:"wdth" 100;font-weight:800}
+.ticket input{width:100%;height:48px;margin:16px 0 10px;padding:0 14px;border:1px solid rgba(11,11,11,.3);background:#fff;font-size:16px}
+.ticket .btn{width:100%}
+.ticket .ok{display:none;margin-top:12px;font-size:13.5px;line-height:1.45}
+.ticket .ok.show{display:block}
+
+/* ПОДВАЛ — финальные титры */
+footer{background:radial-gradient(ellipse 70% 45% at 50% 18%,rgba(255,255,255,.07),transparent 70%),#000;color:var(--bone);padding-top:clamp(64px,10vw,140px);overflow:hidden;position:relative}
+.fin{position:relative;text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px}
+.fin .mono{color:#8c8984}
+.fin h2{font-size:clamp(38px,7vw,120px);line-height:1.04}
+.fin-cta{display:flex;gap:10px;margin-top:8px}
+.credits{position:relative;display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:28px;margin-top:clamp(56px,8vw,110px);padding-top:28px;border-top:1px solid var(--line-l)}
+.credits .mono{color:#8c8984;display:block;margin-bottom:14px}
+.credits p{font-size:14.5px;line-height:1.5;color:#cfccc6;margin-bottom:6px;display:flex;align-items:baseline;gap:10px}
+.credits p b{font-family:var(--display);font-weight:900;font-variation-settings:"wdth" 125;text-transform:uppercase;font-size:14px;color:var(--bone)}
+.credits p i{flex:1;max-width:60px;border-bottom:1px dotted #5c5a56;transform:translateY(-3px)}
+.credits a:hover{color:#fff;text-decoration:underline}
+.fstripe{height:8px;margin-top:clamp(48px,6vw,80px);background:repeating-linear-gradient(-60deg,var(--red) 0 14px,#F7F5F1 14px 28px,var(--blue) 28px 42px,#F7F5F1 42px 56px);background-size:64.66px 100%;animation:stripe 6s linear infinite}
+@keyframes stripe{to{background-position:64.66px 0}}
+.fbottom{position:relative;height:clamp(110px,15vw,250px);overflow:hidden}
+.fword{position:absolute;left:50%;top:clamp(14px,1.6vw,26px);transform:translateX(-50%);font-size:clamp(64px,15.6vw,260px);line-height:.8;color:var(--bone);white-space:nowrap}
+.demo{position:absolute;left:var(--gut);right:var(--gut);bottom:calc(14px + env(safe-area-inset-bottom,0px));display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#fff;mix-blend-mode:difference;z-index:2}
+
+/* нижняя панель на телефоне */
+.fab{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:60;display:none;grid-template-columns:auto 1fr;gap:8px;transform:translateY(140%);transition:transform .35s}
+.fab.show{transform:none}
+.fab .btn{height:52px;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+.fab .call{width:52px;padding:0;background:var(--bone);color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink),0 12px 30px rgba(0,0,0,.2)}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:1100px){
+  .top nav{display:none}
+  .burger{display:block}
+  .top .in{grid-template-columns:auto 1fr auto}
+  .logo{align-items:flex-start}
+  .top .act .btn{display:none}
+  .band{grid-template-columns:1fr 1fr}
+  .svc:nth-child(3){border-left:0}
+  .svc:nth-child(n+3){border-top:1px solid var(--line-l)}
+  .perks{grid-template-columns:1fr 1fr 1fr}
+  .perk:nth-child(4){border-left:0;padding-left:var(--gut)}
+  .perk:nth-child(n+4){border-top:1px solid var(--line-d)}
+  .cards{grid-template-columns:1fr 1fr}
+  .book .grid{grid-template-columns:minmax(0,1fr)}
+  .ticket{position:relative;top:auto}
+}
+@media (max-width:760px){
+  .ticker .r span:not(:first-child){display:none}
+  .ticker{justify-content:center}
+  .ticker .l{display:none}
+  .mmenu{inset:94px 0 0}
+  /* первый экран: две строки букв, барбер между ними */
+  .hero{height:auto;min-height:0;max-height:none;display:flex;flex-direction:column}
+  .hero .stage{position:relative;height:min(78svh,640px);min-height:520px}
+  .hero-word{top:58%;font-size:31vw;line-height:.84;display:flex;flex-direction:column;align-items:center;z-index:3;color:#fff;mix-blend-mode:difference}
+  .hero-word span{display:block}
+  .hero-word span{display:block}
+  .hero-man{height:92%}
+  .hero-l{top:18px;max-width:150px}
+  .hero-l p{display:none}
+  .hero-r{top:18px}
+  .hero-r .num{font-size:30px}
+  .hero-b{position:relative;left:auto;right:auto;bottom:auto;flex-direction:column-reverse;align-items:stretch;padding:22px var(--gut) 28px;background:var(--bone);z-index:4}
+  .hero-b .tag{text-align:left;font-size:31px;max-width:none}
+  .hero-b .cta{display:grid;grid-template-columns:1fr 1fr}
+  .hero-b .cta .btn{padding:0 10px}
+  .band{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .band::-webkit-scrollbar{display:none}
+  .svc{flex:0 0 78%;scroll-snap-align:start;border-top:0!important;border-left:1px solid var(--line-l)!important;min-height:230px}
+  .svc:first-child{border-left:0!important}
+  .ritual{grid-template-columns:1fr}
+  .ritual figure{order:-1;min-height:0;aspect-ratio:4/3.6}
+  .ritual figure img{height:120%}
+  .steps li{grid-template-columns:44px 1fr auto}
+  .form{height:auto;min-height:0;display:flex;flex-direction:column}
+  .form .stage{position:relative;height:min(82svh,640px);min-height:500px}
+  .form-word{top:40%;font-size:29vw}
+  .bust{height:84%}
+  .form .t{top:18px}.form .tr{display:none}
+  .form-word{z-index:3;mix-blend-mode:difference;color:#fff}
+  .form .l{position:relative;left:auto;bottom:auto;max-width:none;padding:0 var(--gut)}
+  .form .r{position:relative;right:auto;bottom:auto;padding:20px var(--gut) 40px;display:grid;grid-template-columns:1fr 1fr}
+  .perks{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .perks::-webkit-scrollbar{display:none}
+  .perk{flex:0 0 70%;scroll-snap-align:start;border-top:0!important;padding-left:22px!important;border-left:1px solid var(--line-d)!important}
+  .perk:first-child{border-left:0!important;padding-left:var(--gut)!important}
+  .pole-sec{height:300vh}
+  .pole-stick{grid-template-columns:96px minmax(0,1fr);align-items:stretch}
+  .pole-wrap::after{width:200px;height:200px}
+  .pole{height:min(62svh,500px);margin-top:auto;margin-bottom:auto}
+  .pole .ball{width:40px;height:40px}
+  .pole .cap{width:60px;height:16px}.pole .cap.b{width:64px;height:18px}
+  .pole .neck{width:40px;height:8px}
+  .tube{width:50px;background-size:100% 76.2102px;background-image:repeating-linear-gradient(-30deg,var(--red) 0 16.5px,#F7F5F1 16.5px 33px,var(--blue) 33px 49.5px,#F7F5F1 49.5px 66px)}
+  .quotes{padding:0 var(--gut) 0 4px}
+  .quotes .head{flex-direction:column;align-items:flex-start;gap:14px}
+  .quotes .stack{min-height:300px}
+  .q blockquote{font-size:34px}
+  .sec-head{flex-direction:column;align-items:flex-start}
+  .cards{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(var(--gut)*-1);padding:0 var(--gut) 8px;scrollbar-width:none;gap:12px}
+  .cards::-webkit-scrollbar{display:none}
+  .card{flex:0 0 78%;scroll-snap-align:start}
+  .masters{grid-template-columns:1fr}
+  .times{grid-template-columns:repeat(4,1fr)}
+  .credits{grid-template-columns:1fr 1fr;gap:26px 18px}
+  .credits>div:first-child{grid-column:1/-1}
+  .fin-cta{display:grid;grid-template-columns:1fr 1fr;width:100%}
+  .fab{display:grid}
+  footer{padding-bottom:0}
+  .fbottom{height:calc(31vw + 64px)}
+  .demo{flex-direction:column;gap:6px}
+}
+@media (min-width:761px){ .hero .stage,.form .stage{position:absolute;inset:0} }
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .hero-word span i{transform:none}.hero-man{opacity:1}.rv{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+
+/* вариант 3: фото во весь экран */
+.hero{background:#0d0d0c}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 40%;transform:scale(1.06);opacity:0;animation:bgin 1.6s .1s ease forwards;will-change:transform}
+@keyframes bgin{to{opacity:1}}
+.hero .stage::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(10,10,9,.55) 0%,rgba(10,10,9,.15) 38%,rgba(10,10,9,.35) 62%,rgba(10,10,9,.9) 100%)}
+.hero .smoke{display:none}
+.hero-word{z-index:2;color:#F3F0EA;top:56%}
+.hero-man{display:none}
+.hero-l,.hero-r{color:#F3F0EA}
+.hero-l p,.hero-r .mono{color:rgba(243,240,234,.75)}
+.hero-b{color:#F3F0EA}
+.hero-b .btn.ghost{color:#F3F0EA;box-shadow:inset 0 0 0 1px rgba(243,240,234,.55)}
+.hero-b .btn.ghost:hover{background:#F3F0EA;color:#0d0d0c}
+.hero-b .btn:not(.ghost){background:#F3F0EA;color:#0d0d0c}
+@media (max-width:760px){
+  .hero-bg{object-position:70% 50%}
+  .hero-b .btn:not(.ghost){background:var(--ink);color:var(--bone)}
+  .hero-word{top:72%;mix-blend-mode:normal;color:#F3F0EA}
+  .hero-b{color:var(--ink)}
+  .hero-b .btn.ghost{color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+}
+@media (prefers-reduced-motion:reduce){.hero-bg{opacity:1;animation:none}}
+</style>
+</head>
+<body>
+<div class="ticker"><span class="mono l">Первые барбершопы в Барановичах</span><div class="r mono"><span>10:00–21:00</span><span>Ленина, 11 · Гагарина, 47</span><span>+375 29 838-87-78</span></div></div>
+<header class="top" id="top">
+  <div class="in">
+    <nav aria-label="Разделы"><a href="#services">Услуги</a><a href="#ritual">Бритьё</a><a href="#price">Цены</a><a href="#reviews">Отзывы</a></nav>
+    <a class="logo" href="#" aria-label="Beaman — наверх"><b class="wide">Beaman</b><small>стрижки и бритьё</small></a>
+    <div class="act"><a class="btn" href="#book">Записаться</a><button class="burger" id="burger" aria-label="Меню" aria-expanded="false"><i></i><i></i></button></div>
+  </div>
+</header>
+<div class="mmenu" id="mmenu">
+  <a class="big wide" href="#services">Услуги</a><a class="big wide" href="#ritual">Бритьё</a><a class="big wide" href="#price">Цены</a><a class="big wide" href="#reviews">Отзывы</a>
+  <a class="btn light" href="https://n301575.yclients.com/" target="_blank" rel="noopener">Записаться онлайн</a>
+</div>
+
+<main>
+  <section class="hero" aria-label="Beaman">
+    <div class="stage">
+      <div class="smoke" aria-hidden="true">
+        <span style="left:30%;top:52%;width:420px;height:300px;--t:24s;--dx:80px;--dy:-60px"></span>
+        <span style="left:46%;top:64%;width:520px;height:340px;--t:30s;--dx:-90px;--dy:-30px"></span>
+        <span style="left:18%;top:70%;width:360px;height:260px;--t:20s;--dx:60px;--dy:-80px"></span>
+        <span style="left:58%;top:40%;width:300px;height:240px;--t:26s;--dx:-40px;--dy:50px"></span>
+      </div>
+      <h1 class="hero-word wide" id="heroWord" aria-label="Beaman — барбершоп в Барановичах"><span><i>Beaman</i></span><span id="w2"></span></h1>
+      <img class="hero-bg" id="heroBg" src="img/hero-shave.webp" alt="" width="1536" height="1024" fetchpriority="high"><span class="hero-man" id="heroMan" hidden></span>
+      <div class="hero-l"><span class="mono">Стрижка · Борода · Бритьё</span><p>Первые барбершопы в Барановичах. Два адреса: Ленина, 11 и Гагарина, 47.</p></div>
+      <div class="hero-r"><b class="num wide">5,0</b><div class="mono">348 оценок · Яндекс</div></div>
+    </div>
+    <div class="hero-b">
+      <div class="cta"><a class="btn" href="https://n301575.yclients.com/" target="_blank" rel="noopener">Записаться</a><a class="btn ghost" href="#price">Цены</a></div>
+      <p class="tag">Стрижки и бритьё.<br>Be a man.</p>
+    </div>
+  </section>
+
+  <section class="band" id="services" aria-label="Услуги">
+    <article class="svc"><span class="num">01</span><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="9" cy="25" r="4.5"/><circle cx="25" cy="25" r="4.5"/><path d="M12 22 26 4M22 22 8 4"/></svg><h3 class="wide">Мужская стрижка</h3><p>Ножницы и машинка, мытьё головы до и после, укладка профессиональным стайлингом.</p><span class="price">от 45 р. · 1 ч</span></article>
+    <article class="svc"><span class="num">02</span><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M8 6c0 10 2 18 9 22 7-4 9-12 9-22"/><path d="M12 10c1 6 2.5 10 5 12 2.5-2 4-6 5-12"/></svg><h3 class="wide">Борода и усы</h3><p>Форма и чёткий контур, распаривание с маслами, лёгкий массаж и охлаждающий компресс.</p><span class="price">от 35 р. · 45 мин</span></article>
+    <article class="svc"><span class="num">03</span><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M4 22 22 4l8 2-18 18z"/><path d="M12 24l-6 6M8 26l-3 3"/></svg><h3 class="wide">Королевское бритьё</h3><p>Горячее полотенце, пена помазком, опасная бритва Шаветт и холодный компресс.</p><span class="price">от 40 р. · 45 мин</span></article>
+    <article class="svc"><span class="num">04</span><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="11" cy="10" r="4.5"/><circle cx="24" cy="14" r="3.5"/><path d="M3 30c0-6 3.5-10 8-10s8 4 8 10M18 30c0-4 2.5-7 6-7s6 3 6 7"/></svg><h3 class="wide">Отец и сын</h3><p>Две стрижки у одного мастера, сыну — любого возраста. Консультация по уходу.</p><span class="price">65 р. · 1 ч 30 мин</span></article>
+  </section>
+
+  <section class="ritual" id="ritual">
+    <div class="txt">
+      <span class="mono rv">Королевское бритьё</span>
+      <h2 class="wide rv"><span>Пар.</span><span>Пена.</span><span>Сталь.</span></h2>
+      <p class="rv">Премиальная процедура ухода за лицом и бородой: распаривание горячим полотенцем, плотная пена помазком, бритьё опасной бритвой со сменными лезвиями Шаветт и холодный компресс с успокаивающими средствами.</p>
+      <ol class="steps rv">
+        <li><span>I</span><b>Горячее полотенце</b><em>распаривание</em></li>
+        <li><span>II</span><b>Пена помазком</b><em>плотная</em></li>
+        <li><span>III</span><b>Опасная бритва Шаветт</b><em>сменные лезвия</em></li>
+        <li><span>IV</span><b>Холодный компресс</b><em>успокаивает кожу</em></li>
+      </ol>
+      <div class="rv"><a class="btn" href="https://n301575.yclients.com/" target="_blank" rel="noopener">Записаться на бритьё</a></div>
+    </div>
+    <figure><img id="shaveImg" src="img/shave.webp" alt="Барбер Beaman оформляет бороду" loading="lazy"><figcaption>от 40 р.</figcaption></figure>
+  </section>
+
+  <section class="form" aria-label="Форма">
+    <div class="stage">
+      <div class="glow" aria-hidden="true"></div>
+      <span class="t mono">Beaman · Барановичи</span><span class="tr mono">Фейды, классика, удлинённые</span>
+      <div class="form-word wide" id="formWord" aria-hidden="true">Форма</div>
+      <img class="bust" id="bust" src="img/barber-ob.webp" alt="" width="414" height="1400" loading="lazy">
+    </div>
+    <div class="l"><span class="mono">Стрижка под вас</span><p>Мастера подбирают форму под лицо и тип волос и подскажут, как её укладывать дома.</p></div>
+    <div class="r"><a class="btn lghost" href="#price">Цены</a><a class="btn light" href="https://n301575.yclients.com/" target="_blank" rel="noopener">Записаться</a></div>
+  </section>
+
+  <section class="perks" aria-label="Почему мы">
+    <div class="perk"><svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="10"/><path d="M13 7v6l4 3"/></svg><div><b>Онлайн-запись</b><span>Мастер и время за минуту</span></div></div>
+    <div class="perk"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M6 9h12v6a6 6 0 0 1-12 0zM18 11h2a3 3 0 0 1 0 6h-2.5M8 4c0 1.5 1 1.5 1 3M12 4c0 1.5 1 1.5 1 3"/></svg><div><b>Кофе и напитки</b><span>Пока ждёте мастера</span></div></div>
+    <div class="perk"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M12 22s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><div><b>Два адреса</b><span>Ленина, 11 · Гагарина, 47</span></div></div>
+    <div class="perk"><svg viewBox="0 0 26 26" aria-hidden="true"><rect x="3" y="8" width="20" height="14"/><path d="M3 12h20M13 8v14M13 8c-2-4-6-4-6-1s6 1 6 1c2-4 6-4 6-1s-6 1-6 1"/></svg><div><b>Сертификаты</b><span>Стрижка в подарок</span></div></div>
+    <div class="perk"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M13 3l2.8 6 6.2.6-4.7 4.2 1.4 6.2L13 16.8 7.3 20l1.4-6.2L4 9.6l6.2-.6z"/></svg><div><b>5,0 из 5</b><span>348 оценок на Яндекс Картах</span></div></div>
+  </section>
+
+  <section class="pole-sec" id="reviews" aria-label="Отзывы">
+    <div class="pole-stick">
+      <div class="pole-wrap" aria-hidden="true">
+        <div class="pole"><div class="ball"></div><div class="neck"></div><div class="cap"></div><div class="tube" id="tube"></div><div class="cap b"></div></div>
+      </div>
+      <div class="quotes">
+        <div class="head"><h2 class="wide">Что говорят<br>в креслах</h2><div class="qnav" id="qnav"><i class="on"></i><i></i><i></i><i></i></div></div>
+        <div class="stack" id="qstack">
+          <figure class="q on"><blockquote>Крутой барбершоп, по уровню ничем не уступает Минску, но не такой дорогой! Стрижка + моделирование бороды — по приятной цене.</blockquote><cite><b>Евгений К.</b><span>Яндекс Карты</span></cite></figure>
+          <figure class="q"><blockquote>Был в двух филиалах — что там, что там персонал 10/10. Пока ждал, предложили кофе, напитки и плойку.</blockquote><cite><b>Михаил Х.</b><span>Яндекс Карты</span></cite></figure>
+          <figure class="q"><blockquote>Единственное место, где дети стригутся с удовольствием. Всегда приветливые ребята, посоветуют стрижку, отвлекут детей.</blockquote><cite><b>Ирина</b><span>Яндекс Карты</span></cite></figure>
+          <figure class="q"><blockquote>Безупречный сервис. Записался день в день, практически случайно, проезжая мимо города. Вышел в восторге.</blockquote><cite><b>Alexander K.</b><span>Яндекс Карты</span></cite></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="price-sec" id="price">
+    <div class="wrap">
+      <div class="sec-head"><h2 class="wide rv">Выберите<br>ритуал</h2><a class="arrow rv" href="https://n301575.yclients.com/" target="_blank" rel="noopener">Записаться онлайн</a></div>
+      <div class="cards">
+        <article class="card rv"><figure><img src="img/card-barber.webp" alt="" loading="lazy"></figure><div class="b"><h3 class="wide">Мужская стрижка</h3><ul><li>ножницы и машинка</li><li>мытьё головы до и после</li><li>укладка</li></ul><div class="row"><b>45<small>р.</small></b><button class="btn light" data-svc="cut" type="button">Выбрать</button></div></div></article>
+        <article class="card pop rv"><span class="badge">Выгоднее</span><figure><img src="img/card-bust.webp" alt="" loading="lazy"></figure><div class="b"><h3 class="wide">Стрижка + борода</h3><ul><li>мужская стрижка</li><li>моделирование бороды</li><li>цена ниже, чем отдельно</li></ul><div class="row"><b>65<small>р.</small></b><button class="btn light" data-svc="combo" type="button">Выбрать</button></div></div></article>
+        <article class="card rv"><figure><img src="img/card-shave.webp" alt="" loading="lazy"></figure><div class="b"><h3 class="wide">Королевское бритьё</h3><ul><li>горячее полотенце</li><li>опасная бритва Шаветт</li><li>холодный компресс</li></ul><div class="row"><b>40<small>р.</small></b><button class="btn light" data-svc="shave" type="button">Выбрать</button></div></div></article>
+        <article class="card rv"><figure><img src="img/card-hand.webp" alt="" loading="lazy"></figure><div class="b"><h3 class="wide">Отец и сын</h3><ul><li>две стрижки у одного мастера</li><li>сыну — любой возраст</li><li>консультация по уходу</li></ul><div class="row"><b>65<small>р.</small></b><button class="btn light" data-svc="son" type="button">Выбрать</button></div></div></article>
+      </div>
+      <div class="extra rv"><span><b>Стрижка машинкой</b> — 35 р.</span><span><b>Удлинённая стрижка</b> — 50 р.</span><span><b>Детская (до 12 лет)</b> — 40 р.</span><span><b>Друзья, две стрижки</b> — 65 р.</span></div>
+      <p class="mono" style="margin-top:14px;opacity:.6">Цены мастера «Барбер» на Ленина, 11. У старшего барбера — выше.</p>
+    </div>
+  </section>
+
+  <section class="book" id="book">
+    <div class="wrap grid">
+      <div>
+        <h2 class="wide">Запись<br>за минуту</h2>
+        <p class="sub">Выберите услугу и уровень мастера — запись откроется в онлайн-журнале Beaman.</p>
+        <div class="step"><span class="mono">01 — Услуга</span><div class="chips" id="svcPick"></div></div>
+        <div class="step"><span class="mono">02 — Уровень мастера</span><div class="masters" id="mPick"></div></div>
+        <div class="step"><span class="mono">03 — День</span><div class="days" id="dPick"></div></div>
+        <div class="step"><span class="mono">04 — Время</span><div class="times" id="tPick"></div></div>
+      </div>
+      <aside class="ticket" aria-live="polite">
+        <div class="tt"><b class="wide">Beaman</b><span class="mono">Талон № <span id="tNo">0417</span></span></div>
+        <div class="pl" aria-hidden="true"></div>
+        <dl><dt>Услуга</dt><dd id="xS">—</dd><dt>Мастер</dt><dd id="xM">—</dd><dt>Когда</dt><dd id="xW">—</dd><dt>Длится</dt><dd id="xD">—</dd></dl>
+        <div class="cut"></div>
+        <div class="tot"><span class="mono">Стоимость</span><b id="xP">—</b></div>
+                <button class="btn" id="go" type="button">Выбрать время онлайн</button>
+        <p class="ok" id="ok" role="status"></p>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fin">
+      <span class="mono">Финальная сцена</span>
+      <h2 class="wide">Ваше кресло<br>уже ждёт</h2>
+      <div class="fin-cta"><a class="btn light" href="https://n301575.yclients.com/" target="_blank" rel="noopener">Записаться</a><a class="btn lghost" href="tel:+375298388778">Позвонить</a></div>
+    </div>
+    <div class="credits">
+      <div><span class="mono">В ролях</span><p><b>Барберы</b><i></i>стрижки и фейды</p><p><b>Старшие барберы</b><i></i>сложные формы</p><p><b>Администраторы</b><i></i>кофе и запись</p></div>
+      <div><span class="mono">Место съёмок</span><p>ул. Ленина, 11</p><p>ул. Гагарина, 47</p></div>
+      <div><span class="mono">Сеансы</span><p>10:00–21:00</p><p>онлайн-запись</p></div>
+      <div><span class="mono">Связь</span><p><a href="tel:+375298388778">+375 29 838-87-78</a></p><p><a href="https://www.instagram.com/beaman_baranovichi/" target="_blank" rel="noopener">@beaman_baranovichi</a></p></div>
+    </div>
+  </div>
+  <div class="fstripe" aria-hidden="true"></div>
+  <div class="fbottom">
+    <div class="fword wide" id="fword" aria-hidden="true">Beaman</div>
+    <div class="demo"><span>Beaman · Барановичи</span><span>Макет сайта · saity.by</span></div>
+  </div>
+</footer>
+
+<div class="fab" id="fab"><a class="btn call" href="tel:+375298388778" aria-label="Позвонить"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg></a><a class="btn" href="https://n301575.yclients.com/" target="_blank" rel="noopener">Записаться онлайн</a></div>
+
+<script>
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const mobile = () => matchMedia("(max-width:760px)").matches;
+
+// меню
+$("#burger").addEventListener("click", () => { const o = document.body.classList.toggle("menu-open"); $("#burger").setAttribute("aria-expanded", o); });
+$$("#mmenu a").forEach(a => a.addEventListener("click", () => { document.body.classList.remove("menu-open"); $("#burger").setAttribute("aria-expanded", false); }));
+
+// гигантские слова всегда точно по ширине экрана
+function fit(el, target, max) {
+  el.style.fontSize = "100px";
+  const r = document.createRange(); r.selectNodeContents(el);
+  const w = r.getBoundingClientRect().width || 1;
+  el.style.fontSize = Math.min(max, 100 * target / w) + "px";
+}
+function fitAll() {
+  const W = document.documentElement.clientWidth, m = mobile(), hw = $("#heroWord"), w2 = $("#w2"), man = $("#heroMan");
+  w2.style.marginLeft = "0px";
+  if (m) fit(hw, W * .92, 9999);
+  else {
+    // барбер стоит в промежутке между OLD и BLADE
+    const gap = 0;
+    hw.style.fontSize = "100px";
+    const r = document.createRange(); r.selectNodeContents(hw); const w = r.getBoundingClientRect().width || 1;
+    const fs = Math.min(330, 100 * (W * .96 - gap) / w);
+    hw.style.fontSize = fs + "px"; w2.style.marginLeft = gap + "px";
+    const a = hw.firstElementChild.getBoundingClientRect(), b = w2.getBoundingClientRect();
+  }
+  fit($("#formWord"), W * .96, 440);
+  fit($("#fword"), W * .97, 9999);
+}
+fitAll(); document.fonts && document.fonts.ready.then(fitAll); 
+let rs; addEventListener("resize", () => { clearTimeout(rs); rs = setTimeout(fitAll, 120); });
+
+// запись
+// [название, цена у барбера, цена у старшего барбера, минут]
+const SVC = {cut: ["Мужская стрижка", 45, 55, 60], combo: ["Стрижка + борода", 65, 75, 90], beard: ["Борода и усы", 35, 45, 45], shave: ["Королевское бритьё", 40, 50, 45], son: ["Отец и сын", 65, 80, 90], kid: ["Детская (до 12 лет)", 40, 50, 45]};
+const MASTERS = [["Барбер", "базовые цены", "Б"], ["Старший барбер", "опытнее, цены выше", "С"]];
+const st = {svc: "combo", m: 0, d: 0, t: null};
+const dur = m => m >= 60 ? `${Math.floor(m / 60)} ч${m % 60 ? " " + (m % 60) + " мин" : ""}` : `${m} мин`;
+$("#svcPick").innerHTML = Object.entries(SVC).map(([k, v]) => `<button class="chip" type="button" data-k="${k}">${v[0]} <small>от ${v[1]} р.</small></button>`).join("");
+$("#mPick").innerHTML = MASTERS.map((m, i) => `<button class="master" type="button" data-i="${i}"><span class="mono-ini">${m[2]}</span><span><b>${m[0]}</b><span>${m[1]}</span></span></button>`).join("");
+const DN = ["вс", "пн", "вт", "ср", "чт", "пт", "сб"], MN = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
+const days = [...Array(10)].map((_, i) => { const d = new Date(); d.setDate(d.getDate() + i); return d; });
+$("#dPick").innerHTML = days.map((d, i) => `<button class="day" type="button" data-i="${i}"><span>${i === 0 ? "сег" : i === 1 ? "зав" : DN[d.getDay()]}</span><b>${d.getDate()}</b></button>`).join("");
+// занятость — детерминированно от мастера и дня, чтобы выглядело живо
+function busy() { return false; }
+function renderTimes() {
+  const now = new Date(), hours = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+  $("#tPick").innerHTML = hours.map(h => { const past = st.d === 0 && h <= now.getHours(); const dis = past || busy(st.m, st.d, h); return `<button class="chip" type="button" data-h="${h}" ${dis ? "disabled" : ""}>${h}:00</button>`; }).join("");
+  if (st.t !== null && $(`#tPick [data-h="${st.t}"]`)?.disabled) st.t = null;
+}
+function paint() {
+  $$("#svcPick .chip").forEach(b => b.setAttribute("aria-pressed", b.dataset.k === st.svc));
+  $$("#mPick .master").forEach(b => b.setAttribute("aria-pressed", +b.dataset.i === st.m));
+  $$("#dPick .day").forEach(b => b.setAttribute("aria-pressed", +b.dataset.i === st.d));
+  $$("#tPick .chip").forEach(b => b.setAttribute("aria-pressed", +b.dataset.h === st.t));
+  const s = SVC[st.svc], d = days[st.d];
+  $("#xS").textContent = s[0]; $("#xM").textContent = MASTERS[st.m][0];
+  $("#xW").textContent = `${d.getDate()} ${MN[d.getMonth()]}${st.t !== null ? ", " + st.t + ":00" : ""}`;
+  $("#xD").textContent = dur(s[3]); $("#xP").textContent = `${st.m ? s[2] : s[1]} р.`;
+}
+$("#svcPick").addEventListener("click", e => { const b = e.target.closest("[data-k]"); if (b) { st.svc = b.dataset.k; paint(); } });
+$("#mPick").addEventListener("click", e => { const b = e.target.closest("[data-i]"); if (b) { st.m = +b.dataset.i; renderTimes(); paint(); } });
+$("#dPick").addEventListener("click", e => { const b = e.target.closest("[data-i]"); if (b) { st.d = +b.dataset.i; renderTimes(); paint(); } });
+$("#tPick").addEventListener("click", e => { const b = e.target.closest("[data-h]"); if (b && !b.disabled) { st.t = +b.dataset.h; paint(); } });
+$$("[data-svc]").forEach(b => b.addEventListener("click", () => { st.svc = b.dataset.svc; paint(); $("#book").scrollIntoView({behavior: RM ? "auto" : "smooth"}); }));
+$("#go").addEventListener("click", () => { window.open("https://n301575.yclients.com/", "_blank", "noopener"); });
+renderTimes(); paint();
+
+// отзывы: прогресс по секции переключает цитаты, барбер-пол крутится от прокрутки
+const qs = $$(".q"), dots = $$("#qnav i"), sec = $(".pole-sec"), tube = $("#tube");
+let shift = 0, lastY = scrollY, vel = 0;
+
+// параллакс и всё, что зависит от прокрутки, — в одном кадре
+const heroWord = $("#heroWord"), heroBg = $("#heroBg"), bust = $("#bust"), formWord = $("#formWord"), shaveImg = $("#shaveImg");
+let mx = 0, my = 0;
+addEventListener("pointermove", e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; }, {passive: true});
+let lastT = performance.now();
+function frame(now) {
+  const y = scrollY, vh = innerHeight, dt = Math.min(.05, ((now || performance.now()) - lastT) / 1000); lastT = now || performance.now();
+  // медленное вращение: ~6 px/с в покое, прокрутка лишь слегка подталкивает
+  vel += (y - lastY) * .12; vel *= Math.pow(.02, dt); lastY = y;
+  shift += dt * 6 + Math.max(-2, Math.min(2, vel * dt * 4)); tube.style.setProperty("--shift", shift.toFixed(2) + "px");
+  if (!RM) {
+    if (y < vh * 1.2) { heroWord.style.transform = `translateY(calc(-50% + ${y * .32}px))`; heroBg.style.transform = `translateY(${y * .18}px) scale(1.06)`; }
+    const fr = $(".form").getBoundingClientRect();
+    if (fr.top < vh && fr.bottom > 0) {
+      const p = (vh - fr.top) / (vh + fr.height);
+      formWord.style.transform = `translateY(-50%) translateX(${(p - .5) * -12}%)`;
+      const ry = mobile() ? (p - .5) * 30 : mx * 16, rx = mobile() ? 0 : my * -6;
+      bust.style.transform = `translateX(-50%) perspective(1200px) rotateY(${ry}deg) rotateX(${rx}deg)`;
+    }
+    const rr = shaveImg.getBoundingClientRect();
+    if (rr.top < vh && rr.bottom > 0) shaveImg.style.transform = `translateY(${-(1 - (rr.top + rr.height) / (vh + rr.height)) * 14}%)`;
+  }
+  const r = sec.getBoundingClientRect(), p = Math.min(.999, Math.max(0, -r.top / (r.height - vh)));
+  const k = Math.floor(p * qs.length);
+  qs.forEach((q, i) => q.classList.toggle("on", i === k)); dots.forEach((d, i) => d.classList.toggle("on", i === k));
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+// нижняя кнопка на телефоне и появление блоков
+const fab = $("#fab"); let bookVis = false, footVis = false;
+new IntersectionObserver(([e]) => { bookVis = e.isIntersecting; tick(); }).observe($("#book"));
+new IntersectionObserver(([e]) => { footVis = e.isIntersecting; tick(); }).observe($("footer"));
+function tick() { fab.classList.toggle("show", scrollY > innerHeight * .8 && !bookVis && !footVis); }
+addEventListener("scroll", tick, {passive: true});
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), {rootMargin: "0px 0px -10% 0px"});
+$$(".rv").forEach(el => io.observe(el));
+</script>
+</body>
+</html>
