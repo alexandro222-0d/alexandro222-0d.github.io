@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TEPLO — банный клуб под Барановичами</title>
+<meta name="description" content="Три отдельностоящие бани в 3 км от Барановичей: парная, зона отдыха с кухней, беседка, барбекю, банный чан. Аренда от 60 р/час.">
+<meta name="theme-color" content="#33251b">
+<meta property="og:title" content="TEPLO — банный клуб под Барановичами">
+<meta property="og:description" content="Три отдельностоящие бани, банный чан, беседка и барбекю. 3 км от Барановичей.">
+<meta property="og:image" content="img/hero.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero.webp" media="(min-width:761px)">
+<link rel="preload" as="image" href="img/hero-m.webp" media="(max-width:760px)">
+<style>
+:root{
+  --bg:#33251b; --bg2:#2a1e16; --card:#3d2d21; --cream:#EFE6D6; --cream2:#E6DAC6;
+  --muted:rgba(239,230,214,.68); --line:rgba(239,230,214,.22); --gold:#C9A56A;
+  --disp:"Poiret One", "Jost", sans-serif; --sans:"Jost", system-ui, sans-serif;
+  --gut:clamp(16px,4vw,56px); --r:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--cream);font:300 16px/1.6 var(--sans);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+.wrap{max-width:1320px;margin:0 auto;padding:0 var(--gut)}
+.disp{font-family:var(--disp);font-weight:400}
+.eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+.rule{height:1px;background:var(--line);border:0}
+
+/* кнопки */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;height:52px;padding:0 28px;border-radius:999px;background:var(--cream);color:var(--bg2);font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:400;border:0;cursor:pointer;transition:background .3s,color .3s,transform .2s}
+.btn:hover{background:#fff}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:transparent;color:var(--cream);box-shadow:inset 0 0 0 1px rgba(239,230,214,.55)}
+.btn.ghost:hover{background:var(--cream);color:var(--bg2)}
+.pill{display:inline-flex;align-items:center;gap:8px;height:30px;padding:0 14px;border-radius:999px;border:1px solid rgba(239,230,214,.6);font-size:11px;letter-spacing:.08em;color:var(--cream);background:rgba(30,20,14,.18);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .3s,color .3s}
+.pill svg{width:16px;height:10px}
+
+/* шапка */
+.top{position:sticky;top:0;z-index:50;background:rgba(51,37,27,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
+.top.sc{border-color:var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:24px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo svg{width:28px;height:28px;color:var(--gold)}
+.logo b{font-family:var(--disp);font-weight:400;font-size:26px;letter-spacing:.14em;line-height:1}
+.logo small{display:block;font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.nav{display:flex;gap:30px;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+.nav a{opacity:.8;transition:opacity .2s}
+.nav a:hover{opacity:1}
+.top-r{display:flex;align-items:center;gap:22px}
+.top-r .tel{font-size:15px;letter-spacing:.04em}
+.top-r .btn{height:44px;padding:0 22px;font-size:12px}
+.burger{display:none;width:44px;height:44px;border:0;background:none;cursor:pointer;position:relative}
+.burger i{position:absolute;left:11px;right:11px;height:1px;background:var(--cream);transition:transform .3s,opacity .3s}
+.burger i:nth-child(1){top:17px}.burger i:nth-child(2){top:26px}
+.menu-open .burger i:nth-child(1){transform:translateY(4.5px) rotate(45deg)}
+.menu-open .burger i:nth-child(2){transform:translateY(-4.5px) rotate(-45deg)}
+.mnav{position:fixed;inset:76px 0 0;z-index:49;background:var(--bg);padding:28px var(--gut);display:flex;flex-direction:column;gap:6px;opacity:0;visibility:hidden;transform:translateY(-10px);transition:.35s}
+.menu-open .mnav{opacity:1;visibility:visible;transform:none}
+.mnav a{font-family:var(--disp);font-size:38px;line-height:1.35;border-bottom:1px solid var(--line);padding:6px 0}
+.mnav .btn{margin-top:22px;font-family:var(--sans)}
+.mnav .tel{margin-top:16px;font-size:18px;text-align:center}
+
+/* первый экран */
+.hero{padding:18px 0 0}
+.hero-card{position:relative;border-radius:var(--r);overflow:hidden;height:min(calc(100svh - 120px),780px);min-height:560px;background:#1b130e}
+.hero-card picture,.hero-card picture img{position:absolute;inset:0;width:100%;height:100%}
+.hero-card img{object-fit:cover;object-position:50% 60%;transform:scale(1.08);animation:zoom 2.4s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes zoom{to{transform:scale(1)}}
+.hero-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,18,12,.55) 0%,rgba(26,18,12,.05) 38%,rgba(26,18,12,.1) 60%,rgba(26,18,12,.78) 100%)}
+.hero-word{position:absolute;left:0;right:0;top:7%;z-index:2;text-align:center;font-family:var(--disp);font-size:clamp(110px,19vw,290px);line-height:1;letter-spacing:.06em;transform-origin:50% 0;transform:scaleY(1.32);color:var(--cream);text-shadow:0 10px 60px rgba(0,0,0,.25)}
+.hero-word span{display:inline-block;opacity:0;transform:translateY(30px);animation:up 1.2s cubic-bezier(.2,.8,.2,1) forwards}
+.hero-word span:nth-child(2){animation-delay:.07s}.hero-word span:nth-child(3){animation-delay:.14s}.hero-word span:nth-child(4){animation-delay:.21s}.hero-word span:nth-child(5){animation-delay:.28s}
+@keyframes up{to{opacity:1;transform:none}}
+.hero-sub{position:absolute;left:0;right:0;top:calc(7% + clamp(110px,19vw,290px) * 1.36);z-index:2;text-align:center;font-size:13px;letter-spacing:.34em;text-transform:uppercase;opacity:0;animation:fade 1s .7s forwards}
+@keyframes fade{to{opacity:1}}
+.hero-b{position:absolute;left:clamp(20px,3vw,40px);right:clamp(20px,3vw,40px);bottom:clamp(20px,3vw,36px);z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;opacity:0;animation:fade 1s .9s forwards}
+.hero-b p{max-width:360px;font-size:15px;color:rgba(239,230,214,.86)}
+.hero-b .cta{display:flex;gap:12px}
+.hero-r{display:flex;align-items:center;gap:14px}
+.stars{display:flex;gap:3px;color:var(--gold)}
+.stars svg{width:14px;height:14px}
+
+/* вступление */
+.intro{padding:clamp(56px,8vw,110px) 0}
+.intro .rule{max-width:1040px;margin:0 auto}
+.intro p{max-width:780px;margin:clamp(30px,4vw,44px) auto;text-align:center;font-size:clamp(17px,1.7vw,21px);line-height:1.7;color:rgba(239,230,214,.86)}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);max-width:1040px;margin:clamp(36px,5vw,56px) auto 0;text-align:center}
+.facts div{padding:6px 12px;border-left:1px solid var(--line)}
+.facts div:first-child{border-left:0}
+.facts b{display:block;font-family:var(--disp);font-weight:400;font-size:clamp(38px,4.4vw,58px);line-height:1.1}
+.facts span{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+/* заголовки секций */
+.sec{padding:clamp(56px,8vw,110px) 0}
+.sec-h{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:clamp(30px,4vw,52px)}
+.sec-h h2{font-family:var(--disp);font-weight:400;font-size:clamp(44px,6vw,84px);line-height:1}
+.sec-h p{max-width:380px;color:var(--muted);font-size:15px}
+
+/* бани */
+.baths{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(20px,3vw,40px);align-items:stretch}
+.baths-photo{position:relative;border-radius:var(--r);overflow:hidden;min-height:540px}
+.baths-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.baths-photo .pill{position:absolute;left:20px;bottom:20px;pointer-events:none}
+.bath-list{display:flex;flex-direction:column}
+.bath{padding:26px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:64px 1fr;gap:6px 18px;cursor:default}
+.bath:last-child{border-bottom:1px solid var(--line)}
+.bath .n{font-family:var(--disp);font-size:22px;color:var(--gold);padding-top:8px}
+.bath h3{font-family:var(--disp);font-weight:400;font-size:clamp(34px,3.4vw,46px);line-height:1.1}
+.bath ul{grid-column:2;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.bath li{font-size:13px;letter-spacing:.04em;padding:5px 12px;border:1px solid var(--line);border-radius:999px;color:rgba(239,230,214,.84)}
+.baths-note{margin-top:22px;color:var(--muted);font-size:14px}
+
+/* услуги — карточки как в референсе */
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2.2vw,30px)}
+.sv{position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:#1b130e;isolation:isolate}
+.sv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.sv::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,18,12,.5) 0%,rgba(26,18,12,0) 34%,rgba(26,18,12,.05) 55%,rgba(26,18,12,.82) 100%);z-index:1}
+.sv h3{position:absolute;left:20px;top:18px;z-index:2;font-family:var(--sans);font-weight:400;font-size:13px;letter-spacing:.24em;text-transform:uppercase}
+.sv .pill{position:absolute;right:16px;top:14px;z-index:2}
+.sv p{position:absolute;left:20px;right:20px;bottom:18px;z-index:2;font-size:15px;line-height:1.5;color:rgba(239,230,214,.9)}
+.sv:hover img{transform:scale(1.05)}
+.sv:hover .pill{background:var(--cream);color:var(--bg2)}
+
+/* вечер — лента */
+.eve{padding:0 0 clamp(56px,8vw,110px)}
+.strip{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:280px 280px;gap:clamp(12px,1.6vw,20px)}
+.strip figure{position:relative;border-radius:16px;overflow:hidden}
+.strip figure:first-child{grid-row:span 2}
+.strip img{width:100%;height:100%;object-fit:cover}
+.strip figcaption{position:absolute;left:16px;bottom:14px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+
+/* цены */
+.prices{background:var(--bg2)}
+.price-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,4vw,64px)}
+.ptable{border-top:1px solid var(--line)}
+.prow{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:20px 0;border-bottom:1px solid var(--line)}
+.prow span{font-size:17px}
+.prow small{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.prow b{font-family:var(--disp);font-weight:400;font-size:clamp(30px,3vw,40px);white-space:nowrap;line-height:1}
+.prow b i{font-style:normal;font-family:var(--sans);font-size:14px;color:var(--muted);margin-left:6px}
+.extras{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:10px 30px;font-size:15px;color:rgba(239,230,214,.84)}
+.extras div{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding:8px 0}
+.free{margin-top:22px;font-size:14px;color:var(--muted)}
+.free b{color:var(--cream);font-weight:400}
+
+.calc{background:var(--card);border-radius:var(--r);padding:clamp(24px,3vw,40px);align-self:start;position:sticky;top:100px}
+.calc h3{font-family:var(--disp);font-weight:400;font-size:34px;line-height:1.1;margin-bottom:22px}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:rgba(0,0,0,.18);border-radius:999px;padding:4px;margin-bottom:22px}
+.seg button{height:44px;border:0;border-radius:999px;background:none;cursor:pointer;font-size:13px;letter-spacing:.08em;color:var(--muted);transition:.25s}
+.seg button.on{background:var(--cream);color:var(--bg2)}
+.ctl{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-top:1px solid var(--line)}
+.ctl label{font-size:15px}
+.ctl small{display:block;color:var(--muted);font-size:12.5px}
+.step{display:flex;align-items:center;gap:14px}
+.step button{width:40px;height:40px;border-radius:50%;border:1px solid rgba(239,230,214,.4);background:none;cursor:pointer;font-size:18px;line-height:1;transition:.2s}
+.step button:hover{background:var(--cream);color:var(--bg2)}
+.step output{min-width:28px;text-align:center;font-size:20px}
+.sw{position:relative;width:52px;height:30px;border-radius:999px;background:rgba(0,0,0,.25);border:1px solid rgba(239,230,214,.35);cursor:pointer;transition:.25s}
+.sw::after{content:"";position:absolute;left:3px;top:3px;width:22px;height:22px;border-radius:50%;background:var(--cream);transition:.25s}
+.sw[aria-checked="true"]{background:var(--gold);border-color:var(--gold)}
+.sw[aria-checked="true"]::after{transform:translateX(22px);background:var(--bg2)}
+.total{display:flex;justify-content:space-between;align-items:baseline;margin:20px 0 18px;padding-top:18px;border-top:1px solid var(--line)}
+.total span{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.total b{font-family:var(--disp);font-weight:400;font-size:52px;line-height:1}
+.calc .btn{width:100%}
+.calc .hint{margin-top:12px;font-size:12.5px;color:var(--muted);text-align:center}
+
+/* сертификат */
+.gift{position:relative;border-radius:var(--r);overflow:hidden;min-height:520px;display:flex;align-items:flex-end}
+.gift img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gift::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,18,12,.86) 0%,rgba(26,18,12,.5) 50%,rgba(26,18,12,.1) 100%)}
+.gift-in{position:relative;z-index:1;padding:clamp(28px,5vw,64px);max-width:640px}
+.gift-in .small{font-size:clamp(26px,3vw,40px);font-family:var(--sans);font-weight:300;line-height:1.1}
+.gift-in .big{font-family:var(--disp);font-size:clamp(96px,13vw,190px);line-height:.9;letter-spacing:.05em;transform:scaleY(1.3);transform-origin:0 0;margin:6px 0 clamp(40px,5vw,64px)}
+.gift-in p{font-size:clamp(18px,1.8vw,24px);line-height:1.35;margin-bottom:26px;max-width:460px}
+
+/* отзывы */
+.rev-top{display:flex;align-items:center;gap:22px}
+.rev-top b{font-family:var(--disp);font-weight:400;font-size:72px;line-height:1}
+.rev-top span{color:var(--muted);font-size:14px}
+.revs{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,24px)}
+.rv-c{border:1px solid var(--line);border-radius:16px;padding:26px 22px;display:flex;flex-direction:column;gap:16px}
+.rv-c q{quotes:none;font-size:15.5px;line-height:1.6;color:rgba(239,230,214,.88);flex:1}
+.rv-c cite{font-style:normal;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+
+/* бронь */
+.book{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,4vw,64px);align-items:start}
+.book h2{font-family:var(--disp);font-weight:400;font-size:clamp(44px,6vw,84px);line-height:1}
+.book .lead{margin:22px 0 30px;color:var(--muted);max-width:420px}
+.contacts{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
+.contacts a,.contacts div{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-bottom:1px solid var(--line);font-size:16px}
+.contacts span{color:var(--muted);font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.form{background:var(--card);border-radius:var(--r);padding:clamp(24px,3vw,40px);display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form .full{grid-column:1/-1}
+.fld{display:flex;flex-direction:column;gap:6px}
+.fld span{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.fld input,.fld select{height:52px;border-radius:12px;border:1px solid rgba(239,230,214,.25);background:rgba(0,0,0,.16);padding:0 16px;font-size:16px;outline:none;transition:border-color .2s;-webkit-appearance:none;appearance:none;color-scheme:dark}
+.fld select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23EFE6D6' stroke-width='1.3'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.fld select option{background:var(--bg2)}
+.fld input:focus,.fld select:focus{border-color:var(--gold)}
+.form .btn{grid-column:1/-1;margin-top:6px}
+.form .ok{grid-column:1/-1;display:none;text-align:center;padding:18px;border-radius:12px;background:rgba(201,165,106,.14);color:var(--cream)}
+.form.sent .ok{display:block}
+.map{margin-top:clamp(36px,5vw,60px);border-radius:var(--r);overflow:hidden;height:380px;background:var(--card)}
+.map iframe{width:100%;height:100%;border:0;filter:sepia(.35) saturate(.8) brightness(.92)}
+
+footer{border-top:1px solid var(--line);padding:30px 0 40px;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+/* появление */
+.rv{opacity:0;transform:translateY(26px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+/* плавающая кнопка на телефоне */
+.fab{display:none}
+
+@media (max-width:1100px){
+  .nav{display:none}
+  .revs{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  :root{--r:18px}
+  body{font-size:15.5px}
+  .top .wrap{height:64px}
+  .mnav{inset:64px 0 0}
+  .top-r .tel,.top-r .btn{display:none}
+  .burger{display:block}
+  .logo b{font-size:22px}
+  .hero{padding-top:8px}
+  .hero-card{height:calc(100svh - 88px);min-height:560px;max-height:760px}
+  .hero-word{top:9%;font-size:26.5vw;letter-spacing:.04em;transform:scaleY(1.45)}
+  .hero-sub{top:calc(9% + 26.5vw * 1.5);font-size:11px;letter-spacing:.3em}
+  .hero-b{flex-direction:column;align-items:stretch;gap:16px}
+  .hero-b p{font-size:15px}
+  .hero-b .cta{display:grid;grid-template-columns:1fr 1fr}
+  .hero-b .btn{padding:0 10px;height:50px;font-size:12px}
+  .hero-r{display:none}
+  .facts{grid-template-columns:1fr 1fr;gap:22px 0}
+  .facts div:nth-child(3){border-left:0}
+  .sec-h{flex-direction:column;align-items:flex-start;gap:12px}
+  .baths{grid-template-columns:1fr}
+  .baths-photo{min-height:0;aspect-ratio:4/5}
+  .bath{grid-template-columns:44px 1fr}
+  .svc{grid-template-columns:1fr 1fr;gap:10px}
+  .sv{aspect-ratio:3/4;border-radius:14px}
+  .sv h3{left:12px;top:12px;font-size:11px;letter-spacing:.16em}
+  .sv .pill{display:none}
+  .sv p{left:12px;right:12px;bottom:12px;font-size:13px;line-height:1.4}
+  .strip{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .strip figure{aspect-ratio:3/4}
+  .strip figure:first-child{grid-column:1/-1;grid-row:auto;aspect-ratio:4/3}
+  .price-grid{grid-template-columns:1fr}
+  .calc{position:static}
+  .extras{grid-template-columns:1fr}
+  .gift{min-height:620px}
+  .gift::after{background:linear-gradient(180deg,rgba(26,18,12,.2) 0%,rgba(26,18,12,.5) 45%,rgba(26,18,12,.9) 100%)}
+  .revs{grid-template-columns:1fr}
+  .book{grid-template-columns:1fr}
+  .form{grid-template-columns:1fr}
+  .map{height:300px}
+  footer{padding-bottom:100px}
+  .fab{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:40;gap:8px;transform:translateY(140%);transition:transform .4s}
+  .fab.show{transform:none}
+  .fab .btn{flex:1;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+  .fab .tel-b{flex:0 0 52px;width:52px;padding:0;background:var(--bg2);color:var(--cream);box-shadow:inset 0 0 0 1px var(--line),0 10px 30px rgba(0,0,0,.35)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="leaf" viewBox="0 0 32 32"><path fill="currentColor" d="M16 2c1.6 2 3.6 2.4 4.4 4.6.9 2.4-1 3.4.4 5 1.3 1.4 3.6.4 4.6 2.4 1 2-1 3.2-.2 4.8.9 1.7 3.2 1.4 3.4 3.4.2 2.2-2.6 2.6-4.2 3.4-2.2 1-4.2.6-6 1.8V30h-1.6v-2.6c-1.8-1.2-3.8-.8-6-1.8-1.6-.8-4.4-1.2-4.2-3.4.2-2 2.5-1.7 3.4-3.4.8-1.6-1.2-2.8-.2-4.8 1-2 3.3-1 4.6-2.4 1.4-1.6-.5-2.6.4-5C12.4 4.4 14.4 4 16 2z"/></symbol>
+  <symbol id="arr" viewBox="0 0 16 10"><path d="M0 5h14M10 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
+  <symbol id="star" viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6L10 15l-5.4 3 1.2-6L1.3 7.8l6.1-.7z"/></symbol>
+</svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="TEPLO — банный клуб"><svg><use href="#leaf"/></svg><span><b>TEPLO</b><small>банный клуб</small></span></a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="#bani">Бани</a><a href="#uslugi">Услуги</a><a href="#ceny">Цены</a><a href="#otzyvy">Отзывы</a><a href="#bron">Контакты</a>
+    </nav>
+    <div class="top-r">
+      <a class="tel" href="tel:+375336096688">+375 33 609-66-88</a>
+      <a class="btn" href="#bron">Забронировать</a>
+      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false"><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+<nav class="mnav" id="mnav" aria-label="Меню">
+  <a href="#bani">Бани</a><a href="#uslugi">Услуги</a><a href="#ceny">Цены</a><a href="#otzyvy">Отзывы</a><a href="#bron">Контакты</a>
+  <a class="btn" href="#bron">Забронировать</a>
+  <a class="tel" href="tel:+375336096688">+375 33 609-66-88</a>
+</nav>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-card">
+        <picture>
+          <source media="(max-width:760px)" srcset="img/hero-m.webp">
+          <img src="img/hero.webp" alt="Территория банного клуба TEPLO вечером: бани и беседка в огнях гирлянд" fetchpriority="high">
+        </picture>
+        <h1 class="hero-word" aria-label="TEPLO — банный клуб под Барановичами"><span>T</span><span>E</span><span>P</span><span>L</span><span>O</span></h1>
+        <div class="hero-sub">банный клуб · Барановичи</div>
+        <div class="hero-b">
+          <p>Три отдельностоящие бани на своей территории — в 3 км от Барановичей.</p>
+          <div class="hero-r"><div class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></div><span>5,0 на Яндекс Картах</span></div>
+          <div class="cta"><a class="btn" href="#bron">Забронировать</a><a class="btn ghost" href="#ceny">Цены</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro">
+    <div class="wrap">
+      <hr class="rule">
+      <p class="rv">Это не просто баня — это целый вечер для вашей компании. Парная, зона отдыха с кухней, беседка, барбекю, качели и горячий банный чан. Всё подготовлено к вашему приезду, а на входе встречают травяным чаем.</p>
+      <hr class="rule">
+      <div class="facts rv">
+        <div><b>3</b><span>бани</span></div>
+        <div><b>3 км</b><span>от Барановичей</span></div>
+        <div><b>до 12</b><span>человек</span></div>
+        <div><b>5,0</b><span>Яндекс Карты</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="bani" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-h rv"><h2>Бани</h2><p>Каждая баня стоит отдельно — своя парная, своя зона отдыха и никого лишнего рядом.</p></div>
+      <div class="baths">
+        <div class="baths-photo rv"><img src="img/yard.webp" alt="Бани и беседка банного клуба TEPLO" loading="lazy"><span class="pill">п. Новый, 189</span></div>
+        <div class="bath-list">
+          <article class="bath rv"><span class="n"><svg width="22" height="22"><use href="#leaf"/></svg></span><h3>Огница</h3><ul><li>уютная парная</li><li>зона отдыха с кухней</li><li>зона мангала</li><li>открытая терраса</li></ul></article>
+          <article class="bath rv"><span class="n"><svg width="22" height="22"><use href="#leaf"/></svg></span><h3>Живица</h3><ul><li>просторная парная</li><li>зона отдыха с кухней</li><li>зона мангала</li><li>открытая терраса</li></ul></article>
+          <article class="bath rv"><span class="n"><svg width="22" height="22"><use href="#leaf"/></svg></span><h3>Светлица</h3><ul><li>парная с окном</li><li>зона отдыха в бане</li><li>зона отдыха с беседкой</li><li>заезд на территорию</li></ul></article>
+          <p class="baths-note rv">Аренда любой бани — по одной цене.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="uslugi" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-h rv"><h2>Услуги</h2><p>Всё для отдыха — на вашей территории и только для вашей компании.</p></div>
+      <div class="svc">
+        <a class="sv rv" href="#ceny"><img src="img/parnaya.webp" alt="Парная" loading="lazy"><h3>Парная</h3><span class="pill">Цены <svg><use href="#arr"/></svg></span><p>Чистая, жаркая, из настоящего бревна.</p></a>
+        <a class="sv rv" href="#ceny"><img src="img/chan.webp" alt="Банный чан" loading="lazy"><h3>Банный чан</h3><span class="pill">Цены <svg><use href="#arr"/></svg></span><p>Горячий чан на всё время аренды — 180 р.</p></a>
+        <a class="sv rv" href="#ceny"><img src="img/pool.webp" alt="Бассейн" loading="lazy"><h3>Бассейн</h3><span class="pill">Цены <svg><use href="#arr"/></svg></span><p>Летом — бассейн, зимой — горячий чан.</p></a>
+        <a class="sv rv" href="#ceny"><img src="img/mangal.webp" alt="Зона мангала" loading="lazy"><h3>Барбекю</h3><span class="pill">Цены <svg><use href="#arr"/></svg></span><p>Решётка и шампуры — бесплатно.</p></a>
+        <a class="sv rv" href="#ceny"><img src="img/venik.webp" alt="Берёзовый веник" loading="lazy"><h3>Веники</h3><span class="pill">Цены <svg><use href="#arr"/></svg></span><p>Берёзовые и дубовые — 10 р.</p></a>
+        <a class="sv rv" href="#ceny"><img src="img/hall.webp" alt="Зона отдыха с кухней" loading="lazy"><h3>Зона отдыха</h3><span class="pill">Цены <svg><use href="#arr"/></svg></span><p>Большой стол, кухня и всё для застолья.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="eve">
+    <div class="wrap">
+      <div class="strip">
+        <figure class="rv"><img src="img/night.webp" alt="Баня вечером" loading="lazy"><figcaption>Вечером</figcaption></figure>
+        <figure class="rv"><img src="img/lights.webp" alt="Гирлянды над территорией" loading="lazy"><figcaption>Гирлянды</figcaption></figure>
+        <figure class="rv"><img src="img/swing.webp" alt="Качели на территории" loading="lazy"><figcaption>Качели</figcaption></figure>
+        <figure class="rv"><img src="img/pool-night.webp" alt="Бассейн ночью" loading="lazy"><figcaption>Бассейн</figcaption></figure>
+        <figure class="rv"><img src="img/okno.webp" alt="Веники у окна бани" loading="lazy"><figcaption>Веники</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec prices" id="ceny">
+    <div class="wrap">
+      <div class="sec-h rv"><h2>Цены</h2><p>Аренда любой бани на выбор. В стоимость входит компания до 8 человек.</p></div>
+      <div class="price-grid">
+        <div class="rv">
+          <div class="ptable">
+            <div class="prow"><span>Понедельник — четверг<small>аренда бани</small></span><b>60<i>р/час</i></b></div>
+            <div class="prow"><span>Пятница — воскресенье<small>и праздничные дни</small></span><b>70<i>р/час</i></b></div>
+            <div class="prow"><span>Банный чан<small>на всё время аренды</small></span><b>180<i>р</i></b></div>
+            <div class="prow"><span>Гость сверх 8 человек<small>дети до 10 лет — бесплатно</small></span><b>10<i>р/час</i></b></div>
+            <div class="prow"><span>Минимальная аренда</span><b>3<i>часа</i></b></div>
+          </div>
+          <div class="extras">
+            <div><span>Веник (берёза, дуб)</span><span>10 р</span></div>
+            <div><span>Полотенце 70×130</span><span>15 р</span></div>
+            <div><span>Тапочки одноразовые</span><span>5 р</span></div>
+          </div>
+          <p class="free"><b>Бесплатно:</b> настольные игры, игрушки для детей, решётка и шампуры для барбекю.</p>
+        </div>
+        <div class="calc rv" id="calc">
+          <h3>Рассчитать отдых</h3>
+          <div class="seg" role="group" aria-label="Дни"><button type="button" class="on" data-r="60">Пн — Чт</button><button type="button" data-r="70">Пт — Вс</button></div>
+          <div class="ctl"><label>Часов<small>минимум 3</small></label><div class="step"><button type="button" data-k="h" data-d="-1" aria-label="Меньше часов">−</button><output id="h">3</output><button type="button" data-k="h" data-d="1" aria-label="Больше часов">+</button></div></div>
+          <div class="ctl"><label>Гостей<small>до 8 — без доплаты</small></label><div class="step"><button type="button" data-k="g" data-d="-1" aria-label="Меньше гостей">−</button><output id="g">6</output><button type="button" data-k="g" data-d="1" aria-label="Больше гостей">+</button></div></div>
+          <div class="ctl"><label>Банный чан<small>180 р за всё время</small></label><button type="button" class="sw" id="chan" role="switch" aria-checked="false" aria-label="Банный чан"></button></div>
+          <div class="total"><span>Итого</span><b id="sum">180 р</b></div>
+          <a class="btn" href="#bron" id="calcBtn">Забронировать</a>
+          <p class="hint">Точную стоимость подтвердит администратор</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="gift rv">
+        <img src="img/lights.webp" alt="" loading="lazy">
+        <div class="gift-in">
+          <div class="small">Сертификат в</div>
+          <div class="big">TEPLO</div>
+          <p>станет тёплым подарком для ваших близких</p>
+          <a class="btn" href="#bron" data-gift>Заказать сертификат</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="otzyvy" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-h rv"><h2>Отзывы</h2><div class="rev-top"><b>5,0</b><div><div class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></div><span>на Яндекс Картах</span></div></div></div>
+      <div class="revs">
+        <figure class="rv-c rv"><q>10 из 10 по всем параметрам. Стерильно чистая баня, отличный пар. Летом бассейны чистые, зимой купель идеальная по температуре. Ездим только в Тепло.</q><cite>Евгения</cite></figure>
+        <figure class="rv-c rv"><q>Наконец-то нашли баню, где нам комфортно и уютно. Атмосфера прекрасная, париться одно удовольствие. Приятно, что всегда заваривают очень вкусный чай.</q><cite>Анастасия П.</cite></figure>
+        <figure class="rv-c rv"><q>Выбрали домик номер два. Всё чистенько и аккуратненько, всё необходимое есть. Как приятный велком-дринк — чай на травах. Парная чистая, вместительная, жара хватало.</q><cite>Татьяна И.</cite></figure>
+        <figure class="rv-c rv"><q>Удобное расположение рядом с городом, бани новые, своя территория. Летом бассейн, зимой горячий чан. Доброжелательный персонал. Рекомендую.</q><cite>Никита Д.</cite></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec prices" id="bron">
+    <div class="wrap">
+      <div class="book">
+        <div class="rv">
+          <h2>Забронировать</h2>
+          <p class="lead">Оставьте заявку — администратор перезвонит и подтвердит дату. Или напишите нам напрямую.</p>
+          <div class="contacts">
+            <a href="tel:+375336096688"><span>Телефон</span>+375 33 609-66-88</a>
+            <a href="https://www.instagram.com/teplo.bani/" target="_blank" rel="noopener"><span>Instagram</span>@teplo.bani</a>
+            <div><span>Адрес</span>п. Новый, 189 · съезд с М1</div>
+          </div>
+        </div>
+        <form class="form rv" id="form" novalidate>
+          <label class="fld full"><span>Баня</span><select name="bath"><option>Любая свободная</option><option>Огница</option><option>Живица</option><option>Светлица</option></select></label>
+          <label class="fld"><span>Дата</span><input type="date" name="date" required></label>
+          <label class="fld"><span>Время</span><input type="time" name="time" value="16:00" step="1800"></label>
+          <label class="fld"><span>Часов</span><select name="hours" id="fh"><option>3</option><option>4</option><option>5</option><option>6</option><option>8</option><option>12</option></select></label>
+          <label class="fld"><span>Гостей</span><input type="number" name="guests" id="fg" min="1" max="20" value="6" inputmode="numeric"></label>
+          <label class="fld"><span>Имя</span><input type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться" required></label>
+          <label class="fld"><span>Телефон</span><input type="tel" name="phone" autocomplete="tel" placeholder="+375" required></label>
+          <button class="btn" type="submit">Отправить заявку</button>
+          <div class="ok" role="status">Спасибо! Заявка принята — администратор свяжется с вами.</div>
+        </form>
+      </div>
+      <div class="map rv"><iframe src="https://yandex.by/map-widget/v1/?oid=189477943109&amp;z=14" title="TEPLO на карте" loading="lazy" allowfullscreen></iframe></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© TEPLO — банный клуб · п. Новый, 189, Барановичский район</span>
+    <span>ООО «Банный клуб «Тепло» · УНП 291860506</span>
+  </div>
+</footer>
+
+<div class="fab" id="fab"><a class="btn tel-b" href="tel:+375336096688" aria-label="Позвонить"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 005 5L15 12l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"/></svg></a><a class="btn" href="#bron">Забронировать</a></div>
+
+<script>
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+// меню
+const burger = $("#burger");
+burger.addEventListener("click", () => { const o = document.body.classList.toggle("menu-open"); burger.setAttribute("aria-expanded", o); });
+$$("#mnav a").forEach(a => a.addEventListener("click", () => { document.body.classList.remove("menu-open"); burger.setAttribute("aria-expanded", false); }));
+// шапка и кнопка на телефоне
+const top_ = $("#top"), fab = $("#fab"), bron = $("#bron");
+function onScroll() {
+  top_.classList.toggle("sc", scrollY > 10);
+  const b = bron.getBoundingClientRect();
+  fab.classList.toggle("show", scrollY > innerHeight * .7 && b.top > innerHeight);
+}
+addEventListener("scroll", onScroll, {passive: true}); onScroll();
+// появление
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), {rootMargin: "0px 0px -8% 0px"});
+$$(".rv").forEach((el, i) => { el.style.transitionDelay = (i % 3) * 80 + "ms"; io.observe(el); });
+// калькулятор
+const st = {r: 60, h: 3, g: 6, chan: false};
+function calc() {
+  const sum = st.r * st.h + Math.max(0, st.g - 8) * 10 * st.h + (st.chan ? 180 : 0);
+  $("#h").textContent = st.h; $("#g").textContent = st.g; $("#sum").textContent = sum + " р";
+}
+$$(".seg button").forEach(b => b.addEventListener("click", () => { $$(".seg button").forEach(x => x.classList.toggle("on", x === b)); st.r = +b.dataset.r; calc(); }));
+$$(".step button").forEach(b => b.addEventListener("click", () => {
+  const k = b.dataset.k, d = +b.dataset.d;
+  st[k] = k === "h" ? Math.min(12, Math.max(3, st.h + d)) : Math.min(20, Math.max(1, st.g + d)); calc();
+}));
+$("#chan").addEventListener("click", e => { st.chan = !st.chan; e.currentTarget.setAttribute("aria-checked", st.chan); calc(); });
+$("#calcBtn").addEventListener("click", () => {
+  const fh = $("#fh"); [...fh.options].forEach(o => o.selected = +o.value === st.h);
+  if (![...fh.options].some(o => o.selected)) { const o = new Option(st.h, st.h, true, true); fh.add(o); }
+  $("#fg").value = st.g;
+});
+calc();
+// форма (в макете — без отправки)
+const form = $("#form"), d = form.date;
+const t = new Date(); t.setDate(t.getDate() + 1); d.min = new Date().toISOString().slice(0, 10); d.value = t.toISOString().slice(0, 10);
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  if (!form.name.value.trim() || form.phone.value.replace(/\D/g, "").length < 9) { (form.name.value.trim() ? form.phone : form.name).focus(); return; }
+  form.classList.add("sent"); form.querySelector(".btn").textContent = "Заявка отправлена";
+});
+</script>
+</body>
+</html>
