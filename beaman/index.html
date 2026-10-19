@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,800..900&family=Unbounded:wght@700..900&family=Golos+Text:wght@400..600&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/barber-ob.webp">
+<link rel="preload" as="image" href="img/hero-shave.webp">
 <style>
 /* OLD BLADE — нуар: кость, графит, сталь. Цвет на всём сайте есть только у барбер-пола. */
 :root{
@@ -362,6 +362,29 @@ footer{background:radial-gradient(ellipse 70% 45% at 50% 18%,rgba(255,255,255,.0
   .hero-word span i{transform:none}.hero-man{opacity:1}.rv{opacity:1;transform:none}
   html{scroll-behavior:auto}
 }
+
+/* вариант 3: фото во весь экран */
+.hero{background:#0d0d0c}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 40%;transform:scale(1.06);opacity:0;animation:bgin 1.6s .1s ease forwards;will-change:transform}
+@keyframes bgin{to{opacity:1}}
+.hero .stage::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(10,10,9,.55) 0%,rgba(10,10,9,.15) 38%,rgba(10,10,9,.35) 62%,rgba(10,10,9,.9) 100%)}
+.hero .smoke{display:none}
+.hero-word{z-index:2;color:#F3F0EA;top:56%}
+.hero-man{display:none}
+.hero-l,.hero-r{color:#F3F0EA}
+.hero-l p,.hero-r .mono{color:rgba(243,240,234,.75)}
+.hero-b{color:#F3F0EA}
+.hero-b .btn.ghost{color:#F3F0EA;box-shadow:inset 0 0 0 1px rgba(243,240,234,.55)}
+.hero-b .btn.ghost:hover{background:#F3F0EA;color:#0d0d0c}
+.hero-b .btn:not(.ghost){background:#F3F0EA;color:#0d0d0c}
+@media (max-width:760px){
+  .hero-bg{object-position:70% 50%}
+  .hero-b .btn:not(.ghost){background:var(--ink);color:var(--bone)}
+  .hero-word{top:72%;mix-blend-mode:normal;color:#F3F0EA}
+  .hero-b{color:var(--ink)}
+  .hero-b .btn.ghost{color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+}
+@media (prefers-reduced-motion:reduce){.hero-bg{opacity:1;animation:none}}
 </style>
 </head>
 <body>
@@ -387,8 +410,8 @@ footer{background:radial-gradient(ellipse 70% 45% at 50% 18%,rgba(255,255,255,.0
         <span style="left:18%;top:70%;width:360px;height:260px;--t:20s;--dx:60px;--dy:-80px"></span>
         <span style="left:58%;top:40%;width:300px;height:240px;--t:26s;--dx:-40px;--dy:50px"></span>
       </div>
-      <h1 class="hero-word wide" id="heroWord" aria-label="Beaman — барбершоп в Барановичах"><span><i>Bea</i></span><span id="w2"><i>man</i></span></h1>
-      <img class="hero-man" id="heroMan" src="img/barber-ob.webp" alt="" width="414" height="1400" fetchpriority="high">
+      <h1 class="hero-word wide" id="heroWord" aria-label="Beaman — барбершоп в Барановичах"><span><i>Beaman</i></span><span id="w2"></span></h1>
+      <img class="hero-bg" id="heroBg" src="img/hero-shave.webp" alt="" width="1536" height="1024" fetchpriority="high"><span class="hero-man" id="heroMan" hidden></span>
       <div class="hero-l"><span class="mono">Стрижка · Борода · Бритьё</span><p>Первые барбершопы в Барановичах. Два адреса: Ленина, 11 и Гагарина, 47.</p></div>
       <div class="hero-r"><b class="num wide">5,0</b><div class="mono">348 оценок · Яндекс</div></div>
     </div>
@@ -426,7 +449,7 @@ footer{background:radial-gradient(ellipse 70% 45% at 50% 18%,rgba(255,255,255,.0
       <div class="glow" aria-hidden="true"></div>
       <span class="t mono">Beaman · Барановичи</span><span class="tr mono">Фейды, классика, удлинённые</span>
       <div class="form-word wide" id="formWord" aria-hidden="true">Форма</div>
-      <img class="bust" id="bust" src="img/bust.webp" alt="Мраморный бюст с современной стрижкой фейд и бородой" width="826" height="1300" loading="lazy">
+      <img class="bust" id="bust" src="img/barber-ob.webp" alt="" width="414" height="1400" loading="lazy">
     </div>
     <div class="l"><span class="mono">Стрижка под вас</span><p>Мастера подбирают форму под лицо и тип волос и подскажут, как её укладывать дома.</p></div>
     <div class="r"><a class="btn lghost" href="#price">Цены</a><a class="btn light" href="https://n301575.yclients.com/" target="_blank" rel="noopener">Записаться</a></div>
@@ -539,18 +562,17 @@ function fitAll() {
   if (m) fit(hw, W * .92, 9999);
   else {
     // барбер стоит в промежутке между OLD и BLADE
-    const gap = man.getBoundingClientRect().width * .78 || 220;
+    const gap = 0;
     hw.style.fontSize = "100px";
     const r = document.createRange(); r.selectNodeContents(hw); const w = r.getBoundingClientRect().width || 1;
     const fs = Math.min(330, 100 * (W * .96 - gap) / w);
     hw.style.fontSize = fs + "px"; w2.style.marginLeft = gap + "px";
     const a = hw.firstElementChild.getBoundingClientRect(), b = w2.getBoundingClientRect();
-    man.style.left = ((a.right + b.left) / 2) + "px";
   }
   fit($("#formWord"), W * .96, 440);
   fit($("#fword"), W * .97, 9999);
 }
-fitAll(); document.fonts && document.fonts.ready.then(fitAll); $("#heroMan").complete ? fitAll() : $("#heroMan").addEventListener("load", fitAll);
+fitAll(); document.fonts && document.fonts.ready.then(fitAll); 
 let rs; addEventListener("resize", () => { clearTimeout(rs); rs = setTimeout(fitAll, 120); });
 
 // запись
@@ -594,7 +616,7 @@ const qs = $$(".q"), dots = $$("#qnav i"), sec = $(".pole-sec"), tube = $("#tube
 let shift = 0, lastY = scrollY, vel = 0;
 
 // параллакс и всё, что зависит от прокрутки, — в одном кадре
-const heroWord = $("#heroWord"), heroMan = $("#heroMan"), bust = $("#bust"), formWord = $("#formWord"), shaveImg = $("#shaveImg");
+const heroWord = $("#heroWord"), heroBg = $("#heroBg"), bust = $("#bust"), formWord = $("#formWord"), shaveImg = $("#shaveImg");
 let mx = 0, my = 0;
 addEventListener("pointermove", e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; }, {passive: true});
 let lastT = performance.now();
@@ -604,7 +626,7 @@ function frame(now) {
   vel += (y - lastY) * .12; vel *= Math.pow(.02, dt); lastY = y;
   shift += dt * 6 + Math.max(-2, Math.min(2, vel * dt * 4)); tube.style.setProperty("--shift", shift.toFixed(2) + "px");
   if (!RM) {
-    if (y < vh * 1.2) { heroWord.style.transform = `translateY(calc(-50% + ${y * .32}px))`; heroMan.style.transform = `translate(-50%, ${y * -.06}px)`; }
+    if (y < vh * 1.2) { heroWord.style.transform = `translateY(calc(-50% + ${y * .32}px))`; heroBg.style.transform = `translateY(${y * .18}px) scale(1.06)`; }
     const fr = $(".form").getBoundingClientRect();
     if (fr.top < vh && fr.bottom > 0) {
       const p = (vh - fr.top) / (vh + fr.height);
