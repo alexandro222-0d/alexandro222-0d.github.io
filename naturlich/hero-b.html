@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>НатЮрлих — контактный зоосад в Деколах</title>
+<meta name="description" content="Контактный зоосад в агроусадьбе «НатЮрлих», д. Деколы, Барановичский район. Рысь Велес, альпаки, хорьки, аисты. Открыто пт–вс, 12:00–18:00.">
+<meta name="theme-color" content="#7A1F2E">
+<meta property="og:title" content="НатЮрлих — контактный зоосад в Деколах">
+<meta property="og:image" content="img/garden2.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;800;900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/garden2.webp">
+<link rel="preload" as="image" href="img/cut-stork.webp">
+<style>
+:root{
+  --wine:#7A1F2E; --wine-d:#5E1622; --pink:#F2778A; --green:#1F4A2D; --green-d:#173923; --white:#FFFFFF; --sand:#F7EDE4;
+  --gut:clamp(18px,5vw,80px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
+body{background:var(--wine);color:var(--white);font:500 17px/1.6 "Montserrat",system-ui,sans-serif;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--gut);position:relative}
+.big{font-weight:900;text-transform:uppercase;line-height:.88;letter-spacing:-.015em}
+.pk{color:var(--pink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 30px;border-radius:999px;background:var(--pink);color:var(--wine-d);font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;transition:transform .2s,background .2s}
+.btn:hover{background:#FF8C9D;transform:translateY(-2px)}
+.btn.line{background:transparent;color:var(--white);box-shadow:inset 0 0 0 2px rgba(255,255,255,.8)}
+.btn.line:hover{background:var(--white);color:var(--wine)}
+
+.torn{position:relative}
+main>section{overflow-x:clip}
+.torn::before{content:"";position:absolute;left:0;right:0;top:-58px;height:60px;background:var(--bg);
+  -webkit-mask:url(img/torn1.png) 0 100%/1500px 60px repeat-x;mask:url(img/torn1.png) 0 100%/1500px 60px repeat-x;z-index:3;pointer-events:none}
+.torn.t2::before{-webkit-mask-image:url(img/torn2.png);mask-image:url(img/torn2.png)}
+
+.stroke{position:relative;aspect-ratio:1/1}
+.stroke img{width:100%;height:100%;object-fit:cover;-webkit-mask:url(img/brush1.png) center/contain no-repeat;mask:url(img/brush1.png) center/contain no-repeat}
+.stroke.b2 img{-webkit-mask-image:url(img/brush2.png);mask-image:url(img/brush2.png)}
+.stroke.b3 img{-webkit-mask-image:url(img/brush3.png);mask-image:url(img/brush3.png)}
+
+.leaf{position:absolute;pointer-events:none;z-index:4;filter:drop-shadow(0 12px 18px rgba(0,0,0,.35))}
+
+.top{position:absolute;top:0;left:0;right:0;z-index:20}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:86px;max-width:none}
+.brand{text-decoration:none;line-height:1}
+.brand b{display:block;font-weight:900;font-size:26px;letter-spacing:.02em;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+.brand small{font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;opacity:.9}
+.nav{display:flex;gap:34px;font-weight:600;font-size:15px;text-shadow:0 1px 10px rgba(0,0,0,.45)}
+.nav a{text-decoration:none;opacity:.92}
+.nav a:hover{opacity:1;color:var(--pink)}
+.top.dark .brand,.top.dark .nav{color:var(--green-d);text-shadow:none}
+.top .btn{height:46px;padding:0 22px;font-size:13px}
+
+.hero{position:relative;height:clamp(640px,100svh,960px);overflow:hidden;background:#2b3d22}
+.hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 70%;transform:scale(1.06);animation:settle 2.2s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes settle{to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,25,12,.55) 0%,rgba(10,25,12,.12) 34%,rgba(10,25,12,.1) 58%,rgba(10,25,12,.55) 100%);z-index:1}
+.hero h1{position:absolute;z-index:2;right:var(--gut);top:clamp(120px,17vh,190px);font-size:clamp(70px,10.4vw,168px);text-shadow:0 6px 40px rgba(0,0,0,.25)}
+.hero h1 span{display:block;opacity:0;transform:translateY(40px);animation:up 1s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1 span:nth-child(2){animation-delay:.1s}.hero h1 span:nth-child(3){animation-delay:.2s}
+@keyframes up{to{opacity:1;transform:none}}
+.hero .stork{position:absolute;z-index:3;left:clamp(10px,9vw,170px);bottom:clamp(70px,11vh,120px);height:min(64%,600px);width:auto;filter:drop-shadow(0 18px 24px rgba(0,0,0,.35));opacity:0;animation:walk 1.4s .3s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes walk{from{opacity:0;transform:translateX(-60px)}to{opacity:1;transform:none}}
+.hero .info{position:absolute;z-index:3;right:var(--gut);bottom:clamp(80px,12vh,130px);display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:flex-end;opacity:0;animation:fadein 1s .8s forwards}
+.hero .info p{font-weight:700;font-size:16px;text-shadow:0 1px 12px rgba(0,0,0,.55);text-align:right;line-height:1.45}
+@keyframes fadein{to{opacity:1}}
+.hero .lf1{left:-40px;bottom:-30px;width:clamp(200px,24vw,380px);transform:rotate(12deg)}
+.hero .lf2{right:-50px;bottom:-40px;width:clamp(180px,20vw,320px);transform:scaleX(-1) rotate(8deg)}
+
+.lynx{--bg:var(--wine);background:var(--wine);padding:clamp(70px,9vw,130px) 0 clamp(80px,10vw,150px)}
+.lynx .wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(20px,3vw,40px);align-items:center}
+.lynx .stroke{scale:1.28;transform-origin:60% 50%}
+.lynx h2{font-size:clamp(58px,7.4vw,118px)}
+.lynx p{margin-top:28px;font-size:clamp(17px,1.4vw,19px);max-width:440px;color:rgba(255,255,255,.9)}
+.lynx .tagl{position:absolute;left:10%;bottom:6%;font-weight:900;text-transform:uppercase;font-size:clamp(18px,1.6vw,22px);background:var(--pink);color:var(--wine-d);padding:8px 14px;transform:rotate(-6deg)}
+
+.zoo{--bg:var(--green);background:var(--green);padding:clamp(80px,9vw,130px) 0 clamp(90px,10vw,150px)}
+.zoo h2{font-size:clamp(54px,7vw,110px);max-width:900px}
+.zoo .sub{margin-top:22px;max-width:560px;color:rgba(255,255,255,.88)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,2vw,30px) clamp(16px,2.4vw,36px);margin-top:clamp(40px,5vw,70px)}
+.an h3{font-weight:900;text-transform:uppercase;font-size:clamp(28px,2.6vw,38px);line-height:1;margin-top:-6px}
+.an p{color:rgba(255,255,255,.82);font-size:15.5px;margin-top:8px;max-width:300px}
+.an:nth-child(2),.an:nth-child(5){margin-top:clamp(40px,6vw,90px)}
+.also{margin-top:clamp(50px,6vw,80px);font-weight:800;text-transform:uppercase;font-size:clamp(22px,2.4vw,34px);line-height:1.15;max-width:1000px}
+.also span{color:var(--pink)}
+.zoo .alpaca{position:absolute;right:-1%;top:clamp(-150px,-10vw,-90px);width:clamp(170px,19vw,300px);z-index:5;filter:drop-shadow(0 16px 20px rgba(0,0,0,.35))}
+
+.feed{--bg:var(--pink);background:var(--pink);color:var(--wine-d);padding:clamp(80px,9vw,130px) 0 clamp(90px,10vw,140px)}
+.feed h2{font-size:clamp(46px,5.6vw,88px);color:var(--white);text-shadow:0 2px 0 rgba(94,22,34,.15)}
+.rules{list-style:none;margin-top:clamp(34px,4vw,56px);display:grid;gap:clamp(8px,1vw,14px)}
+.rules li{font-weight:900;text-transform:uppercase;font-size:clamp(28px,3.9vw,58px);line-height:1;letter-spacing:-.01em}
+.rules li i{font-style:normal;color:var(--white)}
+.rules li.no{display:flex;align-items:center;gap:.3em}
+.rules li.no svg{width:.95em;height:.95em;flex:0 0 auto}
+.feed .note{margin-top:30px;font-size:16px;font-weight:600;max-width:560px}
+.feed .note a{color:var(--wine-d)}
+.feed .cat{position:absolute;right:clamp(10px,6vw,110px);bottom:0;width:clamp(150px,16vw,250px);filter:drop-shadow(0 10px 16px rgba(94,22,34,.35))}
+
+.visit{--bg:var(--wine);background:var(--wine);padding:clamp(80px,9vw,130px) 0}
+.visit .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(24px,4vw,64px);align-items:center}
+.visit h2,.stay h2,.revs h2,.go h2{font-size:clamp(50px,6vw,96px)}
+.visit p,.stay p{margin-top:24px;font-size:clamp(17px,1.4vw,19px);color:rgba(255,255,255,.9);max-width:480px}
+
+.stay{--bg:var(--green-d);background:var(--green-d);padding:clamp(80px,9vw,130px) 0}
+.stay .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(24px,4vw,64px);align-items:center}
+.stay .btn{margin-top:30px}
+.nw{white-space:nowrap}
+.stay h2{font-size:clamp(46px,5.4vw,86px)}
+
+.revs{--bg:var(--sand);background:var(--sand);color:var(--wine-d);padding:clamp(80px,9vw,130px) 0}
+.revs h2{color:var(--wine)}
+.revs .score{display:flex;align-items:baseline;gap:14px;margin-top:14px;font-weight:700}
+.revs .score b{font-weight:900;font-size:clamp(46px,4vw,64px);color:var(--pink);line-height:1}
+.q{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,48px);margin-top:clamp(36px,4vw,56px)}
+.q blockquote{font-size:clamp(17px,1.4vw,19px);line-height:1.6;font-weight:600}
+.q blockquote::before{content:"“";display:block;font-weight:900;font-size:90px;line-height:.6;color:var(--pink);margin-bottom:8px}
+.q cite{display:block;margin-top:14px;font-style:normal;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--wine)}
+
+.go{--bg:var(--wine);background:var(--wine);padding:clamp(80px,9vw,130px) 0 clamp(60px,7vw,90px)}
+.go .wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(24px,4vw,60px);align-items:start}
+.go dl{display:grid;grid-template-columns:auto 1fr;gap:14px 24px;margin-top:30px;font-size:17px}
+.go dt{color:var(--pink);font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:.08em;padding-top:4px}
+.go .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.map{position:relative;border-radius:22px;overflow:hidden;min-height:440px;background:var(--wine-d);rotate:1.2deg;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+footer{background:var(--wine-d);padding:28px 0 36px;font-size:14px;color:rgba(255,255,255,.75)}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+/* появление: translate отдельно от rotate, чтобы наклон не сбрасывался */
+.rv{opacity:0;translate:0 30px;transition:opacity .9s cubic-bezier(.2,.7,.2,1),translate .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;translate:0 0}
+.tilt-l{rotate:-3deg}.tilt-r{rotate:2deg}
+
+@media (max-width:1000px){
+  .nav{display:none}
+  .lynx .wrap,.visit .wrap,.stay .wrap,.go .wrap{grid-template-columns:minmax(0,1fr)}
+  .lynx .stroke,.visit .stroke,.stay .stroke{scale:1;width:100%;max-width:620px;margin:0 auto}
+  .grid{grid-template-columns:1fr 1fr}
+  .an:nth-child(2),.an:nth-child(5){margin-top:0}
+  .an:nth-child(even){margin-top:clamp(30px,8vw,60px)}
+  .q{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .top .wrap{height:70px}
+  .brand b{font-size:22px}
+  .top .btn{height:40px;padding:0 16px;font-size:12px}
+  .hero{height:max(680px,100svh)}
+  .hero .bg{object-position:30% 60%}
+  .hero h1{left:var(--gut);right:auto;top:108px;font-size:17.5vw}
+  .hero .stork{left:auto;right:-4%;height:46%;bottom:120px}
+  .hero .info{left:var(--gut);right:var(--gut);justify-content:flex-start;bottom:70px}
+  .hero .info p{text-align:left;font-size:15px}
+  .hero .lf1{width:180px;left:-50px;bottom:-40px}
+  .hero .lf2{display:none}
+  .lynx h2{font-size:13.6vw}
+  .lynx .stroke{order:-1;width:108%;margin-left:-4%;scale:1.1}
+  .zoo h2,.feed h2,.visit h2,.stay h2,.revs h2,.go h2{font-size:13.5vw}
+  .zoo .alpaca{width:112px;top:-92px;right:1%}
+  .stay h2{font-size:12.2vw}
+  .grid{gap:6px 14px}
+  .an h3{font-size:24px}
+  .an p{font-size:14px}
+  .rules li{font-size:8.2vw}
+  .feed .cat{width:120px;right:4%}
+  .feed{padding-bottom:170px}
+  .visit .stroke{order:-1}
+  .map{min-height:320px;rotate:0deg}
+  .torn::before{top:-38px;height:40px;-webkit-mask-size:900px 40px;mask-size:900px 40px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.hero h1 span,.hero .stork,.hero .info,.rv{opacity:1!important;transform:none!important;translate:none!important}}
+
+.hv{position:relative;overflow:hidden;min-height:clamp(640px,100svh,940px);display:flex;align-items:center}
+.hv .wrap{width:100%}
+.hv h1{font-size:clamp(64px,9.4vw,156px)}
+.hv-info{font-weight:700;font-size:16px;margin-top:26px;opacity:.92}
+.hv-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+@media (max-width:640px){.hv h1{font-size:16vw}.hv-cta .btn{height:50px;padding:0 20px;font-size:13px}}
+
+.hv-b{background:linear-gradient(180deg,#BFE3F0 0%,#E6F4F1 55%,#CFE7C9 100%);color:var(--green-d);align-items:flex-start;padding-top:120px;min-height:clamp(700px,100svh,980px)}
+.hv-b .wrap{text-align:center}
+.hv-b h1{color:var(--green-d);font-size:clamp(60px,8.6vw,140px)}
+.hv-b .pk{color:var(--wine)}
+.hv-b .hv-info{color:var(--green-d)}
+.hv-b .hv-cta{justify-content:center}
+.hv-b .btn.line{color:var(--green-d);box-shadow:inset 0 0 0 2px var(--green-d)}
+.hv-b .crew{position:absolute;left:0;right:0;bottom:0;height:44%;display:flex;align-items:flex-end;justify-content:center;gap:0}
+.hv-b .crew img{height:auto;filter:drop-shadow(0 14px 18px rgba(31,74,45,.28))}
+.hv-b .c1{height:78%!important;margin-right:-2%}
+.hv-b .c2{height:96%!important;margin-right:-4%}
+.hv-b .c3{height:46%!important;margin-right:-1%;margin-bottom:0}
+.hv-b .c4{height:88%!important}
+.hv-b::after{content:"";position:absolute;left:0;right:0;bottom:0;height:9%;background:#6FA35A;z-index:-0}
+.hv-b .crew{z-index:1}
+@media (max-width:640px){.hv-b{padding-top:100px}.hv-b .crew{height:40%}.hv-b h1{font-size:14.5vw}}
+</style>
+</head>
+<body>
+<header class="top dark">
+  <div class="wrap">
+    <a class="brand" href="#"><b>НАТЮРЛИХ</b><small>контактный зоосад</small></a>
+    <nav class="nav" aria-label="Разделы"><a href="#zoo">Кто живёт</a><a href="#feed">Что привезти</a><a href="#stay">Ночёвка</a><a href="#go">Как добраться</a></nav>
+    <a class="btn" href="https://yandex.by/maps/org/natyurlikh/191450977603/" target="_blank" rel="noopener">Маршрут</a>
+  </div>
+</header>
+
+<main>
+  <section class="hv hv-b">
+    <div class="wrap">
+      <h1 class="big">Зверей можно <span class="pk">гладить</span></h1>
+      <p class="hv-info">Контактный зоосад · пт–вс 12:00–18:00 · д. Деколы</p>
+      <div class="hv-cta"><a class="btn" href="#zoo">Кто здесь живёт</a><a class="btn line" href="#go">Как добраться</a></div>
+    </div>
+    <div class="crew" aria-hidden="true">
+      <img class="c1" src="img/cut-alpaca.webp" alt="">
+      <img class="c2" src="img/cut-stork.webp" alt="">
+      <img class="c3" src="img/cut-cat.webp" alt="">
+      <img class="c4" src="img/cut-lynx.webp" alt="">
+    </div>
+  </section>
+
+  <section class="lynx torn">
+    <div class="wrap">
+      <div class="stroke tilt-l rv"><img src="img/lynx.webp" alt="Рысь Велес лежит на пледе" loading="lazy"><span class="tagl">Рысь Велес</span></div>
+      <div class="rv">
+        <h2 class="big"><span class="pk">Хотите</span><br>погладить<br><span class="pk">рысь?</span></h2>
+        <p>Рысь Велес — ручная, и её можно погладить. В «НатЮрлих» почти ко всем питомцам заходят в вольер — вместе с работником, который расскажет историю зверя и подскажет, как себя вести.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="zoo torn t2" id="zoo">
+    <img class="alpaca" src="img/cut-alpaca.webp" alt="" aria-hidden="true">
+    <div class="wrap">
+      <h2 class="big rv">Кто здесь <span class="pk">живёт</span></h2>
+      <p class="sub rv">Территория небольшая, но зверей много — и почти всех можно погладить и покормить под присмотром.</p>
+      <div class="grid">
+        <article class="an rv"><div class="stroke b2"><img src="img/alpaca.webp" alt="Рыжая альпака" loading="lazy"></div><h3>Альпаки</h3><p>Подходят сами и ждут морковку.</p></article>
+        <article class="an rv"><div class="stroke b3"><img src="img/ferrets.webp" alt="Три хорька в домике с сеном" loading="lazy"></div><h3>Хорьки</h3><p>Выглядывают из домика с сеном.</p></article>
+        <article class="an rv"><div class="stroke"><img src="img/stork.webp" alt="Аист на траве" loading="lazy"></div><h3>Аисты</h3><p>Любят только мясо и рыбку.</p></article>
+        <article class="an rv"><div class="stroke b3"><img src="img/baby.webp" alt="Альпака с детёнышем" loading="lazy"></div><h3>Малыши</h3><p>Детёныш альпаки не отходит от мамы.</p></article>
+        <article class="an rv"><div class="stroke b2"><img src="img/cat.webp" alt="Кот на заборе" loading="lazy"></div><h3>Коты</h3><p>Хвосты не рубим — это порода курильский бобтейл!</p></article>
+        <article class="an rv"><div class="stroke"><img src="img/lynx.webp" alt="Рысь Велес" loading="lazy"></div><h3>Рысь Велес</h3><p>Ручная и ласковая — гладить можно с разрешения.</p></article>
+      </div>
+      <p class="also rv">А ещё: <span>тигрица, медведица, еноты, верблюд, дикобразы, павлины, ослики</span> и носуха</p>
+    </div>
+  </section>
+
+  <section class="feed torn" id="feed">
+    <div class="wrap">
+      <h2 class="big rv">Что привезти угостить</h2>
+      <ul class="rules rv">
+        <li>Хищникам — <i>мясо без кости</i></li>
+        <li>Остальным — <i>овощи и фрукты</i></li>
+        <li class="no"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" fill="#fff"/><ellipse cx="32" cy="34" rx="19" ry="11" fill="#E9A13B"/><path d="M20 30c3 3 5 3 8 0M30 30c3 3 5 3 8 0" fill="none" stroke="#B9701C" stroke-width="2.4" stroke-linecap="round"/><circle cx="32" cy="32" r="27" fill="none" stroke="#5E1622" stroke-width="6"/><path d="M13 51L51 13" stroke="#5E1622" stroke-width="6" stroke-linecap="round"/></svg><span>Хлеб — <i>нельзя</i></span></li>
+      </ul>
+      <p class="note rv">Кого и чем кормить, подробно расписано в Instagram <a href="https://www.instagram.com/agrousadba_naturlich/" target="_blank" rel="noopener">@agrousadba_naturlich</a> — загляните перед поездкой.</p>
+    </div>
+    <img class="cat" src="img/cut-cat.webp" alt="" aria-hidden="true">
+  </section>
+
+  <section class="visit torn t2">
+    <div class="wrap">
+      <div class="stroke b2 tilt-r rv"><img src="img/gazebo.webp" alt="Беседка на территории усадьбы" loading="lazy"></div>
+      <div class="rv">
+        <h2 class="big">Экскурсия<br><span class="pk">и чай</span></h2>
+        <p>Работник проведёт по вольерам, расскажет про каждого питомца и покажет, кого можно погладить. После прогулки гостей угощают чаем со сладостями в беседке с очагом.</p>
+        <p>Вольеры чистые, запаха нет — это пишут почти в каждом отзыве.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="stay torn" id="stay">
+    <div class="wrap">
+      <div class="rv">
+        <h2 class="big">Можно<br><span class="pk nw">с&nbsp;ночёвкой</span></h2>
+        <p>Рядом с зоосадом — уютный дом на 10 спальных мест со всеми удобствами. А за забором живут олени.</p>
+        <a class="btn" href="https://www.instagram.com/agrousadba_naturlich/" target="_blank" rel="noopener">Спросить про даты</a>
+      </div>
+      <div class="stroke b3 tilt-l rv"><img src="img/house.webp" alt="Деревянный дом на территории усадьбы" loading="lazy"></div>
+    </div>
+  </section>
+
+  <section class="revs torn t2">
+    <div class="wrap">
+      <h2 class="big rv">Гости пишут</h2>
+      <div class="score rv"><b>5,0</b>1 388 оценок и 504 отзыва на Яндекс Картах</div>
+      <div class="q">
+        <blockquote class="rv">Впечатление, что приехал к родственникам на ферму с экзотическими животными. Там не просто содержат зверей, чтобы заработать. Там их любят.<cite>Наталья К.</cite></blockquote>
+        <blockquote class="rv">Дети были просто очарованы! Гиды рассказывают много интересного о питомцах. После экскурсии всех напоили чаем со сладостями в беседке с очагом.<cite>Сергей Б.</cite></blockquote>
+        <blockquote class="rv">Много экзотических животных, которых можно погладить и сфотографироваться с ними. Рысь Велес — вообще отдельная любовь.<cite>Оксана М.</cite></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="go torn" id="go">
+    <div class="wrap">
+      <div class="rv">
+        <h2 class="big">Как <span class="pk">добраться</span></h2>
+        <dl>
+          <dt>Адрес</dt><dd>д. Деколы, Берёзовая ул., 4<br>Барановичский район</dd>
+          <dt>Открыто</dt><dd>пятница — воскресенье, 12:00–18:00</dd>
+          <dt>Instagram</dt><dd><a href="https://www.instagram.com/agrousadba_naturlich/" target="_blank" rel="noopener">@agrousadba_naturlich</a></dd>
+          <dt>ВКонтакте</dt><dd><a href="https://vk.com/zoosad_dekolu" target="_blank" rel="noopener">zoosad_dekolu</a></dd>
+        </dl>
+        <div class="btns"><a class="btn" href="https://yandex.by/maps/org/natyurlikh/191450977603/" target="_blank" rel="noopener">Построить маршрут</a><a class="btn line" href="https://www.instagram.com/agrousadba_naturlich/" target="_blank" rel="noopener">Написать нам</a></div>
+      </div>
+      <div class="map rv"><iframe src="https://yandex.by/map-widget/v1/?ll=25.692445%2C53.124466&amp;z=12&amp;pt=25.692445%2C53.124466%2Cpm2rdm" title="НатЮрлих на карте" loading="lazy" allowfullscreen></iframe></div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap"><span>Агроусадьба «НатЮрлих» · д. Деколы, Барановичский район</span><span>Контактный зоосад · пт–вс 12:00–18:00</span></div></footer>
+
+<script>
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), {rootMargin: "0px 0px -10% 0px"});
+document.querySelectorAll(".rv").forEach((el, i) => { el.style.transitionDelay = (i % 3) * 80 + "ms"; io.observe(el); });
+const par = [...document.querySelectorAll(".zoo .alpaca,.feed .cat")];
+if (!matchMedia("(prefers-reduced-motion: reduce)").matches) addEventListener("scroll", () => requestAnimationFrame(() => {
+  par.forEach(el => { const r = el.parentElement.getBoundingClientRect(); el.style.translate = `0 ${Math.max(-30, Math.min(30, r.top * -.04))}px`; });
+}), {passive: true});
+</script>
+</body>
+</html>
