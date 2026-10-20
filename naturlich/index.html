@@ -53,6 +53,7 @@ main>section{overflow-x:clip}
 .nav{display:flex;gap:34px;font-weight:600;font-size:15px;text-shadow:0 1px 10px rgba(0,0,0,.45)}
 .nav a{text-decoration:none;opacity:.92}
 .nav a:hover{opacity:1;color:var(--pink)}
+.top.dark .brand,.top.dark .nav{color:var(--green-d);text-shadow:none}
 .top .btn{height:46px;padding:0 22px;font-size:13px}
 
 .hero{position:relative;height:clamp(640px,100svh,960px);overflow:hidden;background:#2b3d22}
@@ -173,6 +174,20 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
   .torn::before{top:-38px;height:40px;-webkit-mask-size:900px 40px;mask-size:900px 40px}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.hero h1 span,.hero .stork,.hero .info,.rv{opacity:1!important;transform:none!important;translate:none!important}}
+
+.hv{position:relative;overflow:hidden;min-height:clamp(640px,100svh,940px);display:flex;align-items:center}
+.hv .wrap{width:100%}
+.hv h1{font-size:clamp(64px,9.4vw,156px)}
+.hv-info{font-weight:700;font-size:16px;margin-top:26px;opacity:.92}
+.hv-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+@media (max-width:640px){.hv h1{font-size:16vw}.hv-cta .btn{height:50px;padding:0 20px;font-size:13px}}
+
+.hv-a{background:var(--green-d);padding:110px 0 80px}
+.hv-a .wrap{z-index:3}
+.hv-a h1{max-width:60%}
+.hv-a .lx{position:absolute;right:-2%;bottom:0;height:min(96%,880px);z-index:2;filter:drop-shadow(-20px 20px 40px rgba(0,0,0,.35))}
+.hv-a .pp{position:absolute;right:-6%;bottom:-8%;width:min(62vw,900px);z-index:1;filter:brightness(0) invert(57%) sepia(52%) saturate(900%) hue-rotate(310deg) brightness(102%);opacity:.95;rotate:-8deg}
+@media (max-width:900px){.hv-a{align-items:flex-start;padding-top:96px}.hv-a h1{max-width:none}.hv-a .lx{height:52%;right:-8%}.hv-a .pp{width:110vw;right:-30%}}
 </style>
 </head>
 <body>
@@ -185,11 +200,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 </header>
 
 <main>
-  <section class="hero">
-    <img class="bg" src="img/garden2.webp" alt="Двор агроусадьбы НатЮрлих: фонтан, клумбы и деревянный дом">
-    <h1 class="big" aria-label="Зверей можно гладить"><span>Зверей</span><span>можно</span><span class="pk">гладить</span></h1>
-    <img class="stork" src="img/cut-stork.webp" alt="" aria-hidden="true">
-    <div class="info"><p>Пятница — воскресенье, 12:00–18:00<br>д. Деколы, Барановичский район</p><a class="btn" href="#zoo">Кто здесь живёт</a></div>
+  <section class="hv hv-a">
+    <div class="wrap">
+      <h1 class="big">Зверей<br>можно<br><span class="pk">гладить</span></h1>
+      <p class="hv-info">Контактный зоосад · пт–вс 12:00–18:00 · д. Деколы</p>
+      <div class="hv-cta"><a class="btn" href="#zoo">Кто здесь живёт</a><a class="btn line" href="#go">Как добраться</a></div>
+    </div>
+    <img class="pp" src="img/brush2.png" alt="" aria-hidden="true">
+    <img class="lx" src="img/cut-lynx.webp" alt="Рысь Велес" fetchpriority="high">
   </section>
 
   <section class="lynx torn">
