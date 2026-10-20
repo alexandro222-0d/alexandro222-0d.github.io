@@ -3,341 +3,254 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>НатЮрлих — контактный зоосад под Барановичами</title>
-<meta name="description" content="Агроусадьба «НатЮрлих» в д. Деколы: контактный зоосад, где животных можно погладить и покормить. Рысь Велес, альпаки, хорьки, олени. Пт–вс 12:00–18:00.">
-<meta name="theme-color" content="#1F3B2D">
-<meta property="og:title" content="НатЮрлих — контактный зоосад под Барановичами">
+<title>НатЮрлих — контактный зоосад в Деколах</title>
+<meta name="description" content="Контактный зоосад в агроусадьбе «НатЮрлих», д. Деколы, Барановичский район. Рысь Велес, альпаки, хорьки, олени. Открыто пт–вс, 12:00–18:00.">
+<meta name="theme-color" content="#2F6B45">
+<meta property="og:title" content="НатЮрлих — контактный зоосад в Деколах">
 <meta property="og:image" content="img/lynx.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/baby.webp">
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@700&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/lynx.webp">
 <style>
-:root{--cream:#F5EFE3;--cream2:#EBE2D0;--forest:#1F3B2D;--forest2:#2C5040;--ink:#1B231E;--muted:#5F675F;--amber:#D98A3D;--amber2:#F0B46B;--line:rgba(31,59,45,.14);--gut:clamp(16px,4.5vw,64px);--r:28px}
+:root{
+  --white:#FFFFFF; --red:#D7262E; --fence:#2F6B45; --ink:#161816; --grey:#5E6560; --mist:#EEF2EC;
+  --sign:"PT Sans Narrow","Arial Narrow",sans-serif; --body:"Golos Text",system-ui,sans-serif; --gut:clamp(16px,4.5vw,64px);
+}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{background:var(--cream);color:var(--ink);font:500 16px/1.6 "Manrope",system-ui,sans-serif;overflow-x:hidden}
+body{background:var(--white);color:var(--ink);font:400 17px/1.6 var(--body);overflow-x:hidden}
 img{display:block;max-width:100%}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:1280px;margin:0 auto;padding:0 var(--gut)}
-.disp{font-family:"Yeseva One",Georgia,serif;font-weight:400;letter-spacing:-.005em}
-.chip{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 14px;border-radius:999px;background:#fff;font-size:13px;font-weight:600;box-shadow:0 4px 14px rgba(31,59,45,.08)}
-.chip i{width:8px;height:8px;border-radius:50%;background:#3DAA62;box-shadow:0 0 0 4px rgba(61,170,98,.18)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:56px;padding:0 28px;border-radius:999px;background:var(--forest);color:var(--cream);font-weight:700;font-size:15px;border:0;cursor:pointer;transition:transform .2s,background .2s}
-.btn:hover{background:var(--forest2);transform:translateY(-2px)}
-.btn.am{background:var(--amber);color:#fff}
-.btn.am:hover{background:#C77A30}
-.btn.ghost{background:transparent;color:var(--forest);box-shadow:inset 0 0 0 2px var(--forest)}
-.btn svg{width:18px;height:18px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--gut)}
 
-/* шапка */
-.top{position:sticky;top:0;z-index:50;background:rgba(245,239,227,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s}
-.top.sc{border-color:var(--line)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:20px}
-.logo{display:flex;align-items:center;gap:10px}
-.logo svg{width:38px;height:38px}
-.logo b{font-family:"Yeseva One",serif;font-weight:400;font-size:24px;color:var(--forest);line-height:1}
-.logo small{display:block;font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.04em;margin-top:2px}
-.nav{display:flex;gap:30px;font-size:15px;font-weight:600}
-.nav a{opacity:.75;transition:opacity .2s}.nav a:hover{opacity:1}
-.top .btn{height:46px;padding:0 22px;font-size:14px}
+/* табличка — как на их вольерах: белая, красная рамка, чёрные заглавные */
+.sign{display:inline-block;background:var(--white);border:clamp(4px,.5vw,6px) solid var(--red);border-radius:6px;padding:.45em .7em .4em;font-family:var(--sign);font-weight:700;text-transform:uppercase;line-height:1.08;letter-spacing:.01em;color:var(--ink);box-shadow:0 2px 0 rgba(0,0,0,.08),0 10px 24px rgba(0,0,0,.18);position:relative}
+.sign::before,.sign::after{content:"";position:absolute;top:6px;width:6px;height:6px;border-radius:50%;background:#B9BDB8;box-shadow:inset 0 1px 1px rgba(0,0,0,.4)}
+.sign::before{left:6px}.sign::after{right:6px}
+.sign .r{color:var(--red)}
 
-/* первый экран */
-.hero{padding:clamp(28px,4vw,56px) 0 clamp(40px,6vw,80px)}
-.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,60px);align-items:center}
-.hero h1{font-family:"Yeseva One",serif;font-weight:400;font-size:clamp(46px,6.2vw,92px);line-height:.98;color:var(--forest);margin:20px 0 22px}
-.hero h1 em{font-style:normal;color:var(--amber)}
-.hero .lead{font-size:clamp(17px,1.5vw,19px);color:var(--muted);max-width:500px}
-.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.hero .rate{display:flex;align-items:center;gap:14px;margin-top:34px}
-.rate .num{font-family:"Yeseva One",serif;font-size:44px;color:var(--forest);line-height:1}
-.rate .stars{display:flex;gap:2px;color:var(--amber)}
-.rate .stars svg{width:16px;height:16px}
-.rate small{display:block;font-size:13px;color:var(--muted)}
-.art{position:relative;aspect-ratio:4/5;max-height:680px;justify-self:end;width:100%}
-.arch{position:absolute;inset:0 0 0 8%;border-radius:999px 999px var(--r) var(--r);overflow:hidden;background:var(--cream2)}
-.arch img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
-.bub{position:absolute;border-radius:50%;overflow:hidden;border:6px solid var(--cream);box-shadow:0 14px 34px rgba(31,59,45,.18);animation:float 6s ease-in-out infinite}
-.bub img{width:100%;height:100%;object-fit:cover}
-.b1{width:30%;aspect-ratio:1;left:-2%;bottom:16%}
-.b2{width:24%;aspect-ratio:1;right:-3%;top:10%;animation-delay:-3s}
-@keyframes float{50%{transform:translateY(-10px)}}
-.tag{position:absolute;left:10%;top:7%;background:#fff;border-radius:18px;padding:12px 16px;box-shadow:0 14px 34px rgba(31,59,45,.14);font-size:14px;line-height:1.35;max-width:210px}
-.tag b{display:block;font-family:"Yeseva One",serif;font-weight:400;font-size:20px;color:var(--forest)}
+/* сетка-рабица, как у вольеров */
+.fence{background-color:var(--fence);background-image:
+  repeating-linear-gradient(45deg,rgba(255,255,255,.09) 0 1.5px,transparent 1.5px 26px),
+  repeating-linear-gradient(-45deg,rgba(255,255,255,.09) 0 1.5px,transparent 1.5px 26px)}
 
-/* бегущая строка */
-.run{background:var(--forest);color:var(--cream);overflow:hidden;padding:18px 0}
-.run div{display:flex;gap:44px;width:max-content;animation:run 38s linear infinite;font-family:"Yeseva One",serif;font-size:clamp(22px,2.4vw,32px)}
-.run span{display:flex;align-items:center;gap:44px;white-space:nowrap}
-.run span::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--amber2)}
-@keyframes run{to{transform:translateX(-50%)}}
+.top{position:sticky;top:0;z-index:30;background:var(--white);border-bottom:1px solid #E3E7E2}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:20px}
+.brand{font-family:var(--sign);font-weight:700;font-size:26px;text-transform:uppercase;text-decoration:none;letter-spacing:.02em}
+.brand span{color:var(--red)}
+.nav{display:flex;gap:28px;font-size:15px}
+.nav a{text-decoration:none;color:var(--grey)}
+.nav a:hover{color:var(--ink)}
+.route{display:inline-flex;align-items:center;height:42px;padding:0 18px;background:var(--red);color:#fff;text-decoration:none;font-family:var(--sign);font-weight:700;text-transform:uppercase;font-size:17px;letter-spacing:.03em;border-radius:4px}
+.route:hover{background:#B81E25}
 
-/* секции */
-.sec{padding:clamp(64px,8vw,120px) 0}
-.sh{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:clamp(30px,4vw,52px)}
-.sh h2{font-family:"Yeseva One",serif;font-weight:400;font-size:clamp(38px,4.6vw,64px);line-height:1.02;color:var(--forest);max-width:680px}
-.sh p{max-width:380px;color:var(--muted)}
-.kick{display:block;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;height:clamp(620px,calc(100svh - 64px),860px)}
+.hero-photo{position:relative;overflow:hidden;background:#3a2b22}
+.hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:42% 35%}
+.hero-photo figcaption{position:absolute;left:var(--gut);bottom:22px;color:#fff;font-size:14px;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.hero-fence{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:22px;padding:48px clamp(24px,4vw,56px)}
+.hero-fence h1{font-size:clamp(40px,4.4vw,64px);transform:rotate(-1.2deg)}
+.hero-fence .s2{font-size:clamp(26px,2.6vw,36px);transform:rotate(.8deg)}
+.hero-fence .s3{font-size:clamp(22px,2vw,28px);transform:rotate(-.5deg)}
+.hero-fence p{color:rgba(255,255,255,.88);max-width:400px;font-size:16px;margin-top:6px}
+.hero-fence .rate{display:flex;align-items:baseline;gap:10px;color:#fff;font-size:15px}
+.hero-fence .rate b{font-family:var(--sign);font-size:36px}
 
-/* животные */
-.zoo{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(220px,22vw,300px);gap:clamp(12px,1.6vw,20px)}
-.an{position:relative;border-radius:var(--r);overflow:hidden;background:var(--cream2);isolation:isolate}
-.an img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
-.an:hover img{transform:scale(1.05)}
-.an::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(18,30,22,.78));z-index:1}
-.an .t{position:absolute;left:20px;right:20px;bottom:18px;z-index:2;color:#fff}
-.an .t b{display:block;font-family:"Yeseva One",serif;font-weight:400;font-size:clamp(22px,2vw,28px);line-height:1.1}
-.an .t span{font-size:14px;opacity:.88}
-.an.big{grid-column:span 2;grid-row:span 2}
-.an.tall{grid-row:span 2}
-.an.txt{background:var(--forest);color:var(--cream);padding:26px;display:flex;flex-direction:column;justify-content:space-between}
-.an.txt::after{display:none}
-.an.txt b{font-family:"Yeseva One",serif;font-weight:400;font-size:clamp(24px,2.2vw,32px);line-height:1.1}
-.an.txt p{font-size:15px;opacity:.85}
-.an.txt .em{font-size:44px;line-height:1}
+.sec{padding:clamp(64px,8vw,112px) 0}
+h2{font-family:var(--sign);font-weight:700;text-transform:uppercase;font-size:clamp(40px,5vw,68px);line-height:1;letter-spacing:.005em}
+.lead{max-width:620px;color:var(--grey);margin-top:16px}
 
-/* как проходит визит */
-.visit{background:var(--forest);color:var(--cream);border-radius:clamp(28px,4vw,56px);margin:0 clamp(8px,1.5vw,20px)}
-.visit .sh h2{color:var(--cream)}
-.visit .sh p{color:rgba(245,239,227,.72)}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,24px)}
-.st{background:rgba(245,239,227,.07);border:1px solid rgba(245,239,227,.12);border-radius:22px;padding:26px 22px}
-.st .n{width:44px;height:44px;border-radius:50%;background:var(--amber);color:#fff;display:grid;place-items:center;font-weight:700;margin-bottom:22px}
-.st b{display:block;font-family:"Yeseva One",serif;font-weight:400;font-size:24px;line-height:1.15;margin-bottom:10px}
-.st p{font-size:15px;color:rgba(245,239,227,.75)}
-.feed{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,24px);margin-top:clamp(14px,2vw,24px)}
-.fd{border-radius:22px;padding:26px;display:flex;gap:18px;align-items:flex-start}
-.fd.a{background:var(--amber);color:#fff}
-.fd.b{background:var(--cream);color:var(--ink)}
-.fd .ic{font-size:34px;line-height:1}
-.fd b{display:block;font-size:18px;margin-bottom:4px}
-.fd p{font-size:15px;opacity:.9}
+.zoo{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,3vw,44px) clamp(16px,2vw,28px);margin-top:clamp(36px,4vw,56px)}
+.an{position:relative}
+.an .ph{position:relative;aspect-ratio:4/5;border-radius:4px;background:var(--mist)}
+.an .ph img{width:100%;height:100%;object-fit:cover;border-radius:4px}
+.an .sign{position:absolute;left:14px;bottom:-20px;font-size:clamp(22px,2vw,28px);transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.an:nth-child(odd) .sign{transform:rotate(-2deg)}
+.an:nth-child(even) .sign{transform:rotate(1.5deg)}
+.an:hover .sign{transform:rotate(0)}
+.an p{margin-top:34px;font-size:15.5px;color:var(--grey)}
+.an.note{grid-column:1/-1;display:flex;align-items:center;gap:30px;padding:30px;background:var(--mist);border-radius:4px}
+.an.note p{max-width:380px}
+.an.note .sign{position:static;font-size:clamp(22px,2.1vw,30px)}
+.an.note p{margin:0}
+.more{margin-top:clamp(40px,5vw,64px);font-size:clamp(19px,1.8vw,23px);line-height:1.5;max-width:860px}
+.more b{font-weight:600}
 
-/* ночь */
-.stay{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:center}
-.stay .pic{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/3}
-.stay .pic img{width:100%;height:100%;object-fit:cover}
-.stay ul{list-style:none;margin:24px 0 30px;display:grid;gap:12px}
-.stay li{display:flex;gap:14px;align-items:center;font-size:16.5px}
-.stay li::before{content:"";flex:0 0 28px;height:28px;border-radius:50%;background:var(--cream2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%231F3B2D' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.feed{color:#fff}
+.feed .lead{color:rgba(255,255,255,.85)}
+.boards{display:flex;flex-wrap:wrap;gap:22px 26px;margin-top:clamp(34px,4vw,52px);align-items:flex-start}
+.boards .sign{font-size:clamp(24px,2.4vw,34px)}
+.boards .sign:nth-child(1){transform:rotate(-1.5deg)}
+.boards .sign:nth-child(2){transform:rotate(1deg)}
+.boards .sign:nth-child(3){transform:rotate(-.6deg)}
+.nobread{display:flex;align-items:center;gap:14px;background:#fff;color:var(--ink);border-radius:6px;padding:10px 18px 10px 10px;transform:rotate(1.4deg);box-shadow:0 10px 24px rgba(0,0,0,.18);font-family:var(--sign);font-weight:700;text-transform:uppercase;font-size:clamp(22px,2.2vw,30px)}
+.nobread svg{width:64px;height:64px;flex:0 0 64px}
+.feed .ig{margin-top:30px;font-size:16px;color:rgba(255,255,255,.88)}
+.feed .ig a{color:#fff;font-weight:600}
 
-/* территория */
-.gal{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:260px 260px;gap:clamp(12px,1.6vw,20px)}
-.gal figure{border-radius:22px;overflow:hidden}
-.gal figure:first-child{grid-row:span 2}
-.gal img{width:100%;height:100%;object-fit:cover}
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:center}
+.visit .ph{aspect-ratio:4/3;overflow:hidden;border-radius:4px}
+.visit .ph img{width:100%;height:100%;object-fit:cover}
+.visit p{font-size:clamp(18px,1.6vw,20px);margin-top:18px}
+.visit p+p{color:var(--grey);font-size:17px}
 
-/* отзывы */
-.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,24px)}
-.rv-c{background:#fff;border-radius:24px;padding:28px 26px;display:flex;flex-direction:column;gap:16px;box-shadow:0 10px 30px rgba(31,59,45,.06)}
-.rv-c .stars{display:flex;gap:2px;color:var(--amber)}
-.rv-c .stars svg{width:15px;height:15px}
-.rv-c q{quotes:none;font-size:16px;line-height:1.65;flex:1}
-.rv-c cite{font-style:normal;font-weight:700;font-size:14px;color:var(--forest)}
+.stay{background:var(--mist)}
+.stay .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:center}
+.stay .ph{aspect-ratio:4/3;overflow:hidden;border-radius:4px;order:2}
+.stay .ph img{width:100%;height:100%;object-fit:cover}
+.stay p{margin-top:18px;font-size:clamp(18px,1.6vw,20px)}
+.stay a.btn{display:inline-flex;margin-top:26px;height:50px;align-items:center;padding:0 22px;background:var(--ink);color:#fff;text-decoration:none;border-radius:4px;font-weight:500}
 
-/* как добраться */
-.go{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(24px,4vw,56px);align-items:stretch}
-.info{background:var(--cream2);border-radius:var(--r);padding:clamp(26px,3vw,44px);display:flex;flex-direction:column;gap:6px}
-.row{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--line);font-size:16.5px}
-.row span:first-child{color:var(--muted);font-size:14px;font-weight:600}
-.row span:last-child{text-align:right;font-weight:600}
-.info .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:26px}
-.map{border-radius:var(--r);overflow:hidden;min-height:420px;background:var(--cream2)}
-.map iframe{width:100%;height:100%;min-height:420px;border:0}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,48px);margin-top:clamp(34px,4vw,52px)}
+.quotes blockquote{font-size:clamp(18px,1.5vw,20px);line-height:1.55;border-top:5px solid var(--red);padding-top:20px}
+.quotes cite{display:block;margin-top:14px;font-style:normal;font-size:15px;color:var(--grey)}
 
-footer{background:var(--forest);color:rgba(245,239,227,.75);padding:34px 0 40px;font-size:14px}
-footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.go .wrap{display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(28px,4vw,56px);align-items:stretch}
+.addr{display:flex;flex-direction:column;gap:22px}
+.addr dl{display:grid;grid-template-columns:auto 1fr;gap:12px 22px;font-size:17px}
+.addr dt{color:var(--grey)}
+.addr .btns{display:flex;gap:10px;flex-wrap:wrap}
+.addr .btns a{display:inline-flex;align-items:center;height:50px;padding:0 22px;border-radius:4px;text-decoration:none;font-weight:500}
+.addr .b1{background:var(--red);color:#fff}
+.addr .b2{box-shadow:inset 0 0 0 2px var(--ink)}
+.map{min-height:400px;border-radius:4px;overflow:hidden;background:var(--mist)}
+.map iframe{width:100%;height:100%;min-height:400px;border:0}
 
-.rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
-.rv.in{opacity:1;transform:none}
-.fab{display:none}
+footer{border-top:1px solid #E3E7E2;padding:26px 0 34px;font-size:14px;color:var(--grey)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
-@media (max-width:1050px){
+@media (max-width:980px){
   .nav{display:none}
-  .zoo{grid-template-columns:repeat(2,1fr)}
-  .steps{grid-template-columns:1fr 1fr}
-  .revs{grid-template-columns:1fr 1fr}
+  .hero{grid-template-columns:1fr;height:auto}
+  .hero-photo{aspect-ratio:4/3.4}
+  .zoo{grid-template-columns:1fr 1fr}
+  .quotes{grid-template-columns:1fr}
 }
-@media (max-width:760px){
-  .top .wrap{height:64px}
-  .top .btn{display:none}
-  .hero .wrap{grid-template-columns:1fr}
-  .hero h1{font-size:12.6vw;margin:16px 0 16px}
-  .hero .cta{display:grid;grid-template-columns:1fr 1fr}
-  .hero .btn{padding:0 12px;height:52px;font-size:14px}
-  .art{order:-1;aspect-ratio:1/1.05;max-height:none;margin-top:4px}
-  .arch{inset:0 4% 0 10%}
-  .tag{left:2%;top:4%;padding:10px 12px;font-size:12.5px;max-width:170px}
-  .tag b{font-size:17px}
-  .hero .rate{margin-top:26px}
-  .sh{flex-direction:column;align-items:flex-start;gap:12px}
-  .zoo{grid-auto-rows:200px;gap:10px}
-  .an .t{left:14px;right:14px;bottom:12px}
-  .an .t span{font-size:12.5px;line-height:1.35;display:block}
-  .an.txt{padding:18px}
-  .an.txt p{font-size:13.5px}
-  .steps{grid-template-columns:1fr}
-  .feed{grid-template-columns:1fr}
-  .stay{grid-template-columns:1fr}
-  .gal{grid-template-columns:1fr 1fr;grid-template-rows:200px 150px 150px}
-  .gal figure:first-child{grid-column:1/-1;grid-row:auto}
-  .revs{grid-template-columns:1fr}
-  .go{grid-template-columns:1fr}
+@media (max-width:640px){
+  body{font-size:16px}
+  .brand{font-size:22px}
+  .route{height:38px;font-size:15px;padding:0 14px}
+  .hero-photo{aspect-ratio:1/1}
+  .hero-fence{padding:36px var(--gut) 44px;gap:18px}
+  .hero-fence h1{font-size:40px}
+  .zoo{gap:36px 12px}
+  .an .sign{left:8px;bottom:-16px;font-size:19px}
+  .an p{font-size:14px;margin-top:26px}
+  .an.note{flex-direction:column;align-items:flex-start;gap:18px;padding:22px}
+  .visit,.stay .wrap,.go .wrap{grid-template-columns:1fr}
+  .stay .ph{order:0}
   .map,.map iframe{min-height:300px}
-  footer{padding-bottom:100px}
-  .fab{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:40;transform:translateY(150%);transition:transform .4s}
-  .fab.show{transform:none}
-  .fab .btn{flex:1;box-shadow:0 12px 30px rgba(31,59,45,.35)}
 }
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}.rv{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="star" viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6L10 15l-5.4 3 1.2-6L1.3 7.8l6.1-.7z"/></symbol>
-  <symbol id="ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></g><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></symbol>
-  <symbol id="pin" viewBox="0 0 24 24"><path d="M12 22s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.5" fill="currentColor"/></symbol>
-</svg>
-
-<header class="top" id="top">
+<header class="top">
   <div class="wrap">
-    <a class="logo" href="#"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#1F3B2D"/><path d="M11 25c0-6 4-10 9-10s9 4 9 10c-2 2-5 3-9 3s-7-1-9-3z" fill="#F0B46B"/><path d="M13 16l-1-6 5 4M27 16l1-6-5 4" fill="#F0B46B"/><circle cx="16.5" cy="21" r="1.4" fill="#1F3B2D"/><circle cx="23.5" cy="21" r="1.4" fill="#1F3B2D"/><path d="M19 24h2l-1 1.2z" fill="#1F3B2D"/></svg><span><b>НатЮрлих</b><small>агроусадьба · зоосад</small></span></a>
-    <nav class="nav" aria-label="Разделы"><a href="#zoo">Животные</a><a href="#visit">Как проходит визит</a><a href="#stay">Ночёвка</a><a href="#reviews">Отзывы</a><a href="#go">Как добраться</a></nav>
-    <a class="btn am" href="#go">Приехать в гости</a>
+    <a class="brand" href="#">Нат<span>Ю</span>рлих</a>
+    <nav class="nav" aria-label="Разделы"><a href="#zoo">Кто живёт</a><a href="#feed">Что привезти</a><a href="#stay">Ночёвка</a><a href="#go">Как добраться</a></nav>
+    <a class="route" href="https://yandex.by/maps/org/natyurlikh/191450977603/" target="_blank" rel="noopener">Маршрут</a>
   </div>
 </header>
 
 <main>
   <section class="hero">
-    <div class="wrap">
-      <div>
-        <span class="chip"><i></i>Открыто пт–вс, 12:00–18:00</span>
-        <h1>Зоосад, где зверей можно <em>погладить</em></h1>
-        <p class="lead">Рысь, альпаки, хорьки, олени и ещё много питомцев — в агроусадьбе «НатЮрлих» под Барановичами. Гид расскажет историю каждого, а угощение для зверей можно привезти с собой.</p>
-        <div class="cta"><a class="btn" href="#go">Как добраться</a><a class="btn ghost" href="#zoo">Кто у нас живёт</a></div>
-        <div class="rate"><span class="num">5,0</span><div><div class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></div><small>1 388 оценок и 504 отзыва на Яндекс Картах</small></div></div>
-      </div>
-      <div class="art">
-        <div class="arch"><img src="img/baby.webp" alt="Альпаки в зоосаде НатЮрлих" fetchpriority="high"></div>
-        <div class="bub b1"><img src="img/alpaca.webp" alt="Альпака"></div>
-        <div class="bub b2"><img src="img/ferrets.webp" alt="Хорьки"></div>
-        <div class="tag"><b>Альпаки</b>их можно погладить и угостить морковкой</div>
-      </div>
+    <figure class="hero-photo">
+      <img src="img/lynx.webp" alt="Рысь Велес лежит на пледе в вольере" fetchpriority="high">
+      <figcaption>Рысь Велес — ручная</figcaption>
+    </figure>
+    <div class="hero-fence fence">
+      <h1 class="sign">Контактный зоосад <span class="r">«НатЮрлих»</span></h1>
+      <span class="sign s2">Зверей можно гладить.<br><span class="r">Только с разрешения</span></span>
+      <span class="sign s3">Открыто пт–вс · 12:00–18:00</span>
+      <p>Агроусадьба в деревне Деколы, Барановичский район. Работник проведёт по вольерам и расскажет историю каждого питомца.</p>
+      <div class="rate"><b>5,0</b>на Яндекс Картах · 504 отзыва</div>
     </div>
   </section>
-
-  <div class="run" aria-hidden="true"><div>
-    <span>Рысь</span><span>Тигрица</span><span>Медведица</span><span>Альпаки</span><span>Еноты</span><span>Верблюд</span><span>Олени</span><span>Дикобразы</span><span>Хорьки</span><span>Павлины</span><span>Ослики</span><span>Носуха</span>
-    <span>Рысь</span><span>Тигрица</span><span>Медведица</span><span>Альпаки</span><span>Еноты</span><span>Верблюд</span><span>Олени</span><span>Дикобразы</span><span>Хорьки</span><span>Павлины</span><span>Ослики</span><span>Носуха</span>
-  </div></div>
 
   <section class="sec" id="zoo">
     <div class="wrap">
-      <div class="sh rv"><div><span class="kick">Знакомьтесь</span><h2>Кто живёт в «НатЮрлих»</h2></div><p>Почти к любому питомцу можно зайти в вольер — под присмотром работников и только с их разрешения.</p></div>
+      <h2>Кто здесь живёт</h2>
+      <p class="lead">Почти к любому питомцу можно зайти в вольер — вместе с работником, который подскажет, как себя вести.</p>
       <div class="zoo">
-        <article class="an big rv"><img src="img/lynx.webp" alt="Рысь Велес" loading="lazy"><div class="t"><b>Рысь Велес</b><span>Ручная и ласковая — гладить можно, но только с разрешения</span></div></article>
-        <article class="an rv"><img src="img/alpaca.webp" alt="Альпака" loading="lazy"><div class="t"><b>Альпаки</b><span>Любят морковку и внимание</span></div></article>
-        <article class="an rv"><img src="img/deer.webp" alt="Олени" loading="lazy"><div class="t"><b>Олени</b><span>Гуляют среди деревьев</span></div></article>
-        <article class="an rv"><img src="img/ferrets.webp" alt="Хорьки" loading="lazy"><div class="t"><b>Хорьки</b><span>Самые любопытные жители</span></div></article>
-        <article class="an txt rv"><span class="kick" style="color:var(--amber2);margin:0">Сказочный домик</span><div><b>Еноты</b><p>Живут в сказочном домике — и одна из енотов, Злата, очень забавно ворчит</p></div></article>
-        <article class="an rv"><img src="img/stork.webp" alt="Аист" loading="lazy"><div class="t"><b>Аисты</b><span>Гуляют прямо по траве</span></div></article>
-        <article class="an txt rv" style="background:var(--amber)"><span class="kick" style="color:#fff;margin:0">И это не все</span><div><b>Тигрица и медведица</b><p>А ещё верблюд, дикобразы, павлины, ослики и носуха</p></div></article>
-        <article class="an rv"><img src="img/deer2.webp" alt="Оленёнок" loading="lazy"><div class="t"><b>Пятнистые олени</b><span>Подходят совсем близко</span></div></article>
-        <article class="an rv"><img src="img/cat.webp" alt="Кот на заборе" loading="lazy"><div class="t"><b>И местные коты</b><span>Следят за порядком</span></div></article>
+        <article class="an"><div class="ph"><img src="img/alpaca.webp" alt="Рыжая альпака" loading="lazy"><span class="sign">Альпаки</span></div><p>Подходят сами и ждут морковку.</p></article>
+        <article class="an"><div class="ph"><img src="img/ferrets.webp" alt="Три хорька выглядывают из домика" loading="lazy"><span class="sign">Хорьки</span></div><p>Выглядывают из домика с сеном.</p></article>
+        <article class="an"><div class="ph"><img src="img/deer2.webp" alt="Пятнистый олень на траве" loading="lazy"><span class="sign">Олени</span></div><p>Гуляют среди деревьев и подходят близко.</p></article>
+        <article class="an"><div class="ph"><img src="img/stork.webp" alt="Аист на траве" loading="lazy"><span class="sign">Аисты</span></div><p>Ходят прямо по траве у вольеров.</p></article>
+        <article class="an"><div class="ph"><img src="img/baby.webp" alt="Взрослая альпака и детёныш" loading="lazy"><span class="sign">Малыши</span></div><p>Детёныш альпаки держится рядом с мамой.</p></article>
+        <article class="an"><div class="ph"><img src="img/cat.webp" alt="Кот сидит на заборе" loading="lazy"><span class="sign">Коты</span></div><p>Следят за порядком с забора.</p></article>
+        <article class="an note"><span class="sign">Котам хвосты не рубим —<br><span class="r">это порода курильский бобтейл!</span></span><p>Табличка с одного из вольеров. Таких здесь много — читайте, пока гуляете.</p></article>
+      </div>
+      <p class="more">А ещё здесь живут <b>тигрица, медведица, еноты, верблюд, дикобразы, павлины, ослики и носуха</b>. У енотов — свой сказочный домик.</p>
+    </div>
+  </section>
+
+  <section class="sec feed fence" id="feed">
+    <div class="wrap">
+      <h2>Что привезти угостить</h2>
+      <p class="lead">Кормить зверей можно — при работниках и тем, что им подходит.</p>
+      <div class="boards">
+        <span class="sign">Хищникам — <span class="r">мясо без кости</span></span>
+        <span class="sign">Остальным — <span class="r">овощи и фрукты</span></span>
+        <span class="sign">Аисты любят только мясо и рыбку</span>
+        <span class="nobread"><svg viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="34" rx="22" ry="13" fill="#E9A13B"/><path d="M18 30c3 3 5 3 8 0M28 30c3 3 5 3 8 0M38 30c3 3 5 3 8 0" fill="none" stroke="#B9701C" stroke-width="2.4" stroke-linecap="round"/><circle cx="32" cy="32" r="27" fill="none" stroke="#D7262E" stroke-width="5"/><path d="M13 51L51 13" stroke="#D7262E" stroke-width="5" stroke-linecap="round"/></svg>Хлеб — нельзя</span>
+      </div>
+      <p class="ig">Кого и чем кормить, подробно расписано в Instagram — <a href="https://www.instagram.com/agrousadba_naturlich/" target="_blank" rel="noopener">@agrousadba_naturlich</a>. Загляните перед поездкой.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap visit">
+      <div class="ph"><img src="img/gazebo.webp" alt="Беседка на территории усадьбы" loading="lazy"></div>
+      <div>
+        <h2>Как проходит визит</h2>
+        <p>Работник проведёт по территории, расскажет про каждого питомца и покажет, кого можно погладить и покормить. После прогулки гостей поят чаем со сладостями в беседке с очагом.</p>
+        <p>Территория небольшая и очень ухоженная: чистые вольеры, цветы, пруд с камнями. Запаха, как в большом зоопарке, нет — это отмечают почти все гости.</p>
       </div>
     </div>
   </section>
 
-  <section class="sec visit" id="visit">
+  <section class="sec stay" id="stay">
     <div class="wrap">
-      <div class="sh rv"><div><span class="kick">Как проходит визит</span><h2>Это не зоопарк — это как в гостях на ферме</h2></div><p>Гости часто пишут, что здесь животных по-настоящему любят — и это сразу видно.</p></div>
-      <div class="steps">
-        <div class="st rv"><span class="n">1</span><b>Приезжаете</b><p>Пятница, суббота, воскресенье — с 12:00 до 18:00</p></div>
-        <div class="st rv"><span class="n">2</span><b>Экскурсия с гидом</b><p>Расскажут историю каждого питомца и как с ним себя вести</p></div>
-        <div class="st rv"><span class="n">3</span><b>Гладите и кормите</b><p>Под присмотром работников — можно зайти в вольер и сфотографироваться</p></div>
-        <div class="st rv"><span class="n">4</span><b>Чай в беседке</b><p>После экскурсии — тёплый чай со сладостями в беседке с очагом</p></div>
-      </div>
-      <div class="feed">
-        <div class="fd a rv"><div><b>Что привезти угостить</b><p>Для хищников — мясо без кости, для остальных — овощи и фрукты: капусту, морковку, яблоки.</p></div></div>
-        <div class="fd b rv"><div><b>Кого и чем кормить</b><p>Подробно пишем в Instagram — загляните перед поездкой.</p></div></div>
+      <div class="ph"><img src="img/house.webp" alt="Деревянный дом на территории усадьбы" loading="lazy"></div>
+      <div>
+        <h2>Можно остаться на ночь</h2>
+        <p>Рядом с зоосадом — уютный дом на 10 спальных мест со всеми удобствами. А за забором живут олени.</p>
+        <a class="btn" href="https://www.instagram.com/agrousadba_naturlich/" target="_blank" rel="noopener">Спросить про даты в Instagram</a>
       </div>
     </div>
   </section>
 
-  <section class="sec" id="stay">
+  <section class="sec">
     <div class="wrap">
-      <div class="stay">
-        <div class="pic rv"><img src="img/house.webp" alt="Территория усадьбы" loading="lazy"></div>
-        <div class="rv">
-          <span class="kick">Остаться на ночь</span>
-          <h2 class="disp" style="font-size:clamp(38px,4.6vw,64px);line-height:1.02;color:var(--forest)">Переночевать рядом с оленями</h2>
-          <ul>
-            <li>Уютный дом на 10 спальных мест</li>
-            <li>Со всеми удобствами</li>
-            <li>За забором — олени</li>
-          </ul>
-          <a class="btn" href="https://www.instagram.com/agrousadba_naturlich/" target="_blank" rel="noopener"><svg><use href="#ig"/></svg>Узнать про свободные даты</a>
-        </div>
+      <h2>Гости пишут</h2>
+      <div class="quotes">
+        <blockquote>«Впечатление, что приехал к родственникам на ферму с экзотическими животными. Там не просто содержат зверей, чтобы заработать. Там их любят.»<cite>Наталья К., Яндекс Карты</cite></blockquote>
+        <blockquote>«Дети были просто очарованы! Гиды рассказывают много интересного о питомцах. После экскурсии всех напоили чаем со сладостями в беседке с очагом.»<cite>Сергей Б., Яндекс Карты</cite></blockquote>
+        <blockquote>«Много экзотических животных, которых можно погладить и сфотографироваться с ними. Рысь Велес — вообще отдельная любовь.»<cite>Оксана М., Яндекс Карты</cite></blockquote>
       </div>
     </div>
   </section>
 
-  <section class="sec" style="padding-top:0">
+  <section class="sec go" id="go" style="padding-top:0">
     <div class="wrap">
-      <div class="sh rv"><div><span class="kick">Территория</span><h2>Ухоженная и уютная</h2></div><p>Чистые вольеры, цветы, пруд с камнями и много мест для фото с питомцами.</p></div>
-      <div class="gal">
-        <figure class="rv"><img src="img/yard.webp" alt="Территория усадьбы" loading="lazy"></figure>
-        <figure class="rv"><img src="img/pond.webp" alt="Пруд с камнями" loading="lazy"></figure>
-        <figure class="rv"><img src="img/fountain.webp" alt="Цветы и фонтан" loading="lazy"></figure>
-        <figure class="rv"><img src="img/gazebo.webp" alt="Беседка" loading="lazy"></figure>
-        <figure class="rv"><img src="img/garden.webp" alt="Сад" loading="lazy"></figure>
+      <div class="addr">
+        <h2>Как добраться</h2>
+        <dl>
+          <dt>Адрес</dt><dd>д. Деколы, Берёзовая ул., 4<br>Барановичский район</dd>
+          <dt>Открыто</dt><dd>пятница — воскресенье<br>12:00–18:00</dd>
+          <dt>Instagram</dt><dd><a href="https://www.instagram.com/agrousadba_naturlich/" target="_blank" rel="noopener">@agrousadba_naturlich</a></dd>
+          <dt>ВКонтакте</dt><dd><a href="https://vk.com/zoosad_dekolu" target="_blank" rel="noopener">zoosad_dekolu</a></dd>
+        </dl>
+        <div class="btns"><a class="b1" href="https://yandex.by/maps/org/natyurlikh/191450977603/" target="_blank" rel="noopener">Построить маршрут</a><a class="b2" href="https://www.instagram.com/agrousadba_naturlich/" target="_blank" rel="noopener">Написать в Instagram</a></div>
       </div>
-    </div>
-  </section>
-
-  <section class="sec" id="reviews" style="padding-top:0">
-    <div class="wrap">
-      <div class="sh rv"><div><span class="kick">5,0 на Яндекс Картах</span><h2>Что пишут гости</h2></div><p>504 отзыва — и почти в каждом про то, как здесь заботятся о животных.</p></div>
-      <div class="revs">
-        <figure class="rv-c rv"><div class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></div><q>Впечатление, что приехал к родственникам на ферму с экзотическими животными. Там не просто содержат зверей, чтобы заработать. Там их любят.</q><cite>Наталья К.</cite></figure>
-        <figure class="rv-c rv"><div class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></div><q>Дети были просто очарованы! Гиды дружелюбные и рассказывают много интересного о питомцах. После экскурсии всех напоили чаем со сладостями в беседке с очагом.</q><cite>Сергей Б.</cite></figure>
-        <figure class="rv-c rv"><div class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></div><q>Много экзотических животных, которых можно погладить и сфотографироваться с ними. Рысь Велес вообще отдельная любовь. Запаха вообще нет, не то что в зоопарке.</q><cite>Оксана М.</cite></figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="go" style="background:var(--cream2);padding-bottom:clamp(64px,8vw,110px)">
-    <div class="wrap">
-      <div class="sh rv"><div><span class="kick">Ждём в гости</span><h2>Как добраться</h2></div><p>Барановичский район, недалеко от Барановичей. Удобнее всего — на машине.</p></div>
-      <div class="go">
-        <div class="info rv" style="background:var(--cream)">
-          <div class="row"><span>Адрес</span><span>д. Деколы, Берёзовая ул., 4</span></div>
-          <div class="row"><span>Работаем</span><span>пт–вс, 12:00–18:00</span></div>
-          <div class="row"><span>Instagram</span><span>@agrousadba_naturlich</span></div>
-          <div class="row"><span>ВКонтакте</span><span>zoosad_dekolu</span></div>
-          <div class="btns">
-            <a class="btn am" href="https://yandex.by/maps/org/natyurlikh/191450977603/" target="_blank" rel="noopener"><svg><use href="#pin"/></svg>Маршрут</a>
-            <a class="btn" href="https://www.instagram.com/agrousadba_naturlich/" target="_blank" rel="noopener"><svg><use href="#ig"/></svg>Написать</a>
-          </div>
-        </div>
-        <div class="map rv"><iframe src="https://yandex.by/map-widget/v1/?ll=25.692445%2C53.124466&amp;z=12&amp;pt=25.692445%2C53.124466%2Cpm2orm" title="НатЮрлих на карте" loading="lazy" allowfullscreen></iframe></div>
-      </div>
+      <div class="map"><iframe src="https://yandex.by/map-widget/v1/?ll=25.692445%2C53.124466&amp;z=12&amp;pt=25.692445%2C53.124466%2Cpm2rdm" title="НатЮрлих на карте" loading="lazy" allowfullscreen></iframe></div>
     </div>
   </section>
 </main>
 
-<footer><div class="wrap"><span>© Агроусадьба «НатЮрлих» · д. Деколы, Барановичский район</span><span>Контактный зоосад · пт–вс 12:00–18:00</span></div></footer>
-<div class="fab" id="fab"><a class="btn am" href="#go">Как добраться</a></div>
-
-<script>
-const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
-function onScroll() {
-  $("#top").classList.toggle("sc", scrollY > 10);
-  $("#fab").classList.toggle("show", scrollY > innerHeight * .8 && $("#go").getBoundingClientRect().top > innerHeight);
-}
-addEventListener("scroll", onScroll, {passive: true}); onScroll();
-const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), {rootMargin: "0px 0px -8% 0px"});
-$$(".rv").forEach((el, i) => { el.style.transitionDelay = (i % 4) * 70 + "ms"; io.observe(el); });
-</script>
+<footer><div class="wrap"><span>Агроусадьба «НатЮрлих» · д. Деколы, Барановичский район</span><span>Контактный зоосад · пт–вс 12:00–18:00</span></div></footer>
 </body>
 </html>
