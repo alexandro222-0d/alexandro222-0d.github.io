@@ -45,16 +45,20 @@ a{color:inherit}
 .burger{display:none}
 
 /* первый экран: замочная скважина */
-.hero{position:relative;min-height:clamp(680px,100svh,980px);display:grid;grid-template-columns:1fr minmax(260px,30vw) 1fr;align-items:center;gap:clamp(20px,3vw,48px);padding:110px var(--gut) 60px;background:radial-gradient(60% 70% at 50% 55%,#2a0f12 0%,var(--ink) 70%)}
+.hero-wrap{position:relative;height:250vh;background:var(--ink)}
+.hero{position:sticky;top:0;height:100vh;height:100svh;min-height:600px;overflow:hidden;display:grid;grid-template-columns:1fr minmax(260px,30vw) 1fr;align-items:center;gap:clamp(20px,3vw,48px);padding:90px var(--gut) 50px;background:radial-gradient(60% 70% at 50% 55%,#2a0f12 0%,var(--ink) 70%);--kh:76vh;--p:0}
+.reveal{position:absolute;inset:0;z-index:0}
+.reveal img{width:100%;height:100%;object-fit:cover;object-position:46% 50%;scale:calc(1.12 - var(--p) * .12);-webkit-mask:var(--keyhole) 50% 52%/auto var(--kh) no-repeat;mask:var(--keyhole) 50% 52%/auto var(--kh) no-repeat;filter:brightness(calc(.92 - var(--p) * .25)) contrast(1.05)}
+.sparks{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.col{position:relative;z-index:2;opacity:calc(1 - var(--p) * 2.4);translate:0 calc(var(--p) * -60px)}
 .hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(46px,5vw,84px);line-height:1;letter-spacing:-.02em}
 .hero .sub{margin-top:22px;max-width:300px;color:var(--mute)}
-.key{position:relative;aspect-ratio:100/170;max-height:78vh;justify-self:center;width:100%}
-.key img{width:100%;height:100%;object-fit:cover;object-position:46% 50%;-webkit-mask:var(--keyhole) center/contain no-repeat;mask:var(--keyhole) center/contain no-repeat;filter:brightness(.92) contrast(1.05)}
-.key::after{content:"";position:absolute;inset:0;-webkit-mask:var(--keyhole) center/contain no-repeat;mask:var(--keyhole) center/contain no-repeat;box-shadow:inset 0 0 60px 20px rgba(18,8,9,.85);pointer-events:none}
 .hero .side{max-width:330px;justify-self:end}
 .hero .side p{color:var(--mute)}
 .hero .side .link{margin-top:26px}
-.hero .scroll{position:absolute;left:50%;bottom:22px;translate:-50% 0;font-size:11px;letter-spacing:.2em;opacity:.55;text-transform:uppercase}
+.welcome{position:absolute;left:0;right:0;top:80%;translate:0 -50%;z-index:2;text-align:center;font-size:clamp(48px,7vw,120px);line-height:1;letter-spacing:-.02em;opacity:calc((var(--p) - .62) * 3.2);text-shadow:0 10px 40px rgba(0,0,0,.5);pointer-events:none}
+.welcome i{font-style:italic;color:#F1D9C9}
+.hero .scroll{position:absolute;left:50%;bottom:22px;translate:-50% 0;z-index:2;font-size:11px;letter-spacing:.2em;opacity:calc(.6 - var(--p) * 3);text-transform:uppercase}
 
 /* лаунж + картуш */
 .story{position:relative;background:var(--wine)}
@@ -62,6 +66,8 @@ a{color:inherit}
 .story .photo img{width:100%;height:100%;object-fit:cover}
 .story .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,8,9,.35),rgba(18,8,9,0) 30%,rgba(61,10,18,.25) 80%,var(--wine))}
 .card{position:relative;z-index:2;width:min(420px,88vw);aspect-ratio:400/560;margin:clamp(-420px,-30vw,-300px) auto 0;background:var(--cream);color:#3a2a2a;-webkit-mask:var(--cartouche) center/100% 100% no-repeat;mask:var(--cartouche) center/100% 100% no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(62px,7vw,84px) clamp(34px,4vw,54px) clamp(58px,6.6vw,78px);font-size:13.5px;line-height:1.7}
+.card.in{animation:breathe 7s ease-in-out 1.2s infinite}
+@keyframes breathe{50%{rotate:-1.2deg;translate:0 -6px}}
 .card h2{font-family:var(--serif);font-weight:300;font-size:clamp(40px,3.6vw,52px);color:var(--rose);line-height:1;margin-bottom:22px;letter-spacing:-.02em}
 .card .q{font-family:var(--hand);font-size:clamp(21px,1.8vw,25px);color:var(--rose);line-height:1.25;margin:14px 0;width:100%}
 .card .q span{display:block}
@@ -79,7 +85,8 @@ a{color:inherit}
 .sh p{max-width:360px;color:var(--mute)}
 .sp{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,110px);align-items:center;padding:clamp(28px,3vw,44px) 0;border-top:1px solid var(--line)}
 .sp:nth-child(even) .pic{order:2}
-.sp .pic{position:relative;aspect-ratio:4/5;max-height:640px;overflow:hidden;border-radius:999px 999px 0 0}
+.sp .pic{position:relative;aspect-ratio:4/5;max-height:640px;overflow:hidden;border-radius:999px 999px 0 0;clip-path:inset(100% 0 0 0 round 999px 999px 0 0);transition:clip-path 1.4s cubic-bezier(.7,0,.2,1) .15s}
+.sp.in .pic{clip-path:inset(0 0 0 0 round 999px 999px 0 0)}
 .sp .pic img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
 .sp:hover .pic img{transform:scale(1.04)}
 .sp .t small{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin-bottom:16px}
@@ -144,8 +151,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 
 .rv{opacity:0;translate:0 26px;transition:opacity 1s cubic-bezier(.2,.7,.2,1),translate 1s cubic-bezier(.2,.7,.2,1)}
 .rv.in{opacity:1;translate:0 0}
-.hero h1,.hero .sub,.hero .side,.key{animation:fade 1.4s cubic-bezier(.2,.7,.2,1) both}
-.key{animation-delay:.15s}.hero .side{animation-delay:.35s}
+.hero h1,.hero .sub,.hero .side .link,.hero .side p{animation:fade 1.4s cubic-bezier(.2,.7,.2,1) both}
+.hero .side p{animation-delay:.3s}.hero .side .link{animation-delay:.45s}
+.reveal{animation:open 1.8s cubic-bezier(.2,.7,.2,1) both}
+@keyframes open{from{opacity:0;scale:.94}to{opacity:1;scale:1}}
 @keyframes fade{from{opacity:0;translate:0 18px}to{opacity:1;translate:0 0}}
 
 @media (max-width:980px){
@@ -154,11 +163,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
   .top nav.r{visibility:visible}
   .top nav.r a:last-child{display:inline}
   .top .wrap{grid-template-columns:1fr auto 1fr}
-  .hero{grid-template-columns:1fr;text-align:center;padding-top:100px;gap:30px}
-  .hero .sub{margin:16px auto 0}
-  .key{order:-1;width:min(62vw,300px)}
+  .hero{grid-template-columns:1fr;align-content:end;text-align:center;padding:90px var(--gut) 34px;gap:14px;--kh:48svh}
+  .reveal img{-webkit-mask-position:50% 24%;mask-position:50% 24%}
+  .hero .gap{display:none}
+  .hero .sub{margin:12px auto 0}
   .hero .side{justify-self:center;max-width:460px}
+  .hero .side p{display:none}
+  .hero .side .link{margin-top:6px}
   .hero .scroll{display:none}
+  .hero-wrap{height:220vh}
   .sp,.tk,.bk{grid-template-columns:minmax(0,1fr)}
   .sp:nth-child(even) .pic{order:0}
   .sp .pic{max-width:520px;width:100%;margin:0 auto}
@@ -200,18 +213,23 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 </header>
 
 <main>
-  <section class="hero">
-    <div>
+  <div class="hero-wrap" id="heroWrap">
+  <section class="hero" id="hero">
+    <div class="reveal"><img src="img/sparks.webp" alt="Молодожёны танцуют среди холодных фонтанов и дыма" fetchpriority="high"></div>
+    <canvas class="sparks" id="sparks" aria-hidden="true"></canvas>
+    <p class="welcome serif" aria-hidden="true">Добро пожаловать<br><i>в Gatsby Hall</i></p>
+    <div class="col l">
       <h1>Свадьба<br>в духе Гэтсби</h1>
       <p class="sub">Загородная вилла в&nbsp;1&nbsp;км от Минска — для тех, кто хочет праздник с размахом и без суеты</p>
     </div>
-    <div class="key"><img src="img/sparks.webp" alt="Молодожёны танцуют среди холодных фонтанов и дыма" fetchpriority="high"></div>
-    <div class="side">
+    <div class="gap"></div>
+    <div class="side col">
       <p>Gatsby Hall — трёхэтажная вилла с белоснежным банкетным залом до 100 гостей, лаунжем с баром, лужайкой для выездной регистрации и спальнями для 30 гостей.</p>
       <a class="link" href="#book">Узнать свободные даты <svg><use href="#ar"/></svg></a>
     </div>
-    <span class="scroll">листайте вниз</span>
+    <span class="scroll">листайте — дверь откроется</span>
   </section>
+  </div>
 
   <section class="story" id="story">
     <div class="photo"><img src="img/lounge.webp" alt="Лаунж-зал виллы с кожаными диванами и баром" loading="lazy"></div>
@@ -327,6 +345,37 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 <script>
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), {rootMargin: "0px 0px -8% 0px"});
 document.querySelectorAll(".rv").forEach((el, i) => { el.style.transitionDelay = (i % 3) * 90 + "ms"; io.observe(el); });
+// скважина раскрывается при прокрутке
+const hw = document.getElementById("heroWrap"), hero = document.getElementById("hero");
+const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function heroP() {
+  const r = hw.getBoundingClientRect(), span = hw.offsetHeight - innerHeight;
+  const p = Math.min(1, Math.max(0, -r.top / span));
+  const base = innerWidth <= 980 ? .48 : .76, e = p * p;
+  hero.style.setProperty("--p", p.toFixed(3));
+  hero.style.setProperty("--kh", (innerHeight * base * (1 + e * 9)).toFixed(0) + "px");
+}
+if (!RM) { addEventListener("scroll", () => requestAnimationFrame(heroP), {passive: true}); addEventListener("resize", heroP); heroP(); }
+// золотые искры
+(() => {
+  const c = document.getElementById("sparks"); if (!c || RM) return;
+  const x = c.getContext("2d"); let W, H; const dpr = Math.min(2, devicePixelRatio || 1), pts = [];
+  function size() { W = c.clientWidth; H = c.clientHeight; c.width = W * dpr; c.height = H * dpr; x.setTransform(dpr, 0, 0, dpr, 0, 0); }
+  function spawn(init) { return {x: W * (.22 + Math.random() * .56), y: init ? Math.random() * H : H + 10, r: .6 + Math.random() * 1.8, vy: .25 + Math.random() * .7, vx: (Math.random() - .5) * .25, life: 0, max: 240 + Math.random() * 360, tw: Math.random() * 6}; }
+  size(); addEventListener("resize", size); for (let i = 0; i < 70; i++) pts.push(spawn(true));
+  (function tick() {
+    x.clearRect(0, 0, W, H);
+    const fade = 1 - (parseFloat(hero.style.getPropertyValue("--p")) || 0) * 1.4;
+    if (fade > 0) for (const p of pts) {
+      p.life++; p.y -= p.vy; p.x += p.vx + Math.sin((p.life + p.tw * 40) / 40) * .15;
+      const t = p.life / p.max, a = Math.sin(Math.PI * Math.min(1, t)) * (.55 + .45 * Math.sin(p.life / 9 + p.tw));
+      x.beginPath(); x.arc(p.x, p.y, p.r, 0, 6.283);
+      x.fillStyle = `rgba(255,${200 + (p.r * 20 | 0)},150,${Math.max(0, a * fade)})`; x.shadowColor = "rgba(255,190,120,.9)"; x.shadowBlur = 8; x.fill();
+      if (p.life > p.max || p.y < -10) Object.assign(p, spawn(false));
+    }
+    requestAnimationFrame(tick);
+  })();
+})();
 const f = document.getElementById("form");
 f.addEventListener("submit", e => {
   e.preventDefault();
