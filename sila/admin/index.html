@@ -144,42 +144,31 @@ const ctl = (list, i, n) => `<div class="ctl"><button type="button" data-mv="${l
 const VIEWS = {
   texts: () => `
     <h2>Главный экран</h2><p class="sub">Первое, что видят гости</p>
-    <div class="card">${field("hero.title", "Название")}${field("hero.kicker", "Надпись над названием")}${field("hero.sub", "Описание", 1)}</div>
-    <div class="card"><div class="t"><span>Цифры под кнопками</span></div>${C.facts.map((f, i) => `<div class="row2">${field(`facts.${i}.v`, "Цифра")}${field(`facts.${i}.l`, "Подпись")}</div>`).join("")}</div>
-    <h2>Главы</h2><p class="sub">Четыре карточки: парная, купель, терраса, дом</p>
-    <div class="card">${field("chapters_title", "Заголовок")}${field("chapters_text", "Текст", 1)}</div>
-    ${C.chapters.map((h, i) => `<div class="card"><div class="t"><span>Глава 0${i + 1}</span>${ctl("chapters", i, C.chapters.length)}</div>${pick(`chapters.${i}.img`, "Фото карточки")}${field(`chapters.${i}.t`, "Название")}${field(`chapters.${i}.s`, "Подпись сбоку")}${field(`chapters.${i}.d`, "Описание", 1)}</div>`).join("")}
-    <button type="button" class="add" data-add="chapters">+ Добавить главу</button>
-    <h2>Как проходит вечер</h2>
-    <div class="card">${field("steps_title", "Заголовок")}</div>
-    ${C.steps.map((s, i) => `<div class="card"><div class="t"><span>Шаг 0${i + 1}</span>${ctl("steps", i, C.steps.length)}</div>${pick(`steps.${i}.img`, "Фото шага")}${field(`steps.${i}.t`, "Название")}${field(`steps.${i}.d`, "Описание", 1)}</div>`).join("")}
-    <button type="button" class="add" data-add="steps">+ Добавить шаг</button>
-    <h2>Цитата</h2>
-    <div class="card">${field("quote.t", "Текст цитаты", 1)}${field("quote.a", "Автор")}</div>`,
+    <div class="card">${pick("hero.photo", "Главное фото")}${field("hero.title", "Название")}${field("hero.sub", "Описание", 1)}${field("hero.info", "Строка под описанием")}</div>
+    <h2>День и вечер</h2><p class="sub">Кадры, которые меняются при прокрутке. Последний — вечерний, на нём загораются гирлянды</p>
+    ${C.story.map((h, i) => `<div class="card"><div class="t"><span>Кадр ${i + 1}</span>${ctl("story", i, C.story.length)}</div>${pick(`story.${i}.img`, "Фото")}${field(`story.${i}.t`, "Текст", 1)}</div>`).join("")}
+    <button type="button" class="add" data-add="story">+ Добавить кадр</button>
+    <h2>Внутри</h2>
+    <div class="card">${field("inside.title", "Заголовок")}${field("inside.text", "Текст", 1)}${pick("inside.img1", "Большое фото")}${pick("inside.img2", "Маленькое фото 1")}${pick("inside.img3", "Маленькое фото 2")}</div>`,
 
   photos: () => `
-    <h2>Главные фото</h2><p class="sub">Большое фото на телефоне и полосы на компьютере</p>
-    <div class="card">${pick("hero.photo", "Главное фото")}${pick("hero.strip1", "Полоса слева (компьютер)")}${pick("hero.strip2", "Полоса справа (компьютер)")}</div>
-    <h2>Галерея</h2><p class="sub">${C.gallery.length} фото · первые 8 видны сразу, остальные по кнопке «Ещё фото»</p>
+    <h2>Фото</h2><p class="sub">${C.gallery.length} фото в ленте «Фото». Стрелками меняйте порядок</p>
     <div class="grid">
       <label class="tile up"><b>+</b>Загрузить фото<input type="file" accept="image/*" multiple data-upload="gallery"></label>
       ${C.gallery.map((g, i) => `<div class="tile"><img src="${esc(src(g))}" alt="" loading="lazy"><span class="n">${i + 1}</span><div class="tb"><button type="button" data-mv="gallery" data-i="${i}" data-d="-1" ${i ? "" : "disabled"} aria-label="Раньше">←</button><button type="button" data-mv="gallery" data-i="${i}" data-d="1" ${i < C.gallery.length - 1 ? "" : "disabled"} aria-label="Позже">→</button><button type="button" class="del" data-rm="gallery" data-i="${i}" aria-label="Удалить">✕</button></div></div>`).join("")}
     </div>`,
 
   prices: () => `
-    <h2>Цены</h2><p class="sub">Если цена «от» — так и пишите: «от 65 р.»</p>
-    <div class="card">${field("prices_title", "Заголовок раздела")}</div>
-    ${C.prices.map((p, i) => `<div class="card"><div class="t"><span>Строка ${i + 1}</span>${ctl("prices", i, C.prices.length)}</div>${field(`prices.${i}.n`, "Услуга")}${field(`prices.${i}.s`, "Пояснение")}<div class="row2">${field(`prices.${i}.p`, "Цена")}${field(`prices.${i}.u`, "За что (в час, за сутки…)")}</div></div>`).join("")}
-    <button type="button" class="add" data-add="prices">+ Добавить строку</button>
-    <div class="card">${field("prices_note", "Примечание под ценами", 1)}</div>
-    <h2>Уже есть на месте</h2><p class="sub">Список удобств под ценами</p>
+    <h2>Цена</h2><p class="sub">Если цена «от» — так и пишите: «от 65 р.»</p>
+    <div class="card"><div class="row2">${field("price.v", "Цена")}${field("price.u", "За что")}</div>${field("price.note", "Пояснение под ценой", 1)}</div>
+    <h2>Что входит</h2><p class="sub">Список рядом с ценой</p>
     <div class="card"><div class="chips">${C.included.map((x, i) => `<span class="chip">${esc(x)}<button type="button" data-rm="included" data-i="${i}" aria-label="Удалить">✕</button></span>`).join("")}</div>
-    <div class="inl"><input id="newinc" placeholder="Например: Веники"><button type="button" id="addinc" aria-label="Добавить">+</button></div></div>`,
+    <div class="inl"><input id="newinc" placeholder="Например: веники"><button type="button" id="addinc" aria-label="Добавить">+</button></div></div>`,
 
   reviews: () => `
     <h2>Рейтинг</h2>
-    <div class="card"><div class="row2">${field("rating.v", "Оценка")}${field("rating.c", "Сколько оценок")}</div></div>
-    <h2>Отзывы</h2><p class="sub">Лучше брать настоящие — с Яндекс Карт или из директа</p>
+    <div class="card"><div class="row2">${field("rating.v", "Оценка")}${field("rating.c", "Подпись")}</div></div>
+    <h2>Отзывы</h2><p class="sub">Первые три видны сразу, остальные по кнопке «Ещё отзывы»</p>
     ${C.reviews.map((r, i) => `<div class="card"><div class="t"><span>Отзыв ${i + 1}</span>${ctl("reviews", i, C.reviews.length)}</div>${field(`reviews.${i}.a`, "Имя")}${field(`reviews.${i}.t`, "Текст", 1)}</div>`).join("")}
     <button type="button" class="add" data-add="reviews">+ Добавить отзыв</button>`,
 
@@ -188,7 +177,7 @@ const VIEWS = {
     <div class="card">${field("contacts.phone", "Телефон")}${field("contacts.telegram", "Ссылка на Telegram")}${field("contacts.instagram", "Instagram (ник без @)")}${field("contacts.address", "Адрес")}${field("contacts.hours", "Время работы")}</div>
     <div class="card"><div class="t"><span>Точка на карте</span></div><div class="row2">${field("contacts.lat", "Широта")}${field("contacts.lon", "Долгота")}</div><p class="hint" style="margin:8px 2px 0">Координаты можно скопировать в Яндекс Картах: нажмите на точку — они будут внизу карточки.</p></div>`
 };
-const BLANK = {chapters: {t: "Новая глава", s: "подпись", d: "Описание", img: "img/house.webp"}, steps: {t: "Новый шаг", d: "Описание", img: "img/house.webp"}, prices: {n: "Новая услуга", s: "", p: "0 р.", u: ""}, reviews: {a: "Имя", t: "Текст отзыва"}};
+const BLANK = {story: {t: "Текст кадра", img: "img/house.webp"}, reviews: {a: "Имя", t: "Текст отзыва"}};
 
 function render() {
   const y = scrollY;
@@ -272,7 +261,7 @@ function start() { $("#login").hidden = true; $("#app").hidden = false; $("#tabs
   C = structuredClone(ORIG);
   // на хостинге рядом лежит save.php — тогда вход по паролю, иначе демо
   try { const r = await fetch("../save.php?ping=1"); const j = await r.json(); if (j.ok) mode = "live"; } catch (e) {}
-  if (mode === "demo") { try { const d = localStorage.getItem(KEY); if (d) C = JSON.parse(d); } catch (e) {} start(); return; }
+  if (mode === "demo") { try { const d = localStorage.getItem(KEY); if (d) { const x = JSON.parse(d); if (x.story) C = x; } } catch (e) {} start(); return; }
   $("#login").hidden = false;
   $("#login").onsubmit = async e => {
     e.preventDefault(); pass = $("#pass").value;
