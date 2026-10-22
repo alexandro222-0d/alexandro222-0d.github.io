@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Панель · Сила пара</title>
+<meta name="theme-color" content="#0D0A08">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%226%22 fill=%22%230D0A08%22/%3E%3Ctext x=%2216%22 y=%2223%22 font-size=%2219%22 text-anchor=%22middle%22 fill=%22%23D9A866%22 font-family=%22Georgia%22%3EС%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Forum&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0D0A08;--card:#17120E;--card2:#1F1813;--line:rgba(231,203,166,.14);--line2:rgba(231,203,166,.28);--tx:#F1E8DC;--mu:#A99A8A;--gold:#D9A866;--red:#E0745A;--ok:#8DBF8B;--serif:"Forum",Georgia,serif;--sans:"Onest",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--tx);font:400 15px/1.5 var(--sans);-webkit-font-smoothing:antialiased;padding-bottom:calc(150px + env(safe-area-inset-bottom))}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img{display:block;max-width:100%}
+.app{max-width:680px;margin:0 auto;padding:0 14px}
+.hd{position:sticky;top:0;z-index:20;background:rgba(13,10,8,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);margin:0 -14px;padding:calc(12px + env(safe-area-inset-top)) 14px 12px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line)}
+.hd b{display:block;font:400 19px/1 var(--serif);letter-spacing:.14em;text-transform:uppercase}
+.hd small{display:block;font-size:11px;color:var(--mu);margin-top:4px;letter-spacing:.06em}
+.hd a{display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:99px;box-shadow:inset 0 0 0 1px var(--line2);font-size:13px;color:var(--tx);text-decoration:none;white-space:nowrap}
+.demo{margin:14px 0 4px;padding:12px 14px;border-radius:12px;background:rgba(217,168,102,.1);border:1px solid rgba(217,168,102,.3);font-size:13px;line-height:1.45;color:#ecdcc6}
+.demo b{color:var(--gold)}
+.demo button{color:var(--gold);text-decoration:underline;font-size:13px;margin-top:6px}
+h2{font:400 30px/1.05 var(--serif);letter-spacing:.06em;text-transform:uppercase;margin:24px 2px 6px}
+.sub{color:var(--mu);font-size:13px;margin:0 2px 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px}
+.card>.t{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.card>.t span{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.ctl{display:flex;gap:6px}
+.ctl button{width:36px;height:36px;border-radius:10px;background:var(--card2);box-shadow:inset 0 0 0 1px var(--line);font-size:15px;color:var(--mu)}
+.ctl button.del{color:var(--red)}
+.ctl button:disabled{opacity:.3}
+label.f{display:block;margin-bottom:12px}
+label.f:last-child{margin-bottom:0}
+label.f>span{display:block;font-size:12px;color:var(--mu);margin:0 0 6px 2px}
+input,textarea{width:100%;border-radius:12px;border:1px solid var(--line2);background:#0f0c0a;color:var(--tx);font:400 16px/1.45 var(--sans);padding:12px 14px;-webkit-appearance:none;appearance:none}
+textarea{resize:none;min-height:96px;overflow:hidden}
+input:focus,textarea:focus{outline:none;border-color:var(--gold)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pick{display:flex;align-items:center;gap:12px;padding:8px;border-radius:12px;border:1px dashed var(--line2);width:100%;text-align:left;margin-bottom:12px}
+.pick img{width:64px;height:64px;border-radius:9px;object-fit:cover;background:#221a14;flex:none}
+.pick span{font-size:14px}
+.pick small{display:block;font-size:12px;color:var(--mu)}
+.add{width:100%;height:52px;border-radius:14px;border:1px dashed var(--line2);color:var(--gold);font-weight:500;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tile{position:relative;border-radius:12px;overflow:hidden;background:#221a14;aspect-ratio:3/4}
+.tile img{width:100%;height:100%;object-fit:cover}
+.tile .n{position:absolute;left:6px;top:6px;min-width:24px;height:24px;border-radius:8px;background:rgba(13,10,8,.75);font-size:12px;display:grid;place-items:center;padding:0 6px}
+.tile .tb{position:absolute;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(3,1fr);background:linear-gradient(transparent,rgba(13,10,8,.92));padding:18px 4px 4px}
+.tile .tb button{height:34px;font-size:15px;border-radius:8px}
+.tile .tb button.del{color:var(--red)}
+.up{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border:1px dashed var(--line2);color:var(--gold);font-size:13px;text-align:center;padding:8px;cursor:pointer}
+.up b{font:400 34px/1 var(--serif)}
+.up input{display:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:8px 8px 8px 12px;border-radius:99px;background:var(--card2);box-shadow:inset 0 0 0 1px var(--line);font-size:14px}
+.chip button{width:24px;height:24px;border-radius:50%;color:var(--red)}
+.inl{display:flex;gap:8px}
+.inl button{flex:none;width:52px;border-radius:12px;background:var(--gold);color:#1a120b;font-size:22px}
+.save{position:fixed;left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:30;max-width:656px;margin:0 auto;height:56px;border-radius:16px;background:var(--gold);color:#1a120b;font-weight:600;font-size:15px;box-shadow:0 12px 30px rgba(0,0,0,.5);opacity:0;pointer-events:none;transform:translateY(24px);transition:transform .4s cubic-bezier(.2,.7,.2,1),opacity .3s}
+.save.on{transform:none;opacity:1;pointer-events:auto}
+.save.busy{opacity:.7}
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:25;display:grid;grid-template-columns:repeat(5,1fr);padding:8px 6px calc(8px + env(safe-area-inset-bottom));background:rgba(20,16,12,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line)}
+.tabs button{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;color:var(--mu);padding:6px 0}
+.tabs svg{width:22px;height:22px}
+.tabs button.on{color:var(--tx)}
+.tabs button.on svg{color:var(--gold)}
+.modal{position:fixed;inset:0;z-index:50;background:rgba(8,6,5,.92);display:none;flex-direction:column}
+.modal.on{display:flex}
+.modal .mh{display:flex;justify-content:space-between;align-items:center;padding:calc(14px + env(safe-area-inset-top)) 16px 12px}
+.modal .mh b{font:400 22px/1 var(--serif);letter-spacing:.08em;text-transform:uppercase}
+.modal .mh button{width:44px;height:44px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line2);font-size:22px}
+.modal .mb{flex:1;overflow:auto;padding:0 14px 30px}
+.modal .tile{cursor:pointer}
+.modal .tile.sel{outline:3px solid var(--gold);outline-offset:-3px}
+.toast{position:fixed;left:50%;top:calc(76px + env(safe-area-inset-top));translate:-50% -10px;z-index:60;opacity:0;pointer-events:none;background:#F1E8DC;color:#1a120b;padding:12px 18px;border-radius:12px;font-size:14px;width:max-content;max-width:calc(100vw - 32px);text-align:center;transition:opacity .3s,translate .3s}
+.toast.on{opacity:1;translate:-50% 0}
+.toast.err{background:var(--red);color:#fff}
+.login{min-height:100svh;display:flex;flex-direction:column;justify-content:center;gap:16px;max-width:380px;margin:0 auto;padding:24px}
+.login b{font:400 34px/1 var(--serif);letter-spacing:.12em;text-transform:uppercase;text-align:center}
+.login p{color:var(--mu);text-align:center;font-size:14px}
+.login button{height:54px;border-radius:14px;background:var(--gold);color:#1a120b;font-weight:600}
+.hint{font-size:12px;color:var(--mu);margin:-4px 2px 12px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+
+<form class="login" id="login" hidden>
+  <b>Сила пара</b>
+  <p>Панель управления сайтом</p>
+  <input type="password" id="pass" placeholder="Пароль" autocomplete="current-password">
+  <button type="submit">Войти</button>
+</form>
+
+<div class="app" id="app" hidden>
+  <header class="hd">
+    <div><b>Сила пара</b><small>Панель управления</small></div>
+    <a href="../" target="_blank" rel="noopener">Открыть сайт ↗</a>
+  </header>
+  <div class="demo" id="demo" hidden><b>Демо-режим.</b> Меняйте что угодно — изменения сохраняются только на этом телефоне и видны на сайте здесь же. После запуска сайта они будут видны всем посетителям.<br><button type="button" id="reset">Вернуть всё как было</button></div>
+  <main id="view"></main>
+</div>
+
+<button class="save" id="save">Сохранить изменения</button>
+
+<nav class="tabs" id="tabs" hidden>
+  <button data-t="texts" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 6h14M5 12h14M5 18h9"/></svg>Тексты</button>
+  <button data-t="photos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/></svg>Фото</button>
+  <button data-t="prices"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/></svg>Цены</button>
+  <button data-t="reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8L3.5 9.7l5.9-.9z"/></svg>Отзывы</button>
+  <button data-t="contacts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Контакты</button>
+</nav>
+
+<div class="modal" id="modal">
+  <div class="mh"><b>Выберите фото</b><button type="button" id="mclose" aria-label="Закрыть">×</button></div>
+  <div class="mb"><p class="hint">Нажмите на фото, чтобы поставить его. Новое фото можно загрузить первой плиткой.</p><div class="grid" id="mgrid"></div></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const get = (o, p) => p.split(".").reduce((a, k) => a?.[k], o);
+const set = (o, p, v) => { const k = p.split("."), l = k.pop(); k.reduce((a, x) => a[x], o)[l] = v; };
+const src = p => /^(data:|https?:|\/)/.test(p) ? p : "../" + p;
+const KEY = "sila-demo";
+let C, ORIG, mode = "demo", tab = "texts", dirty = false, pass = "";
+
+function toast(t, err) { const e = $("#toast"); e.textContent = t; e.classList.toggle("err", !!err); e.classList.add("on"); clearTimeout(toast.t); toast.t = setTimeout(() => e.classList.remove("on"), 3200); }
+function touch() { dirty = true; $("#save").classList.add("on"); }
+
+// поля
+const field = (path, label, area) => {
+  const v = esc(get(C, path));
+  return `<label class="f"><span>${label}</span>${area ? `<textarea data-p="${path}" rows="3">${v}</textarea>` : `<input data-p="${path}" value="${v}">`}</label>`;
+};
+const pick = (path, label) => `<button type="button" class="pick" data-pick="${path}"><img src="${esc(src(get(C, path)))}" alt=""><span>${label}<small>Нажмите, чтобы заменить</small></span></button>`;
+const ctl = (list, i, n) => `<div class="ctl"><button type="button" data-mv="${list}" data-i="${i}" data-d="-1" ${i ? "" : "disabled"} aria-label="Выше">↑</button><button type="button" data-mv="${list}" data-i="${i}" data-d="1" ${i < n - 1 ? "" : "disabled"} aria-label="Ниже">↓</button><button type="button" class="del" data-rm="${list}" data-i="${i}" aria-label="Удалить">✕</button></div>`;
+
+const VIEWS = {
+  texts: () => `
+    <h2>Главный экран</h2><p class="sub">Первое, что видят гости</p>
+    <div class="card">${field("hero.title", "Название")}${field("hero.kicker", "Надпись над названием")}${field("hero.sub", "Описание", 1)}</div>
+    <div class="card"><div class="t"><span>Цифры под кнопками</span></div>${C.facts.map((f, i) => `<div class="row2">${field(`facts.${i}.v`, "Цифра")}${field(`facts.${i}.l`, "Подпись")}</div>`).join("")}</div>
+    <h2>Главы</h2><p class="sub">Четыре карточки: парная, купель, терраса, дом</p>
+    <div class="card">${field("chapters_title", "Заголовок")}${field("chapters_text", "Текст", 1)}</div>
+    ${C.chapters.map((h, i) => `<div class="card"><div class="t"><span>Глава 0${i + 1}</span>${ctl("chapters", i, C.chapters.length)}</div>${pick(`chapters.${i}.img`, "Фото карточки")}${field(`chapters.${i}.t`, "Название")}${field(`chapters.${i}.s`, "Подпись сбоку")}${field(`chapters.${i}.d`, "Описание", 1)}</div>`).join("")}
+    <button type="button" class="add" data-add="chapters">+ Добавить главу</button>
+    <h2>Как проходит вечер</h2>
+    <div class="card">${field("steps_title", "Заголовок")}</div>
+    ${C.steps.map((s, i) => `<div class="card"><div class="t"><span>Шаг 0${i + 1}</span>${ctl("steps", i, C.steps.length)}</div>${pick(`steps.${i}.img`, "Фото шага")}${field(`steps.${i}.t`, "Название")}${field(`steps.${i}.d`, "Описание", 1)}</div>`).join("")}
+    <button type="button" class="add" data-add="steps">+ Добавить шаг</button>
+    <h2>Цитата</h2>
+    <div class="card">${field("quote.t", "Текст цитаты", 1)}${field("quote.a", "Автор")}</div>`,
+
+  photos: () => `
+    <h2>Главные фото</h2><p class="sub">Большое фото на телефоне и полосы на компьютере</p>
+    <div class="card">${pick("hero.photo", "Главное фото")}${pick("hero.strip1", "Полоса слева (компьютер)")}${pick("hero.strip2", "Полоса справа (компьютер)")}</div>
+    <h2>Галерея</h2><p class="sub">${C.gallery.length} фото · первые 8 видны сразу, остальные по кнопке «Ещё фото»</p>
+    <div class="grid">
+      <label class="tile up"><b>+</b>Загрузить фото<input type="file" accept="image/*" multiple data-upload="gallery"></label>
+      ${C.gallery.map((g, i) => `<div class="tile"><img src="${esc(src(g))}" alt="" loading="lazy"><span class="n">${i + 1}</span><div class="tb"><button type="button" data-mv="gallery" data-i="${i}" data-d="-1" ${i ? "" : "disabled"} aria-label="Раньше">←</button><button type="button" data-mv="gallery" data-i="${i}" data-d="1" ${i < C.gallery.length - 1 ? "" : "disabled"} aria-label="Позже">→</button><button type="button" class="del" data-rm="gallery" data-i="${i}" aria-label="Удалить">✕</button></div></div>`).join("")}
+    </div>`,
+
+  prices: () => `
+    <h2>Цены</h2><p class="sub">Если цена «от» — так и пишите: «от 65 р.»</p>
+    <div class="card">${field("prices_title", "Заголовок раздела")}</div>
+    ${C.prices.map((p, i) => `<div class="card"><div class="t"><span>Строка ${i + 1}</span>${ctl("prices", i, C.prices.length)}</div>${field(`prices.${i}.n`, "Услуга")}${field(`prices.${i}.s`, "Пояснение")}<div class="row2">${field(`prices.${i}.p`, "Цена")}${field(`prices.${i}.u`, "За что (в час, за сутки…)")}</div></div>`).join("")}
+    <button type="button" class="add" data-add="prices">+ Добавить строку</button>
+    <div class="card">${field("prices_note", "Примечание под ценами", 1)}</div>
+    <h2>Уже есть на месте</h2><p class="sub">Список удобств под ценами</p>
+    <div class="card"><div class="chips">${C.included.map((x, i) => `<span class="chip">${esc(x)}<button type="button" data-rm="included" data-i="${i}" aria-label="Удалить">✕</button></span>`).join("")}</div>
+    <div class="inl"><input id="newinc" placeholder="Например: Веники"><button type="button" id="addinc" aria-label="Добавить">+</button></div></div>`,
+
+  reviews: () => `
+    <h2>Рейтинг</h2>
+    <div class="card"><div class="row2">${field("rating.v", "Оценка")}${field("rating.c", "Сколько оценок")}</div></div>
+    <h2>Отзывы</h2><p class="sub">Лучше брать настоящие — с Яндекс Карт или из директа</p>
+    ${C.reviews.map((r, i) => `<div class="card"><div class="t"><span>Отзыв ${i + 1}</span>${ctl("reviews", i, C.reviews.length)}</div>${field(`reviews.${i}.a`, "Имя")}${field(`reviews.${i}.t`, "Текст", 1)}</div>`).join("")}
+    <button type="button" class="add" data-add="reviews">+ Добавить отзыв</button>`,
+
+  contacts: () => `
+    <h2>Контакты</h2><p class="sub">Меняются сразу везде: в шапке, кнопках и внизу сайта</p>
+    <div class="card">${field("contacts.phone", "Телефон")}${field("contacts.telegram", "Ссылка на Telegram")}${field("contacts.instagram", "Instagram (ник без @)")}${field("contacts.address", "Адрес")}${field("contacts.hours", "Время работы")}</div>
+    <div class="card"><div class="t"><span>Точка на карте</span></div><div class="row2">${field("contacts.lat", "Широта")}${field("contacts.lon", "Долгота")}</div><p class="hint" style="margin:8px 2px 0">Координаты можно скопировать в Яндекс Картах: нажмите на точку — они будут внизу карточки.</p></div>`
+};
+const BLANK = {chapters: {t: "Новая глава", s: "подпись", d: "Описание", img: "img/house.webp"}, steps: {t: "Новый шаг", d: "Описание", img: "img/house.webp"}, prices: {n: "Новая услуга", s: "", p: "0 р.", u: ""}, reviews: {a: "Имя", t: "Текст отзыва"}};
+
+function render() {
+  const y = scrollY;
+  $("#view").innerHTML = VIEWS[tab]();
+  document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("on", b.dataset.t === tab));
+  document.querySelectorAll("#view textarea").forEach(grow);
+  scrollTo(0, y);
+}
+function grow(t) { t.style.height = "auto"; t.style.height = t.scrollHeight + 2 + "px"; }
+
+// ввод текста
+$("#view").addEventListener("input", e => { const p = e.target.dataset.p; if (!p) return; set(C, p, e.target.value); touch(); if (e.target.tagName === "TEXTAREA") grow(e.target); });
+// кнопки в карточках
+$("#view").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  if (b.dataset.mv) { const a = get(C, b.dataset.mv), i = +b.dataset.i, j = i + +b.dataset.d; [a[i], a[j]] = [a[j], a[i]]; touch(); render(); }
+  else if (b.dataset.rm) { const a = get(C, b.dataset.rm); if (!confirm("Удалить?")) return; a.splice(+b.dataset.i, 1); touch(); render(); }
+  else if (b.dataset.add) { get(C, b.dataset.add).push(structuredClone(BLANK[b.dataset.add])); touch(); render(); setTimeout(() => scrollTo({top: document.body.scrollHeight, behavior: "smooth"}), 50); }
+  else if (b.dataset.pick) openPicker(b.dataset.pick);
+  else if (b.id === "addinc") { const v = $("#newinc").value.trim(); if (!v) return; C.included.push(v); touch(); render(); }
+});
+$("#view").addEventListener("change", async e => { if (e.target.dataset.upload) { await upload(e.target.files, f => C.gallery.unshift(f)); render(); } });
+document.querySelectorAll("#tabs button").forEach(b => b.onclick = () => { tab = b.dataset.t; render(); scrollTo(0, 0); });
+
+// фото: сжимаем на телефоне перед сохранением
+async function shrink(file) {
+  const bmp = await createImageBitmap(file, {imageOrientation: "from-image"}).catch(() => null);
+  if (!bmp) throw new Error("bad");
+  const max = mode === "demo" ? 1100 : 1600, k = Math.min(1, max / Math.max(bmp.width, bmp.height));
+  const c = document.createElement("canvas"); c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
+  c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
+  const blob = await new Promise(r => c.toBlob(r, "image/webp", mode === "demo" ? .72 : .82));
+  return await new Promise(r => { const fr = new FileReader(); fr.onload = () => r(fr.result); fr.readAsDataURL(blob); });
+}
+async function upload(files, put) {
+  if (!files?.length) return;
+  toast("Загружаю фото…");
+  let n = 0;
+  for (const f of files) { try { put(await shrink(f)); n++; } catch (e) { toast("Не получилось открыть одно из фото", 1); } }
+  if (n) { touch(); toast(`Добавлено фото: ${n}. Не забудьте сохранить`); }
+}
+
+// выбор фото для карточки
+let pickPath = null;
+function openPicker(path) {
+  pickPath = path; const cur = get(C, path);
+  const all = [...new Set([cur, ...C.gallery])];
+  $("#mgrid").innerHTML = `<label class="tile up"><b>+</b>Загрузить новое<input type="file" accept="image/*" id="mup"></label>` +
+    all.map(g => `<div class="tile ${g === cur ? "sel" : ""}" data-g="${esc(g)}"><img src="${esc(src(g))}" alt="" loading="lazy"></div>`).join("");
+  $("#modal").classList.add("on"); document.body.style.overflow = "hidden";
+}
+function closePicker() { $("#modal").classList.remove("on"); document.body.style.overflow = ""; }
+$("#mclose").onclick = closePicker;
+$("#mgrid").addEventListener("click", e => { const t = e.target.closest("[data-g]"); if (!t) return; set(C, pickPath, t.dataset.g); touch(); closePicker(); render(); });
+$("#mgrid").addEventListener("change", async e => { if (e.target.id !== "mup") return; await upload(e.target.files, f => { set(C, pickPath, f); C.gallery.unshift(f); }); closePicker(); render(); });
+
+// сохранение
+$("#save").onclick = async () => {
+  const btn = $("#save"); btn.classList.add("busy"); btn.textContent = "Сохраняю…";
+  try {
+    if (mode === "demo") {
+      localStorage.setItem(KEY, JSON.stringify(C));
+    } else {
+      const r = await fetch("../save.php", {method: "POST", headers: {"Content-Type": "application/json", "X-Pass": pass}, body: JSON.stringify(C)});
+      const j = await r.json(); if (!j.ok) throw new Error(j.error || "save");
+      C = j.content; render();
+    }
+    dirty = false; btn.classList.remove("on"); toast("Сохранено ✓ Откройте сайт, чтобы посмотреть");
+  } catch (e) {
+    toast(e.name === "QuotaExceededError" ? "В демо мало памяти: удалите пару загруженных фото" : "Не сохранилось, попробуйте ещё раз", 1);
+  }
+  btn.classList.remove("busy"); btn.textContent = "Сохранить изменения";
+};
+addEventListener("beforeunload", e => { if (dirty) { e.preventDefault(); e.returnValue = ""; } });
+$("#reset").onclick = () => { if (!confirm("Вернуть сайт к исходному виду?")) return; localStorage.removeItem(KEY); C = structuredClone(ORIG); dirty = false; $("#save").classList.remove("on"); render(); toast("Готово, всё как было"); };
+
+function start() { $("#login").hidden = true; $("#app").hidden = false; $("#tabs").hidden = false; $("#demo").hidden = mode !== "demo"; render(); }
+
+(async () => {
+  ORIG = await (await fetch("../content.json?v=" + Date.now())).json();
+  C = structuredClone(ORIG);
+  // на хостинге рядом лежит save.php — тогда вход по паролю, иначе демо
+  try { const r = await fetch("../save.php?ping=1"); const j = await r.json(); if (j.ok) mode = "live"; } catch (e) {}
+  if (mode === "demo") { try { const d = localStorage.getItem(KEY); if (d) C = JSON.parse(d); } catch (e) {} start(); return; }
+  $("#login").hidden = false;
+  $("#login").onsubmit = async e => {
+    e.preventDefault(); pass = $("#pass").value;
+    const r = await fetch("../save.php?check=1", {method: "POST", headers: {"X-Pass": pass}}).then(r => r.json()).catch(() => ({}));
+    if (r.ok) start(); else toast("Неверный пароль", 1);
+  };
+})();
+</script>
+</body>
+</html>
