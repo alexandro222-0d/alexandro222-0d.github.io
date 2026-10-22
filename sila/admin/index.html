@@ -149,7 +149,7 @@ const VIEWS = {
     ${C.story.map((h, i) => `<div class="card"><div class="t"><span>Кадр ${i + 1}</span>${ctl("story", i, C.story.length)}</div>${pick(`story.${i}.img`, "Фото")}${field(`story.${i}.t`, "Текст", 1)}</div>`).join("")}
     <button type="button" class="add" data-add="story">+ Добавить кадр</button>
     <h2>Внутри</h2>
-    <div class="card">${field("inside.title", "Заголовок")}${field("inside.text", "Текст", 1)}${pick("inside.img1", "Большое фото")}${pick("inside.img2", "Маленькое фото 1")}${pick("inside.img3", "Маленькое фото 2")}</div>`,
+    <div class="card">${field("inside.title", "Заголовок")}${field("inside.text", "Текст", 1)}${pick("inside.img1", "Большое фото")}${field("inside.cap1", "Подпись")}${pick("inside.img2", "Маленькое фото 1")}${field("inside.cap2", "Подпись")}${pick("inside.img3", "Маленькое фото 2")}${field("inside.cap3", "Подпись")}</div>`,
 
   photos: () => `
     <h2>Фото</h2><p class="sub">${C.gallery.length} фото в ленте «Фото». Стрелками меняйте порядок</p>
@@ -159,8 +159,8 @@ const VIEWS = {
     </div>`,
 
   prices: () => `
-    <h2>Цена</h2><p class="sub">Если цена «от» — так и пишите: «от 65 р.»</p>
-    <div class="card"><div class="row2">${field("price.v", "Цена")}${field("price.u", "За что")}</div>${field("price.note", "Пояснение под ценой", 1)}</div>
+    <h2>Цена</h2><p class="sub">Это надписи на деревянном номерке. Если цена «от» — так и пишите: «от 65»</p>
+    <div class="card"><div class="row2">${field("price.v", "Цифры")}${field("price.u", "Под цифрами")}</div>${field("price.w", "Внизу номерка")}${field("price.note", "Пояснение рядом", 1)}</div>
     <h2>Что входит</h2><p class="sub">Список рядом с ценой</p>
     <div class="card"><div class="chips">${C.included.map((x, i) => `<span class="chip">${esc(x)}<button type="button" data-rm="included" data-i="${i}" aria-label="Удалить">✕</button></span>`).join("")}</div>
     <div class="inl"><input id="newinc" placeholder="Например: веники"><button type="button" id="addinc" aria-label="Добавить">+</button></div></div>`,
@@ -261,7 +261,7 @@ function start() { $("#login").hidden = true; $("#app").hidden = false; $("#tabs
   C = structuredClone(ORIG);
   // на хостинге рядом лежит save.php — тогда вход по паролю, иначе демо
   try { const r = await fetch("../save.php?ping=1"); const j = await r.json(); if (j.ok) mode = "live"; } catch (e) {}
-  if (mode === "demo") { try { const d = localStorage.getItem(KEY); if (d) { const x = JSON.parse(d); if (x.story) C = x; } } catch (e) {} start(); return; }
+  if (mode === "demo") { try { const d = localStorage.getItem(KEY); if (d) { const x = JSON.parse(d); if (x.story && x.price?.w !== undefined) C = x; } } catch (e) {} start(); return; }
   $("#login").hidden = false;
   $("#login").onsubmit = async e => {
     e.preventDefault(); pass = $("#pass").value;
