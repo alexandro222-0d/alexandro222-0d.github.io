@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Банкет холл в Кобрине: свадьбы, юбилеи, корпоративы | ул. Советская 127Б</title>
+<meta name="description" content="Ресторан по заказу в Кобрине. Свадьбы, юбилеи, корпоративы, детские праздники, поминальные обеды и выездной фуршет. Советская 127Б, +375 29 209-08-94.">
+<meta name="theme-color" content="#0B0A09">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hall.webp">
+<style>
+:root{
+  --bg:#0B0A09; --bg2:#141210; --cream:#F1EBE1; --soft:rgba(241,235,225,.66); --dim:rgba(241,235,225,.42);
+  --gold:#CDAA6E; --gold2:#E6CC97; --line:rgba(241,235,225,.13);
+  --paper:#EEE7DB; --ink:#25211C; --ink2:#6B6358; --lineP:rgba(37,33,28,.15);
+  --serif:"Cormorant Garamond",Georgia,serif; --sans:"Manrope",system-ui,sans-serif; --gut:clamp(16px,4vw,56px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-variant-numeric:lining-nums;background:var(--bg);color:var(--cream);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+main,footer{overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:1px solid var(--gold);outline-offset:4px}
+.wrap{width:min(1200px,100% - var(--gut)*2);margin-inline:auto}
+h2{font-family:var(--serif);font-weight:500;font-size:clamp(38px,5vw,72px);line-height:1;letter-spacing:-.005em}
+h2 em{font-style:italic;color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 28px;border-radius:999px;border:1px solid var(--line);font-size:15px;font-weight:600;transition:background .25s,color .25s,border-color .25s;cursor:pointer;background:transparent;white-space:nowrap}
+.btn:hover{border-color:var(--gold);color:var(--gold2)}
+.btn.g{background:var(--gold);border-color:var(--gold);color:#1a140b}
+.btn.g:hover{background:var(--gold2);border-color:var(--gold2);color:#1a140b}
+.btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8}
+.rv{opacity:0;transform:translateY(22px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+/* шапка */
+.top{position:fixed;inset:0 0 auto;z-index:40;transition:background .35s,border-color .35s;border-bottom:1px solid transparent}
+.top.solid{background:rgba(11,10,9,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-color:var(--line)}
+.top .bar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:76px;padding:0 var(--gut)}
+.logo{font-family:var(--serif);font-style:italic;font-weight:600;font-size:28px;line-height:1;color:var(--gold2)}
+.top nav{display:flex;gap:30px;font-size:14.5px;color:var(--soft)}
+.top nav a:hover{color:var(--gold2)}
+.top .right{display:flex;align-items:center;gap:20px}
+.top .tel{font-weight:600;font-size:15px;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.top .btn{height:42px;padding:0 20px;font-size:14px}
+
+/* первый экран: вывеска как на их стеклянной двери */
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);min-height:min(100svh,940px)}
+.hero .sign{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px var(--gut) 60px;position:relative;background:radial-gradient(120% 80% at 50% 45%,#1d1915 0%,var(--bg) 70%)}
+.door{position:relative;padding:clamp(34px,4vw,56px) clamp(26px,4vw,64px);border:1px solid rgba(205,170,110,.35);border-radius:4px;max-width:560px;width:100%}
+.door::before{content:"";position:absolute;inset:8px;border:1px solid rgba(205,170,110,.16);border-radius:2px;pointer-events:none}
+.door h1{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(58px,7.4vw,112px);line-height:.92;color:transparent;background:linear-gradient(175deg,#F4E2B6 0%,#CDAA6E 45%,#9C7A44 70%,#E6CC97 100%);-webkit-background-clip:text;background-clip:text}
+.orn{width:min(220px,60%);height:auto;margin:20px auto 18px;display:block;color:var(--gold)}
+.door .what{font-family:var(--serif);font-size:clamp(22px,2.2vw,30px);line-height:1.25}
+.door .hrs{margin-top:24px;padding-top:20px;border-top:1px solid rgba(205,170,110,.22);color:var(--soft);font-size:15px}
+.door .hrs b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(34px,3.4vw,48px);line-height:1.1;color:var(--gold2);letter-spacing:.01em}
+.door .hrs sup{font-size:.48em;vertical-align:.95em;margin-left:1px}
+.hero .row{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:34px}
+.hero .meta{margin-top:26px;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 26px;font-size:14px;color:var(--dim)}
+.hero .meta b{color:var(--cream);font-weight:600}
+.hero .ph{position:relative;overflow:hidden}
+.hero .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:zoom 16s ease-out forwards}
+@keyframes zoom{from{transform:scale(1.07)}}
+.hero .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 0%,rgba(11,10,9,0) 22%),linear-gradient(0deg,rgba(11,10,9,.5),transparent 30%)}
+
+/* зал */
+.paper{background:var(--paper);color:var(--ink)}
+.paper h2 em{color:#9A7638}
+.hall{padding:clamp(80px,10vw,140px) 0}
+.hall .cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,6vw,90px);align-items:start}
+.hall .lead{margin-top:26px;font-size:18px;color:var(--ink2);max-width:30em}
+.hall ul{list-style:none;margin-top:34px;border-top:1px solid var(--lineP)}
+.hall li{display:flex;justify-content:space-between;gap:20px;padding:15px 0;border-bottom:1px solid var(--lineP);font-family:var(--serif);font-size:clamp(22px,2vw,27px);line-height:1.2}
+.hall li span{font-family:var(--sans);font-size:13px;color:var(--ink2);align-self:center;text-align:right}
+.hall .src{margin-top:14px;font-size:13px;color:var(--ink2)}
+.hall .pics{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.hall .pics img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:3px}
+.hall .pics figure:nth-child(2){margin-top:70px}
+.hall figcaption{margin-top:10px;font-size:13px;color:var(--ink2)}
+
+/* поводы: как программа вечера */
+.occ{padding:clamp(80px,10vw,140px) 0}
+.occ .cols{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(30px,6vw,90px);align-items:center}
+.occ figure img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:3px}
+.occ figcaption{margin-top:10px;font-size:13px;color:var(--dim)}
+.occ ol{list-style:none;margin-top:34px}
+.occ li{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)}
+.occ li:first-child{border-top:1px solid var(--line)}
+.occ li b{font-family:var(--serif);font-weight:500;font-size:clamp(26px,2.6vw,36px);line-height:1.1}
+.occ li span{font-size:14px;color:var(--dim);text-align:right}
+.occ .note{margin-top:22px;color:var(--soft);max-width:34em}
+
+/* кухня: меню как банкетная карточка, тарелки на чёрном */
+.menu{padding:clamp(80px,10vw,140px) 0;background:#000}
+.menu .head{text-align:center;max-width:720px;margin:0 auto}
+.menu .head p{margin-top:18px;color:var(--soft)}
+.dishes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,3vw,44px);margin-top:clamp(40px,6vw,80px)}
+.dish{text-align:center}
+.dish img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.dish:hover img{transform:scale(1.04) rotate(-2deg)}
+.dish b{display:block;margin-top:6px;font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(23px,2vw,29px);line-height:1.15}
+.buf{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,70px);align-items:center;margin-top:clamp(60px,8vw,110px);padding-top:clamp(40px,6vw,70px);border-top:1px solid var(--line)}
+.buf img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:3px}
+.buf h3{font-family:var(--serif);font-weight:500;font-size:clamp(34px,4vw,56px);line-height:1}
+.buf h3 em{color:var(--gold)}
+.buf p{margin-top:18px;color:var(--soft);max-width:28em}
+.buf .btn{margin-top:28px}
+
+/* отзывы */
+.rev{padding:clamp(80px,10vw,140px) 0}
+.rev .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:clamp(36px,5vw,60px)}
+.score{text-align:right}
+.score b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(60px,7vw,96px);line-height:.85}
+.score span{font-size:13.5px;color:var(--ink2)}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,44px)}
+.quotes blockquote{border-top:1px solid var(--lineP);padding-top:22px;font-family:var(--serif);font-size:clamp(21px,1.8vw,25px);line-height:1.38}
+.quotes cite{display:block;margin-top:14px;font-family:var(--sans);font-style:normal;font-size:13.5px;color:var(--ink2)}
+.rev .src{margin-top:34px;font-size:13px;color:var(--ink2)}
+
+/* заявка */
+.ask{padding:clamp(80px,10vw,140px) 0;background:var(--bg2)}
+.ask .cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,6vw,90px);align-items:center}
+.ask p.lead{margin-top:20px;color:var(--soft);max-width:28em}
+.ask .call{margin-top:28px;font-family:var(--serif);font-size:clamp(30px,3vw,42px);color:var(--gold2)}
+.form{border:1px solid var(--line);border-radius:6px;padding:clamp(22px,3vw,36px);background:var(--bg)}
+.form label{display:block;font-size:13px;color:var(--dim);margin:0 0 7px}
+.form input,.form select{width:100%;height:50px;border:1px solid var(--line);border-radius:10px;background:transparent;padding:0 16px;font-size:16px;margin-bottom:16px;-webkit-appearance:none;appearance:none;color-scheme:dark}
+.form select option{background:var(--bg)}
+.form .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form .btn{width:100%;margin-top:4px}
+.form .ok{display:none;margin-top:14px;font-size:14px;color:var(--gold2);text-align:center}
+.form .ok.show{display:block}
+
+/* контакты */
+.cont{padding:clamp(80px,10vw,130px) 0}
+.cont .cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,5vw,70px);align-items:stretch}
+.cont dl{margin-top:30px;border-top:1px solid var(--line)}
+.cont dl div{display:grid;grid-template-columns:130px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.cont dt{font-size:14px;color:var(--dim)}
+.cont dd a:hover{color:var(--gold2)}
+.cont .house{margin-top:30px;border-radius:3px;overflow:hidden}
+.cont .house img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.map{position:relative;min-height:420px;border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.85) invert(.92) contrast(.9) sepia(.18)}
+
+footer{padding:clamp(44px,6vw,64px) 0 calc(28px + env(safe-area-inset-bottom));text-align:center;border-top:1px solid var(--line)}
+footer .logo{font-size:clamp(36px,4vw,52px)}
+footer p{margin-top:14px;font-size:13px;color:var(--dim)}
+
+.dock{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:30;display:none;grid-template-columns:1fr 1fr;gap:8px;transform:translateY(150%);transition:transform .35s}
+.dock.show{transform:none}
+.dock .btn{height:52px;padding:0 12px}
+.dock .btn:not(.g){background:rgba(11,10,9,.94)}
+
+@media (max-width:1000px){
+  .top nav{display:none}
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero .ph{order:-1;height:62svh;min-height:380px}
+  .hero .ph::after{background:linear-gradient(0deg,var(--bg) 0%,rgba(11,10,9,0) 45%)}
+  .hero .sign{padding:0 var(--gut) 56px;margin-top:-90px;background:none;position:relative;z-index:1}
+  .door{background:rgba(11,10,9,.82);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+  .hall .cols,.occ .cols,.ask .cols,.cont .cols,.buf{grid-template-columns:1fr}
+  .occ figure{max-width:460px}
+}
+@media (max-width:700px){
+  body{font-size:15.5px}
+  .top .bar{height:64px}
+  .logo{font-size:25px}
+  .top .tel{display:none}
+  .top .btn{height:40px;padding:0 16px}
+  .hero .row{display:grid;grid-template-columns:1fr;width:100%}
+  .hall .pics figure:nth-child(2){margin-top:40px}
+  .hall li{flex-direction:column;gap:2px}
+  .hall li span{text-align:left}
+  .occ li{grid-template-columns:1fr;gap:2px}
+  .occ li span{text-align:left}
+  .dishes{grid-template-columns:1fr 1fr;gap:10px 14px}
+  .dishes .dish:last-child{grid-column:1/-1;max-width:62%;margin:0 auto}
+  .rev .head{flex-direction:column;align-items:flex-start}
+  .score{text-align:left}
+  .quotes{grid-template-columns:1fr}
+  .form .two{grid-template-columns:1fr;gap:0}
+  .cont dl div{grid-template-columns:1fr;gap:2px}
+  .map{min-height:320px}
+  .dock{display:grid}
+  footer{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="top" id="top">
+  <div class="bar">
+    <a class="logo" href="#" aria-label="Банкет холл, наверх">Банкет холл</a>
+    <nav aria-label="Разделы"><a href="#hall">Зал</a><a href="#occasions">Праздники</a><a href="#menu">Кухня</a><a href="#reviews">Отзывы</a><a href="#contacts">Контакты</a></nav>
+    <div class="right"><a class="tel" href="tel:+375292090894">+375 29 209-08-94</a><a class="btn g" href="#ask">Узнать про дату</a></div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="sign">
+      <div class="door rv">
+        <h1>Банкет холл</h1>
+        <svg class="orn" viewBox="0 0 220 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><path d="M110 12c-8-9-20-9-24-3s4 10 9 6-1-9-6-6M110 12c8-9 20-9 24-3s-4 10-9 6 1-9 6-6M110 12c-6 7-18 9-30 6-14-4-30-6-60-6M110 12c6 7 18 9 30 6 14-4 30-6 60-6"/><circle cx="110" cy="12" r="2.2" fill="currentColor" stroke="none"/></g></svg>
+        <p class="what">Свадьбы, юбилеи и корпоративы в&nbsp;Кобрине</p>
+        <p class="hrs">Время работы<b>12<sup>00</sup>&thinsp;–&thinsp;01<sup>00</sup></b>при наличии заказа</p>
+      </div>
+      <div class="row rv">
+        <a class="btn g" href="tel:+375292090894"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Позвонить</a>
+        <a class="btn" href="#ask">Проверить свободную дату</a>
+      </div>
+      <p class="meta rv"><span><b>4,9</b> на Яндекс Картах</span><span>ул. Советская, 127Б</span></p>
+    </div>
+    <div class="ph"><img src="img/hall.webp" srcset="img/hall-s.webp 600w, img/hall.webp 1080w" sizes="(max-width:1000px) 100vw, 45vw" alt="Банкетный зал с накрытыми столами и экраном"></div>
+  </section>
+
+  <section class="paper hall" id="hall">
+    <div class="wrap cols">
+      <div>
+        <h2 class="rv">Зал готовят <em>под ваш праздник</em></h2>
+        <p class="lead rv">Банкет холл работает только по заказу. В день торжества зал ваш: столы накрывают под ваших гостей, готовят повара на месте, обслуживают официанты.</p>
+        <ul class="rv">
+          <li>Танцпол по центру зала<span>из отзыва</span></li>
+          <li>Живая музыка и диджей<span>из отзывов</span></li>
+          <li>Кондиционеры<span>из отзыва</span></li>
+          <li>Выход на балкон<span>из отзыва</span></li>
+          <li>Вместительная парковка<span>из отзыва</span></li>
+        </ul>
+        <p class="src rv">Всё это гости писали в отзывах на Яндекс Картах.</p>
+      </div>
+      <div class="pics rv">
+        <figure><img src="img/table-s.webp" alt="Сервировка банкетного стола с номерками" loading="lazy"><figcaption>Сервировка</figcaption></figure>
+        <figure><img src="img/chand-s.webp" alt="Люстры на потолке зала" loading="lazy"><figcaption>Люстры в зале</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="occ" id="occasions">
+    <div class="wrap cols">
+      <figure class="rv"><img src="img/music-s.webp" alt="Музыкант с аккордеоном и танцующие гости" loading="lazy"><figcaption>Живая музыка на празднике</figcaption></figure>
+      <div>
+        <h2 class="rv">Какие праздники <em>проводим</em></h2>
+        <ol class="rv">
+          <li><b>Свадьбы</b><span>банкет на весь вечер</span></li>
+          <li><b>Юбилеи и дни рождения</b><span>для семьи и друзей</span></li>
+          <li><b>Корпоративы</b><span>в том числе новогодние</span></li>
+          <li><b>Детские праздники</b></li>
+          <li><b>Поминальные обеды</b></li>
+          <li><b>Выездной фуршет</b><span>привезём к вам</span></li>
+        </ol>
+        <p class="note rv">Дату, меню и количество гостей обсуждаете с администратором по телефону.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu" id="menu">
+    <div class="wrap">
+      <div class="head">
+        <h2 class="rv">Из нашего <em>меню</em></h2>
+        <p class="rv">Несколько блюд, которые мы показывали в Instagram. Всё меню на ваш праздник собирают вместе с вами.</p>
+      </div>
+      <div class="dishes">
+        <div class="dish rv"><img src="img/crab-s.webp" alt="Салат Крабовый с креветками" loading="lazy"><b>Салат «Крабовый» с&nbsp;креветками</b></div>
+        <div class="dish rv"><img src="img/veg-s.webp" alt="Салат овощной с копчёностями" loading="lazy"><b>Салат овощной с&nbsp;копчёностями</b></div>
+        <div class="dish rv"><img src="img/rolls-s.webp" alt="Рулетики из ветчины" loading="lazy"><b>Рулетики из ветчины</b></div>
+      </div>
+      <div class="buf">
+        <img class="rv" src="img/buffet-s.webp" alt="Канапе и закуски для фуршета на стеклянных подставках" loading="lazy">
+        <div class="rv">
+          <h3>Выездной <em>фуршет</em></h3>
+          <p>Если праздник не в зале, закуски привезут к вам: на открытие, корпоратив или день рождения в офисе.</p>
+          <a class="btn g" href="tel:+375292090894">Обсудить фуршет</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="paper rev" id="reviews">
+    <div class="wrap">
+      <div class="head">
+        <h2 class="rv">Что пишут <em>гости</em></h2>
+        <div class="score rv"><b>4,9</b><span>199 оценок · 47 отзывов на Яндекс Картах</span></div>
+      </div>
+      <div class="quotes">
+        <blockquote class="rv">«Великолепная кухня! Постоянно заказываю взрослые и детские праздники.»<cite>Лора Иванова</cite></blockquote>
+        <blockquote class="rv">«Хорошее меню, уютный и чистый зал, вежливый персонал, удобное местоположение.»<cite>Игорь Ш.</cite></blockquote>
+        <blockquote class="rv">«Не первый и надеюсь не последний раз празднуем тут Новый год, всегда проходит на ура.»<cite>Вадим Набоков</cite></blockquote>
+      </div>
+      <p class="src rv">Отзывы взяты с Яндекс Карт, сокращены.</p>
+    </div>
+  </section>
+
+  <section class="ask" id="ask">
+    <div class="wrap cols">
+      <div>
+        <h2 class="rv">Свободна ли <em>ваша дата?</em></h2>
+        <p class="lead rv">Оставьте дату и количество гостей, администратор перезвонит и расскажет про меню. Или позвоните сразу.</p>
+        <a class="call rv" href="tel:+375292090894" style="display:inline-block">+375 29 209-08-94</a>
+      </div>
+      <form class="form rv" id="form" novalidate>
+        <div class="two">
+          <div><label for="fDate">Дата</label><input id="fDate" type="date"></div>
+          <div><label for="fGuests">Гостей</label><input id="fGuests" type="number" min="1" inputmode="numeric" placeholder="например, 40"></div>
+        </div>
+        <label for="fKind">Праздник</label>
+        <select id="fKind"><option>Свадьба</option><option>Юбилей или день рождения</option><option>Корпоратив</option><option>Детский праздник</option><option>Поминальный обед</option><option>Выездной фуршет</option></select>
+        <label for="fPhone">Ваш телефон</label><input id="fPhone" type="tel" inputmode="tel" placeholder="+375">
+        <button class="btn g" type="submit">Отправить заявку</button>
+        <p class="ok" id="ok">В рабочей версии сайта заявка сразу придёт администратору в Viber.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="cont" id="contacts">
+    <div class="wrap cols">
+      <div>
+        <h2 class="rv">Как нас <em>найти</em></h2>
+        <dl class="rv">
+          <div><dt>Адрес</dt><dd>Кобрин, ул. Советская, 127Б</dd></div>
+          <div><dt>Телефон</dt><dd><a href="tel:+375292090894">+375 29 209-08-94</a></dd></div>
+          <div><dt>Время работы</dt><dd>с 12:00 до 01:00, при наличии заказа</dd></div>
+          <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/banketholl_kobrin/" target="_blank" rel="noopener">@banketholl_kobrin</a></dd></div>
+        </dl>
+        <figure class="house rv"><img src="img/house-s.webp" alt="Здание Банкет холла на Советской улице" loading="lazy"></figure>
+      </div>
+      <div class="map rv"><iframe title="Банкет холл на карте" loading="lazy" src="https://yandex.by/map-widget/v1/?oid=210155854428&z=15"></iframe></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#">Банкет холл</a>
+    <p>Кобрин, ул. Советская, 127Б · <a href="tel:+375292090894">+375 29 209-08-94</a></p>
+    <p>Макет сайта · saity.by · фото из Instagram и с Яндекс Карт Банкет холла</p>
+  </div>
+</footer>
+
+<nav class="dock" id="dock" aria-label="Быстрые действия"><a class="btn" href="tel:+375292090894">Позвонить</a><a class="btn g" href="#ask">Узнать про дату</a></nav>
+
+<script>
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const hdr = $("#top"), dock = $("#dock");
+const onScroll = () => { hdr.classList.toggle("solid", scrollY > 40); dock.classList.toggle("show", scrollY > innerHeight * .7 && $("#ask").getBoundingClientRect().top > innerHeight * .6); };
+addEventListener("scroll", onScroll, {passive: true}); onScroll();
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), {rootMargin: "0px 0px -8% 0px"});
+$$(".rv").forEach(el => io.observe(el));
+$("#fDate").min = new Date().toISOString().slice(0, 10);
+$("#form").addEventListener("submit", e => { e.preventDefault(); $("#ok").classList.add("show"); });
+</script>
+</body>
+</html>
