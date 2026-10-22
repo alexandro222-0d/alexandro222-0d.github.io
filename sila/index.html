@@ -39,18 +39,6 @@ h2{font:400 clamp(36px,8vw,76px)/1.02 var(--serif);letter-spacing:-.015em}
 @media (hover:hover){.btn.w:hover{background:#ffd496}.btn.o:hover{background:rgba(236,229,218,.07)}}
 .cap{font-size:13px;color:var(--mu);margin-top:9px;line-height:1.4}
 
-/* гирлянда */
-.garland{display:block;width:100%;height:120px;pointer-events:none;overflow:visible}
-.garland path{fill:none;stroke:#2c2c2d;stroke-width:1.4}
-.garland .bl{transform-box:fill-box;transform-origin:50% 0;animation:sway 5s ease-in-out infinite alternate}
-.garland .bl line{stroke:#2c2c2d;stroke-width:1.2}
-.garland .glass{fill:#4b4945;transition:fill .6s}
-.garland .halo{opacity:0;transition:opacity .8s}
-.garland .on .glass{fill:#FFE3AA}
-.garland .on .halo{opacity:1}
-.garland .on.fl .halo{animation:fl 3.4s ease-in-out infinite}
-@keyframes sway{from{rotate:-2.5deg}to{rotate:2.5deg}}
-@keyframes fl{0%,100%{opacity:1}45%{opacity:.55}50%{opacity:.9}}
 
 /* шапка */
 .top{position:fixed;inset:0 0 auto;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:calc(14px + env(safe-area-inset-top)) var(--gut) 14px;transition:background .35s}
@@ -60,18 +48,17 @@ h2{font:400 clamp(36px,8vw,76px)/1.02 var(--serif);letter-spacing:-.015em}
 .nav a:hover{color:var(--tx)}
 .top .ph{font-size:14px;font-weight:500;padding:9px 13px;border-radius:5px;background:var(--bg);box-shadow:inset 0 0 0 1px rgba(236,229,218,.25)}
 
-/* первый экран */
-.hero{padding-top:0}
-.hero .shot{height:50vh;height:50svh;min-height:330px}
-.hero .shot img{object-position:50% 40%}
-.hero .shot::before{content:"";position:absolute;inset:0 0 auto;height:110px;background:linear-gradient(rgba(17,18,20,.55),rgba(17,18,20,0));z-index:1}
-.hero .gl{margin-top:-2px}
-.hero .txt{padding:0 var(--gut) 40px;margin-top:-40px;position:relative}
-h1{font:400 clamp(60px,17.5vw,150px)/.9 var(--serif);letter-spacing:-.025em}
-.hero .sub{font-size:17px;line-height:1.5;margin-top:16px;max-width:460px;color:#ddd5c8}
+/* первый экран: запотевшее стекло */
+.glass{position:relative;height:58vh;height:58svh;min-height:400px;overflow:hidden;background:#1c1d20;touch-action:pan-y;cursor:crosshair}
+.glass img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.glass canvas{position:absolute;inset:0;width:100%;height:100%}
+.glass .tip{position:absolute;left:50%;bottom:22px;translate:-50% 0;padding:9px 14px;border-radius:5px;background:rgba(17,18,20,.7);font-size:13px;color:#e9e2d6;white-space:nowrap;transition:opacity .6s;pointer-events:none}
+.glass .tip.off{opacity:0}
+.hero .txt{padding:22px var(--gut) 40px}
+.hero .sub{font:400 clamp(20px,5.2vw,34px)/1.28 var(--serif);max-width:640px}
 .facts{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:14px;font-size:14px;color:var(--mu)}
 .facts b{color:var(--tx);font-weight:500}
-.hero .acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:24px;max-width:460px}
+.hero .acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:22px;max-width:460px}
 
 /* день → вечер */
 .story{position:relative;height:calc(var(--n,5) * 100svh)}
@@ -84,7 +71,6 @@ h1{font:400 clamp(60px,17.5vw,150px)/.9 var(--serif);letter-spacing:-.025em}
 .frames .dark{position:absolute;inset:0;background:#0a0c12;opacity:0;pointer-events:none}
 .frames canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0;transition:opacity 1s}
 .frames canvas.on{opacity:1}
-.stage .gl{position:absolute;left:0;right:0;top:calc(62px + env(safe-area-inset-top));z-index:2}
 .caps{position:relative;height:calc(190px + 70px + env(safe-area-inset-bottom));flex:none}
 .caps p{position:absolute;left:var(--gut);right:var(--gut);top:20px;font:400 clamp(20px,5.4vw,40px)/1.28 var(--serif);opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s var(--ease);max-width:620px}
 .caps p.on{opacity:1;transform:none}
@@ -175,18 +161,16 @@ footer{margin-top:clamp(80px,11vw,140px);background:repeating-linear-gradient(18
   .nav{display:flex}
   .dock{display:none}
   footer{padding-bottom:46px}
-  .hero{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;position:relative}
-  .hero .shot{grid-column:2;grid-row:1;height:100vh;min-height:640px}
-  .hero .gl{position:absolute;left:0;right:0;top:66px;z-index:2}
-  .hero .txt{grid-column:1;grid-row:1;align-self:end;margin:0;padding:160px var(--gut) 70px}
-  h1{font-size:clamp(96px,9.6vw,156px)}
+  .glass{height:calc(100vh - 66px - 190px);margin-top:66px;min-height:500px}
+  .hero .sub{font-size:26px;max-width:720px}
+  .hero .txt{display:grid;grid-template-columns:1.3fr auto;gap:30px 60px;align-items:end;max-width:1360px;margin:0 auto;padding:26px var(--gut) 10px}
+  .hero .acts{grid-column:2;grid-row:1/3;align-self:center;margin:0;width:400px}
   .stage{flex-direction:row-reverse;padding-top:66px}
   .frames{flex:0 0 54%}
   .caps{flex:1;height:auto}
   .fw{text-align:left}
   .caps p{top:50%;transform:translateY(-40%);font-size:clamp(30px,2.9vw,44px)}
   .caps p.on{transform:translateY(-50%)}
-  .stage .gl{top:62px}
   .inside .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:start}
   .inside .txtc{position:sticky;top:130px}
   .coll{margin-top:0}
@@ -211,10 +195,13 @@ footer{margin-top:clamp(80px,11vw,140px);background:repeating-linear-gradient(18
 
 <main>
 <section class="hero">
-  <div class="shot pic"><img data-img="hero.photo" src="img/terrace-night.webp" alt="Терраса с гирляндами и купелью вечером" fetchpriority="high"></div>
-  <svg class="garland gl" id="g1" aria-hidden="true"></svg>
+  <div class="glass" id="glass">
+    <img data-img="hero.photo" src="img/terrace-night.webp" alt="Терраса с гирляндами и купелью вечером" fetchpriority="high">
+    <canvas id="fog" aria-hidden="true"></canvas>
+    <span class="tip" id="tip">Проведите по стеклу</span>
+  </div>
   <div class="txt">
-    <h1><span class="sr">Баня в Гомеле с купелью — </span><span data-k="hero.title">Сила пара</span></h1>
+    <h1 class="sr"><span>Баня в Гомеле с купелью — </span><span data-k="hero.title">Сила пара</span></h1>
     <p class="sub" data-k="hero.sub">Дом-баня в черте Гомеля. Парная на дровах, горячая купель на террасе и гирлянды по вечерам.</p>
     <p class="facts"><span data-k="hero.info">до 8 человек · ежедневно 11:00–23:00</span><a href="#otzyvy"><b>5,0</b> на Яндекс Картах</a></p>
     <div class="acts"><a class="btn w" data-href="tel">Позвонить</a><a class="btn o" data-href="tgl" target="_blank" rel="noopener">Telegram</a></div>
@@ -224,7 +211,6 @@ footer{margin-top:clamp(80px,11vw,140px);background:repeating-linear-gradient(18
 <section class="story" id="story">
   <div class="stage">
     <div class="frames" id="frames"></div>
-    <svg class="garland gl" id="g2" aria-hidden="true"></svg>
     <div class="caps" id="caps"></div>
   </div>
 </section>
@@ -315,25 +301,6 @@ const WIDE = new Set(["img/parnaya2.webp"]);
 const RM = matchMedia("(prefers-reduced-motion:reduce)").matches;
 let C;
 
-// гирлянда: провод провисает пролётами, лампочки висят на коротких проводках
-function garland(svg) {
-  const w = svg.clientWidth || innerWidth, spans = w < 700 ? 2 : 3, sag = w < 700 ? 30 : 42, top = 6;
-  const sw = w / spans; let path = "", bulbs = "";
-  for (let s = 0; s < spans; s++) {
-    const x0 = s * sw;
-    path += `M${x0},${top} Q${x0 + sw / 2},${top + sag * 2} ${x0 + sw},${top} `;
-    const n = Math.max(4, Math.round(sw / 60));
-    for (let i = 1; i < n; i++) {
-      const t = i / n, x = x0 + sw * t, y = top + sag * 4 * t * (1 - t), l = 8 + (i % 3) * 3;
-      bulbs += `<g class="bl${(i + s) % 4 === 1 ? " fl" : ""}" style="animation-delay:${(-Math.random() * 5).toFixed(2)}s"><line x1="${x}" y1="${y}" x2="${x}" y2="${y + l}"/><circle class="halo" cx="${x}" cy="${y + l + 8}" r="26" fill="url(#h${svg.id})"/><rect x="${x - 2.5}" y="${y + l - 1}" width="5" height="4" fill="#2c2c2d"/><ellipse class="glass" cx="${x}" cy="${y + l + 8}" rx="6" ry="7.5"/></g>`;
-    }
-  }
-  svg.setAttribute("viewBox", `0 0 ${w} 120`);
-  svg.innerHTML = `<defs><radialGradient id="h${svg.id}"><stop offset="0" stop-color="#FFD58C" stop-opacity=".75"/><stop offset=".35" stop-color="#FFB85C" stop-opacity=".25"/><stop offset="1" stop-color="#FFB85C" stop-opacity="0"/></radialGradient></defs><path d="${path}"/>${bulbs}`;
-  return [...svg.querySelectorAll(".bl")];
-}
-let B2 = [];
-function drawGarlands() { garland($("#g1")).forEach((b, i) => setTimeout(() => b.classList.add("on"), 300 + i * 70)); B2 = garland($("#g2")); lastI = -1; story(); }
 
 function apply(c) {
   C = c;
@@ -351,7 +318,7 @@ function apply(c) {
   $("#strip").innerHTML = c.gallery.map((g, i) => `<button class="${WIDE.has(g) ? "w" : ""}" data-i="${i}" aria-label="Открыть фото ${i + 1}"><div class="pic"><img src="${esc(thumb(g))}" alt="" loading="lazy"></div></button>`).join("");
   $("#revs").innerHTML = c.reviews.map((r, i) => `<li class="rev${i >= 3 ? " hid" : ""}"><p>«${esc(r.t)}»</p><cite>${esc(r.a)}, Яндекс Карты</cite></li>`).join("");
   $("#rmore").hidden = c.reviews.length <= 3;
-  drawGarlands(); steam();
+  lastI = -1; story(); steam(); fog();
 }
 
 (async () => {
@@ -375,9 +342,91 @@ function story() {
     steamOn = /kupel/.test(C.story[i]?.img || "");
     $("#steam")?.classList.toggle("on", steamOn);
   }
-  const lit = Math.min(1, Math.max(0, (p - .5) / .4));
-  B2.forEach((b, k) => b.classList.toggle("on", k < Math.round(lit * B2.length)));
   const d = $("#dark"); if (d) d.style.opacity = (Math.max(0, p - .45) * .4).toFixed(3);
+}
+
+// запотевшее стекло: туман с каплями, название написано пальцем, стекло можно протереть
+let fogStarted = false;
+function fog() {
+  if (fogStarted) return; fogStarted = true;
+  const box = $("#glass"), cv = $("#fog"), img = box.querySelector("img"), ctx = cv.getContext("2d");
+  const dpr = Math.min(1.5, devicePixelRatio || 1);
+  let W = 0, H = 0, F = null, M = null, m = null, wiped = false, last = null, auto = !RM;
+  const cover = (c, w, h) => { const k = Math.max(w / img.naturalWidth, h / img.naturalHeight), iw = img.naturalWidth * k, ih = img.naturalHeight * k; c.drawImage(img, (w - iw) / 2, (h - ih) * .4, iw, ih); };
+  function title(c, mode) {
+    const t = (C.hero.title || "").trim(), words = t.split(/\s+/), two = (W < 700 || t.length > 12) && words.length > 1;
+    const lines = two ? [words[0], words.slice(1).join(" ")] : [t];
+    const fs = Math.min(W * (two ? .27 : .15), H * (two ? .22 : .3));
+    c.save(); c.translate(W * .5, H * (two ? .45 : .42)); c.rotate(-.05);
+    c.font = `${fs}px Prata, Georgia, serif`; c.textAlign = "center"; c.textBaseline = "middle";
+    c.lineJoin = "round"; c.lineWidth = fs * .035; c.shadowColor = "#000"; c.shadowBlur = fs * .05; c.globalCompositeOperation = mode; c.fillStyle = c.strokeStyle = "#000";
+    lines.forEach((l, i) => { const y = (i - (lines.length - 1) / 2) * fs * .95; c.strokeText(l, 0, y); c.fillText(l, 0, y); });
+    c.restore();
+  }
+  function build() {
+    W = box.clientWidth; H = box.clientHeight; if (!W || !H) return;
+    cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    // размытая копия фото: уменьшаем и растягиваем обратно
+    const sm = document.createElement("canvas"); sm.width = Math.max(8, W / 20 | 0); sm.height = Math.max(8, H / 20 | 0);
+    cover(sm.getContext("2d"), sm.width, sm.height);
+    F = document.createElement("canvas"); F.width = W; F.height = H; const f = F.getContext("2d");
+    f.imageSmoothingQuality = "high"; f.drawImage(sm, 0, 0, W, H);
+    f.fillStyle = "rgba(200,207,214,.38)"; f.fillRect(0, 0, W, H);
+    const g = f.createLinearGradient(0, 0, 0, H); g.addColorStop(0, "rgba(220,226,232,.2)"); g.addColorStop(1, "rgba(220,226,232,0)"); f.fillStyle = g; f.fillRect(0, 0, W, H);
+    // капли на стекле
+    const n = W * H / 900 | 0;
+    for (let i = 0; i < n; i++) {
+      const x = Math.random() * W, y = Math.random() * H, r = Math.random() < .93 ? .6 + Math.random() * 1.6 : 2.5 + Math.random() * 3.5;
+      const d = f.createRadialGradient(x - r * .3, y - r * .3, 0, x, y, r);
+      d.addColorStop(0, "rgba(255,255,255,.55)"); d.addColorStop(.6, "rgba(120,130,140,.18)"); d.addColorStop(1, "rgba(40,45,50,.35)");
+      f.fillStyle = d; f.beginPath(); f.ellipse(x, y, r, r * 1.1, 0, 0, 6.283); f.fill();
+    }
+    // маска: где стекло запотевшее (непрозрачно) и где протёрто
+    M = document.createElement("canvas"); M.width = W; M.height = H; m = M.getContext("2d");
+    m.fillStyle = "#000"; m.fillRect(0, 0, W, H);
+    paint();
+  }
+  function paint() {
+    ctx.globalCompositeOperation = "source-over"; ctx.clearRect(0, 0, W, H); ctx.drawImage(F, 0, 0, W, H);
+    ctx.globalCompositeOperation = "destination-in"; ctx.drawImage(M, 0, 0, W, H);
+    title(ctx, "destination-out");
+  }
+  function wipe(x, y) {
+    if (!F) return;
+    m.globalCompositeOperation = "destination-out";
+    const r = Math.max(38, W * .065), from = last || {x, y}, steps = Math.ceil(Math.hypot(x - from.x, y - from.y) / (r * .3)) || 1;
+    for (let i = 1; i <= steps; i++) {
+      const px = from.x + (x - from.x) * i / steps, py = from.y + (y - from.y) * i / steps;
+      const g = m.createRadialGradient(px, py, r * .55, px, py, r); g.addColorStop(0, "rgba(0,0,0,1)"); g.addColorStop(1, "rgba(0,0,0,0)");
+      m.fillStyle = g; m.beginPath(); m.arc(px, py, r, 0, 6.283); m.fill();
+    }
+    last = {x, y};
+  }
+  const pos = e => { const r = cv.getBoundingClientRect(); return {x: e.clientX - r.left, y: e.clientY - r.top}; };
+  const done = () => { if (!wiped) { wiped = true; $("#tip").classList.add("off"); } };
+  box.addEventListener("pointermove", e => { if (e.pointerType === "mouse" || e.buttons) { auto = false; const p = pos(e); wipe(p.x, p.y); done(); } });
+  box.addEventListener("pointerdown", e => { auto = false; last = null; const p = pos(e); wipe(p.x, p.y); done(); });
+  ["pointerup", "pointerleave", "pointercancel"].forEach(t => box.addEventListener(t, () => last = null));
+  // стекло снова запотевает
+  (function tick() {
+    if (F && !document.hidden && box.getBoundingClientRect().bottom > 0) {
+      m.globalCompositeOperation = "source-over"; m.fillStyle = "rgba(0,0,0,.0045)"; m.fillRect(0, 0, W, H);
+      paint();
+    }
+    requestAnimationFrame(tick);
+  })();
+  // показываем, что стекло можно протереть
+  function demo() {
+    if (!auto || !F) return; const t0 = performance.now(); last = null;
+    (function step(t) {
+      if (!auto) return; const k = Math.min(1, (t - t0) / 1600);
+      wipe(W * (.12 + .76 * k), H * (.74 + Math.sin(k * 6.283) * .05));
+      if (k < 1) requestAnimationFrame(step); else last = null;
+    })(t0);
+  }
+  const ready = img.complete && img.naturalWidth ? Promise.resolve() : new Promise(r => img.addEventListener("load", r, {once: true}));
+  ready.then(() => document.fonts.load("100px Prata").catch(() => {})).then(() => { build(); setTimeout(demo, 700); });
+  let rw = innerWidth; addEventListener("resize", () => { if (Math.abs(innerWidth - rw) > 40) { rw = innerWidth; build(); } });
 }
 
 // пар над купелью
@@ -414,7 +463,7 @@ addEventListener("scroll", () => requestAnimationFrame(() => {
   dock.classList.toggle("on", scrollY > innerHeight * .7 && k > innerHeight * .4);
   story();
 }), {passive: true});
-let rw = innerWidth; addEventListener("resize", () => { if (Math.abs(innerWidth - rw) > 40) { rw = innerWidth; if (C) drawGarlands(); } });
+
 
 $("#rmore").onclick = () => { document.querySelectorAll(".rev.hid").forEach(e => e.classList.remove("hid")); $("#rmore").hidden = true; };
 
