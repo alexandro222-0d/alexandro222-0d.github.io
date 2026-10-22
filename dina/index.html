@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Свадебный декор в Минске: зона молодых, выездная регистрация, фотозоны | Dina Kovan</title>
+<meta name="description" content="Свадебный декор в Минске: зона молодых, выездная регистрация, фотозоны и аренда декора. Выезжаем по всей Беларуси. Напишите дату свадьбы в Instagram.">
+<meta name="theme-color" content="#F6F1EA">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600&family=Marck+Script&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero1.webp">
+<style>
+:root{
+  --bg:#F6F1EA; --linen:#ECE3D7; --ink:#2B2522; --mu:#7D736B; --line:rgba(43,37,34,.14);
+  --rose:#B9787A; --rose-l:#EBD6D0; --sage:#7C8C73; --gold:#B8996A; --night:#1C1918;
+  --serif:"Cormorant Garamond",Georgia,serif; --sans:"Manrope",system-ui,sans-serif; --hand:"Marck Script",cursive;
+  --gut:clamp(16px,4.5vw,64px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--ink);font:15.5px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+main,footer{overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+.wrap{width:min(1200px,100% - var(--gut)*2);margin-inline:auto}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.02;letter-spacing:-.005em}
+h2{font-size:clamp(38px,5.4vw,72px)}
+h2 em,h1 em{font-style:italic;font-weight:400;color:var(--rose)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 26px;border-radius:999px;border:1px solid var(--ink);font-size:14.5px;font-weight:600;cursor:pointer;background:transparent;transition:background .25s,color .25s;white-space:nowrap}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.btn.fill{background:var(--ink);color:var(--bg)}
+.btn.fill:hover{background:var(--rose);border-color:var(--rose)}
+.btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6}
+
+/* шапка */
+.top{position:fixed;inset:0 0 auto;z-index:40;background:rgba(246,241,234,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .3s}
+.top.line{border-color:var(--line)}
+.top .bar{display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 var(--gut)}
+.logo{line-height:1}
+.logo b{display:block;font:400 27px/1 var(--hand);color:var(--ink)}
+.logo small{display:block;margin-top:3px;font-size:9.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--mu)}
+.top nav{display:flex;gap:30px;font-size:14px}
+.top nav a{color:var(--mu);transition:color .2s}
+.top nav a:hover{color:var(--ink)}
+.top .btn{height:40px;padding:0 18px;font-size:13.5px}
+
+/* первый экран: круглая арка */
+.hero{padding:calc(64px + 22px) var(--gut) 40px;display:grid;gap:26px}
+.arch{position:relative;width:min(82vw,420px);aspect-ratio:1;justify-self:center;margin:8px 0 6px}
+.arch::before{content:"";position:absolute;inset:0;border:1.5px solid var(--gold);border-radius:50%;transform:translate(-14px,-12px)}
+.arch .ph{position:absolute;inset:0;border-radius:50%;overflow:hidden;background:var(--linen)}
+.arch .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease}
+.arch .ph img.on{opacity:1}
+.arch .tag{position:absolute;right:-6px;bottom:8%;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:12.5px;color:var(--mu);box-shadow:0 6px 20px rgba(43,37,34,.08)}
+.hero h1{font-size:clamp(46px,7vw,108px)}
+.hero .sub{margin-top:16px;font-size:16.5px;color:#5c534c;max-width:30em}
+.hero .acts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px;max-width:460px}
+.hero .acts .btn{padding:0 14px}
+.hero .road{margin-top:20px;display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--mu)}
+.hero .road svg{width:30px;height:12px;stroke:var(--gold);fill:none;stroke-width:1.4;flex:none}
+
+/* площадки: карточки рассадки */
+.venues{background:var(--linen);padding:clamp(70px,9vw,120px) 0}
+.venues .head{display:grid;gap:12px;max-width:640px}
+.venues .head p{color:var(--mu)}
+.cards{display:flex;flex-wrap:wrap;gap:14px 12px;margin-top:38px}
+.card{background:#fffdf9;padding:16px 22px 14px;box-shadow:0 1px 0 rgba(43,37,34,.06),0 10px 22px -12px rgba(43,37,34,.25);position:relative;transform:rotate(var(--r,0deg));min-width:140px;text-align:center}
+.card::before{content:"";position:absolute;left:12px;right:12px;top:7px;border-top:1px solid rgba(184,153,106,.5)}
+.card b{display:block;font:400 26px/1.15 var(--hand)}
+.card span{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mu);margin-top:2px}
+
+/* что делаем */
+.what{padding:clamp(80px,10vw,140px) 0 0}
+.what>.wrap>h2{max-width:12em}
+.item{display:grid;gap:26px;margin-top:clamp(50px,7vw,100px);align-items:center}
+.item .pics{position:relative;padding-right:22%}
+.item .pics img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.item .pics img+img{position:absolute;right:0;bottom:-34px;width:42%;aspect-ratio:3/4;border:6px solid var(--bg)}
+.item h3{font-size:clamp(34px,3.8vw,52px)}
+.item p{margin-top:14px;color:#5c534c;max-width:28em}
+.item ul{list-style:none;margin-top:18px;border-top:1px solid var(--line)}
+.item li{padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.item .txt{padding-top:30px}
+
+/* фотозоны: тёмный блок с неоном */
+.night{background:var(--night);color:#efe7dd;margin-top:clamp(90px,10vw,140px);padding:clamp(80px,9vw,130px) 0;position:relative;overflow:hidden}
+.night .neon{font:400 clamp(52px,6.6vw,96px)/1 var(--hand);color:#fff8ec;text-shadow:0 0 6px #fff4dc,0 0 18px #ffdca0,0 0 42px rgba(255,190,110,.55);transform:rotate(-4deg);display:inline-block;margin-bottom:26px;animation:hum 6s infinite}
+@keyframes hum{0%,100%{opacity:1}47%{opacity:1}48%{opacity:.82}49%{opacity:1}}
+.night .grid{display:grid;gap:26px;align-items:center}
+.night h3{font-size:clamp(34px,3.8vw,52px)}
+.night p{margin-top:14px;color:rgba(239,231,221,.72);max-width:28em}
+.night .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.night .two img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.night .two img:last-child{margin-top:44px}
+
+/* селфи-зеркало */
+.mir{padding:clamp(80px,10vw,140px) 0}
+.mir .grid{display:grid;gap:30px;align-items:center}
+.stage{position:relative;height:clamp(460px,64vh,620px);overflow:hidden;display:grid;place-items:end center;padding-bottom:7%}
+.stage>img{position:absolute;inset:-70px;width:calc(100% + 140px);height:calc(100% + 140px);max-width:none;object-fit:cover;filter:blur(10px) saturate(1.1) brightness(.92)}
+.mirror{position:relative;width:clamp(160px,38%,230px);aspect-ratio:1/2.5;border-radius:999px 999px 8px 8px;border:7px solid #161616;overflow:hidden;box-shadow:0 30px 50px -20px rgba(0,0,0,.55);background:linear-gradient(115deg,rgba(255,255,255,.55),rgba(255,255,255,.05) 38%,rgba(255,255,255,.18) 52%,rgba(255,255,255,0) 70%),linear-gradient(180deg,#c9dbe6 0%,#a9c49b 46%,#6f8f58 100%)}
+.mirror .in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:0 10%;text-shadow:0 1px 6px rgba(0,0,0,.25)}
+.mirror .w{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;line-height:1.5;margin-bottom:auto;margin-top:26%}
+.mirror .n{font:500 clamp(24px,2.6vw,32px)/1.05 var(--serif);text-transform:uppercase;letter-spacing:.04em;word-break:break-word}
+.mirror .d{margin-top:8px;font:500 15px var(--serif);letter-spacing:.08em;margin-bottom:22%}
+.mir label{display:block;font-size:13px;color:var(--mu);margin:16px 0 6px}
+.field{width:100%;height:52px;border:1px solid var(--line);border-radius:12px;background:#fffdf9;padding:0 16px;font-size:16px}
+.mir .two{display:grid;grid-template-columns:1.4fr 1fr;gap:10px}
+.mir .note{margin-top:18px;font-size:14px;color:var(--mu)}
+
+/* галерея */
+.gal{padding:0 0 clamp(80px,10vw,130px)}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:26px calc(var(--gut)*-1) 22px;padding:0 var(--gut)}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:none;height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:transparent;font-size:14px;cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.mas{columns:2;column-gap:8px}
+.mas button{display:block;width:100%;margin-bottom:8px;border:0;padding:0;background:var(--linen);cursor:zoom-in;break-inside:avoid}
+.mas img{width:100%;height:auto}
+.mas button[hidden]{display:none}
+.more{display:flex;justify-content:center;margin-top:22px}
+.more[hidden]{display:none}
+.lb{position:fixed;inset:0;z-index:60;background:rgba(20,18,17,.96);display:none;align-items:center;justify-content:center}
+.lb.open{display:flex}
+.lb img{max-width:94vw;max-height:84vh;object-fit:contain}
+.lb button{position:absolute;background:none;border:0;color:#fff;cursor:pointer;width:54px;height:54px;font-size:28px}
+.lb .x{top:calc(8px + env(safe-area-inset-top));right:8px}
+.lb .p{left:4px;top:50%;translate:0 -50%}.lb .n{right:4px;top:50%;translate:0 -50%}
+
+/* Дина */
+.who{background:var(--linen);padding:clamp(70px,9vw,120px) 0}
+.who .grid{display:grid;gap:26px;align-items:center}
+.who img{width:100%;aspect-ratio:1;object-fit:cover}
+.who .sign{font:400 clamp(40px,5vw,64px)/1 var(--hand);color:var(--rose)}
+.who p{margin-top:16px;color:#5c534c;max-width:30em;font-size:16.5px}
+
+/* заявка: карточка-приглашение */
+.ask{padding:clamp(80px,10vw,140px) 0}
+.inv{max-width:640px;margin:0 auto;background:#fffdf9;padding:clamp(30px,5vw,56px) clamp(20px,5vw,56px);position:relative;text-align:center;box-shadow:0 30px 60px -36px rgba(43,37,34,.45)}
+.inv::before{content:"";position:absolute;inset:10px;border:1px solid rgba(184,153,106,.55);pointer-events:none}
+.inv .hi{font:400 clamp(30px,4vw,40px)/1 var(--hand);color:var(--rose)}
+.inv h2{font-size:clamp(34px,4.6vw,54px);margin-top:8px}
+.inv form{text-align:left;margin-top:26px;display:grid;gap:14px}
+.inv label{font-size:13px;color:var(--mu);display:block;margin-bottom:6px}
+.inv .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.picks{display:flex;flex-wrap:wrap;gap:8px}
+.picks label{margin:0;cursor:pointer}
+.picks input{position:absolute;opacity:0;pointer-events:none}
+.picks span{display:inline-flex;align-items:center;height:40px;padding:0 15px;border-radius:999px;border:1px solid var(--line);font-size:14px;color:var(--ink);transition:background .2s}
+.picks input:checked+span{background:var(--rose-l);border-color:var(--rose)}
+.picks input:focus-visible+span{outline:2px solid var(--rose);outline-offset:2px}
+.inv .btn{width:100%;margin-top:6px}
+.inv .ok{display:none;font-size:14px;color:var(--sage);text-align:center}
+.inv .ok.show{display:block}
+
+footer{background:var(--night);color:#efe7dd;padding:clamp(56px,7vw,90px) 0 calc(30px + env(safe-area-inset-bottom));text-align:center}
+footer .big{font:400 clamp(64px,14vw,170px)/.95 var(--hand);color:#fff8ec}
+footer p{margin-top:16px;color:rgba(239,231,221,.6);font-size:14px}
+footer .ig{display:inline-block;margin-top:22px;border-bottom:1px solid rgba(239,231,221,.4);padding-bottom:2px}
+footer .mk{margin-top:40px;font-size:12px;color:rgba(239,231,221,.4)}
+
+.dock{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:30;display:grid;grid-template-columns:1fr 1fr;gap:8px;transform:translateY(160%);transition:transform .35s}
+.dock.show{transform:none}
+.dock .btn{height:52px;background:var(--bg);box-shadow:0 10px 30px -10px rgba(0,0,0,.35)}
+.dock .btn.fill{background:var(--ink)}
+
+@media (min-width:900px){
+  .hero{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center;min-height:min(100vh,900px);padding-top:calc(64px + 40px);padding-bottom:60px}
+  .hero .txt{order:-1}
+  .arch{width:min(40vw,560px)}
+  .arch::before{transform:translate(-26px,-20px)}
+  .item{grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,110px)}
+  .item.rev .pics{order:2}
+  .night .grid{grid-template-columns:1fr 1fr;gap:80px}
+  .mir .grid{grid-template-columns:1fr 1fr;gap:70px}
+  .mas{columns:4;column-gap:12px}
+  .mas button{margin-bottom:12px}
+  .who .grid{grid-template-columns:.8fr 1.2fr;gap:70px}
+  .dock{display:none}
+}
+@media (max-width:899px){
+  .top nav{display:none}
+  .top .btn span{display:none}
+  .hero{padding-bottom:28px}
+  footer{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+}
+@media (max-width:420px){
+  .hero h1{font-size:44px}
+  .card{min-width:0;padding:14px 16px 12px}
+  .card b{font-size:22px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top" id="top">
+  <div class="bar">
+    <a class="logo" href="#" aria-label="Dina Kovan, наверх"><b>Dina Kovan</b><small>wedding decor</small></a>
+    <nav aria-label="Разделы"><a href="#what">Декор</a><a href="#mirror">Аренда</a><a href="#photos">Фото</a><a href="#ask">Заявка</a></nav>
+    <a class="btn" href="https://ig.me/m/decor_wedding_dina" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r=".6"/></svg><span>Написать</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="arch" aria-hidden="true">
+      <div class="ph" id="slides">
+        <img class="on" src="img/hero1.webp" alt="">
+        <img src="img/hero2.webp" alt="" loading="lazy">
+        <img src="img/hero3.webp" alt="" loading="lazy">
+      </div>
+      <span class="tag">круглая арка в цветах</span>
+    </div>
+    <div class="txt">
+      <h1>Свадебный декор<br><em>в Минске</em></h1>
+      <p class="sub">Зона молодых, выездная регистрация и фотозоны. Можно взять в аренду отдельные вещи, например селфи-зеркало с вашими именами.</p>
+      <div class="acts"><a class="btn fill" href="#ask">Узнать про дату</a><a class="btn" href="#photos">Смотреть фото</a></div>
+      <p class="road"><svg viewBox="0 0 30 12"><path d="M1 6c5-6 9 6 14 0s9-6 14 0"/></svg>Выезжаем по всей Беларуси</p>
+    </div>
+  </section>
+
+  <section class="venues">
+    <div class="wrap">
+      <div class="head">
+        <h2>Площадки, где <em>уже был наш декор</em></h2>
+        <p>Усадьбы, шатры и залы в Минске и рядом. Если ваша площадка тоже в этом списке, Дина уже знает, как там всё поставить.</p>
+      </div>
+      <div class="cards" id="cards"></div>
+    </div>
+  </section>
+
+  <section class="what" id="what">
+    <div class="wrap">
+      <h2>Что мы <em>оформляем</em></h2>
+
+      <article class="item">
+        <div class="pics"><img src="img/g-i13.webp" alt="Зона молодых с аркой из белых и зелёных цветов" loading="lazy"><img src="img/g-i29-s.webp" alt="Неоновая надпись You & Me над столом молодых" loading="lazy"></div>
+        <div class="txt">
+          <h3>Зона молодых</h3>
+          <p>Стол жениха и невесты, на который весь вечер смотрят гости и который попадает почти на каждое фото.</p>
+          <ul><li>Арки и стены из цветов</li><li>Ткани и юбка для стола</li><li>Свечи и подсвечники</li><li>Неоновые надписи</li></ul>
+        </div>
+      </article>
+
+      <article class="item rev">
+        <div class="pics"><img src="img/g-i27.webp" alt="Круглая арка с розовыми и белыми цветами на лужайке" loading="lazy"><img src="img/g-i12-s.webp" alt="Выездная регистрация на траве" loading="lazy"></div>
+        <div class="txt">
+          <h3>Выездная регистрация</h3>
+          <p>Круглые арки в цветах, столик для росписи и всё вокруг. На лужайке, у воды или в шатре.</p>
+          <ul><li>Арка на выбор</li><li>Столик для росписи</li><li>Цветы в тон вашей свадьбы</li></ul>
+        </div>
+      </article>
+    </div>
+
+    <div class="night">
+      <div class="wrap grid">
+        <div>
+          <span class="neon" aria-hidden="true">to the moon and back</span>
+          <h3>Фотозоны и неон</h3>
+          <p>Неоновые надписи, цветочные стены и свечи. Такие места гости сами находят, чтобы сфотографироваться.</p>
+        </div>
+        <div class="two"><img src="img/neon-s.webp" alt="Неоновая надпись to the moon and back в круглой арке вечером" loading="lazy"><img src="img/g-i41-s.webp" alt="Фотозона со свечами и белыми цветами" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mir" id="mirror">
+    <div class="wrap grid">
+      <div class="stage">
+        <img src="img/mirror-s.webp" alt="" aria-hidden="true">
+        <div class="mirror" role="img" aria-label="Селфи-зеркало с именами">
+          <div class="in"><span class="w">Welcome to<br>the wedding</span><span class="n" id="mN">Анна<br>и Илья</span><span class="d" id="mD">12.06.2027</span></div>
+        </div>
+      </div>
+      <div>
+        <h2>Селфи-зеркало <em>в аренду</em></h2>
+        <p style="margin-top:16px;color:#5c534c;max-width:28em">Ростовое зеркало с вашими именами и датой встречает гостей у входа. Впишите свои и посмотрите, как будет.</p>
+        <label for="names">Ваши имена</label>
+        <div class="two"><input class="field" id="names" value="Анна и Илья" maxlength="28" autocomplete="off"><input class="field" id="date" type="date" value="2027-06-12"></div>
+        <p class="note">Свободно ли зеркало на вашу дату, подскажет Дина в Instagram.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="gal" id="photos">
+    <div class="wrap">
+      <h2>Наши <em>свадьбы</em></h2>
+      <div class="chips" role="group" aria-label="Фильтр фото">
+        <button type="button" data-f="all" aria-pressed="true">Все</button>
+        <button type="button" data-f="zona" aria-pressed="false">Зона молодых</button>
+        <button type="button" data-f="reg" aria-pressed="false">Регистрация</button>
+        <button type="button" data-f="foto" aria-pressed="false">Фотозоны</button>
+      </div>
+      <div class="mas" id="mas"></div>
+      <div class="more" id="moreW"><button class="btn" type="button" id="more">Показать все фото</button></div>
+    </div>
+  </section>
+
+  <section class="who">
+    <div class="wrap grid">
+      <img src="img/dina-s.webp" alt="Дина фотографирует готовый декор на площадке" loading="lazy">
+      <div>
+        <span class="sign">Дина</span>
+        <h2 style="margin-top:6px">Ваш <em>декоратор</em></h2>
+        <p>Дина придумывает декор под вашу площадку и цвета свадьбы, привозит его и ставит на месте. Посмотреть больше работ и задать вопрос можно в её Instagram.</p>
+        <a class="btn" style="margin-top:24px" href="https://www.instagram.com/decor_wedding_dina/" target="_blank" rel="noopener">@decor_wedding_dina</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="ask" id="ask">
+    <div class="wrap">
+      <div class="inv">
+        <span class="hi">Расскажите</span>
+        <h2>о вашей свадьбе</h2>
+        <form id="form" novalidate>
+          <div class="row">
+            <div><label for="fDate">Дата</label><input class="field" id="fDate" type="date"></div>
+            <div><label for="fGuests">Гостей</label><input class="field" id="fGuests" inputmode="numeric" placeholder="около 60"></div>
+          </div>
+          <div><label for="fPlace">Площадка</label><input class="field" id="fPlace" placeholder="Например, усадьба Forest"></div>
+          <div><label>Что нужно</label>
+            <div class="picks">
+              <label><input type="checkbox" value="зона молодых" checked><span>Зона молодых</span></label>
+              <label><input type="checkbox" value="выездная регистрация"><span>Регистрация</span></label>
+              <label><input type="checkbox" value="фотозона"><span>Фотозона</span></label>
+              <label><input type="checkbox" value="селфи-зеркало"><span>Селфи-зеркало</span></label>
+            </div>
+          </div>
+          <button class="btn fill" type="submit">Отправить Дине в Instagram</button>
+          <p class="ok" id="ok">Текст заявки скопирован. Вставьте его в сообщение, которое сейчас откроется.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="big">Dina Kovan</div>
+    <p>Свадебный декор в Минске · выезд по всей Беларуси</p>
+    <a class="ig" href="https://www.instagram.com/decor_wedding_dina/" target="_blank" rel="noopener">Instagram @decor_wedding_dina</a>
+    <p class="mk">Макет сайта · saity.by · фото из Instagram Дины</p>
+  </div>
+</footer>
+
+<nav class="dock" id="dock" aria-label="Быстрые действия"><a class="btn" href="https://ig.me/m/decor_wedding_dina" target="_blank" rel="noopener">Написать</a><a class="btn fill" href="#ask">Узнать про дату</a></nav>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Фото"><img id="lbImg" alt=""><button class="x" id="lbX" aria-label="Закрыть">✕</button><button class="p" id="lbP" aria-label="Предыдущее">‹</button><button class="n" id="lbN" aria-label="Следующее">›</button></div>
+
+<script>
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+
+// шапка и нижняя панель
+const hdr = $("#top"), dock = $("#dock");
+const onScroll = () => { hdr.classList.toggle("line", scrollY > 10); dock.classList.toggle("show", scrollY > innerHeight * .7 && $("#ask").getBoundingClientRect().top > innerHeight * .6); };
+addEventListener("scroll", onScroll, {passive: true}); onScroll();
+
+// фото в круглой арке сменяются
+const sl = $$("#slides img"); let si = 0;
+if (!matchMedia("(prefers-reduced-motion: reduce)").matches) setInterval(() => { sl[si].classList.remove("on"); si = (si + 1) % sl.length; sl[si].classList.add("on"); }, 4500);
+
+// площадки, где работали (из Instagram)
+const V = [["Forest", "усадьба"], ["Green Plaza", "усадьба"], ["Komarova", ""], ["Сосновое", ""], ["Прованс Холл", ""], ["Дукорский маёнтак", "усадьба"], ["Areni", ""], ["Кафе «Сандал»", ""], ["Red Cat", ""], ["Мимино", ""]];
+$("#cards").innerHTML = V.map(([n, k], i) => `<div class="card" style="--r:${[-1.6, 1.2, -.6, 1.8, -1.2, .8, -2, 1.4, -.8, 1][i % 10]}deg"><b>${n}</b>${k ? `<span>${k}</span>` : ""}</div>`).join("");
+
+// селфи-зеркало
+const fmt = v => v ? v.split("-").reverse().join(".") : "";
+const esc = s => s.replace(/[&<>]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;"})[c]);
+const upd = () => { const n = $("#names").value.trim() || "Ваши имена"; $("#mN").innerHTML = esc(n).replace(/\s+(и|&)\s+/i, "<br>$1 "); $("#mD").textContent = fmt($("#date").value); };
+$("#names").addEventListener("input", upd); $("#date").addEventListener("input", upd);
+
+// галерея
+const G = {zona: "i03 i13 i17 i20 i24 i29 i35 i43 i47 i53 i56 i58 i09 i39 i49", reg: "i02 i12 i22 i27 i36 i59 i50 i38", foto: "i00 i21 i32 i41 i44 i57 i19"};
+const ALT = {zona: "Зона молодых", reg: "Выездная регистрация", foto: "Фотозона"};
+const all = []; Object.entries(G).forEach(([c, s]) => s.split(" ").forEach(id => all.push({id, c})));
+// в «Все» чередуем: зона, регистрация, фотозона
+const rank = {}; ["zona", "reg", "foto"].forEach(c => all.filter(p => p.c === c).forEach((p, i) => rank[p.id] = i * 3 + ["zona", "reg", "foto"].indexOf(c)));
+all.sort((a, b) => rank[a.id] - rank[b.id]);
+$("#mas").innerHTML = all.map((p, i) => `<button type="button" data-c="${p.c}" data-i="${i}"><img src="img/g-${p.id}-s.webp" alt="${ALT[p.c]}, декор Dina Kovan" loading="lazy"></button>`).join("");
+let filt = "all", full = false;
+const apply = () => { let n = 0; $$("#mas button").forEach(x => { const ok = filt === "all" || x.dataset.c === filt; x.hidden = !ok || (!full && n >= 12); if (ok) n++; }); $("#moreW").hidden = full || n <= 12; };
+$$(".chips button").forEach(b => b.addEventListener("click", () => { $$(".chips button").forEach(x => x.setAttribute("aria-pressed", x === b)); filt = b.dataset.f; apply(); }));
+$("#more").addEventListener("click", () => { full = true; apply(); }); apply();
+const lb = $("#lb"), lbImg = $("#lbImg"); let cur = 0;
+const vis = () => $$("#mas button").filter(x => !x.hidden).map(x => +x.dataset.i);
+const show = i => { cur = i; lbImg.src = `img/g-${all[i].id}.webp`; lbImg.alt = ALT[all[i].c]; };
+const step = d => { const v = vis(), k = v.indexOf(cur); show(v[(k + d + v.length) % v.length]); };
+const lbClose = () => { lb.classList.remove("open"); document.body.style.overflow = ""; };
+$("#mas").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; show(+b.dataset.i); lb.classList.add("open"); document.body.style.overflow = "hidden"; });
+$("#lbX").addEventListener("click", lbClose); $("#lbP").addEventListener("click", () => step(-1)); $("#lbN").addEventListener("click", () => step(1));
+lb.addEventListener("click", e => { if (e.target === lb) lbClose(); });
+addEventListener("keydown", e => { if (!lb.classList.contains("open")) return; if (e.key === "Escape") lbClose(); if (e.key === "ArrowLeft") step(-1); if (e.key === "ArrowRight") step(1); });
+let tx = 0; lb.addEventListener("touchstart", e => tx = e.touches[0].clientX, {passive: true});
+lb.addEventListener("touchend", e => { const d = e.changedTouches[0].clientX - tx; if (Math.abs(d) > 50) step(d < 0 ? 1 : -1); });
+
+// заявка: собираем текст и открываем директ
+$("#fDate").min = new Date().toISOString().slice(0, 10);
+$("#form").addEventListener("submit", async e => {
+  e.preventDefault();
+  const need = $$(".picks input:checked").map(x => x.value).join(", ");
+  const t = ["Здравствуйте! Хочу узнать про декор на свадьбу.", $("#fDate").value && "Дата: " + fmt($("#fDate").value), $("#fPlace").value.trim() && "Площадка: " + $("#fPlace").value.trim(), $("#fGuests").value.trim() && "Гостей: " + $("#fGuests").value.trim(), need && "Нужно: " + need].filter(Boolean).join("\n");
+  try { await navigator.clipboard.writeText(t); } catch (_) {}
+  $("#ok").classList.add("show");
+  setTimeout(() => open("https://ig.me/m/decor_wedding_dina", "_blank", "noopener"), 700);
+});
+</script>
+</body>
+</html>
