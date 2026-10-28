@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Habibi · барбершоп в Бресте</title>
+<meta name="description" content="Барбершоп Habibi в центре Бреста: мужские, женские и детские стрижки, борода, окрашивание. Куйбышева 36 и Васнецова 60. Онлайн-запись.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;600;700&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--g:#cfcecb;--g2:#bdbcb8;--ink:#141414;--or:#ff5a1f;--wh:#f4f3f0}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--g);color:var(--ink);font:16px/1.5 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+main,footer{overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--or);color:#fff;text-decoration:none;font:700 15px/1 Oswald,sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:18px 26px;transition:background .2s,transform .2s}
+.btn:hover{background:var(--ink);transform:translateY(-2px)}
+.btn.dark{background:var(--ink)}
+.btn.dark:hover{background:var(--or)}
+.btn svg{width:18px;height:18px}
+
+/* шапка */
+.top{display:flex;justify-content:space-between;align-items:center;padding:18px 0;font:500 14px/1 Oswald,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.top nav{display:flex;gap:28px}
+.top nav a{text-decoration:none}
+.top nav a:hover{color:var(--or)}
+.logo{font:400 26px/1 Anton,sans-serif;letter-spacing:.04em}
+.logo b{color:var(--or);font-weight:400}
+
+/* первый экран */
+.hero{position:relative;display:grid;grid-template-columns:1fr 300px;gap:24px;padding-bottom:40px}
+.poster{position:relative;min-height:780px}
+.word{font:400 clamp(90px,19.5vw,290px)/.84 Anton,sans-serif;color:var(--or);letter-spacing:-.01em;position:relative;z-index:1;user-select:none}
+.word span{display:block}
+.word span+span{color:var(--ink)}
+.master{position:absolute;z-index:2;right:3%;bottom:-40px;height:86%;width:auto;max-width:none;filter:drop-shadow(0 30px 40px rgba(0,0,0,.25));-webkit-mask-image:linear-gradient(#000 72%,transparent 97%);mask-image:linear-gradient(#000 72%,transparent 97%)}
+.hero-txt{position:absolute;z-index:3;left:0;bottom:0;max-width:330px}
+.hero-txt h1{font:700 30px/1.05 Oswald,sans-serif;text-transform:uppercase;margin-bottom:12px}
+.hero-txt p{font-size:15px;margin-bottom:22px;color:#2b2b2b}
+.side{display:flex;flex-direction:column;gap:16px;padding-top:6px}
+.side figure{position:relative;background:#999}
+.side figure img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.side figure:nth-child(2) img{aspect-ratio:1}
+.side figcaption{position:absolute;left:0;bottom:0;background:var(--ink);color:#fff;font:500 12px/1 Oswald,sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:8px 10px}
+.rate{background:var(--ink);color:#fff;padding:18px}
+.rate b{font:400 54px/1 Anton,sans-serif;color:var(--or)}
+.rate p{font-size:13px;color:#cfcfcf;margin-top:6px}
+
+/* бегущая строка */
+.run{background:var(--or);color:#fff;overflow:hidden;white-space:nowrap;font:700 34px/1 Oswald,sans-serif;letter-spacing:.03em;padding:14px 0;position:relative;z-index:4}
+.run div{display:inline-block;animation:run 28s linear infinite}
+.run i{font-style:normal;color:var(--ink);margin:0 22px}
+@keyframes run{to{transform:translateX(-50%)}}
+
+/* прайс */
+.price{background:var(--ink);color:var(--wh);padding:96px 0}
+.h2{font:700 clamp(56px,9vw,120px)/.9 Oswald,sans-serif;text-transform:uppercase;letter-spacing:.005em;margin-bottom:48px}
+.h2 em{font-style:normal;color:var(--or)}
+.price-grid{display:grid;grid-template-columns:1fr 1fr 340px;gap:56px}
+.plist h3{font:700 18px/1 Oswald,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--or);margin-bottom:14px}
+.plist ul{list-style:none;margin-bottom:34px}
+.plist li{display:flex;align-items:baseline;gap:10px;padding:13px 0;border-bottom:1px solid #2e2e2e}
+.plist li span{flex:1}
+.plist li small{color:#8d8d8d;font-size:13px;margin-left:6px}
+.plist li b{font:500 20px/1 Oswald,sans-serif;white-space:nowrap}
+.combo{background:var(--or);color:#fff;padding:28px;align-self:start;position:sticky;top:24px}
+.combo h3{font:700 44px/.95 Oswald,sans-serif;text-transform:uppercase;margin-bottom:14px}
+.combo .sum{font:400 92px/1 Anton,sans-serif;color:var(--ink)}
+.combo .sum small{font-size:34px}
+.combo p{margin:10px 0 22px;font-size:15px}
+.combo img{margin:0 -28px 22px;width:calc(100% + 56px);aspect-ratio:4/3;object-fit:cover}
+.note{color:#8d8d8d;font-size:13px}
+
+/* работы */
+.works{padding-block:96px 80px}
+.works-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.works-head .h2{margin:0}
+.works-head p{max-width:330px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start}
+.grid figure{overflow:hidden}
+.grid img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .6s,filter .4s}
+.grid figure:hover img{transform:scale(1.05)}
+.grid figure:nth-child(2){margin-top:60px}
+.grid figure:nth-child(5){margin-top:60px}
+
+/* мастера */
+.team{background:var(--wh);padding:96px 0}
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.names{list-style:none}
+.names li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-bottom:2px solid var(--ink);padding:14px 0}
+.names li b{font:700 clamp(40px,5vw,64px)/1 Oswald,sans-serif;text-transform:uppercase;transition:color .2s}
+.names li:hover b{color:var(--or)}
+.names li span{font:500 14px/1.3 Oswald,sans-serif;letter-spacing:.06em;text-transform:uppercase;text-align:right;color:#555}
+.team-side img{width:100%;aspect-ratio:4/3;object-fit:cover;margin-bottom:22px}
+.team-side p{font-size:17px;margin-bottom:24px}
+
+/* отзывы */
+.revs{padding-block:96px}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rev{background:var(--wh);padding:28px;display:flex;flex-direction:column;gap:18px}
+.rev:nth-child(2){background:var(--ink);color:var(--wh)}
+.rev q{font-size:17px;quotes:none;flex:1}
+.rev cite{font:500 14px/1 Oswald,sans-serif;font-style:normal;letter-spacing:.08em;text-transform:uppercase}
+.rev cite span{color:var(--or)}
+.scores{display:flex;gap:16px;margin-bottom:40px;flex-wrap:wrap}
+.score{background:var(--ink);color:#fff;padding:18px 22px;display:flex;align-items:center;gap:16px}
+.score b{font:400 48px/1 Anton,sans-serif;color:var(--or)}
+.score span{font-size:14px;line-height:1.35}
+
+/* адреса */
+.where{background:var(--or);color:#fff;padding:96px 0 80px}
+.where .h2 em{color:var(--ink)}
+.addr{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.place{background:var(--ink);padding:30px;display:flex;flex-direction:column;gap:14px}
+.place h3{font:700 46px/1 Oswald,sans-serif;text-transform:uppercase}
+.place p{color:#d0d0d0}
+.place a.tel{font:500 26px/1 Oswald,sans-serif;text-decoration:none;color:#fff}
+.place a.tel:hover{color:var(--or)}
+.place .btn{align-self:start;margin-top:8px}
+.map{width:100%;height:380px;border:0;display:block;filter:grayscale(1)}
+footer{background:var(--ink);color:#8d8d8d;padding:28px 0 110px;font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:#fff}
+.dock{display:none}
+
+/* появление */
+.rv{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .side{flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory}
+  .side>*{flex:0 0 46%;scroll-snap-align:start}
+  .price-grid{grid-template-columns:1fr 1fr}
+  .combo{grid-column:1/-1;position:static}
+  .team-grid{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  body{font-size:15px}
+  .wrap{padding:0 16px}
+  .top nav{display:none}
+  .poster{min-height:auto;padding-bottom:0}
+  .word{font-size:28.5vw}
+  .master{position:relative;right:auto;bottom:auto;height:auto;width:80%;margin:-34vw auto 0}
+  .hero-txt{position:relative;bottom:auto;max-width:none;margin-top:-70px}
+  .hero-txt h1{font-size:28px}
+  .side>*{flex:0 0 62%}
+  .side .rate{flex-basis:46%}
+  .run{font-size:26px}
+  .price,.team,.where{padding:64px 0}
+  .works,.revs{padding-block:64px}
+  .h2{margin-bottom:32px}
+  .price-grid{grid-template-columns:1fr;gap:0}
+  .combo .sum{font-size:76px}
+  .grid{grid-template-columns:1fr 1fr;gap:10px}
+  .grid figure:nth-child(n){margin-top:0}
+  .grid figure:nth-child(even){margin-top:34px}
+  .rev-grid,.addr{grid-template-columns:1fr}
+  .names li span{font-size:12px}
+  .place h3{font-size:38px}
+  .dock{display:grid;grid-template-columns:1fr 1.4fr;position:fixed;left:0;right:0;bottom:0;z-index:50;font:700 15px/1 Oswald,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+  .dock a{display:flex;align-items:center;justify-content:center;height:58px;text-decoration:none;background:var(--ink);color:#fff}
+  .dock a+a{background:var(--or)}
+}
+@media (prefers-reduced-motion:reduce){.run div{animation:none}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<main>
+<section class="wrap">
+  <header class="top">
+    <div class="logo">HABIBI<b>.</b></div>
+    <nav><a href="#price">Цены</a><a href="#works">Работы</a><a href="#team">Мастера</a><a href="#where">Адреса</a></nav>
+    <span>Брест</span>
+  </header>
+
+  <div class="hero">
+    <div class="poster">
+      <div class="word" aria-hidden="true"><span>HABIBI</span><span>BARBER</span></div>
+      <picture>
+        <source media="(max-width:640px)" srcset="img/master-s.webp">
+        <img class="master" src="img/master.webp" alt="Барбер Habibi с ножницами" fetchpriority="high">
+      </picture>
+      <div class="hero-txt">
+        <h1>Стрижем и бреем в центре Бреста</h1>
+        <p>Мужские, женские и детские стрижки, борода, окрашивание. Два барбершопа: Куйбышева 36 и Васнецова 60.</p>
+        <a class="btn" href="https://dikidi.ru/1588708" target="_blank" rel="noopener">Записаться онлайн
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+    <aside class="side">
+      <figure><img src="img/tools.webp" alt="Насадки для машинки" loading="lazy"><figcaption>Fade · насадки</figcaption></figure>
+      <div class="rate"><b>5,0</b><p>Рейтинг на Яндекс Картах, 94 оценки</p></div>
+      <figure><img src="img/clip.webp" alt="Машинка в руках мастера" loading="lazy"><figcaption>Стрижка от 20 р.</figcaption></figure>
+    </aside>
+  </div>
+</section>
+
+<div class="run" aria-hidden="true"><div>СТРИЖЕМ<i>/</i>БРЕЕМ<i>/</i>FADE<i>/</i>БОРОДА<i>/</i>ДЕТСКИЕ СТРИЖКИ<i>/</i>ОКРАШИВАНИЕ<i>/</i>СТРИЖЕМ<i>/</i>БРЕЕМ<i>/</i>FADE<i>/</i>БОРОДА<i>/</i>ДЕТСКИЕ СТРИЖКИ<i>/</i>ОКРАШИВАНИЕ<i>/</i></div></div>
+
+<section class="price" id="price">
+  <div class="wrap">
+    <h2 class="h2 rv">Цены <em>без сюрпризов</em></h2>
+    <div class="price-grid">
+      <div class="plist rv">
+        <h3>Стрижки</h3>
+        <ul>
+          <li><span>Мужская стрижка<small>40 мин</small></span><b>от 30 р.</b></li>
+          <li><span>Мужская с шейвером<small>40 мин</small></span><b>от 30 р.</b></li>
+          <li><span>Удлинённая стрижка<small>45 мин</small></span><b>от 30 р.</b></li>
+          <li><span>Под насадку<small>20 мин</small></span><b>20 р.</b></li>
+          <li><span>Детская стрижка<small>30 мин</small></span><b>25 р.</b></li>
+          <li><span>Женская стрижка<small>1 час</small></span><b>35 р.</b></li>
+          <li><span>Наголо</span><b>от 10 р.</b></li>
+          <li><span>Наголо шейвером</span><b>от 15 р.</b></li>
+          <li><span>Чёлка</span><b>от 7 р.</b></li>
+        </ul>
+      </div>
+      <div class="plist rv">
+        <h3>Борода и другое</h3>
+        <ul>
+          <li><span>Оформление бороды и усов<small>15 мин</small></span><b>20 р.</b></li>
+          <li><span>Камуфляж седины<small>1 час</small></span><b>от 20 р.</b></li>
+          <li><span>Окрашивание<small>1 час</small></span><b>от 50 р.</b></li>
+          <li><span>Hair Tattoo, рисунок</span><b>5 р.</b></li>
+          <li><span>Удаление волос воском</span><b>10 р.</b></li>
+        </ul>
+        <p class="note">Цены из онлайн-записи барбершопа на Куйбышева 36. Точную стоимость мастер скажет перед стрижкой.</p>
+      </div>
+      <div class="combo rv">
+        <img src="img/w6.webp" alt="Клиент после стрижки в Habibi" loading="lazy">
+        <h3>Стрижка + борода</h3>
+        <div class="sum">50<small> р.</small></div>
+        <p>Стрижка и оформление бороды и усов за один визит, около часа.</p>
+        <a class="btn dark" href="https://dikidi.ru/1588708" target="_blank" rel="noopener">Выбрать время</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="works wrap" id="works">
+  <div class="works-head rv">
+    <h2 class="h2">Наши<br><em style="font-style:normal;color:var(--or)">работы</em></h2>
+    <p>Фейды, кроп, классика и детские стрижки. Больше работ в нашем Instagram <a href="https://www.instagram.com/habibi_brest/" target="_blank" rel="noopener">@habibi_brest</a></p>
+  </div>
+  <div class="grid">
+    <figure class="rv"><img src="img/w1.webp" alt="Фейд с текстурой" loading="lazy"></figure>
+    <figure class="rv"><img src="img/w2.webp" alt="Короткая мужская стрижка" loading="lazy"></figure>
+    <figure class="rv"><img src="img/w3.webp" alt="Кроп с фейдом" loading="lazy"></figure>
+    <figure class="rv"><img src="img/w4.webp" alt="Стрижка с осветлением" loading="lazy"></figure>
+    <figure class="rv"><img src="img/w5.webp" alt="Детская стрижка" loading="lazy"></figure>
+    <figure class="rv"><img src="img/kid.webp" alt="Детская стрижка машинкой" loading="lazy"></figure>
+  </div>
+</section>
+
+<section class="team" id="team">
+  <div class="wrap team-grid">
+    <div>
+      <h2 class="h2 rv">Мастера</h2>
+      <ul class="names rv">
+        <li><b>Азамат</b><span>Барбер<br>4,9 · 169 оценок</span></li>
+        <li><b>Светлана</b><span>Мастер-универсал<br>4,9 · 69 оценок</span></li>
+        <li><b>Маша</b><span>Барбер</span></li>
+        <li><b>Костя</b><span>Барбер</span></li>
+        <li><b>Елизавета</b><span>Барбер</span></li>
+        <li><b>Султан</b><span>Барбер</span></li>
+        <li><b>Эдуард</b><span>Барбер</span></li>
+      </ul>
+    </div>
+    <div class="team-side rv">
+      <img src="img/wall.webp" alt="Зал Habibi на Куйбышева" loading="lazy">
+      <p>Можно записаться к своему мастеру: выбираете человека, услугу и время, и всё. Без звонков.</p>
+      <a class="btn" href="https://dikidi.ru/1588708" target="_blank" rel="noopener">Выбрать мастера</a>
+    </div>
+  </div>
+</section>
+
+<section class="revs wrap">
+  <h2 class="h2 rv">Что <em>говорят</em></h2>
+  <div class="scores rv">
+    <div class="score"><b>5,0</b><span>Яндекс Карты<br>94 оценки</span></div>
+    <div class="score"><b>4,9</b><span>DIKIDI<br>307 оценок</span></div>
+  </div>
+  <div class="rev-grid">
+    <div class="rev rv"><q>За годы, которые я посещаю это место, несколько раз сменил образ, и каждая работа это то, что я хотел видеть.</q><cite>Артём <span>· Яндекс</span></cite></div>
+    <div class="rev rv"><q>Отличный барбершоп. Спасибо Елизавете: сделала не только красиво и аккуратно, но и очень чисто.</q><cite>Александр <span>· Яндекс</span></cite></div>
+    <div class="rev rv"><q>Долго искала мастера своим сыновьям. В этот раз повезло, и теперь мы ходим только сюда.</q><cite>Ольга <span>· Яндекс</span></cite></div>
+  </div>
+</section>
+
+<section class="where" id="where">
+  <div class="wrap">
+    <h2 class="h2 rv">Два адреса <em>в Бресте</em></h2>
+    <div class="addr">
+      <div class="place rv">
+        <h3>Куйбышева 36</h3>
+        <p>Центр, 250 м от Центрального рынка. 1 этаж.</p>
+        <p>Пн–пт 10:00–20:00<br>Сб 10:00–19:00<br>Вс 10:00–18:00</p>
+        <a class="tel" href="tel:+375257078438">+375 25 707-84-38</a>
+        <a class="btn" href="https://dikidi.ru/1588708" target="_blank" rel="noopener">Записаться</a>
+      </div>
+      <div class="place rv">
+        <h3>Васнецова 60</h3>
+        <p>Второй барбершоп Habibi, <a href="https://www.instagram.com/habibi.barbershop_brest/" target="_blank" rel="noopener">@habibi.barbershop_brest</a></p>
+        <p>Ежедневно 10:00–20:00</p>
+        <a class="tel" href="tel:+375257534377">+375 25 753-43-77</a>
+        <a class="btn" href="https://dikidi.ru/1714527" target="_blank" rel="noopener">Записаться</a>
+      </div>
+    </div>
+    <iframe class="map" loading="lazy" title="Habibi на карте" src="https://yandex.by/map-widget/v1/?oid=130968629113&amp;z=15"></iframe>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© Habibi, барбершоп. Брест</span>
+    <a href="https://www.instagram.com/habibi_brest/" target="_blank" rel="noopener">Instagram @habibi_brest</a>
+  </div>
+</footer>
+
+<nav class="dock">
+  <a href="tel:+375257078438">Позвонить</a>
+  <a href="https://dikidi.ru/1588708" target="_blank" rel="noopener">Записаться</a>
+</nav>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
