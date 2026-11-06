@@ -327,7 +327,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .gift{display:grid;grid-template-columns:1.2fr 1fr;background:var(--card);min-height:0;border:1px solid var(--line);overflow:hidden}.gift::after{display:none}.gift>img{position:static;width:100%;height:100%;max-height:460px;object-fit:cover}.certificate-heading{padding:clamp(24px,4vw,52px)}.certificate-heading h2{font:500 clamp(42px,5.5vw,72px)/1.03 var(--disp);margin:18px 0}.certificate-brand{font:500 25px var(--disp);color:var(--gold);margin-bottom:24px}.certificate-heading>p:last-child{font-size:16px;max-width:350px;color:var(--muted)}.certificate-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:20px}.certificate-option{padding:28px;background:var(--card);border:1px solid var(--line);border-radius:22px;display:flex;flex-direction:column}.certificate-option h3{font:500 33px/1.1 var(--disp);margin:24px 0 16px}.certificate-option p{font-size:15px;color:var(--muted);margin-bottom:26px}.certificate-option .btn{margin-top:auto;font-size:10px;padding:0 16px;letter-spacing:.08em}
 @media(max-width:1000px) and (min-width:761px){.bath-description{padding:24px}.bath-features{grid-template-columns:1fr 1fr}.bath-features span{font-size:11px}.certificate-option{padding:20px}}
 @media(max-width:760px){.hero-sub{top:calc(12% + 26vw);font-size:10px;letter-spacing:.17em;padding:10px 12px}.club-motto{font-size:clamp(32px,9vw,52px)}.bath-block{grid-template-columns:minmax(0,1fr);gap:0;border-radius:24px}.bath-photos{min-height:340px;height:340px}.bath-photos .gallery-photo img{min-height:0;height:340px}.bath-photo-title{left:24px;bottom:80px}.bath-photo-title h3{display:block;font-size:46px}.bath-description{padding:24px}.bath-description .eyebrow{display:block}.bath-features{grid-template-columns:1fr 1fr}.bath-copy p{font-size:14px}.bath-description .btn{width:100%}.gift{grid-template-columns:1fr}.gift>img{height:220px;max-height:220px}.certificate-heading h2{font-size:48px}.certificate-options{grid-template-columns:1fr}.certificate-option h3{margin-top:16px;font-size:34px}.certificate-option .btn{font-size:11px}}
-</style></head>
+</style><style>.certificate-dialog{margin:auto;padding:clamp(24px,4vw,42px);width:min(560px,calc(100vw - 24px));max-height:calc(100svh - 32px);overflow:auto;background:var(--bg);color:var(--cream);border:1px solid var(--line);border-radius:24px}.certificate-dialog::backdrop{background:#000b;backdrop-filter:blur(5px)}.dialog-close{position:absolute;right:16px;top:10px;background:none;border:0;font-size:32px;cursor:pointer}.certificate-dialog h2{font:500 clamp(34px,5vw,48px)/1.1 var(--disp);margin:18px 0}.certificate-dialog>p{font-size:15px;color:var(--muted);margin-bottom:24px}.certificate-dialog textarea{width:100%;padding:14px;border:1px solid var(--line);background:var(--bg2);color:var(--cream);border-radius:12px;resize:vertical;font-size:16px}.certificate-dialog>.btn{width:100%;margin:16px 0}.certificate-contact-buttons{display:grid;gap:12px}.certificate-contact-buttons .btn{font-size:11px;letter-spacing:.1em}.certificate-dialog .certificate-contact-note{font-size:12px;margin:18px 0 0}.certificate-option button{cursor:pointer}</style></head>
 <body>
 <svg aria-hidden="true" height="0" style="position:absolute" width="0">
 <symbol id="leaf" viewbox="0 0 32 32"><path d="M16 2c1.6 2 3.6 2.4 4.4 4.6.9 2.4-1 3.4.4 5 1.3 1.4 3.6.4 4.6 2.4 1 2-1 3.2-.2 4.8.9 1.7 3.2 1.4 3.4 3.4.2 2.2-2.6 2.6-4.2 3.4-2.2 1-4.2.6-6 1.8V30h-1.6v-2.6c-1.8-1.2-3.8-.8-6-1.8-1.6-.8-4.4-1.2-4.2-3.4.2-2 2.5-1.7 3.4-3.4.8-1.6-1.2-2.8-.2-4.8 1-2 3.3-1 4.6-2.4 1.4-1.6-.5-2.6.4-5C12.4 4.4 14.4 4 16 2z" fill="currentColor"></path></symbol>
@@ -425,7 +425,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 </section>
 <section class="sec">
 <div class="wrap">
-<div class="gift rv"><div class="certificate-heading"><span class="eyebrow">Тёплый подарок близким</span><h2>Подарочный<br/>сертификат</h2><p class="certificate-brand">в ТЕПЛО</p><p>Подарите время для отдыха. Выберите один из трёх вариантов.</p></div><img alt="Подарочные сертификаты банного клуба ТЕПЛО" decoding="async" height="1800" loading="lazy" sizes="(max-width: 760px) calc(100vw - 32px), 600px" src="img/responsive/IMG_2705-800.webp" srcset="img/responsive/IMG_2705-480.webp 480w, img/responsive/IMG_2705-800.webp 800w, img/responsive/IMG_2705-1200.webp 1200w" width="1012"/></div><div class="certificate-options"><article class="certificate-option"><span class="eyebrow">01 / сертификат</span><h3>На количество часов</h3><p>Несколько часов в бане для отдыха в своём ритме.</p><a class="btn" data-gift="На количество часов" href="#bron">Выбрать сертификат →</a></article><article class="certificate-option"><span class="eyebrow">02 / сертификат</span><h3>На сумму</h3><p>Подарок на выбранную вами сумму.</p><a class="btn" data-gift="На сумму" href="#bron">Выбрать сертификат →</a></article><article class="certificate-option"><span class="eyebrow">03 / сертификат</span><h3>На парение с пар-мастером</h3><p>Банный отдых с заботой опытного пар-мастера.</p><a class="btn" data-gift="На парение с пар-мастером" href="#bron">Выбрать сертификат →</a></article></div>
+<div class="gift rv"><div class="certificate-heading"><span class="eyebrow">Тёплый подарок близким</span><h2>Подарочный<br/>сертификат</h2><p class="certificate-brand">в ТЕПЛО</p><p>Подарите время для отдыха. Выберите один из трёх вариантов.</p></div><img alt="Подарочные сертификаты банного клуба ТЕПЛО" decoding="async" height="1800" loading="lazy" sizes="(max-width: 760px) calc(100vw - 32px), 600px" src="img/responsive/IMG_2705-800.webp" srcset="img/responsive/IMG_2705-480.webp 480w, img/responsive/IMG_2705-800.webp 800w, img/responsive/IMG_2705-1200.webp 1200w" width="1012"/></div><div class="certificate-options"><article class="certificate-option"><span class="eyebrow">01 / сертификат</span><h3>На количество часов</h3><p>Несколько часов в бане для отдыха в своём ритме.</p><button aria-haspopup="dialog" class="btn" data-gift="На количество часов" type="button">Заказать сертификат →</button></article><article class="certificate-option"><span class="eyebrow">02 / сертификат</span><h3>На сумму</h3><p>Подарок на выбранную вами сумму.</p><button aria-haspopup="dialog" class="btn" data-gift="На сумму" type="button">Заказать сертификат →</button></article><article class="certificate-option"><span class="eyebrow">03 / сертификат</span><h3>На парение с пар-мастером</h3><p>Банный отдых с заботой опытного пар-мастера.</p><button aria-haspopup="dialog" class="btn" data-gift="На парение с пар-мастером" type="button">Заказать сертификат →</button></article></div>
 </div>
 </section>
 <section class="sec birthday" id="akcii"><div class="wrap"><div class="birthday-card"><span class="eyebrow">Акции · ко дню рождения</span><h2>Час отдыха в подарок</h2><p>При бронировании от 3 часов дарим дополнительный час. Воспользоваться бонусом можно в течение недели со дня рождения при предъявлении паспорта.</p><a class="btn" href="#bron">Забронировать</a></div></div></section>
@@ -444,7 +444,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 <div class="wrap">
 <div class="book">
 <div class="rv">
-<h2>Забронировать</h2>
+<h2>Бронирование бани</h2>
 <p class="lead">Подготовьте текст заявки и отправьте его администратору в Instagram. Дату и стоимость подтвердит администратор. Можно также позвонить.</p>
 <div class="contacts">
 <a href="tel:+375336096688"><span>Телефон</span>+375 33 609-66-88</a>
@@ -475,7 +475,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 </div>
 </footer>
 <div class="fab" id="fab"><a aria-label="Позвонить" class="btn tel-b" href="tel:+375336096688"><svg fill="none" height="18" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24" width="18"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 005 5L15 12l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2z"></path></svg></a><a class="btn" href="#bron">Забронировать</a></div>
-<script>
+<dialog aria-labelledby="certificateDialogTitle" class="certificate-dialog" id="certificateDialog"><button aria-label="Закрыть окно сертификата" class="dialog-close" type="button">×</button><span class="eyebrow">Подарочный сертификат</span><h2 id="certificateDialogTitle">На сумму</h2><p>Свяжитесь с администратором, чтобы согласовать номинал и оформление сертификата.</p><label class="fld"><span>Сообщение администратору</span><textarea id="certificateMessage" readonly="" rows="3"></textarea></label><button class="btn" id="copyCertificate" type="button">Скопировать сообщение</button><div class="certificate-contact-buttons"><a class="btn" href="https://www.instagram.com/teplo.bani/" rel="noopener" target="_blank">Написать в Instagram ↗</a><a class="btn ghost" href="tel:+375336096688">Позвонить</a></div><p class="certificate-contact-note">Instagram откроется отдельно. Вставьте скопированное сообщение в переписку с @teplo.bani.</p><p aria-live="polite" id="certificateCopyStatus" role="status"></p></dialog><script>
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 const photoDialog = $("#photoDialog");
 $$(".gallery-photo").forEach(a => a.addEventListener("click", e => { e.preventDefault(); const img = photoDialog.querySelector("img"); img.src = a.href; img.alt = a.querySelector("img").alt; photoDialog.showModal(); }));
@@ -557,7 +557,20 @@ $("#copyRequest").addEventListener("click", async e => {
  try { await navigator.clipboard.writeText(field.value); e.target.textContent = "Скопировано"; }
  catch { field.focus();field.select();e.target.textContent = "Выделено: скопируйте текст"; }
 });
-$$('[data-gift]').forEach(a => a.addEventListener('click', () => { form.dataset.gift = a.dataset.gift || 'Подарочный сертификат'; }));
+const certificateDialog = $('#certificateDialog');
+$$('[data-gift]').forEach(button => button.addEventListener('click', () => {
+ const kind = button.dataset.gift;
+ $('#certificateDialogTitle').textContent = kind;
+ $('#certificateMessage').value = `Здравствуйте! Хочу заказать подарочный сертификат ${kind.toLowerCase()}. Подскажите, пожалуйста, условия и варианты оформления.`;
+ $('#certificateCopyStatus').textContent = '';
+ certificateDialog.showModal();
+}));
+certificateDialog.querySelector('.dialog-close').addEventListener('click', () => certificateDialog.close());
+certificateDialog.addEventListener('click', e => { if(e.target === certificateDialog){const r=certificateDialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)certificateDialog.close();}});
+$('#copyCertificate').addEventListener('click',async () => {
+ try { await navigator.clipboard.writeText($('#certificateMessage').value); $('#certificateCopyStatus').textContent='Сообщение скопировано'; }
+ catch { $('#certificateMessage').focus();$('#certificateMessage').select();$('#certificateCopyStatus').textContent='Выделили сообщение. Скопируйте его вручную.'; }
+});
 </script>
 </body>
 </html>
