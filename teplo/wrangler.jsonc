@@ -1,0 +1,38 @@
+{
+  "name": "teplo-bani",
+  "account_id": "7214623a697b8f838fe5654067a4a941",
+  "main": ".server/worker.mjs",
+  "compatibility_date": "2026-11-04",
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/api/*"
+    ]
+  },
+  "routes": [
+    {
+      "pattern": "bani-teplo.by",
+      "custom_domain": true
+    }
+  ],
+  "send_email": [
+    {
+      "name": "EMAIL"
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "REQUEST_LIMIT",
+      "namespace_id": "1001",
+      "simple": {
+        "limit": 3,
+        "period": 60
+      }
+    }
+  ],
+  "observability": {
+    "enabled": true
+  },
+  "workers_dev": true
+}
